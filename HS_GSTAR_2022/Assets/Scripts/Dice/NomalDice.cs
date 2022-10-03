@@ -1,20 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class NomalDice : Dice
 {
     public override void Roll()
     {
         Number = (EDiceNumber) Random.Range((int) EDiceNumber.One, (int) EDiceNumber.Max);
-        Play_Ani(Number);
-        Debug.Log(Number);
+        PlayRollAnimation(Number);
     }
 
-    private void Play_Ani(EDiceNumber num)
+    private void PlayRollAnimation(EDiceNumber num)
     {
-        GetComponent<Animator>().Play("Cube|Result_" + ((int)num).ToString(),-1,0f);
-
+        GetComponent<Animator>().Play($"Cube|Result_{(int)num}",-1,0f);
     }
 
     private void Update()

@@ -17,6 +17,11 @@ public abstract class Dice : MonoBehaviour
 {
     public EDiceNumber Number { get; protected set; }
 
+    private void Awake()
+    {
+        Roll();
+    }
+    
     public abstract void Roll();
 
     // 마우스나 터치로 해당 주사위를 잡았을 때
