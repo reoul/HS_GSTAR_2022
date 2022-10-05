@@ -393,6 +393,35 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &667393758 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6738916435174713400, guid: 2f9e7b7acc8348646abb0487589c96b3, type: 3}
+  m_PrefabInstance: {fileID: 8980519423738128582}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &667393760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667393758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cc1f217b71162346a9b239c57b66d16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Text: {fileID: 667393761}
+--- !u!114 &667393761 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3486862222338713601, guid: 2f9e7b7acc8348646abb0487589c96b3, type: 3}
+  m_PrefabInstance: {fileID: 8980519423738128582}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 667393758}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -1074,12 +1103,17 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3486862222338713601, guid: 2f9e7b7acc8348646abb0487589c96b3, type: 3}
       propertyPath: m_text
-      value: "\uB208\uAE08 1 ~ 2 : \uB370\uBBF8\uC9C0 2\uB97C \uC801\uC5D0\uAC8C
-        \uC785\uD78C\uB2E4."
+      value: '   <sprite=0>asd
+
+        asdsadasdasdsdaadssdaasdasd'
       objectReference: {fileID: 0}
     - target: {fileID: 3486862222338713601, guid: 2f9e7b7acc8348646abb0487589c96b3, type: 3}
       propertyPath: m_fontSize
-      value: 3
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486862222338713601, guid: 2f9e7b7acc8348646abb0487589c96b3, type: 3}
+      propertyPath: m_margin.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3486862222338713601, guid: 2f9e7b7acc8348646abb0487589c96b3, type: 3}
       propertyPath: m_fontAsset
@@ -1090,20 +1124,40 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3486862222338713601, guid: 2f9e7b7acc8348646abb0487589c96b3, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486862222338713601, guid: 2f9e7b7acc8348646abb0487589c96b3, type: 3}
+      propertyPath: m_lineSpacing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486862222338713601, guid: 2f9e7b7acc8348646abb0487589c96b3, type: 3}
+      propertyPath: m_spriteAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: a2725bd414f6d7149aff9670ca2f5a10, type: 2}
+    - target: {fileID: 3486862222338713601, guid: 2f9e7b7acc8348646abb0487589c96b3, type: 3}
       propertyPath: m_fontSizeBase
-      value: 3
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 3486862222338713601, guid: 2f9e7b7acc8348646abb0487589c96b3, type: 3}
       propertyPath: m_sharedMaterial
       value: 
       objectReference: {fileID: -377562797812097854, guid: 27f7b7d75fd59ec418334e76f4731c24, type: 2}
     - target: {fileID: 3486862222338713601, guid: 2f9e7b7acc8348646abb0487589c96b3, type: 3}
-      propertyPath: m_enableAutoSizing
+      propertyPath: m_verticalMapping
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486862222338713601, guid: 2f9e7b7acc8348646abb0487589c96b3, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3486862222338713601, guid: 2f9e7b7acc8348646abb0487589c96b3, type: 3}
       propertyPath: m_VerticalAlignment
       value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 3486862222338713601, guid: 2f9e7b7acc8348646abb0487589c96b3, type: 3}
+      propertyPath: m_horizontalMapping
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3486862222338713601, guid: 2f9e7b7acc8348646abb0487589c96b3, type: 3}
       propertyPath: m_HorizontalAlignment
