@@ -1,4 +1,4 @@
-Shader "TextMeshPro/Sprite"
+Shader "TextMeshPro/SingleSideRener"
 {
 	Properties
 	{
@@ -38,7 +38,7 @@ Shader "TextMeshPro/Sprite"
 				WriteMask[_StencilWriteMask]
 			}
 
-			cull front
+			cull back
 			Lighting Off
 			ZWrite Off
 			ZTest[unity_GUIZTestMode]
