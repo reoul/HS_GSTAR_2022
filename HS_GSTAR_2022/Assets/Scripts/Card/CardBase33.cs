@@ -11,7 +11,8 @@ public abstract class CardBase33 : Card
     /// <summary> 주사위 눈금 4 ~ 6번 발동 효과 설명 </summary>
     protected abstract string Description456 { get; }
 
-    public override string GetDescription() => $"{Description123}\n{Description456}\n";
+    public override string GetDescription() => $"1~3: {Description123}\n" +
+                                               $"4~6: {Description456}\n";
 
     /// <summary> 주사위 눈금 1 ~ 3번 발동 효과 </summary>
     protected abstract void Use123();
@@ -37,5 +38,6 @@ public abstract class CardBase33 : Card
             default:
                 throw new ArgumentOutOfRangeException();
         }
+        Destroy();  // 주사위 삭제
     }
 }
