@@ -9,19 +9,7 @@ public class NomalDice : Dice
     public override void Roll()
     {
         Number = (EDiceNumber) Random.Range((int) EDiceNumber.One, (int) EDiceNumber.Max);
-        PlayRollAnimation(Number);
-    }
+        GetComponent<Animator>().Play($"Cube|Result_{(int)Number}",-1,0f);  // 굴리는 애니메이션 호출
 
-    private void PlayRollAnimation(EDiceNumber num)
-    {
-        GetComponent<Animator>().Play($"Cube|Result_{(int)num}",-1,0f);
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Roll();
-        }
     }
 }
