@@ -10,11 +10,11 @@ public class Card002 : CardBase33
     
     protected override void Use123()
     {
-        Debug.Log($"{Name} : 123 : {Description123}");
+        Logger.Log($"{Name} : 123 : {Description123}");
     }
 
     protected override void Use456()
     {
-        Debug.Log($"{Name} : 456 : {Description456}");
+        Logger.Log($"{Name} : 456 : {Description456}");
     }
 }

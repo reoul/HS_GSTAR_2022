@@ -23,11 +23,11 @@ public abstract class Card : OverlayBase
 
     protected override void ShowOverlay()
     {
-        Debug.Log($"{GetName()}의 오버레이 : {GetDescription()}");
+        Logger.Log($"{GetName()}의 오버레이 : {GetDescription()}");
     }
 
     protected override void HideOverlay()
     {
-        Debug.Log($"{GetName()}의 오버레이를 숨김");
+        Logger.Log($"{GetName()}의 오버레이를 숨김");
     }
 }

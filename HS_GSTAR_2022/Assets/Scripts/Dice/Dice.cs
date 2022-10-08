@@ -52,7 +52,7 @@ public abstract class Dice : MonoBehaviour
             if (hit.collider.TryGetComponent(out Card card))
                 card.Use(this);
             else
-                Debug.LogError("레이어는 Card로 설정되어 있는데 Card 스크립트가 적용 안되어있음");
+                Logger.LogError("레이어는 Card로 설정되어 있는데 Card 스크립트가 적용 안되어있음");
         }
     }
 
