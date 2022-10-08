@@ -48,5 +48,6 @@ public abstract class CardBase222 : Card
             default:
                 throw new ArgumentOutOfRangeException();
         }
+        Destroy();  // 주사위 삭제
     }
 }

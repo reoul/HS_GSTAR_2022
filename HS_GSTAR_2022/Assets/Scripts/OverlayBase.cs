@@ -40,8 +40,8 @@ public abstract class OverlayBase : MonoBehaviour
         }
     }
 
-    /// <summary> 오버레이를 보여줌 </summary>
+    /// <summary> 설명창을 보여줌 </summary>
     protected abstract void ShowOverlay();
-    /// <summary> 오버레이를 숨겨줌 </summary>
+    /// <summary> 설명창을 숨겨줌 </summary>
     protected abstract void HideOverlay();
 }

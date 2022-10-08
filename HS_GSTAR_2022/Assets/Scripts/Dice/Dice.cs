@@ -50,7 +50,10 @@ public abstract class Dice : MonoBehaviour
         if (Physics.Raycast(ray, out var hit, 1000, layerMask))
         {
             if (hit.collider.TryGetComponent(out Card card))
-                card.Use(this);
+            {
+                card.Use(this);             // 카드 사용하고
+                Destroy(this.gameObject);       // 주사위 삭제
+            }
             else
                 Logger.LogError("레이어는 Card로 설정되어 있는데 Card 스크립트가 적용 안되어있음");
         }
@@ -66,7 +69,7 @@ public abstract class Dice : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out var hit, 1000, layerMask))
             {
-                transform.position = new Vector3(hit.point.x, hit.point.y + 1.1f, hit.point.z);
+                transform.position = new Vector3(hit.point.x, hit.point.y + 1.1f, hit.point.z);     // 주사위 바닥에서 살짝 위로 위치 고정
             }
             yield return null;
         }
