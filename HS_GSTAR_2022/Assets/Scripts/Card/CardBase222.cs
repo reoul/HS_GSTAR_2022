@@ -15,7 +15,9 @@ public abstract class CardBase222 : Card
     /// <summary> 주사위 눈금 5 ~ 6번에 발동 효과 설명 </summary>
     protected abstract string Description56 { get; }
 
-    public override string GetDescription() => $"{Description12}\n{Description34}\n{Description56}\n";
+    public override string GetDescription() => $"1~2: {Description12}\n" +
+                                               $"3~4: {Description34}\n" +
+                                               $"5~6 : {Description56}\n";
 
     /// <summary> 주사위 눈금 1 ~ 2번 발동 효과 </summary>
     protected abstract void Use12();
