@@ -459,8 +459,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC774\uB984"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5eee4d3b3857ee34ebdabbf75f76b67c, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 76cc62be35ea94c4b8bcbc580a7f8b9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cfd77cf47a5e992418f99588eb3baab9, type: 2}
+  m_sharedMaterial: {fileID: -2130985006390690960, guid: cfd77cf47a5e992418f99588eb3baab9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -484,12 +484,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2.5
+  m_fontSize: 2.95
   m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 1
   m_fontSizeMin: 0.5
-  m_fontSizeMax: 2.5
+  m_fontSizeMax: 3
   m_fontStyle: 0
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -682,8 +682,8 @@ MonoBehaviour:
     \uB2E4\uB978 \uB9D0\uC740 \uD55C\uB2E4. \uADF8\uB7F0 \uB9D0\uC740 \uD558\uC9C0
     \uC54A\uC740\uAC78\uB85C\uB294 \uC0DD\uAC01\uC548\uB294\uAC78\uB85C \uC0DD\uAC01\uD569\uB2C8\uB2E4."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5eee4d3b3857ee34ebdabbf75f76b67c, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 76cc62be35ea94c4b8bcbc580a7f8b9c, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: cfd77cf47a5e992418f99588eb3baab9, type: 2}
+  m_sharedMaterial: {fileID: -2130985006390690960, guid: cfd77cf47a5e992418f99588eb3baab9, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -707,7 +707,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 2.5
+  m_fontSize: 2.15
   m_fontSizeBase: 15
   m_fontWeight: 400
   m_enableAutoSizing: 1
