@@ -1,6 +1,6 @@
 using System;
-using UnityEngine.Assertions;
 
+/// <summary> 주사위 눈금 1 ~ 2, 3 ~ 4, 5 ~ 6 발동 카드 </summary>
 public abstract class CardBase222 : Card
 {
     protected abstract string Name { get; }

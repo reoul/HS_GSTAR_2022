@@ -1,5 +1,6 @@
 using System;
 
+/// <summary> 주사위 눈금 1 ~ 3, 4 ~ 6 발동 카드 </summary>
 public abstract class CardBase33 : Card
 {
     protected abstract string Name { get; }

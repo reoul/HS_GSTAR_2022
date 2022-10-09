@@ -1,7 +1,7 @@
 #define USE_LOG
 using UnityEngine;
 
-public static class Logger
+public sealed class Logger
 {
 #if USE_LOG
     public static void Log(object message)
