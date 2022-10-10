@@ -20,7 +20,8 @@ public sealed class Player : MonoBehaviour, IBattleable
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            CardManager.Instance.CreateCards(this.GetComponent<IUseCard>());
+            int createdCardCount = CardManager.Instance.CreateCards(GetComponent<IUseCard>());
+            DiceManager.Instance.CreateDices(createdCardCount);
         }
     }
 
@@ -56,7 +57,7 @@ public sealed class Player : MonoBehaviour, IBattleable
     public List<string> GetCardCodes()
     {
         List<string> codes = new List<string> {"001", "003"};
-        
+
 #if USE_DEBUG
         foreach (string code in codes) // 유효한 카드 코드를 입력했는지 검증
         {
@@ -66,7 +67,7 @@ public sealed class Player : MonoBehaviour, IBattleable
             Logger.AssertFormat(cardType != null, gameObject, "Card{0} 은 존재하지 않는 카드 타입입니다", code);
         }
 #endif
-        
+
         return codes;
     }
 }

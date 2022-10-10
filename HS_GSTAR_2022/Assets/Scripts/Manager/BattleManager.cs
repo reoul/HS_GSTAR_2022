@@ -14,7 +14,7 @@ public class BattleManager : Singleton<BattleManager>
     {
         EnemyBattleables = new List<IBattleable>();
 
-        GameObject playerObj = Instantiate(_playerPrefab);
+        GameObject playerObj = Instantiate(_playerPrefab, GameObject.Find("Canvas").transform);
         playerObj.SetActive(false);
         PlayerBattleable = playerObj.GetComponent<IBattleable>();
         Logger.Assert(PlayerBattleable != null);
