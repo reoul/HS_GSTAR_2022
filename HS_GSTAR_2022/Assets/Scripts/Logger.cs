@@ -1,9 +1,8 @@
-#define USE_LOG
 using UnityEngine;
 
 public sealed class Logger
 {
-#if USE_LOG
+#if USE_DEBUG
     public static void Log(object message)
     {
         Debug.Log(message);

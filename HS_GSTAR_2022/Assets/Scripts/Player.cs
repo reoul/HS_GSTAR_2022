@@ -16,6 +16,14 @@ public sealed class Player : MonoBehaviour, IBattleable
         Shield = 0;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            CardManager.Instance.CreateCards(this.GetComponent<IUseCard>());
+        }
+    }
+
     public void ToDamage(int damage)
     {
         Hp = Hp - damage > 0 ? Hp - damage : 0;
@@ -43,5 +51,22 @@ public sealed class Player : MonoBehaviour, IBattleable
     {
         Hp = Hp + heal < MaxHp ? Hp + heal : MaxHp;
         Logger.Log($"플레이어 {heal} 힐. 현재 체력 : {Hp}", gameObject);
+    }
+
+    public List<string> GetCardCodes()
+    {
+        List<string> codes = new List<string> {"001", "003"};
+        
+#if USE_DEBUG
+        foreach (string code in codes) // 유효한 카드 코드를 입력했는지 검증
+        {
+            Logger.AssertFormat(Convert.ToInt32(code) > 0 && Convert.ToInt32(code) < 1000,
+                "{0}의 아이템 코드 {1}가 잘못됨", name, code);
+            Type cardType = Type.GetType($"Card{code},Assembly-CSharp");
+            Logger.AssertFormat(cardType != null, gameObject, "Card{0} 은 존재하지 않는 카드 타입입니다", code);
+        }
+#endif
+        
+        return codes;
     }
 }

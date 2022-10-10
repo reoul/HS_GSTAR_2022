@@ -43,7 +43,7 @@ public abstract class Dice : MonoBehaviour
         // 이동시켜주는 코루틴 끝내기
         _canMoveToMouse = false;
         
-        Assert.IsNotNull(Camera.main);
+        Logger.Assert(Camera.main != null);
         // 마우스 좌표에 카드가 있으면 카드 능력 실행
         int layerMask = 1 << LayerMask.NameToLayer("Card");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -62,7 +62,7 @@ public abstract class Dice : MonoBehaviour
     /// <summary> 주사위를 마우스 위치나 터치 위치로 이동시켜주는 코루틴 </summary>
     IEnumerator MoveCoroutine()
     {
-        Assert.IsNotNull(Camera.main);
+        Logger.Assert(Camera.main != null);
         int layerMask = ~(1 << LayerMask.NameToLayer("Dice"));
         while (_canMoveToMouse)
         {

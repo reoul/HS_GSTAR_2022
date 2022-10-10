@@ -25,7 +25,7 @@ public sealed class Card001 : CardBase222
     protected override void Use34()
     {
         BattleManager battleManager = BattleManager.Instance;
-        Assert.IsNotNull(battleManager.PlayerBattleable);
+        Logger.Assert(battleManager.PlayerBattleable != null);
         Logger.Log( $"{Name} : 34 : {Description34}");
         battleManager.PlayerBattleable.ToShield(3);
     }
@@ -33,7 +33,7 @@ public sealed class Card001 : CardBase222
     protected override void Use56()
     {
         BattleManager battleManager = BattleManager.Instance;
-        Assert.IsNotNull(battleManager.PlayerBattleable);
+        Logger.Assert(battleManager.PlayerBattleable != null);
         Logger.Log( $"{Name} : 56 : {Description56}");
         battleManager.PlayerBattleable.ToHeal(1);
     }

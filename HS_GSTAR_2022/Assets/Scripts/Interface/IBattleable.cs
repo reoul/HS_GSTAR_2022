@@ -1,9 +1,11 @@
+using System.Collections.Generic;
+
 public enum ECrowdControl
 {
     Poison
 }
 
-public interface IBattleable
+public interface IBattleable : IUseCard
 {
     int MaxHp { get; }
     int Hp { get; }

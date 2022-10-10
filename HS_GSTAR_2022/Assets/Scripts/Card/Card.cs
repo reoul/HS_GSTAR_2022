@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 public abstract class Card : OverlayBase
 {
@@ -14,6 +15,11 @@ public abstract class Card : OverlayBase
 
     private void Awake()
     {
+        Logger.Assert(GetComponent<CardSettor>() != null);
+        _nameText = GetComponent<CardSettor>().NameText;
+        _contextText = GetComponent<CardSettor>().ContextText;
+        _cardShowObj = GetComponent<CardSettor>().CardShowObj;
+        _cardEffectAnimator = GetComponent<CardSettor>().CardEffectAnimator;
         _cardShowObj.SetActive(false);
     }
 

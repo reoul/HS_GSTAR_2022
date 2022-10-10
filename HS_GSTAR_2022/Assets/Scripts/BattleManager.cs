@@ -17,11 +17,12 @@ public class BattleManager : Singleton<BattleManager>
         GameObject playerObj = Instantiate(_playerPrefab);
         playerObj.SetActive(false);
         PlayerBattleable = playerObj.GetComponent<IBattleable>();
-        Assert.IsNotNull(PlayerBattleable);
+        Logger.Assert(PlayerBattleable != null);
     }
 
     public IBattleable GetMinHpEnemy()
     {
+        Logger.Assert(EnemyBattleables.Count != 0);
         IBattleable enemy = EnemyBattleables[0];
         foreach (IBattleable battleable in EnemyBattleables)
         {
@@ -36,6 +37,7 @@ public class BattleManager : Singleton<BattleManager>
 
     public IBattleable GetMaxHpEnemy()
     {
+        Logger.Assert(EnemyBattleables.Count != 0);
         IBattleable enemy = EnemyBattleables[0];
         foreach (IBattleable battleable in EnemyBattleables)
         {
@@ -55,6 +57,6 @@ public class BattleManager : Singleton<BattleManager>
 
     public void RemoveEnemy(IBattleable battleable)
     {
-        Assert.IsTrue(EnemyBattleables.Remove(battleable));
+        Logger.Assert(EnemyBattleables.Remove(battleable));
     }
 }
