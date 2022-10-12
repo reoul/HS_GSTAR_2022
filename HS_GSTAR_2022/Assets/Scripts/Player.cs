@@ -16,15 +16,6 @@ public sealed class Player : MonoBehaviour, IBattleable
         Shield = 0;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            int createdCardCount = CardManager.Instance.CreateCards(GetComponent<IUseCard>());
-            DiceManager.Instance.CreateDices(createdCardCount);
-        }
-    }
-
     public void ToDamage(int damage)
     {
         Hp = Hp - damage > 0 ? Hp - damage : 0;
