@@ -17,6 +17,15 @@ public class CardManager : Singleton<CardManager>
     public int CreateCards(IUseCard useCard, float createDelay = 0)
     {
         List<string> codes = useCard.GetCardCodes();
+        
+#if USE_DEBUG
+        foreach (string code in codes) // 유효한 카드 코드를 입력했는지 검증
+        {
+            Type cardType = Type.GetType($"Card{code},Assembly-CSharp");
+            Logger.AssertFormat(cardType != null, "Card{0} 은 존재하지 않는 카드 타입입니다", code);
+        }
+#endif
+        
         StartCoroutine(CreateCardsCoroutine(codes, createDelay));
         return codes.Count;
     }

@@ -52,18 +52,6 @@ public abstract class Enemy : MonoBehaviour, IBattleable
 
     public List<string> GetCardCodes()
     {
-        List<string> codes = GetCharacterCardCodes();
-        
-#if USE_DEBUG
-        foreach (string code in codes) // 유효한 카드 코드를 입력했는지 검증
-        {
-            Logger.AssertFormat(Convert.ToInt32(code) > 0 && Convert.ToInt32(code) < 1000,
-                "{0}의 아이템 코드 {1}가 잘못됨", name, code);
-            Type cardType = Type.GetType($"Card{code},Assembly-CSharp");
-            Logger.AssertFormat(cardType != null, gameObject, "Card{0} 은 존재하지 않는 카드 타입입니다", code);
-        }
-#endif
-
-        return codes;
+        return GetCharacterCardCodes();
     }
 }
