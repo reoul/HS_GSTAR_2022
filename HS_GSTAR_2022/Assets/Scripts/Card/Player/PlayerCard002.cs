@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card002 : CardBase33
+public class PlayerCard002 : CardBase33
 {
     protected override string Name => "카드002";
     protected override string Description123 => "모든 적에게 3데미지";

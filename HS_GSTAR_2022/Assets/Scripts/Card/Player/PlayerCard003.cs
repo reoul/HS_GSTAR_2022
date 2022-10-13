@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Card003 : CardBase6
+public class PlayerCard003 : CardBase6
 {
     protected override string Name => "카드003";
     protected override string Description => "가장 피가 많은 적에게 주사위 눈금 수 만큼 데미지";

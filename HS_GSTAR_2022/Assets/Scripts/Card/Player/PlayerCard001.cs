@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
-public sealed class Card001 : CardBase222
+public sealed class PlayerCard001 : CardBase222
 {
     protected override string Name => "카드001";
     protected override string Description12 => "피가 제일 적은 적에게 2데미지";
