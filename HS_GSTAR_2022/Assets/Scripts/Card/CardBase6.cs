@@ -6,15 +6,17 @@ using UnityEngine;
 public abstract class CardBase6 : Card
 {
     protected abstract string Name { get; }
-    public override string GetName() => Name;
+    public sealed override string GetName() => Name;
     
     /// <summary> 모든 주사위 눈금 발동 효과 설명 </summary>
-    public abstract override string GetDescription();
+    protected abstract string Description { get; }
+
+    public sealed override string GetDescription() => Description;
 
     /// <summary> 모든 주사위 눈금 발동 효과 </summary>
     protected abstract void UseCard(Dice dice);
     
-    public override void Use(Dice dice)
+    public sealed override void Use(Dice dice)
     {
         UseCard(dice);
         Destroy();  // 주사위 삭제
