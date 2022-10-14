@@ -5,15 +5,15 @@ public sealed class PlayerCard002 : CardBase33
     protected override string Description456 => SetDescription456_(out _);
 
 
-    private string SetDescription123_(out int value)
+    private string SetDescription123_(out int damage)
     {
-        value = 3;
-        return $"모든 적에게 {value}데미지";
+        damage = 3;
+        return $"모든 적에게 {damage}데미지";
     }
-    private string SetDescription456_(out int value)
+    private string SetDescription456_(out int damage)
     {
-        value = 4;
-        return $"모든 적에게 {value}데미지";
+        damage = 4;
+        return $"모든 적에게 {damage}데미지";
     }
 
     private void AttackAllEnemy(int damage)

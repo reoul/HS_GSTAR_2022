@@ -1,19 +1,19 @@
-public sealed class PlayerCard006 : CardBase33
+ï»¿public sealed class PlayerCard006 : CardBase33
 {
-    protected override string Name => "Èæ¸¶¼ú";
+    protected override string Name => "í‘ë§ˆìˆ ";
 
     protected override string Description123 => Description123_(out _);
     protected override string Description456 => Description456_(out _);
 
-    private string Description123_(out int value)
+    private string Description123_(out int damage)
     {
-        value = 1;
-        return $"ÇÃ·¹ÀÌ¾î¿¡°Ô {value}µ¥¹ÌÁö";
+        damage = 1;
+        return $"í”Œë ˆì´ì–´ì—ê²Œ {damage}ë°ë¯¸ì§€";
     }
-    private string Description456_(out int value)
+    private string Description456_(out int damage)
     {
-        value = 5;
-        return $"HP°¡ °¡Àå ³·Àº Àû¿¡°Ô {value}µ¥¹ÌÁö, ¸¸¾à ´ë»óÀÌ Á×¾ú´Ù¸é {value}¸¸Å­ È¸º¹";
+        damage = 5;
+        return $"HPê°€ ê°€ì¥ ë‚®ì€ ì ì—ê²Œ {damage}ë°ë¯¸ì§€, ë§Œì•½ ëŒ€ìƒì´ ì£½ì—ˆë‹¤ë©´ {damage}ë§Œí¼ íšŒë³µ";
     }
 
     protected override void Use123()

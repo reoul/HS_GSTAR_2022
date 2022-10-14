@@ -1,25 +1,25 @@
-public sealed class PlayerCard004 : CardBase222
+ï»¿public sealed class PlayerCard004 : CardBase222
 {
-    protected override string Name => "º£¸®¾î";
+    protected override string Name => "ë² ë¦¬ì–´";
 
     protected override string Description12 => Description12_(out _);
     protected override string Description34 => Description34_(out _);
     protected override string Description56 => Description56_(out _);
 
-    private string Description12_(out int value)
+    private string Description12_(out int shield)
     {
-        value = 2;
-        return $"ÇÃ·¹ÀÌ¾î¿¡°Ô {value}¹æ¾îµµ";
+        shield = 2;
+        return $"í”Œë ˆì´ì–´ì—ê²Œ {shield}ë°©ì–´ë„";
     }
-    private string Description34_(out int value)
+    private string Description34_(out int shield)
     {
-        value = 3;
-        return $"ÇÃ·¹ÀÌ¾î¿¡°Ô {value}¹æ¾îµµ";
+        shield = 3;
+        return $"í”Œë ˆì´ì–´ì—ê²Œ {shield}ë°©ì–´ë„";
     }
-    private string Description56_(out int value)
+    private string Description56_(out int shield)
     {
-        value = 4;
-        return $"ÇÃ·¹ÀÌ¾î¿¡°Ô {value}¹æ¾îµµ";
+        shield = 4;
+        return $"í”Œë ˆì´ì–´ì—ê²Œ {shield}ë°©ì–´ë„";
     }
 
     protected override void Use12()

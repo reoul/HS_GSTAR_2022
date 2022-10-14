@@ -1,8 +1,8 @@
-public sealed class PlayerCard008 : CardBase6
+ï»¿public sealed class PlayerCard008 : CardBase6
 {
-    protected override string Name => "¶ó±×³ª·ÎÅ©";
+    protected override string Name => "ë¼ê·¸ë‚˜ë¡œí¬";
 
-    protected override string Description => "Àû ÀüÃ¼¿¡°Ô 1ÀÇ µ¥¹ÌÁö (NÈ¸ ¹İº¹)";
+    protected override string Description => "ì  ì „ì²´ì—ê²Œ 1ì˜ ë°ë¯¸ì§€ (NíšŒ ë°˜ë³µ)";
 
     protected override void UseCard(Dice dice)
     {
