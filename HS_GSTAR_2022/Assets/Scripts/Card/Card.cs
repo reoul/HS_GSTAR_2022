@@ -1,9 +1,13 @@
+using System.Diagnostics.CodeAnalysis;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 public abstract class Card : OverlayBase
 {
+    /// <summary> 카드 소유주 게임오브젝트 </summary>
+    public GameObject OwnerObj { get; set; }
+    
     public abstract string GetName();
     public abstract string GetDescription();
     public abstract void Use(Dice dice);
@@ -52,5 +56,15 @@ public abstract class Card : OverlayBase
     protected override void HideOverlay()
     {
         Logger.Log($"{GetName()}의 오버레이를 숨김");
+    }
+
+    /// <summary> 카드 소유주의 IBattleable를 반환 </summary>
+    /// <returns>카드 소유주의 IBattleable</returns>
+    public IBattleable GetOwnerBattleable()
+    {
+        Logger.Assert(OwnerObj != null);
+        IBattleable ownerBattleable = OwnerObj.GetComponent<IBattleable>();
+        Logger.Assert(ownerBattleable != null);
+        return ownerBattleable;
     }
 }

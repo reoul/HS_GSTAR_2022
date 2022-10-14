@@ -12,9 +12,10 @@ public class CardManager : Singleton<CardManager>
 
     /// <summary> 카드를 생성한다 </summary>
     /// <param name="useCard">IUseCard 인터페이스</param>
+    /// <param name="ownerObj">카드 소유주 게임오브젝트</param>
     /// <param name="createDelay">카드간의 생성 딜레이 시간</param>
     /// <returns>생성된 카드 개수</returns>
-    public int CreateCards(IUseCard useCard, float createDelay = 0)
+    public int CreateCards(IUseCard useCard, GameObject ownerObj, float createDelay = 0)
     {
         List<string> codes = useCard.GetCardCodes();
         
@@ -26,15 +27,16 @@ public class CardManager : Singleton<CardManager>
         }
 #endif
         
-        StartCoroutine(CreateCardsCoroutine(codes, createDelay));
+        StartCoroutine(CreateCardsCoroutine(codes, ownerObj, createDelay));
         return codes.Count;
     }
 
     /// <summary> 카드 생성 코루틴 </summary>
     /// <param name="codes">생성 카드 코드 List</param>
+    /// <param name="ownerObj">카드 소유주 게임오브젝트</param>
     /// <param name="createDelay">카드간의 생성 딜레이 시간</param>
     /// <returns></returns>
-    private IEnumerator CreateCardsCoroutine(List<string> codes, float createDelay = 0)
+    private IEnumerator CreateCardsCoroutine(List<string> codes, GameObject ownerObj, float createDelay = 0)
     {
         List<GameObject> createCardObjs = new List<GameObject>();
         for (int i = 0; i < codes.Count; ++i) // 생성 가능한 카드 코드를 가지고 미리 카드 생성 후 Active 끄기
@@ -43,6 +45,7 @@ public class CardManager : Singleton<CardManager>
             cardObj.transform.position = _cardCreatePosList[i].position;
             cardObj.GetComponent<CardSettor>().SetCard(codes[i]);
             cardObj.SetActive(false);
+            cardObj.GetComponent<Card>().OwnerObj = ownerObj;
             _cards.Add(cardObj.GetComponent<Card>());
             createCardObjs.Add(cardObj);
         }
