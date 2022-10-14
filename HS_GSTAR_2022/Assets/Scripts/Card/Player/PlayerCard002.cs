@@ -1,12 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
 public sealed class PlayerCard002 : CardBase33
 {
-    protected override string Name => "카드002";
-    protected override string Description123 => "모든 적에게 3데미지";
-    protected override string Description456 => "모든 적에게 4데미지";
+    protected override string Name => "불사지르기";
+    protected override string Description123 => SetDescription123_(out _);
+    protected override string Description456 => SetDescription456_(out _);
+
+
+    private string SetDescription123_(out int value)
+    {
+        value = 3;
+        return $"모든 적에게 {value}데미지";
+    }
+    private string SetDescription456_(out int value)
+    {
+        value = 4;
+        return $"모든 적에게 {value}데미지";
+    }
 
     private void AttackAllEnemy(int damage)
     {
@@ -23,13 +31,15 @@ public sealed class PlayerCard002 : CardBase33
     
     protected override void Use123()
     {
-        Logger.Log($"{Name} : 123 : {Description123}");
-        AttackAllEnemy(3);
+        string description = SetDescription123_(out int damage);
+        Logger.Log($"{Name} : 123 : {description}");
+        AttackAllEnemy(damage);
     }
 
     protected override void Use456()
     {
-        Logger.Log($"{Name} : 456 : {Description456}");
+        string description = SetDescription456_(out int damage);
+        Logger.Log($"{Name} : 456 : {description}");
         AttackAllEnemy(4);
     }
 }
