@@ -10,6 +10,8 @@ public class BattleManager : Singleton<BattleManager>
 
     [SerializeField] private GameObject _playerPrefab;
 
+    private bool _isPlayerTurn;
+
     private void Awake()
     {
         EnemyBattleables = new List<IBattleable>();
@@ -18,36 +20,55 @@ public class BattleManager : Singleton<BattleManager>
         playerObj.SetActive(false);
         PlayerBattleable = playerObj.GetComponent<IBattleable>();
         Logger.Assert(PlayerBattleable != null);
+        _isPlayerTurn = false;
     }
 
-    public IBattleable GetMinHpEnemy()
+    /// <summary> 체력 제일 적은 적들 반환 </summary>
+    /// <returns>체력 제일 적은 적 리스트</returns>
+    public List<IBattleable> GetMinHpEnemyList()
     {
         Logger.Assert(EnemyBattleables.Count != 0);
-        IBattleable enemy = EnemyBattleables[0];
-        foreach (IBattleable battleable in EnemyBattleables)
+        List<IBattleable> minHpEnemyList = new List<IBattleable>();
+        
+        minHpEnemyList.Add(EnemyBattleables[0]);
+        for (int i = 1; i < EnemyBattleables.Count; ++i)
         {
-            if (enemy.Hp > battleable.Hp)
+            if (minHpEnemyList[0].Hp > EnemyBattleables[i].Hp)
             {
-                enemy = battleable;
+                minHpEnemyList.Clear();
+                minHpEnemyList.Add(EnemyBattleables[i]);
+            }
+            else if (minHpEnemyList[0].Hp == EnemyBattleables[i].Hp)
+            {
+                minHpEnemyList.Add(EnemyBattleables[i]);
             }
         }
 
-        return enemy;
+        return minHpEnemyList;
     }
 
-    public IBattleable GetMaxHpEnemy()
+    /// <summary> 체력 제일 많은 적 리스트 반환 </summary>
+    /// <returns>체력 제일 많은 적 리스트</returns>
+    public List<IBattleable> GetMaxHpEnemyList()
     {
         Logger.Assert(EnemyBattleables.Count != 0);
-        IBattleable enemy = EnemyBattleables[0];
-        foreach (IBattleable battleable in EnemyBattleables)
+        List<IBattleable> maxHpEnemyList = new List<IBattleable>();
+        
+        maxHpEnemyList.Add(EnemyBattleables[0]);
+        for (int i = 1; i < EnemyBattleables.Count; ++i)
         {
-            if (enemy.Hp > battleable.Hp)
+            if (maxHpEnemyList[0].Hp < EnemyBattleables[i].Hp)
             {
-                enemy = battleable;
+                maxHpEnemyList.Clear();
+                maxHpEnemyList.Add(EnemyBattleables[i]);
+            }
+            else if (maxHpEnemyList[0].Hp == EnemyBattleables[i].Hp)
+            {
+                maxHpEnemyList.Add(EnemyBattleables[i]);
             }
         }
 
-        return enemy;
+        return maxHpEnemyList;
     }
 
     public void AddEnemy(IBattleable battleable)
@@ -58,5 +79,27 @@ public class BattleManager : Singleton<BattleManager>
     public void RemoveEnemy(IBattleable battleable)
     {
         Logger.Assert(EnemyBattleables.Remove(battleable));
+    }
+
+    public void NextTurn()
+    {
+        _isPlayerTurn = !_isPlayerTurn;
+        if (_isPlayerTurn)     // 플레이어 턴일 때
+        {
+            Logger.Assert(PlayerBattleable != null);
+
+            int createdCardCount = CardManager.Instance.CreateCards(PlayerBattleable, PlayerBattleable.OwnerObj, 0.2f);
+            Logger.Log($"플레이어 카드 {createdCardCount}장 생성", PlayerBattleable.OwnerObj);
+            DiceManager.Instance.CreateDices(createdCardCount, 0.2f);
+        }
+        else
+        {
+            foreach (IBattleable enemy in EnemyBattleables)
+            {
+                int createdCardCount = CardManager.Instance.CreateCards(enemy, enemy.OwnerObj, 0.2f);
+                Logger.Log($"적 카드 {createdCardCount}장 생성", enemy.OwnerObj);
+                DiceManager.Instance.CreateDices(createdCardCount, 0.2f);
+            }
+        }
     }
 }

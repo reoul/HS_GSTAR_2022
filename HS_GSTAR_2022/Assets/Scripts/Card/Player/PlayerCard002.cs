@@ -29,17 +29,17 @@ public sealed class PlayerCard002 : CardBase33
         }
     }
     
-    protected override void Use123()
+    protected override string Use123()
     {
         string description = SetDescription123_(out int damage);
-        Logger.Log($"{Name} : 123 : {description}");
         AttackAllEnemy(damage);
+        return description;
     }
 
-    protected override void Use456()
+    protected override string Use456()
     {
         string description = SetDescription456_(out int damage);
-        Logger.Log($"{Name} : 456 : {description}");
-        AttackAllEnemy(4);
+        AttackAllEnemy(damage);
+        return description;
     }
 }

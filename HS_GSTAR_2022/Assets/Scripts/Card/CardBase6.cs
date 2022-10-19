@@ -14,11 +14,14 @@ public abstract class CardBase6 : Card
     public sealed override string GetDescription() => Description;
 
     /// <summary> 모든 주사위 눈금 발동 효과 </summary>
-    protected abstract void UseCard(Dice dice);
+    /// <returns> 발동 효과 설명 </returns>
+    protected abstract string UseCard(Dice dice);
     
     public sealed override void Use(Dice dice)
     {
         UseCard(dice);
-        Destroy();  // 주사위 삭제
+        Logger.Log($"{Name} : {dice} : {Description}");
+        CardManager.Instance.RemoveCard(this);
+        Destroy();  // 카드 삭제
     }
 }

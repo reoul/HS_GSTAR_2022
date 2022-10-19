@@ -58,6 +58,15 @@ public class CardManager : Singleton<CardManager>
         }
     }
 
+    public void RemoveCard(Card card)
+    {
+        Logger.Assert(_cards.Remove(card));
+        if (_cards.Count == 0)
+        {
+            BattleManager.Instance.NextTurn();
+        }
+    }
+
     /// <summary> 현재 생성된 모든 카드 제거 </summary>
     public void RemoveAllCard()
     {

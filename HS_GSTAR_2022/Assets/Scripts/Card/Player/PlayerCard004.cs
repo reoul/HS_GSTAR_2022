@@ -22,28 +22,25 @@
         return $"플레이어에게 {shield}방어도";
     }
 
-    protected override void Use12()
+    protected override string Use12()
     {
         string description = Description12_(out int shield);
-
-        Logger.Log($"{Name} : 12 : {description}");
         GetOwnerBattleable().ToShield(shield);
+        return description;
     }
 
-    protected override void Use34()
+    protected override string Use34()
     {
         string description = Description34_(out int shield);
-
-        Logger.Log($"{Name} : 34 : {description}");
         GetOwnerBattleable().ToShield(shield);
+        return description;
     }
 
-    protected override void Use56()
+    protected override string Use56()
     {
         string description = Description56_(out int shield);
-
-        Logger.Log($"{Name} : 56 : {description}");
         GetOwnerBattleable().ToShield(shield);
+        return description;
     }
 
 }

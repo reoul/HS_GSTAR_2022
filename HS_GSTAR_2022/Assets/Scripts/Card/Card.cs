@@ -8,14 +8,15 @@ public abstract class Card : OverlayBase
     /// <summary> 카드 소유주 게임오브젝트 </summary>
     public GameObject OwnerObj { get; set; }
     
+    private TMP_Text _nameText;
+    private TMP_Text _contextText;
+    private GameObject _cardShowObj;
+    private Animator _cardEffectAnimator;
+    
     public abstract string GetName();
     public abstract string GetDescription();
     public abstract void Use(Dice dice);
 
-    [SerializeField] private TMP_Text _nameText;
-    [SerializeField] private TMP_Text _contextText;
-    [SerializeField] private GameObject _cardShowObj;
-    [SerializeField] private Animator _cardEffectAnimator;
 
     private void Awake()
     {

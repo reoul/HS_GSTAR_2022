@@ -2,22 +2,26 @@
 {
     protected override string Name => "소각";
 
-    protected override string Description => "HP가 가장 높은 적에게 2의 데미지 (N회 반복)";
+    protected override string Description => Description_(out _);
 
-    protected override void UseCard(Dice dice)
+    private string Description_(out int damage)
     {
-        Logger.Log($"{Name} : {(int)dice.Number} : {GetDescription()}");
-        BattleManager battleManager = BattleManager.Instance;
-        IBattleable enemy = battleManager.GetMaxHpEnemy();
+        damage = 2;
+        return $"HP가 가장 높은 적에게 {damage}의 데미지 (N회 반복)";
+    }
 
-        for (int i =0; i < (int)dice.Number; i++)
+    protected override string UseCard(Dice dice)
+    {
+        Description_(out int damage);
+        foreach (IBattleable enemy in BattleManager.Instance.GetMaxHpEnemyList())
         {
-            enemy.ToDamage(1);
+            enemy.ToDamage(damage * (int) dice.Number);
             if (enemy.Hp == 0)
             {
-                battleManager.RemoveEnemy(enemy);
-                return;
+                BattleManager.Instance.RemoveEnemy(enemy);
             }
         }
+
+        return Description;
     }
 }

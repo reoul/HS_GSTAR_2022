@@ -52,6 +52,7 @@ public abstract class Dice : MonoBehaviour
             if (hit.collider.TryGetComponent(out Card card))
             {
                 card.Use(this);             // 카드 사용하고
+                DiceManager.Instance.RemoveDice(this);
                 Destroy(this.gameObject);       // 주사위 삭제
             }
             else

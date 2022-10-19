@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using UnityEngine;
 
 public enum ECrowdControl
 {
@@ -7,6 +8,7 @@ public enum ECrowdControl
 
 public interface IBattleable : IUseCard
 {
+    GameObject OwnerObj { get; }
     int MaxHp { get; }
     int Hp { get; }
     int Shield { get; }

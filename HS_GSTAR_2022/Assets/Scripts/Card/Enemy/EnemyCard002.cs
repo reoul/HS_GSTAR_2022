@@ -25,27 +25,30 @@
         return AttackDescription(damage);
     }
 
-    protected override void Use12()
+    protected override string Use12()
     {
         Logger.Assert(BattleManager.Instance.PlayerBattleable != null);
 
-        Description12_(out int damage);
+        string description = Description12_(out int damage);
         BattleManager.Instance.PlayerBattleable.ToDamage(damage);
+        return description;
     }
 
-    protected override void Use34()
+    protected override string Use34()
     {
         Logger.Assert(BattleManager.Instance.PlayerBattleable != null);
 
-        Description34_(out int damage);
+        string description = Description34_(out int damage);
         BattleManager.Instance.PlayerBattleable.ToDamage(damage);
+        return description;
     }
 
-    protected override void Use56()
+    protected override string Use56()
     {
         Logger.Assert(BattleManager.Instance.PlayerBattleable != null);
 
-        Description56_(out int damage);
+        string description = Description56_(out int damage);
         BattleManager.Instance.PlayerBattleable.ToDamage(damage);
+        return description;
     }
 }

@@ -4,29 +4,29 @@
     protected override string Description123 => Description123_(out _);
     protected override string Description456 => Description456_(out _);
 
-    private string HealDescription(int heal) => $"체력 {heal}회복";
-    
     private string Description123_(out int heal)
     {
         heal = 2;
-        return HealDescription(heal);
+        return $"체력 {heal}회복";
     }
     
     private string Description456_(out int heal)
     {
         heal = 4;
-        return HealDescription(heal);
+        return $"체력 {heal}회복";
     }
     
-    protected override void Use123()
+    protected override string Use123()
     {
-        Description123_(out int heal);
+        string description = Description123_(out int heal);
         GetOwnerBattleable().ToHeal(heal);
+        return description;
     }
 
-    protected override void Use456()
+    protected override string Use456()
     {
-        Description456_(out int heal);
+        string description = Description456_(out int heal);
         GetOwnerBattleable().ToHeal(heal);
+        return description;
     }
 }

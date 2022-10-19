@@ -5,6 +5,7 @@ using UnityEngine;
 
 public sealed class Player : MonoBehaviour, IBattleable
 {
+    public GameObject OwnerObj => this.gameObject;
     public int MaxHp { get; private set; }
     public int Hp { get; private set; }
     public int Shield { get; private set; }
@@ -47,6 +48,6 @@ public sealed class Player : MonoBehaviour, IBattleable
 
     public List<string> GetCardCodes()
     {
-        return new List<string> {"PlayerCard001", "PlayerCard004_JGS"};
+        return new List<string> {"PlayerCard001", "PlayerCard003", "PlayerCard001", "PlayerCard004", "PlayerCard005"};
     }
 }

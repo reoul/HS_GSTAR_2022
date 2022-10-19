@@ -22,28 +22,25 @@
         return $"플레이어 HP {heal}회복";
     }
 
-    protected override void Use12()
+    protected override string Use12()
     {
         string description = SetDescription12_(out int heal);
-
-        Logger.Log($"{Name} : 12 : {description}");
         GetOwnerBattleable().ToHeal(heal);
+        return description;
     }
 
-    protected override void Use34()
+    protected override string Use34()
     {
         string description = SetDescription34_(out int heal);
-
-        Logger.Log($"{Name} : 34 : {description}");
         GetOwnerBattleable().ToHeal(heal);
+        return description;
     }
 
-    protected override void Use56()
+    protected override string Use56()
     {
         string description = SetDescription56_(out int heal);
-
-        Logger.Log($"{Name} : 56 : {description}");
         GetOwnerBattleable().ToHeal(heal);
+        return description;
     }
 
 }

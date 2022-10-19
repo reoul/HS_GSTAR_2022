@@ -16,29 +16,27 @@
         return $"HP가 가장 낮은 적에게 {damage}데미지, 만약 대상이 죽었다면 {damage}만큼 회복";
     }
 
-    protected override void Use123()
+    protected override string Use123()
     {
         string description = Description123_(out int damage);
-
-        Logger.Log($"{Name} : 123 : {description}");
         GetOwnerBattleable().ToDamage(damage);
+        return description;
     }
 
-    protected override void Use456()
+    protected override string Use456()
     {
         string description = Description456_(out int damage);
-
-        Logger.Log($"{Name} : 456 : {description}");
         BattleManager battleManager = BattleManager.Instance;
-        IBattleable enemyBattle = battleManager.GetMinHpEnemy();
-        enemyBattle.ToDamage(damage);
-
-        if (enemyBattle.Hp == 0)
+        foreach (IBattleable enemy in battleManager.GetMinHpEnemyList())
         {
-            battleManager.RemoveEnemy(enemyBattle);
-
-            GetOwnerBattleable().ToHeal(damage);
+            enemy.ToDamage(damage);
+            if (enemy.Hp == 0)
+            {
+                battleManager.RemoveEnemy(enemy);
+                GetOwnerBattleable().ToHeal(damage);
+            }
         }
+        return description;
     }
 
 }
