@@ -58,6 +58,8 @@ public class CardManager : Singleton<CardManager>
         }
     }
 
+    /// <summary> 특정 카드 제거 </summary>
+    /// <param name="card">제거할 카드</param>
     public void RemoveCard(Card card)
     {
         Logger.Assert(_cards.Remove(card));
