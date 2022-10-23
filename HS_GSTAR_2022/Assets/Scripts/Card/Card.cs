@@ -44,8 +44,9 @@ public abstract class Card : OverlayBase
     }
 
     /// <summary> 카드 삭제 될 때 호출 </summary>
-    public void Destroy()
+    public void StartDestroyAnimation()
     {
+        GetComponent<BoxCollider>().enabled = false;
         _cardEffectAnimator.SetTrigger("Destroy");  // 삭제 애니메이션 호출
     }
 

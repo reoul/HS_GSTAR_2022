@@ -22,6 +22,6 @@ public abstract class CardBase6 : Card
         UseCard(dice);
         Logger.Log($"{Name} : {dice} : {Description}");
         CardManager.Instance.RemoveCard(this);
-        Destroy();  // 카드 삭제
+        StartDestroyAnimation();  // 카드 삭제
     }
 }

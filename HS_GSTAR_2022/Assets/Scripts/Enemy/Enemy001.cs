@@ -12,7 +12,7 @@ public class Enemy001 : Enemy
         List<List<string>> cardDeck = new List<List<string>>();
         cardDeck.Add(new List<string> {"EnemyCard001", "EnemyCard002", "EnemyCard003"});
         cardDeck.Add(new List<string> {"EnemyCard004", "EnemyCard005"});
-        int rand = Random.Range(0, cardDeck.Count + 1);
+        int rand = Random.Range(0, cardDeck.Count);
         return cardDeck[rand];
     }
 }

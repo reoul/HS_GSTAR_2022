@@ -79,13 +79,13 @@ public class Field : MonoBehaviour
                 int rand = Random.Range(0, _stageInfo.BattleStageInfos.Length);
                 BattleStageInfo stageInfo = _stageInfo.BattleStageInfos[rand];
                 
-                GameObject stageObj = new GameObject();
+                GameObject stageObj = new GameObject("BattleStage", typeof(BattleStage));
                 stageObj.transform.parent = GameObject.Find("StageParent").transform;
                 stageObj.transform.localPosition = Vector3.zero;
                 stageObj.transform.localRotation = Quaternion.identity;
                 stageObj.transform.localScale = Vector3.one;
                 
-                BattleStage battleStage = stageObj.AddComponent<BattleStage>();
+                BattleStage battleStage = stageObj.GetComponent<BattleStage>();
                 battleStage.BattleStageInfo = stageInfo;
                 stage = battleStage;
                 break;

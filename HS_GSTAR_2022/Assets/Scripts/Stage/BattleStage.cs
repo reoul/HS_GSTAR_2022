@@ -16,23 +16,27 @@ public class BattleStage : Stage
     public override void StageEnter()
     {
         Debug.Assert(BattleStageInfo != null);
-        
-        BattleManager.Instance.PlayerBattleable.OwnerObj.SetActive(true);
+
+        // 플레이어 설정
+        GameObject playerObj = BattleManager.Instance.PlayerBattleable.OwnerObj;
+        playerObj.transform.localPosition = BattleStageInfo.PlayerPosition;
+        playerObj.SetActive(true);
         Logger.Log("스테이지 오픈");
 
-        Transform enemyParent = GameObject.Find("EnemyParent").transform;
+        // 영역 설정
+        GameObject BattleAreaObj = GameObject.Find("BattleAreaImg");
+        BattleAreaObj.transform.localPosition = BattleStageInfo.BattleAreaPosition;
+        BattleAreaObj.transform.localScale = BattleStageInfo.BattleAreaScale;
+        BattleAreaObj.GetComponent<RectTransform>().sizeDelta = BattleStageInfo.BattleAreaRect;
         
         // 적 생성
+        Transform enemyParent = GameObject.Find("EnemyParent").transform;
         foreach (StageEnemyInfo enemyInfo in BattleStageInfo.StageEnemyInfos)
         {
-            Type enemyType = Type.GetType($"{enemyInfo.EnemyType},Assembly-CSharp");
-            Debug.AssertFormat(enemyType != null, gameObject, "{0} 은 존재하지 않는 적 타입입니다", enemyType);
+            Debug.Assert(enemyInfo.EnemyPrefab != null);
             
-            GameObject enemyObj = new GameObject();
-            enemyObj.transform.parent = enemyParent;
+            GameObject enemyObj = Instantiate(enemyInfo.EnemyPrefab, enemyParent);
             enemyObj.transform.localPosition = enemyInfo.Position;
-            enemyObj.transform.localScale = enemyInfo.Scale;
-            enemyObj.AddComponent(enemyType);
             
             BattleManager.Instance.AddEnemy(enemyObj.GetComponent<IBattleable>());
             Logger.Log($"{enemyObj.name} 적 추가");

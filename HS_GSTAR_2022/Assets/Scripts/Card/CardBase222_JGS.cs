@@ -6,33 +6,33 @@ public abstract class CardBase222_JGS : Card
     protected abstract string Name { get; }
     public sealed override string GetName() => Name;
 
-    /// <summary> Ä«µåÀÇ Á¤º¸¸¦ ´ãÀº ±¸Á¶Ã¼ (¼³¸í, ¸Å°³º¯¼ö) </summary>
+    /// <summary> Ä«ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Ã¼ (ï¿½ï¿½ï¿½ï¿½, ï¿½Å°ï¿½ï¿½ï¿½ï¿½ï¿½) </summary>
     protected struct Info
     {
         public string description;
         public List<int> values;
     }
 
-    /// <summary> ÁÖ»çÀ§ ´«±Ý 1 ~ 2¹ø¿¡ ´ãÀ» Á¤º¸ </summary>
+    /// <summary> ï¿½Ö»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 1 ~ 2ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ </summary>
     protected abstract Info Information12 { get; }
 
-    /// <summary> ÁÖ»çÀ§ ´«±Ý 3 ~ 4¹ø¿¡ ´ãÀ» Á¤º¸ </summary>
+    /// <summary> ï¿½Ö»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 3 ~ 4ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ </summary>
     protected abstract Info Information34 { get; }
 
-    /// <summary> ÁÖ»çÀ§ ´«±Ý 5 ~ 6¹ø¿¡ ´ãÀ» Á¤º¸ </summary>
+    /// <summary> ï¿½Ö»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 5 ~ 6ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ </summary>
     protected abstract Info Information56 { get; }
 
     public sealed override string GetDescription() => $"1~2: {Information12.description}\n" +
                                                      $"3~4: {Information34.description}\n" +
                                                      $"5~6 : {Information56.description}\n";
 
-    /// <summary> ÁÖ»çÀ§ ´«±Ý 1 ~ 2¹ø ¹ßµ¿ È¿°ú </summary>
+    /// <summary> ï¿½Ö»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 1 ~ 2ï¿½ï¿½ ï¿½ßµï¿½ È¿ï¿½ï¿½ </summary>
     protected abstract void Use12();
 
-    /// <summary> ÁÖ»çÀ§ ´«±Ý 3 ~ 4¹ø ¹ßµ¿ È¿°ú </summary>
+    /// <summary> ï¿½Ö»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 3 ~ 4ï¿½ï¿½ ï¿½ßµï¿½ È¿ï¿½ï¿½ </summary>
     protected abstract void Use34();
 
-    /// <summary> ÁÖ»çÀ§ ´«±Ý 5 ~ 6¹ø ¹ßµ¿ È¿°ú </summary>
+    /// <summary> ï¿½Ö»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 5 ~ 6ï¿½ï¿½ ï¿½ßµï¿½ È¿ï¿½ï¿½ </summary>
     protected abstract void Use56();
 
     public sealed override void Use(Dice dice)
@@ -55,6 +55,6 @@ public abstract class CardBase222_JGS : Card
             default:
                 throw new ArgumentOutOfRangeException();
         }
-        Destroy();  // ÁÖ»çÀ§ »èÁ¦
+        StartDestroyAnimation();  // ï¿½Ö»ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     }
 }

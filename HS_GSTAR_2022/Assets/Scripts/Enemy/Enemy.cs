@@ -13,6 +13,7 @@ public abstract class Enemy : MonoBehaviour, IBattleable
 
     private void Awake()
     {
+        name = EnemyName;
         Hp = MaxHp;
         Shield = 0;
     }
