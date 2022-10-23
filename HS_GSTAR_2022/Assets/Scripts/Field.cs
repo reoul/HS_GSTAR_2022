@@ -1,6 +1,7 @@
 using System;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -67,34 +68,37 @@ public class Field : MonoBehaviour
 
     private void Test()
     {
-        Logger.Assert(_stageInfo != null);
-
+        Debug.Assert(_stageInfo != null);
+        
         GameObject.Find("Map").SetActive(false);
+        
+        Stage stage;
         switch (Type)
         {
             case StageType.Battle:
                 int rand = Random.Range(0, _stageInfo.BattleStageInfos.Length);
                 BattleStageInfo stageInfo = _stageInfo.BattleStageInfos[rand];
                 
-                GameObject gameObject = new GameObject();
-                gameObject.transform.parent = GameObject.Find("StageParent").transform;
-                gameObject.transform.localPosition = Vector3.zero;
-                gameObject.transform.localRotation = Quaternion.identity;
-                gameObject.transform.localScale = Vector3.one;
+                GameObject stageObj = new GameObject();
+                stageObj.transform.parent = GameObject.Find("StageParent").transform;
+                stageObj.transform.localPosition = Vector3.zero;
+                stageObj.transform.localRotation = Quaternion.identity;
+                stageObj.transform.localScale = Vector3.one;
                 
-                BattleStage battleStage = gameObject.AddComponent<BattleStage>();
+                BattleStage battleStage = stageObj.AddComponent<BattleStage>();
                 battleStage.BattleStageInfo = stageInfo;
-                
-                Debug.Log(stageInfo.StageEnemyInfos[0].EnemyType);
-                //stageInfo.
+                stage = battleStage;
                 break;
             case StageType.Event:
+                throw new NotImplementedException();
                 break;
             case StageType.Boss:
+                throw new NotImplementedException();
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
-        //StageManager.Instance.OpenStage(stage);
+        
+        StageManager.Instance.OpenStage(stage);
     }
 }

@@ -39,7 +39,7 @@ public class DiceManager : Singleton<DiceManager>
 
     public void RemoveDice(Dice dice)
     {
-        Logger.Assert(_dices.Remove(dice));
+        Debug.Assert(_dices.Remove(dice));
     }
 
     /// <summary> 현재 생성된 모든 주사위 제거 </summary>

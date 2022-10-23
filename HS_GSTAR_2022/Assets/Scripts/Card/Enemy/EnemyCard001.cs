@@ -1,3 +1,4 @@
+using UnityEngine;
 using System.Collections.Generic;
 
 public sealed class EnemyCard001 : CardBase222
@@ -44,7 +45,7 @@ public sealed class EnemyCard001 : CardBase222
 
     protected override string Use12()
     {
-        Logger.Assert(BattleManager.Instance.PlayerBattleable != null);
+        Debug.Assert(BattleManager.Instance.PlayerBattleable != null);
         
         string description = Description12_(out int damage);
         BattleManager.Instance.PlayerBattleable.ToDamage(damage);
@@ -53,7 +54,7 @@ public sealed class EnemyCard001 : CardBase222
 
     protected override string Use34()
     {
-        Logger.Assert(BattleManager.Instance.PlayerBattleable != null);
+        Debug.Assert(BattleManager.Instance.PlayerBattleable != null);
         
         string description = Description34_(out int damage);
         BattleManager.Instance.PlayerBattleable.ToDamage(damage);
@@ -62,7 +63,7 @@ public sealed class EnemyCard001 : CardBase222
 
     protected override string Use56()
     {
-        Logger.Assert(BattleManager.Instance.PlayerBattleable != null);
+        Debug.Assert(BattleManager.Instance.PlayerBattleable != null);
         
         string description = Description56_(out int damage, out int heal);
         BattleManager.Instance.PlayerBattleable.ToDamage(damage);

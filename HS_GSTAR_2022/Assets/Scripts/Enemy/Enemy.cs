@@ -6,6 +6,7 @@ using UnityEngine;
 public abstract class Enemy : MonoBehaviour, IBattleable
 {
     public GameObject OwnerObj => this.gameObject;
+    public abstract string EnemyName { get; }
     public abstract int MaxHp { get; }
     public int Hp { get; protected set; }
     public int Shield { get; protected set; }

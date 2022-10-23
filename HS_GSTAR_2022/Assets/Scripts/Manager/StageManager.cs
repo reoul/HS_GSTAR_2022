@@ -11,7 +11,7 @@ public class StageManager : Singleton<StageManager>
 
     public void OpenStage(Stage stage)
     {
-        Logger.Assert(stage != null);
+        Debug.Assert(stage != null);
         _curStage?.StageExit();
         stage.StageEnter();
         _curStage = stage;

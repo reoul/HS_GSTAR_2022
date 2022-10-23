@@ -23,7 +23,7 @@ public class CardManager : Singleton<CardManager>
         foreach (string code in codes) // 유효한 카드 코드를 입력했는지 검증
         {
             Type cardType = Type.GetType($"{code},Assembly-CSharp");
-            Logger.AssertFormat(cardType != null, "{0} 은 존재하지 않는 카드 타입입니다", code);
+            Debug.AssertFormat(cardType != null, "{0} 은 존재하지 않는 카드 타입입니다", code);
         }
 #endif
         
@@ -62,7 +62,7 @@ public class CardManager : Singleton<CardManager>
     /// <param name="card">제거할 카드</param>
     public void RemoveCard(Card card)
     {
-        Logger.Assert(_cards.Remove(card));
+        Debug.Assert(_cards.Remove(card));
         if (_cards.Count == 0)
         {
             BattleManager.Instance.NextTurn();

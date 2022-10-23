@@ -10,6 +10,7 @@ public class BattleManager : Singleton<BattleManager>
 
     [SerializeField] private GameObject _playerPrefab;
 
+    /// <summary> 현재 플레이어 턴인지 </summary>
     private bool _isPlayerTurn;
 
     private void Awake()
@@ -19,7 +20,7 @@ public class BattleManager : Singleton<BattleManager>
         GameObject playerObj = Instantiate(_playerPrefab, GameObject.Find("Canvas").transform);
         playerObj.SetActive(false);
         PlayerBattleable = playerObj.GetComponent<IBattleable>();
-        Logger.Assert(PlayerBattleable != null);
+        Debug.Assert(PlayerBattleable != null);
         _isPlayerTurn = false;
     }
 
@@ -27,7 +28,7 @@ public class BattleManager : Singleton<BattleManager>
     /// <returns>체력 제일 적은 적 리스트</returns>
     public List<IBattleable> GetMinHpEnemyList()
     {
-        Logger.Assert(EnemyBattleables.Count != 0);
+        Debug.Assert(EnemyBattleables.Count != 0);
         List<IBattleable> minHpEnemyList = new List<IBattleable>();
         
         minHpEnemyList.Add(EnemyBattleables[0]);
@@ -51,7 +52,7 @@ public class BattleManager : Singleton<BattleManager>
     /// <returns>체력 제일 많은 적 리스트</returns>
     public List<IBattleable> GetMaxHpEnemyList()
     {
-        Logger.Assert(EnemyBattleables.Count != 0);
+        Debug.Assert(EnemyBattleables.Count != 0);
         List<IBattleable> maxHpEnemyList = new List<IBattleable>();
         
         maxHpEnemyList.Add(EnemyBattleables[0]);
@@ -71,22 +72,31 @@ public class BattleManager : Singleton<BattleManager>
         return maxHpEnemyList;
     }
 
+    /// <summary> 적 추가 </summary>
+    /// <param name="battleable">적 battleable</param>
     public void AddEnemy(IBattleable battleable)
     {
         EnemyBattleables.Add(battleable);
     }
 
+    /// <summary> 적 제거 </summary>
+    /// <param name="battleable">적 battleable</param>
     public void RemoveEnemy(IBattleable battleable)
     {
-        Logger.Assert(EnemyBattleables.Remove(battleable));
+        Debug.Assert(EnemyBattleables.Remove(battleable));
+        if (EnemyBattleables.Count == 0)
+        {
+            Logger.Log("모든 적이 제거되었습니다.");
+        }
     }
 
+    /// <summary> 다음 턴으로 세팅 </summary>
     public void NextTurn()
     {
         _isPlayerTurn = !_isPlayerTurn;
         if (_isPlayerTurn)     // 플레이어 턴일 때
         {
-            Logger.Assert(PlayerBattleable != null);
+            Debug.Assert(PlayerBattleable != null);
 
             int createdCardCount = CardManager.Instance.CreateCards(PlayerBattleable, PlayerBattleable.OwnerObj, 0.2f);
             Logger.Log($"플레이어 카드 {createdCardCount}장 생성", PlayerBattleable.OwnerObj);

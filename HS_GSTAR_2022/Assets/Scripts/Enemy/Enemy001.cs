@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Enemy001 : Enemy
 {
+    public override string EnemyName => "화염새";
     public override int MaxHp => 100;
 
     protected override List<string> GetCharacterCardCodes()

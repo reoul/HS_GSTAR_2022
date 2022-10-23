@@ -20,7 +20,7 @@ public abstract class Card : OverlayBase
 
     private void Awake()
     {
-        Logger.Assert(GetComponent<CardSettor>() != null);
+        Debug.Assert(GetComponent<CardSettor>() != null);
         _nameText = GetComponent<CardSettor>().NameText;
         _contextText = GetComponent<CardSettor>().ContextText;
         _cardShowObj = GetComponent<CardSettor>().CardShowObj;
@@ -63,9 +63,9 @@ public abstract class Card : OverlayBase
     /// <returns>카드 소유주의 IBattleable</returns>
     public IBattleable GetOwnerBattleable()
     {
-        Logger.Assert(OwnerObj != null);
+        Debug.Assert(OwnerObj != null);
         IBattleable ownerBattleable = OwnerObj.GetComponent<IBattleable>();
-        Logger.Assert(ownerBattleable != null);
+        Debug.Assert(ownerBattleable != null);
         return ownerBattleable;
     }
 }
