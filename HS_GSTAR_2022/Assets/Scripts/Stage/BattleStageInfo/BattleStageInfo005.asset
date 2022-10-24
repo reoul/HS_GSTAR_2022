@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1bd64fe58e1a974c91ab73a2202a0b2, type: 3}
+  m_Name: BattleStageInfo005
+  m_EditorClassIdentifier: 
+  StageEnemyInfos:
+  - EnemyPrefab: {fileID: 5690635501145629383, guid: 27e65f5e898ded348a420eab38bf6da8, type: 3}
+    Position: {x: -420, y: 320, z: 0}
+  - EnemyPrefab: {fileID: 5690635501145629383, guid: 27e65f5e898ded348a420eab38bf6da8, type: 3}
+    Position: {x: -210, y: 320, z: 0}
+  - EnemyPrefab: {fileID: 5690635501145629383, guid: 27e65f5e898ded348a420eab38bf6da8, type: 3}
+    Position: {x: -210, y: -10, z: 0}
+  PlayerPosition: {x: -729, y: -261, z: 0}
+  PlayerScale: {x: 1, y: 1, z: 1}
+  BattleAreaPosition: {x: -493.2, y: 14.6, z: 0}
+  BattleAreaScale: {x: 3, y: 3, z: 1}
+  BattleAreaRect: {x: 290, y: 332}
+  CardCreatePosition: {x: 433, y: 126.3, z: 0}
+  DiceCreatePosition: {x: 433, y: -322, z: 0}
