@@ -70,7 +70,7 @@ public abstract class Dice : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out var hit, 1000, layerMask))
             {
-                transform.position = new Vector3(hit.point.x, hit.point.y + 1.1f, hit.point.z);     // 주사위 바닥에서 살짝 위로 위치 고정
+                transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);     // 주사위 바닥에서 살짝 위로 위치 고정
             }
             yield return null;
         }

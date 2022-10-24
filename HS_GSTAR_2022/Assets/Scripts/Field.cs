@@ -85,6 +85,8 @@ public class Field : MonoBehaviour
                 stageObj.transform.localRotation = Quaternion.identity;
                 stageObj.transform.localScale = Vector3.one;
                 
+                BattleManager.Instance.Init();
+
                 BattleStage battleStage = stageObj.GetComponent<BattleStage>();
                 battleStage.BattleStageInfo = stageInfo;
                 stage = battleStage;

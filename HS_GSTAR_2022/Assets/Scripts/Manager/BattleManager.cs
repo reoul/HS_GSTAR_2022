@@ -5,8 +5,8 @@ using UnityEngine.Assertions;
 
 public class BattleManager : Singleton<BattleManager>
 {
-    public IBattleable PlayerBattleable { get; private set; }
-    public List<IBattleable> EnemyBattleables { get; private set; }
+    public IBattleable PlayerBattleable;
+    public List<IBattleable> EnemyBattleables;
 
     [SerializeField] private GameObject _playerPrefab;
 
@@ -24,13 +24,19 @@ public class BattleManager : Singleton<BattleManager>
         _isPlayerTurn = false;
     }
 
+    public void Init()
+    {
+        _isPlayerTurn = false;
+        EnemyBattleables = new List<IBattleable>();
+    }
+
     /// <summary> 체력 제일 적은 적들 반환 </summary>
     /// <returns>체력 제일 적은 적 리스트</returns>
     public List<IBattleable> GetMinHpEnemyList()
     {
         Debug.Assert(EnemyBattleables.Count != 0);
         List<IBattleable> minHpEnemyList = new List<IBattleable>();
-        
+
         minHpEnemyList.Add(EnemyBattleables[0]);
         for (int i = 1; i < EnemyBattleables.Count; ++i)
         {
@@ -54,7 +60,7 @@ public class BattleManager : Singleton<BattleManager>
     {
         Debug.Assert(EnemyBattleables.Count != 0);
         List<IBattleable> maxHpEnemyList = new List<IBattleable>();
-        
+
         maxHpEnemyList.Add(EnemyBattleables[0]);
         for (int i = 1; i < EnemyBattleables.Count; ++i)
         {
@@ -84,11 +90,17 @@ public class BattleManager : Singleton<BattleManager>
     public void RemoveEnemy(IBattleable battleable)
     {
         Debug.Assert(EnemyBattleables.Remove(battleable));
+        Destroy(battleable.OwnerObj);
         if (EnemyBattleables.Count == 0)
         {
             Logger.Log("모든 적이 제거되었습니다.");
             // todo : 전투 종료 로직 구현
-            throw new NotImplementedException();
+            FadeManager.Instance.FadeInStartEvent.AddListener(() =>
+            {
+                StageManager.Instance.OpenStage(FindObjectOfType<Map>(true));
+                GameObject.Find("MapManager").transform.GetChild(0).gameObject.SetActive(true);
+            });
+            FadeManager.Instance.StartFadeOut();
         }
     }
 
@@ -96,11 +108,12 @@ public class BattleManager : Singleton<BattleManager>
     public void NextTurn()
     {
         _isPlayerTurn = !_isPlayerTurn;
-        if (_isPlayerTurn)     // 플레이어 턴일 때
+        if (_isPlayerTurn) // 플레이어 턴일 때
         {
             Debug.Assert(PlayerBattleable != null);
 
-            int createdCardCount = CardManager.Instance.CreateCards(PlayerBattleable, PlayerBattleable.OwnerObj, 0.2f);
+            int createdCardCount = CardManager.Instance.CreateCards(PlayerBattleable, PlayerBattleable.OwnerObj,
+                Vector3.one * 0.7f, 0.2f);
             Logger.Log($"플레이어 카드 {createdCardCount}장 생성", PlayerBattleable.OwnerObj);
             DiceManager.Instance.CreateDices(createdCardCount, 0.2f);
         }
@@ -113,8 +126,9 @@ public class BattleManager : Singleton<BattleManager>
                 enemyBattleableList.Add(enemy);
                 cardOwnerList.Add(enemy.OwnerObj);
             }
-            
-            int createdCardCount = CardManager.Instance.CreateCards(enemyBattleableList, cardOwnerList, 0.2f);
+
+            int createdCardCount = CardManager.Instance.CreateCards(enemyBattleableList, cardOwnerList,
+                Vector3.one * 0.7f, 0.2f);
             Logger.Log($"적 카드 {createdCardCount}장 생성");
             DiceManager.Instance.CreateDices(createdCardCount, 0.2f);
         }

@@ -29,6 +29,17 @@ public sealed class Player : MonoBehaviour, IBattleable
 
     public void ToDamage(int damage)
     {
+        if (damage >= Shield)
+        {
+            damage -= Shield;
+            Shield = 0;
+        }
+        else
+        {
+            Shield -= damage;
+            damage = 0;
+        }
+        
         Hp = Hp - damage > 0 ? Hp - damage : 0;
         UpdateInfo();
         Logger.Log($"플레이어 데미지 {damage} 입음. 현재 체력 {Hp}", gameObject);
@@ -62,7 +73,7 @@ public sealed class Player : MonoBehaviour, IBattleable
 
     public List<string> GetCardCodes()
     {
-        return new List<string> { "PlayerCard001", "PlayerCard001", "PlayerCard001", "PlayerCard001", "PlayerCard001", "PlayerCard001" };
+        return new List<string> {"PlayerCard001", "PlayerCard002", "PlayerCard003", "PlayerCard004", "PlayerCard005", "PlayerCard006"};
     }
 
     private void UpdateInfo()

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6887709403352569156}
   - component: {fileID: 3021528325838957069}
+  - component: {fileID: 6200995830382296819}
   m_Layer: 5
   m_Name: Dice 1
   m_TagString: Untagged
@@ -50,7 +51,19 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 120, y: 130, z: 1}
-  m_Center: {x: 0, y: -91.85, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6200995830382296819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6887709403352569157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e95f6bcce617943af559590bf8dc40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6887709403657809581
 GameObject:
   m_ObjectHideFlags: 0
@@ -63,7 +76,6 @@ GameObject:
   - component: {fileID: 6887709403657809576}
   - component: {fileID: 6887709403657809577}
   - component: {fileID: 6887709403657809583}
-  - component: {fileID: 4301714515931527852}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -88,7 +100,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 89}
   m_SizeDelta: {x: 200, y: 700}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6887709403657809576
@@ -149,15 +161,3 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &4301714515931527852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6887709403657809581}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44e95f6bcce617943af559590bf8dc40, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

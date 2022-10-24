@@ -29,17 +29,20 @@ public abstract class Enemy : MonoBehaviour, IBattleable
 
     public void ToDamage(int damage)
     {
+        if (damage >= Shield)
+        {
+            damage -= Shield;
+            Shield = 0;
+        }
+        else
+        {
+            Shield -= damage;
+            damage = 0;
+        }
+        
         Hp = Hp - damage > 0 ? Hp - damage : 0;
         UpdateInfo();
         Logger.Log($"적 {name}에게 데미지 {damage} 입힘. 현재 체력 : {Hp}", gameObject);
-        
-        // 죽음 처리
-        if (Hp == 0)
-        {
-            BattleManager.Instance.RemoveEnemy(this);
-            Destroy(this.gameObject);
-            Logger.Log($"적 {name} 죽음");
-        }
     }
 
     public void SetShield(int shield)

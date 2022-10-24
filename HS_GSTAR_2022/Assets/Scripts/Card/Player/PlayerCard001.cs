@@ -34,6 +34,7 @@ public sealed class PlayerCard001 : CardBase222
             if (enemy.Hp == 0)
             {
                 battleManager.RemoveEnemy(enemy);
+                Logger.Log("적 죽음");
             }
         }
     }
