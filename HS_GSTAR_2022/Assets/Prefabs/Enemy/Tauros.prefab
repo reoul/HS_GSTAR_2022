@@ -390,7 +390,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5690635501145629382}
-  - component: {fileID: -4341446560174190582}
+  - component: {fileID: 4476018089177061637}
   m_Layer: 5
   m_Name: Tauros
   m_TagString: Enemy
@@ -421,7 +421,7 @@ RectTransform:
   m_AnchoredPosition: {x: -729, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &-4341446560174190582
+--- !u!114 &4476018089177061637
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -430,11 +430,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 5690635501145629383}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae23ac50f5312bd47b31185a792d3944, type: 3}
+  m_Script: {fileID: 11500000, guid: 7e29241d23a31964bb0cf081e25a96df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _healthText: {fileID: 0}
-  _shieldText: {fileID: 0}
+  _healthText: {fileID: 859874901623795721}
+  _shieldText: {fileID: 2841551932581373090}
 --- !u!1 &5690635501211109318
 GameObject:
   m_ObjectHideFlags: 0
