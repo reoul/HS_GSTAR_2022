@@ -16,30 +16,30 @@ public static class PositionSorter
     {
         Vector3 currentVector3 = Vector3.zero;
 
-        int repeat = (int) Mathf.Ceil(cardCount / 4f); //반복할 횟수
+        int repeat = (int) Mathf.Ceil(cardCount / 5f); //반복할 횟수
 
-        currentVector3 -= new Vector3(0, ((sorterInfo.CardPaddingY + sorterInfo.CardHeight) * (repeat - 1)) / 2f, 0);
+        currentVector3 += new Vector3(0, ((sorterInfo.CardPaddingY + sorterInfo.CardHeight) * (repeat - 1)) / 2f, 0);
 
         List<Vector3> positionList = new List<Vector3>(); //반환할 좌표들을 담을 리스트
 
         for (int i = 0; i < repeat; i++)
         {
-            if (i < repeat - 1)
+            if (i < repeat - 1 || cardCount % 5 == 0)
             {
-                currentVector3.x = -((sorterInfo.CardPaddingX + sorterInfo.CardWidth) * 3) / 2f;
+                currentVector3.x = -((sorterInfo.CardPaddingX + sorterInfo.CardWidth) * 4) / 2f;
             }
             else
             {
-                currentVector3.x = -((sorterInfo.CardPaddingX + sorterInfo.CardWidth) * ((cardCount % 4)-1)) / 2f;
+                currentVector3.x = -((sorterInfo.CardPaddingX + sorterInfo.CardWidth) * ((cardCount % 5) - 1)) / 2f;
             }
 
-            for (int j = 0; j < 4; j++)
+            for (int j = 0; j < 5; j++)
             {
                 positionList.Add(currentVector3);
                 currentVector3.x += sorterInfo.CardPaddingX + sorterInfo.CardWidth;
             }
 
-            currentVector3.y += sorterInfo.CardPaddingY + sorterInfo.CardHeight;
+            currentVector3.y -= sorterInfo.CardPaddingY + sorterInfo.CardHeight;
         }
 
         return positionList;

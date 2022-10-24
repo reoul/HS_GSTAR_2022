@@ -19,11 +19,18 @@ public class DiceManager : Singleton<DiceManager>
 
     private IEnumerator CreateDicesCoroutine(int diceCount, float createDelay = 0)
     {
+        PositionSorterInfo sorterInfo = new PositionSorterInfo
+        {
+            DicePaddingX = 300
+        };
+
+        List<Vector3> positionList = PositionSorter.SortDice(diceCount, sorterInfo);
+
         List<GameObject> createDiceObjs = new List<GameObject>();
         for (int i = 0; i < diceCount; ++i) // 생성 가능한 주사위 미리 생성 후 Active 끄기
         {
             GameObject diceObj = Instantiate(_dicePrefab);
-            diceObj.transform.position = _diceCreatePosList[i].position;
+            diceObj.transform.localPosition = positionList[i];
             _dices.Add(diceObj.GetComponent<Dice>());
             diceObj.SetActive(false);
             createDiceObjs.Add(diceObj);
