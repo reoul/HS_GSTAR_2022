@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public abstract class Enemy : MonoBehaviour, IBattleable
 {
@@ -11,6 +12,9 @@ public abstract class Enemy : MonoBehaviour, IBattleable
     public int Hp { get; protected set; }
     public int Shield { get; protected set; }
 
+    [SerializeField]
+    private TMP_Text _healthText, _shieldText;
+
     private void Awake()
     {
         name = EnemyName;
@@ -18,9 +22,15 @@ public abstract class Enemy : MonoBehaviour, IBattleable
         Shield = 0;
     }
 
+    private void Start()
+    {
+        UpdateInfo();
+    }
+
     public void ToDamage(int damage)
     {
         Hp = Hp - damage > 0 ? Hp - damage : 0;
+        UpdateInfo();
         Logger.Log($"적 {name}에게 데미지 {damage} 입힘. 현재 체력 : {Hp}", gameObject);
         
         // 죽음 처리
@@ -35,12 +45,14 @@ public abstract class Enemy : MonoBehaviour, IBattleable
     public void SetShield(int shield)
     {
         Shield = shield;
+        UpdateInfo();
         Logger.Log($"적 {name}에게 실드 {Shield} 설정", gameObject);
     }
 
     public void ToShield(int shield)
     {
         Shield += shield;
+        UpdateInfo();
         Logger.Log($"적 {name}에게 실드 {shield} 증가. 현재 실드량 : {Shield}", gameObject);
     }
 
@@ -52,6 +64,7 @@ public abstract class Enemy : MonoBehaviour, IBattleable
     public void ToHeal(int heal)
     {
         Hp = Hp + heal < MaxHp ? Hp + heal : MaxHp;
+        UpdateInfo();
         Logger.Log($"적 {name}에게 {heal} 힐. 현재 체력 : {Hp}", gameObject);
     }
 
@@ -64,5 +77,11 @@ public abstract class Enemy : MonoBehaviour, IBattleable
     public List<string> GetCardCodes()
     {
         return GetCharacterCardCodes();
+    }
+
+    private void UpdateInfo()
+    {
+        _healthText.text = Hp.ToString();
+        _shieldText.text = Shield.ToString();
     }
 }
