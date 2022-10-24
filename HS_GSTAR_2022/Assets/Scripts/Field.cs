@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -100,6 +102,20 @@ public class Field : MonoBehaviour
                 stage = eventStage;
                 eventStage.InitEvent(eventInfo.Title, eventInfo.Description);
                 eventStage.gameObject.SetActive(true);
+                eventStage.EventStageInfo = eventInfo;
+                
+                FadeManager.Instance.FadeInFinishEvent.AddListener(() =>
+                {
+                    List<string> cardCodes = new List<string>();
+                    foreach (string cardCode in eventInfo.EventCardTypes)
+                    {
+                        cardCodes.Add(cardCode);
+                    }
+
+                    int createdCardCount = CardManager.Instance.CreateCards(cardCodes, FindObjectOfType<Player>(true).gameObject, Vector3.one, 0.2f);
+                    Logger.Log($"이벤트 카드 {createdCardCount}장 생성");
+                    DiceManager.Instance.CreateDices(createdCardCount, 0.2f);
+                });
                 break;
             case StageType.Boss:
                 throw new NotImplementedException();

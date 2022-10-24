@@ -29,6 +29,25 @@ public class CardManager : Singleton<CardManager>
         StartCoroutine(CreateCardsCoroutine(codes, ownerObj, scale, createDelay));
         return codes.Count;
     }
+    
+    /// <summary> 카드를 생성한다 </summary>
+    /// <param name="cardList">생성할 카드 코드 리스트</param>
+    /// <param name="ownerObj">카드 소유주 게임오브젝트</param>
+    /// <param name="createDelay">카드간의 생성 딜레이 시간</param>
+    /// <returns>생성된 카드 개수</returns>
+    public int CreateCards(List<string> cardList, GameObject ownerObj, Vector3 scale, float createDelay = 0)
+    {
+#if USE_DEBUG
+        foreach (string code in cardList) // 유효한 카드 코드를 입력했는지 검증
+        {
+            Type cardType = Type.GetType($"{code},Assembly-CSharp");
+            Debug.AssertFormat(cardType != null, "{0} 은 존재하지 않는 카드 타입입니다", code);
+        }
+#endif
+
+        StartCoroutine(CreateCardsCoroutine(cardList, ownerObj, scale, createDelay));
+        return cardList.Count;
+    }
 
     /// <summary> 카드를 생성한다 (여러 적 카드 생성 할 때) </summary>
     /// <param name="useCards">IUseCard 인터페이스 리스트</param>
