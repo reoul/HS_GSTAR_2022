@@ -10,7 +10,6 @@ public class EventStage : Stage
 
     public override void StageEnter()
     {
-        InitEvent();
     }
 
     public override void StageExit()
@@ -21,10 +20,10 @@ public class EventStage : Stage
     {
     }
 
-    private void InitEvent()
+    public void InitEvent(string title, string description)
     {
-        _title.text = "";
-        _description.text = "";
+        _title.text = title;
+        _description.text = description;
     }
 
 }

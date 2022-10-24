@@ -71,12 +71,13 @@ public class Field : MonoBehaviour
         Debug.Assert(_stageInfo != null);
         
         GameObject.Find("Map").SetActive(false);
-        
+
+        int rand;
         Stage stage;
         switch (Type)
         {
             case StageType.Battle:
-                int rand = Random.Range(0, _stageInfo.BattleStageInfos.Length);
+                rand = Random.Range(0, _stageInfo.BattleStageInfos.Length);
                 BattleStageInfo stageInfo = _stageInfo.BattleStageInfos[rand];
                 
                 GameObject stageObj = new GameObject("BattleStage", typeof(BattleStage));
@@ -92,7 +93,13 @@ public class Field : MonoBehaviour
                 stage = battleStage;
                 break;
             case StageType.Event:
-                throw new NotImplementedException();
+                rand = Random.Range(0, _stageInfo.EventStageInfos.Length);
+                EventStageInfo eventInfo = _stageInfo.EventStageInfos[rand];
+
+                EventStage eventStage = FindObjectOfType<EventStage>(true);
+                stage = eventStage;
+                eventStage.InitEvent(eventInfo.Title, eventInfo.Description);
+                eventStage.gameObject.SetActive(true);
                 break;
             case StageType.Boss:
                 throw new NotImplementedException();

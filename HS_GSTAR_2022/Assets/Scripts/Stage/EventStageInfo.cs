@@ -9,7 +9,8 @@ public class EventStageInfo : ScriptableObject
     
     [Header("전투 영역")]
     public Vector3 BattleAreaPosition;
-    public Vector3 BattleAreaScale;
+    public Vector3 BattleAreaScale = Vector3.one;
+    public Vector2 BattleAreaRect = Vector3.one * 100;
     
     [Header("생성 영역")]
     public Vector3 CardCreatePosition;

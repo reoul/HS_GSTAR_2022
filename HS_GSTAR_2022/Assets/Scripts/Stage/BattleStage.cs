@@ -20,6 +20,7 @@ public class BattleStage : Stage
         // 플레이어 설정
         GameObject playerObj = BattleManager.Instance.PlayerBattleable.OwnerObj;
         playerObj.transform.localPosition = BattleStageInfo.PlayerPosition;
+        playerObj.transform.localScale = BattleStageInfo.PlayerScale;
         playerObj.SetActive(true);
         Logger.Log("스테이지 오픈");
 
@@ -28,6 +29,9 @@ public class BattleStage : Stage
         BattleAreaObj.transform.localPosition = BattleStageInfo.BattleAreaPosition;
         BattleAreaObj.transform.localScale = BattleStageInfo.BattleAreaScale;
         BattleAreaObj.GetComponent<RectTransform>().sizeDelta = BattleStageInfo.BattleAreaRect;
+        
+        GameObject.Find("CardParent").transform.localPosition = BattleStageInfo.CardCreatePosition;
+        GameObject.Find("DiceParent").transform.localPosition = BattleStageInfo.DiceCreatePosition;
         
         // 적 생성
         Transform enemyParent = GameObject.Find("EnemyParent").transform;
