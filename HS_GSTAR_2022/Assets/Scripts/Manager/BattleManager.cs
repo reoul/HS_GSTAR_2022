@@ -87,6 +87,8 @@ public class BattleManager : Singleton<BattleManager>
         if (EnemyBattleables.Count == 0)
         {
             Logger.Log("모든 적이 제거되었습니다.");
+            // todo : 전투 종료 로직 구현
+            throw new NotImplementedException();
         }
     }
 
@@ -104,12 +106,17 @@ public class BattleManager : Singleton<BattleManager>
         }
         else
         {
+            List<IUseCard> enemyBattleableList = new List<IUseCard>();
+            List<GameObject> cardOwnerList = new List<GameObject>();
             foreach (IBattleable enemy in EnemyBattleables)
             {
-                int createdCardCount = CardManager.Instance.CreateCards(enemy, enemy.OwnerObj, 0.2f);
-                Logger.Log($"적 카드 {createdCardCount}장 생성", enemy.OwnerObj);
-                DiceManager.Instance.CreateDices(createdCardCount, 0.2f);
+                enemyBattleableList.Add(enemy);
+                cardOwnerList.Add(enemy.OwnerObj);
             }
+            
+            int createdCardCount = CardManager.Instance.CreateCards(enemyBattleableList, cardOwnerList, 0.2f);
+            Logger.Log($"적 카드 {createdCardCount}장 생성");
+            DiceManager.Instance.CreateDices(createdCardCount, 0.2f);
         }
     }
 }
