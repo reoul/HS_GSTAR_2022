@@ -11,6 +11,7 @@ public sealed class Player : MonoBehaviour, IBattleable
     public int MaxHp { get; private set; }
     public int Hp { get; private set; }
     public int Shield { get; private set; }
+    private List<string> _cardDeck;
 
     [SerializeField]
     private TMP_Text _healthText, _shieldText;
@@ -20,6 +21,10 @@ public sealed class Player : MonoBehaviour, IBattleable
         MaxHp = 100;
         Hp = MaxHp;
         Shield = 0;
+        _cardDeck = new List<string>()
+        {
+            "PlayerCard001", "PlayerCard002", "PlayerCard003", "PlayerCard004", "PlayerCard005", "PlayerCard006"
+        };
     }
 
     private void Start()
@@ -71,9 +76,19 @@ public sealed class Player : MonoBehaviour, IBattleable
         Logger.Log($"플레이어 {heal} 힐. 현재 체력 : {Hp}", gameObject);
     }
 
+    public void AddCard(string cardCode)
+    {
+        _cardDeck.Add(cardCode);
+    }
+
+    public void RemoveCard(string cardCode)
+    {
+        Debug.Assert(_cardDeck.Remove(cardCode));
+    }
+
     public List<string> GetCardCodes()
     {
-        return new List<string> {"PlayerCard001", "PlayerCard002", "PlayerCard003", "PlayerCard004", "PlayerCard005", "PlayerCard006"};
+        return _cardDeck;
     }
 
     private void UpdateInfo()

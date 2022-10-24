@@ -75,19 +75,20 @@ public class CardManager : Singleton<CardManager>
         PositionSorterInfo sorterInfo = new PositionSorterInfo()
         {
             CardWidth = 225 * scale.x,
-            CardHeight = 330* scale.y,
+            CardHeight = 330 * scale.y,
             CardPaddingX = 20,
             CardPaddingY = 20,
             DicePaddingX = 0
         };
-        
+
         int colummMaxCount = codes.Count > 5 ? codes.Count / 2 + codes.Count % 2 : codes.Count;
-        List <Vector3> posList = PositionSorter.SortCard(codes.Count, colummMaxCount, sorterInfo);
+        List<Vector3> posList = PositionSorter.SortCard(codes.Count, colummMaxCount, sorterInfo);
 
         for (int i = 0; i < codes.Count; ++i) // 생성 가능한 카드 코드를 가지고 미리 카드 생성 후 Active 끄기
         {
             GameObject cardObj = Instantiate(_cardPrefabs, _cardParent);
-            cardObj.transform.localPosition = posList[i];
+            Vector3 pos = posList[i] + new Vector3((sorterInfo.CardWidth + sorterInfo.CardPaddingX) / 2, 0, 0);
+            cardObj.transform.localPosition = pos;
             cardObj.transform.localScale = scale;
             cardObj.GetComponent<CardSettor>().SetCard(codes[i]);
             cardObj.SetActive(false);
@@ -118,19 +119,20 @@ public class CardManager : Singleton<CardManager>
         PositionSorterInfo sorterInfo = new PositionSorterInfo()
         {
             CardWidth = 225 * scale.x,
-            CardHeight = 330* scale.y,
+            CardHeight = 330 * scale.y,
             CardPaddingX = 20,
             CardPaddingY = 20,
             DicePaddingX = 0
         };
-        
+
         int colummMaxCount = codes.Count > 5 ? codes.Count / 2 + codes.Count % 2 : codes.Count;
-        List <Vector3> posList = PositionSorter.SortCard(codes.Count, colummMaxCount, sorterInfo);
+        List<Vector3> posList = PositionSorter.SortCard(codes.Count, colummMaxCount, sorterInfo);
 
         for (int i = 0; i < codes.Count; ++i) // 생성 가능한 카드 코드를 가지고 미리 카드 생성 후 Active 끄기
         {
             GameObject cardObj = Instantiate(_cardPrefabs, _cardParent);
-            cardObj.transform.localPosition = posList[i];
+            Vector3 pos = posList[i] + new Vector3((sorterInfo.CardWidth + sorterInfo.CardPaddingX) / 2, 0, 0);
+            cardObj.transform.localPosition = pos;
             cardObj.transform.localScale = scale;
             cardObj.GetComponent<CardSettor>().SetCard(codes[i]);
             cardObj.SetActive(false);

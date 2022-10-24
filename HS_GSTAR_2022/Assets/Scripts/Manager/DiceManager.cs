@@ -36,7 +36,8 @@ public class DiceManager : Singleton<DiceManager>
         for (int i = 0; i < diceCount; ++i) // 생성 가능한 주사위 미리 생성 후 Active 끄기
         {
             GameObject diceObj = Instantiate(_dicePrefab, _diceParent);
-            diceObj.transform.localPosition = positionList[i];
+            Vector3 pos = positionList[i] + new Vector3((sorterInfo.CardWidth + sorterInfo.CardPaddingX) / 2, 0, 0);
+            diceObj.transform.localPosition = pos;
             _dices.Add(diceObj.GetComponent<Dice>());
             diceObj.SetActive(false);
             createDiceObjs.Add(diceObj);
