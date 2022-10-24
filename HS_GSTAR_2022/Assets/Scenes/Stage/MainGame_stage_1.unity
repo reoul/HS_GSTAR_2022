@@ -259,15 +259,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _dicePrefab: {fileID: 2122413889571980873, guid: 3992839eb3e5d4147944b6c1bbd84397, type: 3}
-  _diceCreatePosList:
-  - {fileID: 1774035227}
-  - {fileID: 216702646}
-  - {fileID: 294248612}
-  - {fileID: 1080763378}
-  - {fileID: 1159056119}
-  - {fileID: 1582791871}
-  - {fileID: 637249808}
-  - {fileID: 726462514}
+  _diceParent: {fileID: 0}
   _dices: []
 --- !u!1 &161084579
 GameObject:
@@ -1180,13 +1172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94b9bcb41b4f6974fbdec3a3906f2e2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cardCreatePosList:
-  - {fileID: 180329168}
-  - {fileID: 610689165}
-  - {fileID: 1225149472}
-  - {fileID: 276754737}
-  - {fileID: 2122636607}
-  - {fileID: 638148748}
   _cardPrefabs: {fileID: 8769601048438688861, guid: eb42560656a689341809fb1b445c8b28, type: 3}
   _cardParent: {fileID: 865771461}
   _cards: []
@@ -1566,7 +1551,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5690635501145629382, guid: f9af51a735814b946b82fabd77304f8d, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -729
+      value: -502
       objectReference: {fileID: 0}
     - target: {fileID: 5690635501145629382, guid: f9af51a735814b946b82fabd77304f8d, type: 3}
       propertyPath: m_AnchoredPosition.y
