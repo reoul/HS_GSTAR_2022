@@ -10,16 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b1bd64fe58e1a974c91ab73a2202a0b2, type: 3}
-  m_Name: BattleStageInfo001
+  m_Name: BattleStageInfo002
   m_EditorClassIdentifier: 
   StageEnemyInfos:
-  - EnemyPrefab: {fileID: 5690635501145629383, guid: 4f63d694c2f4f6244ac6dc9a9e4bba49, type: 3}
-    Position: {x: -705, y: 340, z: 0}
-  - EnemyPrefab: {fileID: 5690635501145629383, guid: 4f63d694c2f4f6244ac6dc9a9e4bba49, type: 3}
-    Position: {x: -270, y: 340, z: 0}
-  PlayerPosition: {x: -502, y: -261, z: 0}
+  - EnemyPrefab: {fileID: 5690635501145629383, guid: 61abf419e90e73943be83c61517a0754, type: 3}
+    Position: {x: -711, y: 333, z: 0}
+  - EnemyPrefab: {fileID: 5690635501145629383, guid: 61abf419e90e73943be83c61517a0754, type: 3}
+    Position: {x: -286, y: 333, z: 0}
+  PlayerPosition: {x: -516, y: -261, z: 0}
   PlayerScale: {x: 1, y: 1, z: 1}
-  BattleAreaPosition: {x: -493.2, y: 14.6, z: 0}
+  BattleAreaPosition: {x: -493.3, y: 14.6, z: 0}
   BattleAreaScale: {x: 3, y: 3, z: 1}
   BattleAreaRect: {x: 290.1, y: 332.6}
   CardCreatePosition: {x: 433, y: 126.3, z: 0}
