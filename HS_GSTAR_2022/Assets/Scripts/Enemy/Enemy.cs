@@ -10,6 +10,7 @@ public abstract class Enemy : MonoBehaviour, IBattleable
     public abstract string EnemyName { get; }
     public abstract int MaxHp { get; }
     public int Hp { get; protected set; }
+    public abstract int StartShield { get; }
     public int Shield { get; protected set; }
 
     [SerializeField]
@@ -19,7 +20,7 @@ public abstract class Enemy : MonoBehaviour, IBattleable
     {
         name = EnemyName;
         Hp = MaxHp;
-        Shield = 0;
+        Shield = StartShield;
     }
 
     private void Start()
@@ -39,7 +40,7 @@ public abstract class Enemy : MonoBehaviour, IBattleable
             Shield -= damage;
             damage = 0;
         }
-        
+
         Hp = Hp - damage > 0 ? Hp - damage : 0;
         UpdateInfo();
         Logger.Log($"적 {name}에게 데미지 {damage} 입힘. 현재 체력 : {Hp}", gameObject);
