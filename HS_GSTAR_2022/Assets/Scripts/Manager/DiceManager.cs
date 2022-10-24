@@ -20,7 +20,7 @@ public class DiceManager : Singleton<DiceManager>
     private IEnumerator CreateDicesCoroutine(int diceCount, float createDelay = 0)
     {
         Debug.Assert(_diceParent != null);
-        
+
         PositionSorterInfo sorterInfo = new PositionSorterInfo
         {
             CardWidth = 150,
@@ -29,7 +29,8 @@ public class DiceManager : Singleton<DiceManager>
             CardPaddingY = 20
         };
 
-        List<Vector3> positionList = PositionSorter.SortCard(diceCount, sorterInfo);
+        int colummMaxCount = diceCount > 5 ? diceCount / 2 + diceCount % 2 : diceCount;
+        List<Vector3> positionList = PositionSorter.SortCard(diceCount, colummMaxCount, sorterInfo);
 
         List<GameObject> createDiceObjs = new List<GameObject>();
         for (int i = 0; i < diceCount; ++i) // 생성 가능한 주사위 미리 생성 후 Active 끄기
