@@ -10,15 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0ef6cc71ba18ef45b18a3ea08d8d406, type: 3}
-  m_Name: EventStageInfo001
+  m_Name: EventStageInfo002
   m_EditorClassIdentifier: 
   EventCardTypes: []
   BattleAreaPosition: {x: 0, y: 0, z: 0}
   BattleAreaScale: {x: 0, y: 0, z: 0}
   CardCreatePosition: {x: 0, y: 0, z: 0}
   DiceCreatePosition: {x: 0, y: 0, z: 0}
-  Title: "\uB9C8\uB140\uC758 \uC0D8"
-  Description: "\uC232\uC744 \uC9C0\uB098\uACE0 \uC788\uB358 \uB3C4\uC911 \uC0D8\uBB3C\uC744
-    \uBC1C\uACAC\uD558\uC600\uC2B5\uB2C8\uB2E4.\\n\uB9C8\uCE68 \uC9C0\uCCD0\uAC00\uACE0
-    \uC788\uB358 \uB2F9\uC2E0\uC740 \uC0D8\uBB3C\uC744 \uB9C8\uC154 \uBAA9\uC744
-    \uCD95\uC774\uAE30\uB85C \uD569\uB2C8\uB2E4."
+  Title: "\uC194\uAE43\uD55C \uC81C"
+  Description: "\uAE38\uC744 \uAC77\uB2E4\uAC00 \uB610 \uB2E4\uB978 \uB9C8\uB140\uC640
+    \uB9C8\uC8FC \uD588\uC2B5\uB2C8\uB2E4.\\n\uC774 \uB9C8\uB140\uB294 \uAC70\uB798\uB97C
+    \uD558\uB098 \uC81C\uC548\uD574\uC654\uC2B5\uB2C8\uB2E4."

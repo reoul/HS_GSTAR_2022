@@ -31,18 +31,21 @@ public sealed class EventCard002 : CardBase222
     protected override string Use12()
     {
         string description = Description12_(out int maxHP, out int damage);
+        BattleManager.Instance.PlayerBattleable.ToDamage(damage);
         return description;
     }
 
     protected override string Use34()
     {
         string description = Description34_(out int maxHP, out int damage);
+        BattleManager.Instance.PlayerBattleable.ToDamage(damage);
         return description;
     }
 
     protected override string Use56()
     {
         string description = Description56_(out int maxHP, out int damage);
+        BattleManager.Instance.PlayerBattleable.ToDamage(damage);
         return description;
     }
 }

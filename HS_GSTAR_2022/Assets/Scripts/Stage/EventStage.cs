@@ -1,23 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EventStage : Stage
 {
+    [SerializeField]
+    private TMP_Text _title, _description;
+
     public override void StageEnter()
     {
-        BattleManager.Instance.PlayerBattleable.OwnerObj.SetActive(true);
-        BattleManager.Instance.NextTurn();
+        InitEvent();
+    }
+
+    public override void StageExit()
+    {
     }
 
     public override void StageUpdate()
     {
     }
 
-    public override void StageExit()
+    private void InitEvent()
     {
-        CardManager.Instance.RemoveAllCard();
-        DiceManager.Instance.RemoveAllDice();
-        BattleManager.Instance.PlayerBattleable.OwnerObj.SetActive(false);
+        _title.text = "";
+        _description.text = "";
     }
+
 }
