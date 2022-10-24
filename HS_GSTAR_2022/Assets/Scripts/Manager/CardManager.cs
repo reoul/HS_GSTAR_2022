@@ -80,7 +80,9 @@ public class CardManager : Singleton<CardManager>
             CardPaddingY = 20,
             DicePaddingX = 0
         };
-        List<Vector3> posList = PositionSorter.SortCard(codes.Count, sorterInfo);
+
+        int colummMaxCount = codes.Count > 5 ? codes.Count / 2 + codes.Count % 2 : codes.Count;
+        List <Vector3> posList = PositionSorter.SortCard(codes.Count, colummMaxCount, sorterInfo);
         
         for (int i = 0; i < codes.Count; ++i) // 생성 가능한 카드 코드를 가지고 미리 카드 생성 후 Active 끄기
         {
@@ -119,8 +121,10 @@ public class CardManager : Singleton<CardManager>
             CardPaddingY = 20,
             DicePaddingX = 0
         };
-        List<Vector3> posList = PositionSorter.SortCard(codes.Count, sorterInfo);
-        
+
+        int colummMaxCount = codes.Count > 5 ? codes.Count / 2 + codes.Count % 2 : codes.Count;
+        List<Vector3> posList = PositionSorter.SortCard(codes.Count, colummMaxCount, sorterInfo);
+
         for (int i = 0; i < codes.Count; ++i) // 생성 가능한 카드 코드를 가지고 미리 카드 생성 후 Active 끄기
         {
             GameObject cardObj = Instantiate(_cardPrefabs, _cardParent);

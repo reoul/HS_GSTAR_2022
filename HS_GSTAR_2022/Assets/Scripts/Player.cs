@@ -62,7 +62,7 @@ public sealed class Player : MonoBehaviour, IBattleable
 
     public List<string> GetCardCodes()
     {
-        return new List<string> {"PlayerCard001", "PlayerCard005", "PlayerCard005", "PlayerCard005", "PlayerCard005", "PlayerCard005", "PlayerCard005", "PlayerCard005", "PlayerCard005"};
+        return new List<string> { "PlayerCard001", "PlayerCard001", "PlayerCard001", "PlayerCard001", "PlayerCard001", "PlayerCard001" };
     }
 
     private void UpdateInfo()

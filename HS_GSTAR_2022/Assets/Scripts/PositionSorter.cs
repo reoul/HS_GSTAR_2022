@@ -12,11 +12,11 @@ public struct PositionSorterInfo
 
 public static class PositionSorter
 {
-    public static List<Vector3> SortCard(int cardCount, PositionSorterInfo sorterInfo)
+    public static List<Vector3> SortCard(int cardCount, float colummMaxCount, PositionSorterInfo sorterInfo)
     {
         Vector3 currentVector3 = Vector3.zero;
 
-        int repeat = (int) Mathf.Ceil(cardCount / 5f); //¹Ýº¹ÇÒ È½¼ö
+        int repeat = (int) Mathf.Ceil(cardCount / colummMaxCount); //¹Ýº¹ÇÒ È½¼ö
 
         currentVector3 += new Vector3(0, ((sorterInfo.CardPaddingY + sorterInfo.CardHeight) * (repeat - 1)) / 2f, 0);
 
@@ -24,16 +24,16 @@ public static class PositionSorter
 
         for (int i = 0; i < repeat; i++)
         {
-            if (i < repeat - 1 || cardCount % 5 == 0)
+            if (i < repeat - 1 || cardCount % colummMaxCount == 0)
             {
-                currentVector3.x = -((sorterInfo.CardPaddingX + sorterInfo.CardWidth) * 4) / 2f;
+                currentVector3.x = -((sorterInfo.CardPaddingX + sorterInfo.CardWidth) * colummMaxCount - 1) / 2f;
             }
             else
             {
-                currentVector3.x = -((sorterInfo.CardPaddingX + sorterInfo.CardWidth) * ((cardCount % 5) - 1)) / 2f;
+                currentVector3.x = -((sorterInfo.CardPaddingX + sorterInfo.CardWidth) * ((cardCount % colummMaxCount) - 1)) / 2f;
             }
 
-            for (int j = 0; j < 5; j++)
+            for (int j = 0; j < colummMaxCount; j++)
             {
                 positionList.Add(currentVector3);
                 currentVector3.x += sorterInfo.CardPaddingX + sorterInfo.CardWidth;
