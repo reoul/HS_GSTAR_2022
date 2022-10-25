@@ -19,6 +19,14 @@ public abstract class Enemy : MonoBehaviour, IBattleable
     private void Awake()
     {
         name = EnemyName;
+        foreach (TMP_Text text in transform.GetComponentsInChildren<TMP_Text>())
+        {
+            if (text.name == "NameText")
+            {
+                text.text = EnemyName;
+                break;
+            }
+        }
         Hp = MaxHp;
         Shield = StartShield;
     }
