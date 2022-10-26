@@ -44,14 +44,6 @@ public class FadeManager : Singleton<FadeManager>
         StartCoroutine(FadeInCoroutine());
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            StartFadeOut();
-        }
-    }
-
     /// <summary> 밝은 화면에서 서서히 어두어짐 </summary>
     private IEnumerator FadeOutCoroutine()
     {
