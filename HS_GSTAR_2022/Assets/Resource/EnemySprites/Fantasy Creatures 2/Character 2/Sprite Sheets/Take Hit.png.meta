@@ -119,9 +119,9 @@ TextureImporter:
       name: Take Hit_0
       rect:
         serializedVersion: 2
-        x: 40
+        x: 0
         y: 0
-        width: 120
+        width: 200
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -140,9 +140,9 @@ TextureImporter:
       name: Take Hit_1
       rect:
         serializedVersion: 2
-        x: 240
+        x: 200
         y: 0
-        width: 120
+        width: 200
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -161,9 +161,9 @@ TextureImporter:
       name: Take Hit_2
       rect:
         serializedVersion: 2
-        x: 440
+        x: 400
         y: 0
-        width: 120
+        width: 200
         height: 200
       alignment: 0
       pivot: {x: 0, y: 0}
