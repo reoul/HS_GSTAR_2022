@@ -83,7 +83,7 @@ public sealed class Player : MonoBehaviour, IBattleable
 
     public void RemoveCard(string cardCode)
     {
-        Debug.Assert(_cardDeck.Remove(cardCode));
+        Logger.Assert(_cardDeck.Remove(cardCode));
     }
 
     public List<string> GetCardCodes()

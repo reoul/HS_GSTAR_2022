@@ -89,7 +89,7 @@ public class BattleManager : Singleton<BattleManager>
     /// <param name="battleable">적 battleable</param>
     public void RemoveEnemy(IBattleable battleable)
     {
-        Debug.Assert(EnemyBattleables.Remove(battleable));
+        Logger.Assert(EnemyBattleables.Remove(battleable));
         Destroy(battleable.OwnerObj);
         if (EnemyBattleables.Count == 0)
         {

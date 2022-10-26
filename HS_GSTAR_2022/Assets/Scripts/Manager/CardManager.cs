@@ -172,7 +172,7 @@ public class CardManager : Singleton<CardManager>
     /// <param name="card">제거할 카드</param>
     public void RemoveCard(Card card)
     {
-        Debug.Assert(_cards.Remove(card));
+        Logger.Assert(_cards.Remove(card));
         if (_cards.Count == 0)
         {
             BattleManager.Instance.NextTurn();
