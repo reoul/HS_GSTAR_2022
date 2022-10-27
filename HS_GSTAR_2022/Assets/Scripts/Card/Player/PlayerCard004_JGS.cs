@@ -19,19 +19,19 @@ public sealed class PlayerCard004_JGS : CardBase222_JGS
     protected override void Use12()
     {
         Logger.Log($"{Name} : 12 : {Information12.description}");
-        GetOwnerBattleable().ToShield(Information12.values[0]);
+        //GetOwnerBattleable().ToShield(Information12.values[0]);
     }
 
     protected override void Use34()
     {
         Logger.Log($"{Name} : 34 : {Information34.description}");
-        GetOwnerBattleable().ToShield(Information34.values[0]);
+        //GetOwnerBattleable().ToShield(Information34.values[0]);
     }
 
     protected override void Use56()
     {
         Logger.Log($"{Name} : 56 : {Information56.description}");
-        GetOwnerBattleable().ToShield(Information56.values[0]);
+        //GetOwnerBattleable().ToShield(Information56.values[0]);
     }
 
 }

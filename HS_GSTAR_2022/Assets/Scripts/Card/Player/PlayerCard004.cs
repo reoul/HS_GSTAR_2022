@@ -25,21 +25,21 @@
     protected override string Use12()
     {
         string description = Description12_(out int shield);
-        GetOwnerBattleable().ToShield(shield);
+        //GetOwnerBattleable().ToShield(shield);
         return description;
     }
 
     protected override string Use34()
     {
         string description = Description34_(out int shield);
-        GetOwnerBattleable().ToShield(shield);
+        //GetOwnerBattleable().ToShield(shield);
         return description;
     }
 
     protected override string Use56()
     {
         string description = Description56_(out int shield);
-        GetOwnerBattleable().ToShield(shield);
+        //GetOwnerBattleable().ToShield(shield);
         return description;
     }
 

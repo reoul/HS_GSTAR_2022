@@ -34,7 +34,7 @@ public sealed class EnemyCard020 : CardBase222
 
         string description = Description12_(out int damage, out int shield);
         BattleManager.Instance.PlayerBattleable.ToDamage(damage);
-        GetOwnerBattleable().ToShield(shield);
+        //GetOwnerBattleable().ToShield(shield);
         return description;
     }
 
@@ -44,7 +44,7 @@ public sealed class EnemyCard020 : CardBase222
 
         string description = Description34_(out int damage, out int shield);
         BattleManager.Instance.PlayerBattleable.ToDamage(damage);
-        GetOwnerBattleable().ToShield(shield);
+        //GetOwnerBattleable().ToShield(shield);
         return description;
     }
     protected override string Use56()
@@ -53,7 +53,7 @@ public sealed class EnemyCard020 : CardBase222
 
         string description = Description56_(out int damage, out int shield);
         BattleManager.Instance.PlayerBattleable.ToDamage(damage);
-        GetOwnerBattleable().ToShield(shield);
+        //GetOwnerBattleable().ToShield(shield);
         return description;
     }
 }

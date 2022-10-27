@@ -10,8 +10,9 @@ public abstract class Enemy : MonoBehaviour, IBattleable
     public abstract string EnemyName { get; }
     public abstract int MaxHp { get; }
     public int Hp { get; protected set; }
-    public abstract int StartShield { get; }
-    public int Shield { get; protected set; }
+    public abstract int OffensivePower { get; protected set; }
+    public abstract int DefensivePower { get; protected set; }
+    public abstract int FixedDamage { get; protected set; }
 
     [SerializeField]
     private TMP_Text _healthText, _shieldText;
@@ -28,7 +29,6 @@ public abstract class Enemy : MonoBehaviour, IBattleable
             }
         }
         Hp = MaxHp;
-        Shield = StartShield;
     }
 
     private void Start()
@@ -38,34 +38,24 @@ public abstract class Enemy : MonoBehaviour, IBattleable
 
     public void ToDamage(int damage)
     {
-        if (damage >= Shield)
-        {
-            damage -= Shield;
-            Shield = 0;
-        }
-        else
-        {
-            Shield -= damage;
-            damage = 0;
-        }
-
+        damage = damage >= DefensivePower ? damage - DefensivePower : 0;
         Hp = Hp - damage > 0 ? Hp - damage : 0;
+        
         UpdateInfo();
         Logger.Log($"적 {name}에게 데미지 {damage} 입힘. 현재 체력 : {Hp}", gameObject);
     }
 
-    public void SetShield(int shield)
+    public void ToFixedDamage(int fixedDamage)
     {
-        Shield = shield;
+        Hp = Hp - fixedDamage > 0 ? Hp - fixedDamage : 0;
+        
         UpdateInfo();
-        Logger.Log($"적 {name}에게 실드 {Shield} 설정", gameObject);
+        Logger.Log($"적 {name}에게 고정 데미지 {fixedDamage} 입힘. 현재 체력 : {Hp}", gameObject);
     }
 
-    public void ToShield(int shield)
+    public void SetDefensivePower(int defensivePower)
     {
-        Shield += shield;
-        UpdateInfo();
-        Logger.Log($"적 {name}에게 실드 {shield} 증가. 현재 실드량 : {Shield}", gameObject);
+        DefensivePower = defensivePower;
     }
 
     public void ToCC(ECrowdControl cc, int coefficient)
@@ -80,20 +70,8 @@ public abstract class Enemy : MonoBehaviour, IBattleable
         Logger.Log($"적 {name}에게 {heal} 힐. 현재 체력 : {Hp}", gameObject);
     }
 
-    /// <summary>
-    /// 가지고 있는 카드들 코드를 가져옴
-    /// </summary>
-    /// <returns>가지고 있는 카드들 코드</returns>
-    protected abstract List<string> GetCharacterCardCodes();
-
-    public List<string> GetCardCodes()
-    {
-        return GetCharacterCardCodes();
-    }
-
     private void UpdateInfo()
     {
         _healthText.text = Hp.ToString();
-        _shieldText.text = Shield.ToString();
     }
 }

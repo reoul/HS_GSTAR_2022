@@ -112,14 +112,14 @@ public class BattleManager : Singleton<BattleManager>
         {
             Debug.Assert(PlayerBattleable != null);
 
-            int createdCardCount = CardManager.Instance.CreateCards(PlayerBattleable, PlayerBattleable.OwnerObj,
+            /*int createdCardCount = CardManager.Instance.CreateCards(PlayerBattleable, PlayerBattleable.OwnerObj,
                 Vector3.one * 0.85f, 0.2f);
             Logger.Log($"플레이어 카드 {createdCardCount}장 생성", PlayerBattleable.OwnerObj);
-            DiceManager.Instance.CreateDices(createdCardCount, 0.2f);
+            DiceManager.Instance.CreateDices(createdCardCount, 0.2f);*/
         }
         else
         {
-            List<IUseCard> enemyBattleableList = new List<IUseCard>();
+            /*List<IUseCard> enemyBattleableList = new List<IUseCard>();
             List<GameObject> cardOwnerList = new List<GameObject>();
             foreach (IBattleable enemy in EnemyBattleables)
             {
@@ -130,7 +130,7 @@ public class BattleManager : Singleton<BattleManager>
             int createdCardCount = CardManager.Instance.CreateCards(enemyBattleableList, cardOwnerList,
                 Vector3.one * 0.85f, 0.2f);
             Logger.Log($"적 카드 {createdCardCount}장 생성");
-            DiceManager.Instance.CreateDices(createdCardCount, 0.2f);
+            DiceManager.Instance.CreateDices(createdCardCount, 0.2f);*/
         }
     }
 }

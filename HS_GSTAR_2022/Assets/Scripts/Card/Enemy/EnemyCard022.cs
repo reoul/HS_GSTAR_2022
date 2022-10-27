@@ -23,7 +23,7 @@ public sealed class EnemyCard022 : CardBase33
     {
         string description = Description123_(out int shield);
 
-        GetOwnerBattleable().ToShield(shield);
+        //GetOwnerBattleable().ToShield(shield);
         return description;
     }
 
@@ -31,7 +31,7 @@ public sealed class EnemyCard022 : CardBase33
     {
         string description = Description456_(out int shield);
 
-        GetOwnerBattleable().ToShield(shield);
+        //GetOwnerBattleable().ToShield(shield);
         return description;
     }
 }

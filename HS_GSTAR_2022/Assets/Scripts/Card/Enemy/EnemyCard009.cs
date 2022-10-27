@@ -32,7 +32,7 @@ public sealed class EnemyCard009 : CardBase222
         Debug.Assert(BattleManager.Instance.PlayerBattleable != null);
 
         string description = Description12_(out int shield);
-        GetOwnerBattleable().ToShield(shield);
+        //GetOwnerBattleable().ToShield(shield);
         return description;
     }
 
@@ -41,7 +41,7 @@ public sealed class EnemyCard009 : CardBase222
         Debug.Assert(BattleManager.Instance.PlayerBattleable != null);
 
         string description = Description34_(out int shield);
-        GetOwnerBattleable().ToShield(shield);
+        //GetOwnerBattleable().ToShield(shield);
         return description;
     }
 
@@ -50,7 +50,7 @@ public sealed class EnemyCard009 : CardBase222
         Debug.Assert(BattleManager.Instance.PlayerBattleable != null);
 
         string description = Description56_(out int shield);
-        GetOwnerBattleable().ToShield(shield);
+        //GetOwnerBattleable().ToShield(shield);
         return description;
     }
 }

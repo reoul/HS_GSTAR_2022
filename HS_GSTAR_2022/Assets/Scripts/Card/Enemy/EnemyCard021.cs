@@ -27,7 +27,7 @@ public sealed class EnemyCard021 : CardBase33
 
         for(int i = 0; i < enemyCount; i++)
         {
-            GetOwnerBattleable().ToShield(shield);
+            //GetOwnerBattleable().ToShield(shield);
         }
         return description;
     }
@@ -40,7 +40,7 @@ public sealed class EnemyCard021 : CardBase33
 
         for (int i = 0; i < enemyCount; i++)
         {
-            GetOwnerBattleable().ToShield(shield);
+            //GetOwnerBattleable().ToShield(shield);
         }
         return description;
     }
