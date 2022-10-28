@@ -87,8 +87,6 @@ public class Field : MonoBehaviour
                 stageObj.transform.localPosition = Vector3.zero;
                 stageObj.transform.localRotation = Quaternion.identity;
                 stageObj.transform.localScale = Vector3.one;
-                
-                BattleManager.Instance.Init();
 
                 BattleStage battleStage = stageObj.GetComponent<BattleStage>();
                 battleStage.BattleStageInfo = stageInfo;
@@ -107,10 +105,11 @@ public class Field : MonoBehaviour
                 FadeManager.Instance.FadeInFinishEvent.AddListener(() =>
                 {
                     List<string> cardCodes = new List<string>();
-                    foreach (string cardCode in eventInfo.EventCardTypes)
+                    // todo : 주석 처리한거 되는지 확ㅇ니
+                    /*foreach (string cardCode in eventInfo.EventCardTypes)
                     {
                         cardCodes.Add(cardCode);
-                    }
+                    }*/
 
                     int createdCardCount = CardManager.Instance.CreateCards(cardCodes, FindObjectOfType<Player>(true).gameObject, Vector3.one, 0.2f);
                     Logger.Log($"이벤트 카드 {createdCardCount}장 생성");

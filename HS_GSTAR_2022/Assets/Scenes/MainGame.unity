@@ -813,6 +813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee28535403a8df14d8d39126f6f7bdaa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  createPos: {fileID: 0}
 --- !u!1001 &1118361376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1947,6 +1948,10 @@ PrefabInstance:
     - target: {fileID: 1480291528250839512, guid: 2fc1f3cd4ce85ff4190282356a0ae4cc, type: 3}
       propertyPath: isAA
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1480291528995354437, guid: 2fc1f3cd4ce85ff4190282356a0ae4cc, type: 3}
+      propertyPath: m_isRightToLeft
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2fc1f3cd4ce85ff4190282356a0ae4cc, type: 3}

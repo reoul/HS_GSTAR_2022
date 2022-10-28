@@ -42,7 +42,7 @@ public class BattleStage : Stage
             GameObject enemyObj = Instantiate(enemyInfo.EnemyPrefab, enemyParent);
             enemyObj.transform.localPosition = enemyInfo.Position;
             
-            BattleManager.Instance.AddEnemy(enemyObj.GetComponent<IBattleable>());
+            BattleManager.Instance.SetEnemy(enemyObj.GetComponent<IBattleable>());
             Logger.Log($"{enemyObj.name} 적 추가");
         }
         
