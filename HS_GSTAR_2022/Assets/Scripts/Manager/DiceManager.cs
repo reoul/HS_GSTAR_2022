@@ -6,7 +6,7 @@ using UnityEngine;
 public class DiceManager : Singleton<DiceManager>
 {
     [SerializeField] private GameObject _dicePrefab;
-    [SerializeField] private List<Transform> _diceCreatePosList;
+    [SerializeField] private Transform _diceParent;
     [SerializeField] private List<Dice> _dices;
 
     /// <summary> 주사위 생성 </summary>
@@ -19,11 +19,25 @@ public class DiceManager : Singleton<DiceManager>
 
     private IEnumerator CreateDicesCoroutine(int diceCount, float createDelay = 0)
     {
+        Debug.Assert(_diceParent != null);
+
+        PositionSorterInfo sorterInfo = new PositionSorterInfo
+        {
+            CardWidth = 150,
+            CardHeight = 150,
+            CardPaddingX = 20,
+            CardPaddingY = 20
+        };
+
+        int colummMaxCount = diceCount > 5 ? diceCount / 2 + diceCount % 2 : diceCount;
+        List<Vector3> positionList = PositionSorter.SortCard(diceCount, colummMaxCount, sorterInfo);
+
         List<GameObject> createDiceObjs = new List<GameObject>();
         for (int i = 0; i < diceCount; ++i) // 생성 가능한 주사위 미리 생성 후 Active 끄기
         {
-            GameObject diceObj = Instantiate(_dicePrefab);
-            diceObj.transform.position = _diceCreatePosList[i].position;
+            GameObject diceObj = Instantiate(_dicePrefab, _diceParent);
+            Vector3 pos = positionList[i] + new Vector3((sorterInfo.CardWidth + sorterInfo.CardPaddingX) / 2, 0, 0);
+            diceObj.transform.localPosition = pos;
             _dices.Add(diceObj.GetComponent<Dice>());
             diceObj.SetActive(false);
             createDiceObjs.Add(diceObj);

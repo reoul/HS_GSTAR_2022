@@ -1,23 +1,46 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EventStage : Stage
 {
+    [SerializeField]
+    private TMP_Text _title, _description;
+    
+    public EventStageInfo EventStageInfo { get; set; }
+
     public override void StageEnter()
     {
-        BattleManager.Instance.PlayerBattleable.OwnerObj.SetActive(true);
-        BattleManager.Instance.NextTurn();
+        Debug.Assert(EventStageInfo != null);
+        
+        // 플레이어 설정
+        GameObject playerObj = BattleManager.Instance.PlayerBattleable.OwnerObj;
+        playerObj.SetActive(true);
+        Logger.Log("스테이지 오픈");
+
+        // 영역 설정
+        GameObject BattleAreaObj = GameObject.Find("BattleAreaImg");
+        
+        GameObject.Find("CardParent").transform.localPosition = EventStageInfo.CardCreatePosition;
+        GameObject.Find("DiceParent").transform.localPosition = EventStageInfo.DiceCreatePosition;
+
+        playerObj.SetActive(true);
+    }
+
+    public override void StageExit()
+    {
+        FindObjectOfType<Player>().gameObject.SetActive(false);
     }
 
     public override void StageUpdate()
     {
     }
 
-    public override void StageExit()
+    public void InitEvent(string title, string description)
     {
-        CardManager.Instance.RemoveAllCard();
-        DiceManager.Instance.RemoveAllDice();
-        BattleManager.Instance.PlayerBattleable.OwnerObj.SetActive(false);
+        _title.text = title;
+        _description.text = description;
     }
+
 }

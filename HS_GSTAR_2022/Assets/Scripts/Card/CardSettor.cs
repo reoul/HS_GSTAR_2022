@@ -16,7 +16,7 @@ public class CardSettor : MonoBehaviour
     {
         CardCode = cardCode;
         Type cardType = Type.GetType($"{CardCode},Assembly-CSharp");
-        Logger.AssertFormat(cardType != null, gameObject, "{0} 은 존재하지 않는 카드 타입입니다", CardCode);
+        Debug.AssertFormat(cardType != null, gameObject, "{0} 은 존재하지 않는 카드 타입입니다", CardCode);
         gameObject.AddComponent(cardType);
     }
 }

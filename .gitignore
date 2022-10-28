@@ -65,3 +65,8 @@ Library/ArtifactDB
 Data/
 build.zip
 .idea/
+
+# UnityLogsViewer generated file
+HS_GSTAR_2022/Assets/StreamingAssets.meta
+HS_GSTAR_2022/Assets/StreamingAssets/build_info
+HS_GSTAR_2022/Assets/StreamingAssets/build_info.meta

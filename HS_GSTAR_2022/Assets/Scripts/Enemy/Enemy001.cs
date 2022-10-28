@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class Enemy001 : Enemy
 {
-    public override int MaxHp => 100;
-
-    protected override List<string> GetCharacterCardCodes()
-    {
-        List<List<string>> cardDeck = new List<List<string>>();
-        cardDeck.Add(new List<string> {"EnemyCard001", "EnemyCard002", "EnemyCard003"});
-        cardDeck.Add(new List<string> {"EnemyCard004", "EnemyCard005"});
-        int rand = Random.Range(0, cardDeck.Count + 1);
-        return cardDeck[rand];
-    }
+    public override string EnemyName => "사형의 집행자";
+    public override int MaxHp => 30;
+    public override int OffensivePower { get; protected set; }
+    public override int DefensivePower { get; protected set; }
+    public override int PiercingDamage { get; protected set; }
 }

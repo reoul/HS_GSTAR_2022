@@ -72,7 +72,7 @@ public sealed class Logger
     {
         Debug.LogException(exception, context);
     }
-
+    
     public static void Assert(bool condition)
     {
         Debug.Assert(condition);

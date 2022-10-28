@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5870389037585210215}
   - component: {fileID: 5870389037585210213}
   - component: {fileID: 5870389037585210214}
+  - component: {fileID: 1814540618}
   m_Layer: 5
   m_Name: Map
   m_TagString: Untagged
@@ -79,6 +80,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1814540618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5870389037585210232}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce1ecb5bac4a47e5952b78d8a4297573, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1017818009362834618
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -89,6 +102,10 @@ PrefabInstance:
     - target: {fileID: 4360184409460940252, guid: a1b836d49a156df4dadc71fe5e8ca84e, type: 3}
       propertyPath: m_Name
       value: Easy
+      objectReference: {fileID: 0}
+    - target: {fileID: 5801542866247524422, guid: a1b836d49a156df4dadc71fe5e8ca84e, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 7867111702558003387, guid: a1b836d49a156df4dadc71fe5e8ca84e, type: 3}
       propertyPath: m_Pivot.x
@@ -192,6 +209,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Nomal
       objectReference: {fileID: 0}
+    - target: {fileID: 4360184409460940252, guid: 8c4bb0a1b52c4144cbb3e5f2d28a3ab3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7867111702558003387, guid: 8c4bb0a1b52c4144cbb3e5f2d28a3ab3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -293,6 +314,10 @@ PrefabInstance:
     - target: {fileID: 4360184409460940252, guid: 3bc8a2d1ea349c441bac7e968bc30832, type: 3}
       propertyPath: m_Name
       value: Hard
+      objectReference: {fileID: 0}
+    - target: {fileID: 4360184409460940252, guid: 3bc8a2d1ea349c441bac7e968bc30832, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7867111702558003387, guid: 3bc8a2d1ea349c441bac7e968bc30832, type: 3}
       propertyPath: m_Pivot.x

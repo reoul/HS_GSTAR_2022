@@ -1,4 +1,6 @@
-﻿public sealed class EnemyCard002 : CardBase222
+﻿using UnityEngine;
+
+public sealed class EnemyCard002 : CardBase222
 {
     protected override string Name => "물어뜯기";
     protected override string Description12 => Description12_(out _);
@@ -27,7 +29,7 @@
 
     protected override string Use12()
     {
-        Logger.Assert(BattleManager.Instance.PlayerBattleable != null);
+        Debug.Assert(BattleManager.Instance.PlayerBattleable != null);
 
         string description = Description12_(out int damage);
         BattleManager.Instance.PlayerBattleable.ToDamage(damage);
@@ -36,7 +38,7 @@
 
     protected override string Use34()
     {
-        Logger.Assert(BattleManager.Instance.PlayerBattleable != null);
+        Debug.Assert(BattleManager.Instance.PlayerBattleable != null);
 
         string description = Description34_(out int damage);
         BattleManager.Instance.PlayerBattleable.ToDamage(damage);
@@ -45,7 +47,7 @@
 
     protected override string Use56()
     {
-        Logger.Assert(BattleManager.Instance.PlayerBattleable != null);
+        Debug.Assert(BattleManager.Instance.PlayerBattleable != null);
 
         string description = Description56_(out int damage);
         BattleManager.Instance.PlayerBattleable.ToDamage(damage);

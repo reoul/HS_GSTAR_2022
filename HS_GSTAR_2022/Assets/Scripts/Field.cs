@@ -1,6 +1,9 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
@@ -67,34 +70,59 @@ public class Field : MonoBehaviour
 
     private void Test()
     {
-        Logger.Assert(_stageInfo != null);
-
+        Debug.Assert(_stageInfo != null);
+        
         GameObject.Find("Map").SetActive(false);
+
+        int rand;
+        Stage stage;
         switch (Type)
         {
             case StageType.Battle:
-                int rand = Random.Range(0, _stageInfo.BattleStageInfos.Length);
+                rand = Random.Range(0, _stageInfo.BattleStageInfos.Length);
                 BattleStageInfo stageInfo = _stageInfo.BattleStageInfos[rand];
                 
-                GameObject gameObject = new GameObject();
-                gameObject.transform.parent = GameObject.Find("StageParent").transform;
-                gameObject.transform.localPosition = Vector3.zero;
-                gameObject.transform.localRotation = Quaternion.identity;
-                gameObject.transform.localScale = Vector3.one;
-                
-                BattleStage battleStage = gameObject.AddComponent<BattleStage>();
+                GameObject stageObj = new GameObject("BattleStage", typeof(BattleStage));
+                stageObj.transform.parent = GameObject.Find("StageParent").transform;
+                stageObj.transform.localPosition = Vector3.zero;
+                stageObj.transform.localRotation = Quaternion.identity;
+                stageObj.transform.localScale = Vector3.one;
+
+                BattleStage battleStage = stageObj.GetComponent<BattleStage>();
                 battleStage.BattleStageInfo = stageInfo;
-                
-                Debug.Log(stageInfo.StageEnemyInfos[0].EnemyType);
-                //stageInfo.
+                stage = battleStage;
                 break;
             case StageType.Event:
+                rand = Random.Range(0, _stageInfo.EventStageInfos.Length);
+                EventStageInfo eventInfo = _stageInfo.EventStageInfos[rand];
+
+                EventStage eventStage = FindObjectOfType<EventStage>(true);
+                stage = eventStage;
+                eventStage.InitEvent(eventInfo.Title, eventInfo.Description);
+                eventStage.gameObject.SetActive(true);
+                eventStage.EventStageInfo = eventInfo;
+                
+                FadeManager.Instance.FadeInFinishEvent.AddListener(() =>
+                {
+                    List<string> cardCodes = new List<string>();
+                    // todo : 주석 처리한거 되는지 확ㅇ니
+                    /*foreach (string cardCode in eventInfo.EventCardTypes)
+                    {
+                        cardCodes.Add(cardCode);
+                    }*/
+
+                    int createdCardCount = CardManager.Instance.CreateCards(cardCodes, FindObjectOfType<Player>(true).gameObject, Vector3.one, 0.2f);
+                    Logger.Log($"이벤트 카드 {createdCardCount}장 생성");
+                    DiceManager.Instance.CreateDices(createdCardCount, 0.2f);
+                });
                 break;
             case StageType.Boss:
+                throw new NotImplementedException();
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
-        //StageManager.Instance.OpenStage(stage);
+        
+        StageManager.Instance.OpenStage(stage);
     }
 }

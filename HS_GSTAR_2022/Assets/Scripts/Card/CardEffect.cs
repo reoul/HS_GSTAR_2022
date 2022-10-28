@@ -18,4 +18,9 @@ public class CardEffect : MonoBehaviour
     {
         _cardShowObj.SetActive(false);
     }
+
+    public void Destroy()
+    {
+        Destroy(transform.GetComponentInParent<Card>().gameObject);
+    }
 }

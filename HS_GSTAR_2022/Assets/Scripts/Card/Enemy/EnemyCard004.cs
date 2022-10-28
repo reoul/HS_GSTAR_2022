@@ -5,7 +5,7 @@
 
     protected override string UseCard(Dice dice)
     {
-        GetOwnerBattleable().ToShield((int) dice.Number);
+        //GetOwnerBattleable().ToShield((int) dice.Number);
         return Description;
     }
 }

@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: BattleStageInfo001
   m_EditorClassIdentifier: 
   StageEnemyInfos:
-  - EnemyType: Enemy001
-    Position: {x: 123, y: 2, z: 1}
-    Scale: {x: 1, y: 1, z: 1}
-  - EnemyType: 
-    Position: {x: 0, y: 0, z: 0}
-    Scale: {x: 1, y: 1, z: 1}
-  BattleAreaPosition: {x: 0, y: 0, z: 0}
-  BattleAreaScale: {x: 0, y: 0, z: 0}
-  CardCreatePosition: {x: 0, y: 0, z: 0}
-  DiceCreatePosition: {x: 0, y: 0, z: 0}
+  - EnemyPrefab: {fileID: 5690635501145629383, guid: 4f63d694c2f4f6244ac6dc9a9e4bba49, type: 3}
+    Position: {x: -705, y: 340, z: 0}
+  - EnemyPrefab: {fileID: 5690635501145629383, guid: 4f63d694c2f4f6244ac6dc9a9e4bba49, type: 3}
+    Position: {x: -270, y: 340, z: 0}
+  PlayerPosition: {x: -502, y: -261, z: 0}
+  PlayerScale: {x: 1, y: 1, z: 1}
+  BattleAreaPosition: {x: -493.2, y: 14.6, z: 0}
+  BattleAreaScale: {x: 3, y: 3, z: 1}
+  BattleAreaRect: {x: 290.1, y: 332.6}
+  CardCreatePosition: {x: 433, y: 126.3, z: 0}
+  DiceCreatePosition: {x: 433, y: -322, z: 0}

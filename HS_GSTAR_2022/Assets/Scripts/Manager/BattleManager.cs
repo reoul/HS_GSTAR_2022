@@ -1,105 +1,85 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Assertions;
 
 public class BattleManager : Singleton<BattleManager>
 {
-    public IBattleable PlayerBattleable { get; private set; }
-    public List<IBattleable> EnemyBattleables { get; private set; }
+    public IBattleable PlayerBattleable;
+    public IBattleable EnemyBattleable;
 
     [SerializeField] private GameObject _playerPrefab;
 
-    private bool _isPlayerTurn;
-
     private void Awake()
     {
-        EnemyBattleables = new List<IBattleable>();
-
         GameObject playerObj = Instantiate(_playerPrefab, GameObject.Find("Canvas").transform);
         playerObj.SetActive(false);
         PlayerBattleable = playerObj.GetComponent<IBattleable>();
-        Logger.Assert(PlayerBattleable != null);
-        _isPlayerTurn = false;
+        Debug.Assert(PlayerBattleable != null);
     }
 
-    /// <summary> 체력 제일 적은 적들 반환 </summary>
-    /// <returns>체력 제일 적은 적 리스트</returns>
-    public List<IBattleable> GetMinHpEnemyList()
+    /// <summary> 적 설정 </summary>
+    /// <param name="battleable">적 battleable</param>
+    public void SetEnemy(IBattleable battleable)
     {
-        Logger.Assert(EnemyBattleables.Count != 0);
-        List<IBattleable> minHpEnemyList = new List<IBattleable>();
-        
-        minHpEnemyList.Add(EnemyBattleables[0]);
-        for (int i = 1; i < EnemyBattleables.Count; ++i)
-        {
-            if (minHpEnemyList[0].Hp > EnemyBattleables[i].Hp)
-            {
-                minHpEnemyList.Clear();
-                minHpEnemyList.Add(EnemyBattleables[i]);
-            }
-            else if (minHpEnemyList[0].Hp == EnemyBattleables[i].Hp)
-            {
-                minHpEnemyList.Add(EnemyBattleables[i]);
-            }
-        }
-
-        return minHpEnemyList;
+        EnemyBattleable = battleable;
     }
 
-    /// <summary> 체력 제일 많은 적 리스트 반환 </summary>
-    /// <returns>체력 제일 많은 적 리스트</returns>
-    public List<IBattleable> GetMaxHpEnemyList()
-    {
-        Logger.Assert(EnemyBattleables.Count != 0);
-        List<IBattleable> maxHpEnemyList = new List<IBattleable>();
-        
-        maxHpEnemyList.Add(EnemyBattleables[0]);
-        for (int i = 1; i < EnemyBattleables.Count; ++i)
-        {
-            if (maxHpEnemyList[0].Hp < EnemyBattleables[i].Hp)
-            {
-                maxHpEnemyList.Clear();
-                maxHpEnemyList.Add(EnemyBattleables[i]);
-            }
-            else if (maxHpEnemyList[0].Hp == EnemyBattleables[i].Hp)
-            {
-                maxHpEnemyList.Add(EnemyBattleables[i]);
-            }
-        }
-
-        return maxHpEnemyList;
-    }
-
-    public void AddEnemy(IBattleable battleable)
-    {
-        EnemyBattleables.Add(battleable);
-    }
-
+    /// <summary> 적 제거 </summary>
+    /// <param name="battleable">적 battleable</param>
     public void RemoveEnemy(IBattleable battleable)
     {
-        Logger.Assert(EnemyBattleables.Remove(battleable));
+        /*Logger.Assert(EnemyBattleables.Remove(battleable));
+        Destroy(battleable.OwnerObj);
+        if (EnemyBattleables.Count == 0)
+        {
+            Logger.Log("모든 적이 제거되었습니다.");
+            // todo : 전투 종료 로직 구현
+            FadeManager.Instance.FadeInStartEvent.AddListener(() =>
+            {
+                StageManager.Instance.OpenStage(FindObjectOfType<Map>(true));
+                GameObject.Find("MapManager").transform.GetChild(0).gameObject.SetActive(true);
+            });
+            FadeManager.Instance.StartFadeOut();
+        }*/
     }
 
-    public void NextTurn()
+    /// <summary> 전투 시작 </summary>
+    public void StartBattle()
     {
-        _isPlayerTurn = !_isPlayerTurn;
-        if (_isPlayerTurn)     // 플레이어 턴일 때
-        {
-            Logger.Assert(PlayerBattleable != null);
+        StartCoroutine(BattleCoroutine());
+    }
 
-            int createdCardCount = CardManager.Instance.CreateCards(PlayerBattleable, PlayerBattleable.OwnerObj, 0.2f);
-            Logger.Log($"플레이어 카드 {createdCardCount}장 생성", PlayerBattleable.OwnerObj);
-            DiceManager.Instance.CreateDices(createdCardCount, 0.2f);
-        }
-        else
+    private IEnumerator BattleCoroutine()
+    {
+        WaitForSeconds waitOneSecond = new WaitForSeconds(1);
+        while (true)
         {
-            foreach (IBattleable enemy in EnemyBattleables)
+            // 플레이어 공격
+            EnemyBattleable.ToDamage(PlayerBattleable.OffensivePower);
+            EnemyBattleable.ToPiercingDamage(PlayerBattleable.PiercingDamage);
+
+            yield return waitOneSecond;
+            if (EnemyBattleable.Hp == 0)
             {
-                int createdCardCount = CardManager.Instance.CreateCards(enemy, enemy.OwnerObj, 0.2f);
-                Logger.Log($"적 카드 {createdCardCount}장 생성", enemy.OwnerObj);
-                DiceManager.Instance.CreateDices(createdCardCount, 0.2f);
+                break;
+            }
+            
+            // 적 공격
+            PlayerBattleable.ToDamage(EnemyBattleable.OffensivePower);
+            PlayerBattleable.ToPiercingDamage(EnemyBattleable.PiercingDamage);
+
+            yield return waitOneSecond;
+            if (PlayerBattleable.Hp == 0)
+            {
+                break;
             }
         }
+    }
+
+    /// <summary> 다음 턴으로 세팅 </summary>
+    public void NextTurn()
+    {
     }
 }

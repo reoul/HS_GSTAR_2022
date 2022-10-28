@@ -20,7 +20,7 @@ public abstract class Card : OverlayBase
 
     private void Awake()
     {
-        Logger.Assert(GetComponent<CardSettor>() != null);
+        Debug.Assert(GetComponent<CardSettor>() != null);
         _nameText = GetComponent<CardSettor>().NameText;
         _contextText = GetComponent<CardSettor>().ContextText;
         _cardShowObj = GetComponent<CardSettor>().CardShowObj;
@@ -44,8 +44,9 @@ public abstract class Card : OverlayBase
     }
 
     /// <summary> 카드 삭제 될 때 호출 </summary>
-    public void Destroy()
+    public void StartDestroyAnimation()
     {
+        GetComponent<BoxCollider>().enabled = false;
         _cardEffectAnimator.SetTrigger("Destroy");  // 삭제 애니메이션 호출
     }
 
@@ -63,9 +64,9 @@ public abstract class Card : OverlayBase
     /// <returns>카드 소유주의 IBattleable</returns>
     public IBattleable GetOwnerBattleable()
     {
-        Logger.Assert(OwnerObj != null);
+        Debug.Assert(OwnerObj != null);
         IBattleable ownerBattleable = OwnerObj.GetComponent<IBattleable>();
-        Logger.Assert(ownerBattleable != null);
+        Debug.Assert(ownerBattleable != null);
         return ownerBattleable;
     }
 }

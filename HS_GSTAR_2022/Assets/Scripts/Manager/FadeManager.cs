@@ -44,18 +44,10 @@ public class FadeManager : Singleton<FadeManager>
         StartCoroutine(FadeInCoroutine());
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            StartFadeOut();
-        }
-    }
-
     /// <summary> 밝은 화면에서 서서히 어두어짐 </summary>
     private IEnumerator FadeOutCoroutine()
     {
-        Logger.Assert(_fadeImage != null);
+        Debug.Assert(_fadeImage != null);
 
         IsFading = true;
 
@@ -85,7 +77,7 @@ public class FadeManager : Singleton<FadeManager>
     /// <summary> 어두운 화면에서 서서히 밝아짐 </summary>
     private IEnumerator FadeInCoroutine()
     {
-        Logger.Assert(_fadeImage != null);
+        Debug.Assert(_fadeImage != null);
 
         FadeInStartEvent.Invoke();
         FadeInStartEvent.RemoveAllListeners();
