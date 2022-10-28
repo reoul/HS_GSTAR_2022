@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class MapManager : MonoBehaviour
 {
@@ -11,7 +12,7 @@ public class MapManager : MonoBehaviour
         public StageType type;
         public GameObject mapIcon;
 
-        public StageInfo(StageType initType,Transform parent)
+        public StageInfo(StageType initType, Transform parent, Vector3 createPos)
         {
             type = initType;
             if(type == StageType.Event)
@@ -22,7 +23,7 @@ public class MapManager : MonoBehaviour
             {
                 mapIcon = GameObject.Instantiate(Resources.Load<GameObject>("BattleMapIcon"), parent);
             }
-            mapIcon.transform.position = Vector3.zero;
+            mapIcon.transform.localPosition = createPos;
         }
     }
 
@@ -30,18 +31,18 @@ public class MapManager : MonoBehaviour
 
     private float IconWidth;
 
+    [SerializeField]
+    Transform createPos;
+
     private void Awake()
     {
         mapQueue = new Queue<StageInfo>();
-        IconWidth = Resources.Load<GameObject>("EventMapIcon").transform.localScale.x;
+        IconWidth = Resources.Load<GameObject>("EventMapIcon").GetComponent<Image>().rectTransform.sizeDelta.x;
     }
 
     public void addStage(StageType type)
     {
-        StageInfo stage = new StageInfo();
-        stage.type = type;
-
-        mapQueue.Enqueue(new StageInfo(type, this.transform));
+        mapQueue.Enqueue(new StageInfo(type, this.transform, createPos.localPosition));
         UpdateIconPosition();
     }
 
@@ -56,10 +57,11 @@ public class MapManager : MonoBehaviour
 
     private void UpdateIconPosition()
     {
-        Vector3 lastPos = Vector3.zero;
+        Vector3 lastPos = transform.position;
         foreach(StageInfo value in mapQueue)
         {
-            value.mapIcon.transform.position = lastPos;
+            value.mapIcon.GetComponent<IconMover>().targetPos = lastPos;
+
             lastPos += new Vector3(IconWidth + IconWidth *0.5f, 0, 0);
         }
     }
