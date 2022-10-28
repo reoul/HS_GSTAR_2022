@@ -8,7 +8,7 @@ public class InfoWindow : MonoBehaviour
     [SerializeField] private Image _hpBarImg;
     [SerializeField] private TMP_Text _hpText;
     [SerializeField] private TMP_Text _offensivePowerText;
-    [SerializeField] private TMP_Text _fixedDamageText;
+    [SerializeField] private TMP_Text _piercingDamageText;
     [SerializeField] private TMP_Text _defensivePowerText;
 
     /// <summary> 체력바 업데이트 </summary>
@@ -27,11 +27,11 @@ public class InfoWindow : MonoBehaviour
         _offensivePowerText.text = offensivePower.ToString();
     }
 
-    /// <summary> 고정 데미지 텍스트 업데이트 </summary>
-    /// <param name="fixedDamage">고정 데미지</param>
-    public void UpdateFixedDamageText(int fixedDamage)
+    /// <summary> 관통 데미지 텍스트 업데이트 </summary>
+    /// <param name="piercingDamage">관통 데미지</param>
+    public void UpdatePiercingDamageText(int piercingDamage)
     {
-        _fixedDamageText.text = fixedDamage.ToString();
+        _piercingDamageText.text = piercingDamage.ToString();
     }
 
     /// <summary> 방어력 텍스트 업데이트 </summary>

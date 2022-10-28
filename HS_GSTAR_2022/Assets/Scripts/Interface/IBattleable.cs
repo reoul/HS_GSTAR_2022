@@ -23,16 +23,19 @@ public interface IBattleable
     /// <summary> 방어력 </summary>
     int DefensivePower { get; }
     
-    /// <summary> 고정 데미지 </summary>
-    int FixedDamage { get; }
+    /// <summary> 관통 데미지 </summary>
+    int PiercingDamage { get; }
+    
+    /// <summary> 정보창 </summary>
+    public InfoWindow InfoWindow { get; set; }
     
     /// <summary> 데미지를 준다 </summary>
     /// <param name="damage">데미지</param>
     void ToDamage(int damage);
 
-    /// <summary> 고정 데미지를 준다 </summary>
-    /// <param name="fixedDamage">고정 데미지</param>
-    void ToFixedDamage(int fixedDamage);
+    /// <summary> 관통 데미지를 준다 </summary>
+    /// <param name="piercingDamage">관통 데미지</param>
+    void ToPiercingDamage(int piercingDamage);
 
     /// <summary> 방어력 설정 </summary>
     void SetDefensivePower(int defensivePower);

@@ -8,5 +8,5 @@ public class Enemy001 : Enemy
     public override int MaxHp => 30;
     public override int OffensivePower { get; protected set; }
     public override int DefensivePower { get; protected set; }
-    public override int FixedDamage { get; protected set; }
+    public override int PiercingDamage { get; protected set; }
 }

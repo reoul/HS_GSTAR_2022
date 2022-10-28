@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uACE0\uC815\uB370\uBBF8\uC9C0:"
+  m_text: "\uAD00\uD1B5\uB370\uBBF8\uC9C0:"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 395edc858a338434097c5a3be1e4138b, type: 2}
   m_sharedMaterial: {fileID: 8470608934981535021, guid: 395edc858a338434097c5a3be1e4138b, type: 2}
@@ -280,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1480291527172209090}
   m_Layer: 5
-  m_Name: FixedDamageWindow
+  m_Name: PiercingDamageWindow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1040,7 +1040,7 @@ MonoBehaviour:
   _hpBarImg: {fileID: 1480291527867873647}
   _hpText: {fileID: 1480291527535452810}
   _offensivePowerText: {fileID: 1480291528518566469}
-  _fixedDamageText: {fileID: 1480291527364031730}
+  _piercingDamageText: {fileID: 1480291527364031730}
   _defensivePowerText: {fileID: 1480291528113869873}
 --- !u!1 &1480291528443362495
 GameObject:

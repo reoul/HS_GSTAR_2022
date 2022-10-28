@@ -12,28 +12,20 @@ public abstract class Enemy : MonoBehaviour, IBattleable
     public int Hp { get; protected set; }
     public abstract int OffensivePower { get; protected set; }
     public abstract int DefensivePower { get; protected set; }
-    public abstract int FixedDamage { get; protected set; }
-
-    [SerializeField]
-    private TMP_Text _healthText, _shieldText;
+    public abstract int PiercingDamage { get; protected set; }
+    public InfoWindow InfoWindow { get; set; }
 
     private void Awake()
     {
-        name = EnemyName;
-        foreach (TMP_Text text in transform.GetComponentsInChildren<TMP_Text>())
-        {
-            if (text.name == "NameText")
-            {
-                text.text = EnemyName;
-                break;
-            }
-        }
         Hp = MaxHp;
     }
 
     private void Start()
     {
-        UpdateInfo();
+        InfoWindow.UpdateHpBar(Hp, MaxHp);
+        InfoWindow.UpdateOffensivePowerText(OffensivePower);
+        InfoWindow.UpdateDefensivePowerText(DefensivePower);
+        InfoWindow.UpdatePiercingDamageText(PiercingDamage);
     }
 
     public void ToDamage(int damage)
@@ -41,21 +33,23 @@ public abstract class Enemy : MonoBehaviour, IBattleable
         damage = damage >= DefensivePower ? damage - DefensivePower : 0;
         Hp = Hp - damage > 0 ? Hp - damage : 0;
         
-        UpdateInfo();
+        InfoWindow.UpdateHpBar(Hp, MaxHp);
         Logger.Log($"적 {name}에게 데미지 {damage} 입힘. 현재 체력 : {Hp}", gameObject);
     }
 
-    public void ToFixedDamage(int fixedDamage)
+    public void ToPiercingDamage(int piercingDamage)
     {
-        Hp = Hp - fixedDamage > 0 ? Hp - fixedDamage : 0;
+        Hp = Hp - piercingDamage > 0 ? Hp - piercingDamage : 0;
         
-        UpdateInfo();
-        Logger.Log($"적 {name}에게 고정 데미지 {fixedDamage} 입힘. 현재 체력 : {Hp}", gameObject);
+        InfoWindow.UpdateHpBar(Hp, MaxHp);
+        Logger.Log($"적 {name}에게 관통 데미지 {piercingDamage} 입힘. 현재 체력 : {Hp}", gameObject);
     }
 
     public void SetDefensivePower(int defensivePower)
     {
         DefensivePower = defensivePower;
+        InfoWindow.UpdateDefensivePowerText(DefensivePower);
+        Logger.Log($"적 {name}의 방어력 {defensivePower}로 설정됨", gameObject);
     }
 
     public void ToCC(ECrowdControl cc, int coefficient)
@@ -66,12 +60,8 @@ public abstract class Enemy : MonoBehaviour, IBattleable
     public void ToHeal(int heal)
     {
         Hp = Hp + heal < MaxHp ? Hp + heal : MaxHp;
-        UpdateInfo();
+        
+        InfoWindow.UpdateHpBar(Hp, MaxHp);
         Logger.Log($"적 {name}에게 {heal} 힐. 현재 체력 : {Hp}", gameObject);
-    }
-
-    private void UpdateInfo()
-    {
-        _healthText.text = Hp.ToString();
     }
 }
