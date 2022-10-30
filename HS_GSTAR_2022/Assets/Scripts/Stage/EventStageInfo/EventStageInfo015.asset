@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ef6cc71ba18ef45b18a3ea08d8d406, type: 3}
+  m_Name: EventStageInfo015
+  m_EditorClassIdentifier: 
+  Title: "\uD30C\uAD34\uB41C \uC5F0\uAD6C\uC2E4"
+  Description: "\"\uB2F9\uC2E0\uC740 \uD55C \uC5F0\uAD6C\uC2DC\uC124\uC744 \uCC3E\uAC8C
+    \uB418\uC5C8\uC2B5\uB2C8\uB2E4. \uC5EC\uAE30\uC11C\n\uC4F8\uB9CC\uD55C \uB3C4\uAD6C\uB97C
+    \uCC3E\uC744 \uC218 \uC788\uC744\uAC70 \uAC19\uC2B5\uB2C8\uB2E4.\""
+  EventCardInfos:
+  - Title: "\uD68C\uBCF5 \uD3EC\uC158"
+    Type: 0
+    Context1: "\uCCB4\uB825 5\uD68C\uBCF5"
+    CardEffectInfos1:
+    - EventCardEffectType: 6
+      Num: 5
+    Context2: "\uCCB4\uB825 10\uD68C\uBCF5"
+    CardEffectInfos2:
+    - EventCardEffectType: 6
+      Num: 10
+    Context3: "\uCCB4\uB825 15\uD68C\uBCF5"
+    CardEffectInfos3:
+    - EventCardEffectType: 6
+      Num: 15
+    Context6: 
+    EventCardEffectType6: 0
+  - Title: "\uD798\uC758 \uD3EC\uC158"
+    Type: 0
+    Context1: "\uACF5\uACA9\uB825 1\uC99D\uAC00"
+    CardEffectInfos1:
+    - EventCardEffectType: 0
+      Num: 1
+    Context2: "\uACF5\uACA9\uB825 2\uC99D\uAC00"
+    CardEffectInfos2:
+    - EventCardEffectType: 0
+      Num: 2
+    Context3: "\uACF5\uACA9\uB825 3\uC99D\uAC00"
+    CardEffectInfos3:
+    - EventCardEffectType: 0
+      Num: 3
+    Context6: 
+    EventCardEffectType6: 0
+  CardCreatePosition: {x: 0, y: 0, z: 0}
+  DiceCreatePosition: {x: 0, y: 0, z: 0}
