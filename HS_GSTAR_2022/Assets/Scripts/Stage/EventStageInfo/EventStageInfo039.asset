@@ -38,18 +38,14 @@ MonoBehaviour:
     EventCardEffectType6: 0
   - Title: "\uC800\uC8FC\uBC1B\uC740 \uCC3D"
     Type: 1
-    Context1: "\uACF5\uACA9\uB825 3\uAC10\uC18C \uAD00\uD1B5\uB370\uBBF8\uC9C0 2\uAC10\uC18C"
+    Context1: "\uACF5\uACA9\uB825 3\uAC10\uC18C"
     CardEffectInfos1:
     - EventCardEffectType: 1
       Num: 3
-    - EventCardEffectType: 3
-      Num: 2
-    Context2: "\uACF5\uACA9\uB825 5\uAC10\uC18C \uAD00\uD1B5\uB370\uBBF8\uC9C0 3\uAC10\uC18C"
+    Context2: "\uACF5\uACA9\uB825 5\uC99D\uAC00"
     CardEffectInfos2:
     - EventCardEffectType: 0
       Num: 5
-    - EventCardEffectType: 3
-      Num: 3
     Context3: 
     CardEffectInfos3: []
     Context6: 

@@ -22,17 +22,13 @@ MonoBehaviour:
   EventCardInfos:
   - Title: "\uACF0 \uAC00\uC8FD \uD22C\uAD6C"
     Type: 1
-    Context1: "\uBC29\uC5B4\uB825 3\uC99D\uAC00 \uCD5C\uB300 \uCCB4\uB825 3\uC99D\uAC00"
+    Context1: "\uBC29\uC5B4\uB825 3\uC99D\uAC00"
     CardEffectInfos1:
     - EventCardEffectType: 8
       Num: 3
-    - EventCardEffectType: 4
-      Num: 3
-    Context2: "\uBC29\uC5B4\uB825 5\uC99D\uAC00 \uCD5C\uB300 \uCCB4\uB825 5\uC99D\uAC00"
+    Context2: "\uBC29\uC5B4\uB825 5\uC99D\uAC00"
     CardEffectInfos2:
     - EventCardEffectType: 8
-      Num: 5
-    - EventCardEffectType: 4
       Num: 5
     Context3: 
     CardEffectInfos3: []

@@ -40,13 +40,9 @@ MonoBehaviour:
     CardEffectInfos1:
     - EventCardEffectType: 8
       Num: 3
-    - EventCardEffectType: 0
-      Num: 3
     Context2: "\uBC29\uC5B4\uB825 5\uC99D\uAC00 \uACF5\uACA9\uB825 5\uC99D\uAC00"
     CardEffectInfos2:
     - EventCardEffectType: 8
-      Num: 5
-    - EventCardEffectType: 0
       Num: 5
     Context3: 
     CardEffectInfos3: []
@@ -58,13 +54,9 @@ MonoBehaviour:
     CardEffectInfos1:
     - EventCardEffectType: 8
       Num: 3
-    - EventCardEffectType: 0
-      Num: 3
     Context2: "\uBC29\uC5B4\uB825 5\uC99D\uAC00 \uACF5\uACA9\uB825 5\uC99D\uAC00"
     CardEffectInfos2:
     - EventCardEffectType: 8
-      Num: 5
-    - EventCardEffectType: 0
       Num: 5
     Context3: 
     CardEffectInfos3: []

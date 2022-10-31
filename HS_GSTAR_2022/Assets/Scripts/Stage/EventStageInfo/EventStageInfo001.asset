@@ -23,23 +23,17 @@ MonoBehaviour:
   EventCardInfos:
   - Title: "\uB9DD\uB839\uC758 \uAC80"
     Type: 0
-    Context1: "\uACF5\uACA9\uB825 5\uC99D\uAC00 \uCCB4\uB825 5\uB97C \uC783\uB294\uB2E4"
+    Context1: "\uACF5\uACA9\uB825 5\uC99D\uAC00"
     CardEffectInfos1:
     - EventCardEffectType: 0
       Num: 5
-    - EventCardEffectType: 7
-      Num: 5
-    Context2: "\uACF5\uACA9\uB825 7\uC99D\uAC00 \uCCB4\uB825 7\uC744 \uC783\uB294\uB2E4"
+    Context2: "\uACF5\uACA9\uB825 7\uC99D\uAC00"
     CardEffectInfos2:
     - EventCardEffectType: 0
       Num: 7
-    - EventCardEffectType: 7
-      Num: 7
-    Context3: "\uACF5\uACA9\uB825 9\uC99D\uAC00 \uCCB4\uB825 9\uB97C \uC783\uB294\uB2E4"
+    Context3: "\uACF5\uACA9\uB825 9\uC99D\uAC00"
     CardEffectInfos3:
     - EventCardEffectType: 0
-      Num: 9
-    - EventCardEffectType: 7
       Num: 9
     Context6: "\uC9C0\uAE08 \uC774\uB807\uAC8C \uB9D0\uC740 \uD55C\uB2E4"
     EventCardEffectType6: 10
@@ -49,20 +43,14 @@ MonoBehaviour:
     CardEffectInfos1:
     - EventCardEffectType: 8
       Num: 4
-    - EventCardEffectType: 1
-      Num: 2
     Context2: "\uBC29\uC5B4\uB825 6\uC99D\uAC00 \uACF5\uACA9\uB825 3\uAC10\uC18C"
     CardEffectInfos2:
     - EventCardEffectType: 8
       Num: 6
-    - EventCardEffectType: 1
-      Num: 3
     Context3: "\uBC29\uC5B4\uB825 8\uC99D\uAC00 \uACF5\uACA9\uB825 4\uAC10\uC18C"
     CardEffectInfos3:
     - EventCardEffectType: 8
       Num: 8
-    - EventCardEffectType: 1
-      Num: 4
     Context6: 
     EventCardEffectType6: 0
   - Title: "\uB9DD\uB839\uC758 \uD22C\uAD6C"
