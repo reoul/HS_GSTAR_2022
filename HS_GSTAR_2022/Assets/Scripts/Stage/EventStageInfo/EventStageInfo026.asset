@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0ef6cc71ba18ef45b18a3ea08d8d406, type: 3}
   m_Name: EventStageInfo026
   m_EditorClassIdentifier: 
-  Title: "\uBCF4\uBB3C\uC0C1\uC790"
-  Description: "\uB358\uC804\uC744 \uD0D0\uC0C9\uD558\uB358 \uB2F9\uC2E0\uC740 \uBCF4\uBB3C\uC0C1\uC790\uB97C
-    \uBC1C\uACAC\uD558\uC600\uC2B5\uB2C8\uB2E4."
+  Title: "\uBCF4\uBB3C \uC0C1\uC790"
+  Description: "\uB358\uC804\uC744 \uD0D0\uC0C9\uD558\uB358 \uB2F9\uC2E0\uC740 \uBCF4\uBB3C
+    \uC0C1\uC790\uB97C \uBC1C\uACAC\uD558\uC600\uC2B5\uB2C8\uB2E4."
   EventCardInfos:
   - Title: "\uC608\uB9AC\uD55C \uAC80"
     Type: 2

@@ -10,14 +10,29 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0ef6cc71ba18ef45b18a3ea08d8d406, type: 3}
-  m_Name: EventStageInfo030
+  m_Name: EventStageInfo048
   m_EditorClassIdentifier: 
-  Title: "\uC218\uC0C1\uD55C \uBB3C\uC57D"
-  Description: "\uB2F9\uC2E0\uC740 \uC218\uC0C1\uD55C \uC5F0\uAD6C\uC2E4\uC5D0 \uB4E4\uC5B4\uC130\uC2B5\uB2C8\uB2E4.
-    \n\uADF8\uACF3\uC5D0\uC11C \uD55C \uACFC\uD559\uC790\uC640 \uB9C8\uC8FC\uCCE4\uACE0,
-    \n\uACFC\uD559\uC790\uB294 \uBB3C\uC57D \uD558\uB098\uB97C \uAD8C\uD569\uB2C8\uB2E4."
+  Title: "\uAC15\uCCA0 \uB300\uC7A5\uAC04"
+  Description: "\uB2F9\uC2E0\uC740 \uC7AC\uC815\uBE44\uB97C \uC704\uD574 \uB300\uC7A5\uAC04\uC5D0
+    \uBC29\uBB38\uD558\uC600\uC2B5\uB2C8\uB2E4."
   EventCardInfos:
-  - Title: "\uBD84\uB178 \uD3EC\uC158"
+  - Title: "\uD310\uAE08 \uAC11\uC637"
+    Type: 0
+    Context1: "\uBC29\uC5B4\uB825 1\uC99D\uAC00"
+    CardEffectInfos1:
+    - EventCardEffectType: 8
+      Num: 1
+    Context2: "\uBC29\uC5B4\uB825 2\uC99D\uAC00"
+    CardEffectInfos2:
+    - EventCardEffectType: 8
+      Num: 2
+    Context3: "\uBC29\uC5B4\uB825 3\uC99D\uAC00"
+    CardEffectInfos3:
+    - EventCardEffectType: 8
+      Num: 3
+    Context6: 
+    EventCardEffectType6: 0
+  - Title: "\uAC15\uCCA0 \uAC80"
     Type: 0
     Context1: "\uACF5\uACA9\uB825 1\uC99D\uAC00"
     CardEffectInfos1:
@@ -31,20 +46,6 @@ MonoBehaviour:
     CardEffectInfos3:
     - EventCardEffectType: 0
       Num: 3
-    Context6: 
-    EventCardEffectType6: 0
-  - Title: "\uC624\uC5FC\uB428..?"
-    Type: 1
-    Context1: "\uD53C\uD574\uB97C 10\uC785\uC74C"
-    CardEffectInfos1:
-    - EventCardEffectType: 7
-      Num: 10
-    Context2: "\uCCB4\uB825 10\uD68C\uBCF5"
-    CardEffectInfos2:
-    - EventCardEffectType: 6
-      Num: 10
-    Context3: 
-    CardEffectInfos3: []
     Context6: 
     EventCardEffectType6: 0
   CardCreatePosition: {x: 0, y: 0, z: 0}
