@@ -19,6 +19,7 @@ public class BattleManager : Singleton<BattleManager>
         PlayerBattleable = Player.GetComponent<IBattleable>();
         PlayerBattleable.OwnerObj.GetComponent<Player>().Init();
         Debug.Assert(PlayerBattleable != null);
+        Time.timeScale = 1;
     }
 
     /// <summary> 적 설정 </summary>

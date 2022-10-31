@@ -58,18 +58,18 @@ public sealed class Player : MonoBehaviour, IBattleable
     {
         MaxHp = 100;
         Hp = MaxHp;
-        OffensivePower = 2;
-        DefensivePower = 0;
-        PiercingDamage = 2;
+        OffensivePower = 10;
+        DefensivePower = 10;
+        PiercingDamage = 10;
         _animator = GetComponent<Animator>();
-    }
-
-    private void Start()
-    {
         _infoWindow.UpdateHpBar(Hp, MaxHp);
         _infoWindow.UpdateOffensivePowerText(OffensivePower);
         _infoWindow.UpdateDefensivePowerText(DefensivePower);
         _infoWindow.UpdatePiercingDamageText(PiercingDamage);
+    }
+
+    private void Start()
+    {
     }
 
     public void AttackEnemy()

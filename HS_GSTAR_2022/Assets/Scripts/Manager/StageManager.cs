@@ -56,6 +56,7 @@ public class StageManager : Singleton<StageManager>
             
             FadeManager.Instance.FadeInStartEvent.AddListener(() =>
             {
+                _battleStage.gameObject.SetActive(false);
                 _eventStage.InitEvent(eventStageInfo.Title, eventStageInfo.Description);
                 _eventStage.gameObject.SetActive(true);
                 

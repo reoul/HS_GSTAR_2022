@@ -29,9 +29,5 @@ public class BattleStage : Stage
 
     public override void StageExit()
     {
-        CardManager.Instance.RemoveAllCard();
-        DiceManager.Instance.RemoveAllDice();
-        BattleManager.Instance.PlayerBattleable.OwnerObj.SetActive(false);
-        Destroy(this.gameObject);
     }
 }

@@ -113,6 +113,7 @@ public abstract class Enemy : MonoBehaviour, IBattleable
     public void FinishDeathAnimation()
     {
         Destroy(this.gameObject);
-        
+        FadeManager.Instance.StartFadeOut();
+        StageManager.Instance.OpenStageAddListener(StageManager.Instance.GetNextStage());
     }
 }
