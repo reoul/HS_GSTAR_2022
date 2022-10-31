@@ -28,6 +28,12 @@ public abstract class Enemy : MonoBehaviour, IBattleable
         InfoWindow.UpdatePiercingDamageText(PiercingDamage);
     }
 
+    public void AttackPlayer()
+    {
+        BattleManager.Instance.PlayerBattleable.ToDamage(OffensivePower);
+        BattleManager.Instance.PlayerBattleable.ToPiercingDamage(PiercingDamage);
+    }
+
     public void ToDamage(int damage)
     {
         damage = damage >= DefensivePower ? damage - DefensivePower : 0;
