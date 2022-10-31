@@ -6,16 +6,18 @@ using UnityEngine.Assertions;
 
 public class BattleManager : Singleton<BattleManager>
 {
+    public Player Player;
     public IBattleable PlayerBattleable;
     public IBattleable EnemyBattleable;
 
     [SerializeField] private GameObject _playerPrefab;
 
+    public bool FinishAttack;
+
     private void Awake()
     {
-        GameObject playerObj = Instantiate(_playerPrefab, GameObject.Find("Canvas").transform);
-        playerObj.SetActive(false);
-        PlayerBattleable = playerObj.GetComponent<IBattleable>();
+        PlayerBattleable = Player.GetComponent<IBattleable>();
+        PlayerBattleable.OwnerObj.GetComponent<Player>().Init();
         Debug.Assert(PlayerBattleable != null);
     }
 
@@ -26,25 +28,6 @@ public class BattleManager : Singleton<BattleManager>
         EnemyBattleable = battleable;
     }
 
-    /// <summary> 적 제거 </summary>
-    /// <param name="battleable">적 battleable</param>
-    public void RemoveEnemy(IBattleable battleable)
-    {
-        /*Logger.Assert(EnemyBattleables.Remove(battleable));
-        Destroy(battleable.OwnerObj);
-        if (EnemyBattleables.Count == 0)
-        {
-            Logger.Log("모든 적이 제거되었습니다.");
-            // todo : 전투 종료 로직 구현
-            FadeManager.Instance.FadeInStartEvent.AddListener(() =>
-            {
-                StageManager.Instance.OpenStage(FindObjectOfType<Map>(true));
-                GameObject.Find("MapManager").transform.GetChild(0).gameObject.SetActive(true);
-            });
-            FadeManager.Instance.StartFadeOut();
-        }*/
-    }
-
     /// <summary> 전투 시작 </summary>
     public void StartBattle()
     {
@@ -53,24 +36,29 @@ public class BattleManager : Singleton<BattleManager>
 
     private IEnumerator BattleCoroutine()
     {
-        WaitForSeconds waitOneSecond = new WaitForSeconds(1);
         while (true)
         {
+            FinishAttack = false;
             // 플레이어 공격
-            EnemyBattleable.ToDamage(PlayerBattleable.OffensivePower);
-            EnemyBattleable.ToPiercingDamage(PlayerBattleable.PiercingDamage);
+            PlayerBattleable.StartAttackAnimation();
 
-            yield return waitOneSecond;
+            while (!FinishAttack)
+            {
+                yield return new WaitForEndOfFrame();
+            }
             if (EnemyBattleable.Hp == 0)
             {
                 break;
             }
             
+            FinishAttack = false;
             // 적 공격
-            PlayerBattleable.ToDamage(EnemyBattleable.OffensivePower);
-            PlayerBattleable.ToPiercingDamage(EnemyBattleable.PiercingDamage);
+            EnemyBattleable.StartAttackAnimation();
 
-            yield return waitOneSecond;
+            while (!FinishAttack)
+            {
+                yield return new WaitForEndOfFrame();
+            }
             if (PlayerBattleable.Hp == 0)
             {
                 break;

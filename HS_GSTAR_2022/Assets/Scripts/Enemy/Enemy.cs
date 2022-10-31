@@ -8,16 +8,19 @@ public abstract class Enemy : MonoBehaviour, IBattleable
 {
     public GameObject OwnerObj => this.gameObject;
     public abstract string EnemyName { get; }
-    public abstract int MaxHp { get; }
-    public int Hp { get; protected set; }
-    public abstract int OffensivePower { get; protected set; }
-    public abstract int DefensivePower { get; protected set; }
-    public abstract int PiercingDamage { get; protected set; }
+    public abstract int MaxHp { get; set; }
+    public int Hp { get; set; }
+    public abstract int OffensivePower { get; set; }
+    public abstract int DefensivePower { get; set; }
+    public abstract int PiercingDamage { get; set; }
     public InfoWindow InfoWindow { get; set; }
+
+    private Animator _animator;
 
     private void Awake()
     {
         Hp = MaxHp;
+        _animator = GetComponent<Animator>();
     }
 
     private void Start()
@@ -30,8 +33,18 @@ public abstract class Enemy : MonoBehaviour, IBattleable
 
     public void AttackPlayer()
     {
-        BattleManager.Instance.PlayerBattleable.ToDamage(OffensivePower);
-        BattleManager.Instance.PlayerBattleable.ToPiercingDamage(PiercingDamage);
+        IBattleable player = BattleManager.Instance.PlayerBattleable;
+        player.ToDamage(OffensivePower);
+        player.ToPiercingDamage(PiercingDamage);
+
+        if (player.Hp != 0)
+        {
+            player.StartHitAnimation();
+        }
+        else
+        {
+            player.StartDeadAnimation();
+        }
     }
 
     public void ToDamage(int damage)
@@ -69,5 +82,37 @@ public abstract class Enemy : MonoBehaviour, IBattleable
         
         InfoWindow.UpdateHpBar(Hp, MaxHp);
         Logger.Log($"적 {name}에게 {heal} 힐. 현재 체력 : {Hp}", gameObject);
+    }
+    
+    public void StartAttackAnimation()
+    {
+        Logger.Assert(_animator != null);
+        
+        _animator.SetTrigger("Attack");
+    }
+
+    public void StartHitAnimation()
+    {
+        Logger.Assert(_animator != null);
+        
+        _animator.SetTrigger("Hit");
+    }
+
+    public void StartDeadAnimation()
+    {
+        Logger.Assert(_animator != null);
+        
+        _animator.SetTrigger("Death");
+    }
+
+    public void FinishAttackAnimation()
+    {
+        BattleManager.Instance.FinishAttack = true;
+    }
+
+    public void FinishDeathAnimation()
+    {
+        Destroy(this.gameObject);
+        
     }
 }

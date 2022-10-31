@@ -12,41 +12,15 @@ public struct BattleEnemyData
 public class BattleStage : Stage
 {
     public BattleStageInfo BattleStageInfo { get; set; }
+
+    public Transform EnemyCreatePos;
+
+    public InfoWindow EnemyInfoWindow;
     
     public override void StageEnter()
     {
-        Debug.Assert(BattleStageInfo != null);
-
-        // 플레이어 설정
-        GameObject playerObj = BattleManager.Instance.PlayerBattleable.OwnerObj;
-        playerObj.transform.localPosition = BattleStageInfo.PlayerPosition;
-        playerObj.transform.localScale = BattleStageInfo.PlayerScale;
-        playerObj.SetActive(true);
+        //Debug.Assert(BattleStageInfo != null);
         Logger.Log("스테이지 오픈");
-
-        // 영역 설정
-        GameObject BattleAreaObj = GameObject.Find("BattleAreaImg");
-        BattleAreaObj.transform.localPosition = BattleStageInfo.BattleAreaPosition;
-        BattleAreaObj.transform.localScale = BattleStageInfo.BattleAreaScale;
-        BattleAreaObj.GetComponent<RectTransform>().sizeDelta = BattleStageInfo.BattleAreaRect;
-        
-        GameObject.Find("CardParent").transform.localPosition = BattleStageInfo.CardCreatePosition;
-        GameObject.Find("DiceParent").transform.localPosition = BattleStageInfo.DiceCreatePosition;
-        
-        // 적 생성
-        Transform enemyParent = GameObject.Find("EnemyParent").transform;
-        foreach (StageEnemyInfo enemyInfo in BattleStageInfo.StageEnemyInfos)
-        {
-            Debug.Assert(enemyInfo.EnemyPrefab != null);
-            
-            GameObject enemyObj = Instantiate(enemyInfo.EnemyPrefab, enemyParent);
-            enemyObj.transform.localPosition = enemyInfo.Position;
-            
-            BattleManager.Instance.SetEnemy(enemyObj.GetComponent<IBattleable>());
-            Logger.Log($"{enemyObj.name} 적 추가");
-        }
-        
-        BattleManager.Instance.NextTurn();
     }
 
     public override void StageUpdate()

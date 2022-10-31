@@ -7,4 +7,5 @@ public class StageInfo : ScriptableObject
 {
     public BattleStageInfo[] BattleStageInfos;
     public EventStageInfo[] EventStageInfos;
+    public GameObject[] EnemyPrefabs;
 }
