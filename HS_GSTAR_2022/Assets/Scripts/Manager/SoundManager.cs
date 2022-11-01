@@ -21,13 +21,11 @@ public class SoundManager : Singleton<SoundManager>
     }
 
     private Dictionary<string, AudioClip> audioClipsDic;
-    private AudioSource sfxPlayer;
-    private AudioSource bgmPlayer;
+    [SerializeField] private AudioSource sfxPlayer;
+    [SerializeField] private AudioSource bgmPlayer;
 
     void Awake()
     {
-        sfxPlayer = GetComponent<AudioSource>();
-
         SetupBGM();
         SetVolumeBGM(0.5f);
 
@@ -63,7 +61,7 @@ public class SoundManager : Singleton<SoundManager>
         }
         else
         {
-            Debug.LogWarning($"[{bgmName}] 음악이 없습니다.");
+            Logger.LogWarning($"[{bgmName}] 음악이 없습니다.");
         }
     }
 
@@ -82,7 +80,7 @@ public class SoundManager : Singleton<SoundManager>
         {
             if (audioClipsDic.ContainsKey(sfxName) == false || sfxPlayer.GetComponent<AudioSource>().isPlaying)
             {
-                Debug.Log(sfxName + " 이 포함된 오디오가 없습니다.");
+                Logger.Log(sfxName + " 이 포함된 오디오가 없습니다.");
                 return;
             }
             else
@@ -90,7 +88,7 @@ public class SoundManager : Singleton<SoundManager>
         }
         catch (System.Exception)
         {
-            Debug.Log("error");
+            Logger.LogError("error");
         }
     }
 
