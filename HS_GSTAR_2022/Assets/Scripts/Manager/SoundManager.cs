@@ -12,56 +12,31 @@ public class SoundManager : Singleton<SoundManager>
     AudioClip BGMClip; // 배경 소스 지정.
 
     [SerializeField]
-    AudioClip[] audioClip; // 효과음 소스들 지정.
+    AudioClip[] sfxClip; // 효과음 소스들 지정.
+    
     public struct BgmType
     {
         public string name;
         public AudioClip audio;
     }
 
-    Dictionary<string, AudioClip> audioClipsDic;
-    public AudioSource sfxPlayer;
-    public AudioSource sfxPlayer2;
-    public AudioSource sfxPlayer3;
-    public AudioSource sfxPlayer4;
-    public AudioSource sfxPlayer5;
-    AudioSource StepPlayer;
-    AudioSource bgmPlayer;
-
-
+    private Dictionary<string, AudioClip> audioClipsDic;
+    private AudioSource sfxPlayer;
+    private AudioSource bgmPlayer;
 
     void Awake()
     {
         sfxPlayer = GetComponent<AudioSource>();
-        GameObject sfx2 = transform.GetChild(0).gameObject;
-        sfxPlayer2 = sfx2.GetComponent<AudioSource>();
-        GameObject sfx3 = transform.GetChild(1).gameObject;
-        sfxPlayer3 = sfx3.GetComponent<AudioSource>();
-        GameObject sfx4 = transform.GetChild(2).gameObject;
-        sfxPlayer4 = sfx4.GetComponent<AudioSource>();
-        GameObject sfx5 = transform.GetChild(2).gameObject;
-        sfxPlayer5 = sfx5.GetComponent<AudioSource>();
-
 
         SetupBGM();
         SetVolumeBGM(0.5f);
-        FootStepSetup();
 
         // 딕셔너리로 오디오클립 배열에서 원하는 오디오를 탐색
         audioClipsDic = new Dictionary<string, AudioClip>();
-        foreach (AudioClip a in audioClip)
+        foreach (AudioClip a in sfxClip)
         {
             audioClipsDic.Add(a.name, a);
         }
-    }
-
-    void FootStepSetup()
-    {
-        GameObject child = new GameObject("FootStep");
-        child.transform.SetParent(transform);
-        StepPlayer = child.AddComponent<AudioSource>();
-        StepPlayer.volume = masterVolumeSFX;
-        StepPlayer.loop = true;
     }
 
     //배경음악 세팅
@@ -77,18 +52,18 @@ public class SoundManager : Singleton<SoundManager>
         bgmPlayer.loop = true;
     }
 
-    public void BGMChange(string bgm_name, float bgm_volume)
+    public void BGMChange(string bgmName, float bgmVolume)
     {
-        if (audioClipsDic.ContainsKey(bgm_name))
+        if (audioClipsDic.ContainsKey(bgmName))
         {
-            bgmPlayer.clip = audioClipsDic[bgm_name];
-            bgmPlayer.volume = bgm_volume;
+            bgmPlayer.clip = audioClipsDic[bgmName];
+            bgmPlayer.volume = bgmVolume;
             bgmPlayer.loop = true;
             bgmPlayer.Play();
         }
         else
         {
-            Debug.LogWarning($"[{bgm_name}] 음악이 없습니다.");
+            Debug.LogWarning($"[{bgmName}] 음악이 없습니다.");
         }
     }
 
@@ -101,97 +76,22 @@ public class SoundManager : Singleton<SoundManager>
     }
 
     // 효과음 재생
-    public void PlaySound(string sfx_name, float sfx_volume = 1f)
+    public void PlaySound(string sfxName, float sfxVolume = 1f)
     {
         try
         {
-            if (audioClipsDic.ContainsKey(sfx_name) == false || sfxPlayer.GetComponent<AudioSource>().isPlaying)
+            if (audioClipsDic.ContainsKey(sfxName) == false || sfxPlayer.GetComponent<AudioSource>().isPlaying)
             {
-                Debug.Log(sfx_name + " 이 포함된 오디오가 없습니다.");
+                Debug.Log(sfxName + " 이 포함된 오디오가 없습니다.");
                 return;
             }
             else
-                sfxPlayer.PlayOneShot(audioClipsDic[sfx_name], sfx_volume * masterVolumeSFX);
+                sfxPlayer.PlayOneShot(audioClipsDic[sfxName], sfxVolume * masterVolumeSFX);
         }
         catch (System.Exception)
         {
             Debug.Log("error");
         }
-    }
-
-
-    public void PlaySoundSecond(string sfx_name2, float sfx_volume2 = 1f)
-    {
-        try
-        {
-            if (audioClipsDic.ContainsKey(sfx_name2) == false && sfxPlayer2.GetComponent<AudioSource>().isPlaying)
-            {
-                Debug.Log(sfx_name2 + " 이 포함된 오디오가 없습니다.");
-                return;
-            }
-            else
-                sfxPlayer2.PlayOneShot(audioClipsDic[sfx_name2], sfx_volume2 * masterVolumeSFX);
-        }
-        catch (System.Exception)
-        {
-            Debug.Log("error");
-        }
-    }
-
-    public void PlaySoundThird(string sfx_name3, float sfx_volume3 = 1f)
-    {
-        try
-        {
-            if (audioClipsDic.ContainsKey(sfx_name3) == false && sfxPlayer3.GetComponent<AudioSource>().isPlaying)
-            {
-                Debug.Log(sfx_name3 + " 이 포함된 오디오가 없습니다.");
-                return;
-            }
-            else
-                sfxPlayer3.PlayOneShot(audioClipsDic[sfx_name3], sfx_volume3 * masterVolumeSFX);
-        }
-        catch (System.Exception)
-        {
-            Debug.Log("error");
-        }
-    }
-
-    public void PlaySoundFourth(string sfx_name4, float sfx_volume4 = 1f)
-    {
-        try
-        {
-            if (audioClipsDic.ContainsKey(sfx_name4) == false && sfxPlayer4.GetComponent<AudioSource>().isPlaying)
-            {
-                Debug.Log(sfx_name4 + " 이 포함된 오디오가 없습니다.");
-                return;
-            }
-            else
-                sfxPlayer4.PlayOneShot(audioClipsDic[sfx_name4], sfx_volume4 * masterVolumeSFX);
-        }
-        catch (System.Exception)
-        {
-            Debug.Log("error");
-        }
-
-    }
-
-    public void PlaySoundFive(string sfx_name5, float sfx_volume5 = 1f)
-    {
-        try
-        {
-            if (audioClipsDic.ContainsKey(sfx_name5) == false || sfxPlayer5.GetComponent<AudioSource>().isPlaying)
-            {
-                Debug.Log(sfx_name5 + " 이 포함된 오디오가 없습니다.");
-                return;
-            }
-            else
-                sfxPlayer5.PlayOneShot(audioClipsDic[sfx_name5], sfx_volume5 * masterVolumeSFX);
-        }
-        catch (System.Exception)
-        {
-            Debug.Log("error");
-        }
-
     }
 
     // 배경음악 종료
@@ -201,21 +101,15 @@ public class SoundManager : Singleton<SoundManager>
     }
 
     // 효과음 볼륨 조절
-    public void SetVolumeSFX(float a_volume)
+    public void SetVolumeSFX(float volume)
     {
-        masterVolumeSFX = a_volume;
+        masterVolumeSFX = volume;
     }
 
     // 배경 볼륨 조절
-    public void SetVolumeBGM(float a_volume)
+    public void SetVolumeBGM(float volume)
     {
-        masterVolumeBGM = a_volume;
+        masterVolumeBGM = volume;
         bgmPlayer.volume = masterVolumeBGM;
     }
-
-    private void Update()
-    {
-
-    }
-
 }
