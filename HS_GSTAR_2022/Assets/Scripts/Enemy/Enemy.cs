@@ -37,6 +37,8 @@ public abstract class Enemy : MonoBehaviour, IBattleable
         player.ToDamage(OffensivePower);
         player.ToPiercingDamage(PiercingDamage);
 
+        SoundManager.Instance.PlaySound("MP_AttackSound");
+
         if (player.Hp != 0)
         {
             player.StartHitAnimation();

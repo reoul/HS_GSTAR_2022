@@ -54,6 +54,10 @@ public class SoundManager : Singleton<SoundManager>
     {
         if (audioClipsDic.ContainsKey(bgmName))
         {
+            if (bgmPlayer.clip == audioClipsDic[bgmName])
+            {
+                return;
+            }
             bgmPlayer.clip = audioClipsDic[bgmName];
             bgmPlayer.volume = bgmVolume;
             bgmPlayer.loop = true;
@@ -78,7 +82,7 @@ public class SoundManager : Singleton<SoundManager>
     {
         try
         {
-            if (audioClipsDic.ContainsKey(sfxName) == false || sfxPlayer.GetComponent<AudioSource>().isPlaying)
+            if (audioClipsDic.ContainsKey(sfxName) == false /*|| sfxPlayer.GetComponent<AudioSource>().isPlaying*/)
             {
                 Logger.Log(sfxName + " 이 포함된 오디오가 없습니다.");
                 return;

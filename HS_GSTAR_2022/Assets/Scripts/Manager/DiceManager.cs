@@ -14,6 +14,7 @@ public class DiceManager : Singleton<DiceManager>
     /// <param name="createDelay">주사위간의 생성 딜레이 시간</param>
     public void CreateDices(int diceCount, float createDelay = 0)
     {
+        SoundManager.Instance.PlaySound("DiceCreate");
         StartCoroutine(CreateDicesCoroutine(diceCount, createDelay));
     }
 

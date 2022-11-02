@@ -78,6 +78,8 @@ public sealed class Player : MonoBehaviour, IBattleable
         enemy.ToDamage(OffensivePower);
         enemy.ToPiercingDamage(PiercingDamage);
 
+        SoundManager.Instance.PlaySound("MP_AttackSound");
+
         if (enemy.Hp != 0)
         {
             enemy.StartHitAnimation();

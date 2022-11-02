@@ -82,5 +82,14 @@ public class ValueUpdater : MonoBehaviour
                 defVal.targetVal += val;
                 break;
         }
+
+        if(val > 0)
+        {
+            SoundManager.Instance.PlaySound("StatU");
+        }
+        else
+        {
+            SoundManager.Instance.PlaySound("StatD");
+        }
     }
 }

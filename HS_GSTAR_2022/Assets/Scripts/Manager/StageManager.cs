@@ -48,6 +48,7 @@ public class StageManager : Singleton<StageManager>
             {
                 BattleManager.Instance.StartBattle();
             });
+            SoundManager.Instance.BGMChange("Event", 1);
         }
         else
         {
@@ -77,6 +78,7 @@ public class StageManager : Singleton<StageManager>
                 
                 DiceManager.Instance.CreateDices(createdCardCount, 0.2f);
             });
+            SoundManager.Instance.BGMChange("BattleSound2", 1);
         }
     }
     
