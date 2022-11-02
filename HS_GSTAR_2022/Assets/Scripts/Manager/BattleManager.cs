@@ -6,20 +6,19 @@ using UnityEngine.Assertions;
 
 public class BattleManager : Singleton<BattleManager>
 {
-    public Player Player;
-    public IBattleable PlayerBattleable;
-    public IBattleable EnemyBattleable;
-
-    [SerializeField] private GameObject _playerPrefab;
-
-    public bool FinishAttack;
+    [SerializeField] private Player _player;
+    public IBattleable PlayerBattleable { get; private set; }
+    public IBattleable EnemyBattleable { get; private set; }
+    
+    /// <summary> 공격 애니메이션이 끝났는지 여부 </summary>
+    public bool FinishAttack { get; set; }
 
     private void Awake()
     {
-        PlayerBattleable = Player.GetComponent<IBattleable>();
-        PlayerBattleable.OwnerObj.GetComponent<Player>().Init();
-        Debug.Assert(PlayerBattleable != null);
-        Time.timeScale = 1;
+        Debug.Assert(_player != null);
+        
+        PlayerBattleable = _player.GetComponent<IBattleable>();
+        _player.Init();
     }
 
     /// <summary> 적 설정 </summary>
@@ -42,10 +41,10 @@ public class BattleManager : Singleton<BattleManager>
             FinishAttack = false;
             // 플레이어 공격
             PlayerBattleable.StartAttackAnimation();
-
+            
             while (!FinishAttack)
             {
-                yield return new WaitForEndOfFrame();
+                yield return null;
             }
             if (EnemyBattleable.Hp == 0)
             {
@@ -54,11 +53,12 @@ public class BattleManager : Singleton<BattleManager>
             
             FinishAttack = false;
             // 적 공격
+            Logger.Log("적 공격 시작");
             EnemyBattleable.StartAttackAnimation();
 
             while (!FinishAttack)
             {
-                yield return new WaitForEndOfFrame();
+                yield return null;
             }
             if (PlayerBattleable.Hp == 0)
             {

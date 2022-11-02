@@ -1,30 +1,28 @@
-using System.Diagnostics.CodeAnalysis;
-using TMPro;
+using System;
 using UnityEngine;
-using UnityEngine.Assertions;
+using TMPro;
 
 public abstract class Card : OverlayBase
 {
-    /// <summary> 카드 소유주 게임오브젝트 </summary>
-    public GameObject OwnerObj { get; set; }
+    [SerializeField] private TMP_Text _nameText;
+    [SerializeField] private TMP_Text _contextText;
+    [SerializeField] private GameObject _cardShowObj;
+    [SerializeField] private Animator _cardEffectAnimator;
     
-    private TMP_Text _nameText;
-    private TMP_Text _contextText;
-    private GameObject _cardShowObj;
-    private Animator _cardEffectAnimator;
-    
+    /// <summary> 카드 이름 반환 </summary>
+    /// <returns>카드 이름</returns>
     public abstract string GetName();
+    
+    /// <summary> 발동 효과 설명 반환 </summary>
+    /// <returns>발동 효과 설명</returns>
     public abstract string GetDescription();
+    
+    /// <summary> 카드 효과 사용 </summary>
+    /// <param name="dice">주사위</param>
     public abstract void Use(Dice dice);
-
 
     private void Awake()
     {
-        Debug.Assert(GetComponent<CardSettor>() != null);
-        _nameText = GetComponent<CardSettor>().NameText;
-        _contextText = GetComponent<CardSettor>().ContextText;
-        _cardShowObj = GetComponent<CardSettor>().CardShowObj;
-        _cardEffectAnimator = GetComponent<CardSettor>().CardEffectAnimator;
         _cardShowObj.SetActive(false);
     }
 
@@ -60,13 +58,63 @@ public abstract class Card : OverlayBase
         Logger.Log($"{GetName()}의 오버레이를 숨김");
     }
 
-    /// <summary> 카드 소유주의 IBattleable를 반환 </summary>
-    /// <returns>카드 소유주의 IBattleable</returns>
-    public IBattleable GetOwnerBattleable()
+    /// <summary> 효과 적용 </summary>
+    /// <param name="effectType">효과 타입</param>
+    /// <param name="num">수치</param>
+    protected void ApplyEffect(EventCardEffectType effectType, int num)
     {
-        Debug.Assert(OwnerObj != null);
-        IBattleable ownerBattleable = OwnerObj.GetComponent<IBattleable>();
-        Debug.Assert(ownerBattleable != null);
-        return ownerBattleable;
+        IBattleable player = BattleManager.Instance.PlayerBattleable;
+        ValueUpdater valueUpdater = FindObjectOfType<Player>(true).ValueUpdater;
+        
+        Debug.Assert(player != null);
+        Debug.Assert(valueUpdater != null);
+        
+        switch (effectType)
+        {
+            case EventCardEffectType.AddOffensivePower:
+                player.OffensivePower += num;
+                valueUpdater.AddVal(num, ValueUpdater.valType.pow);
+                break;
+            case EventCardEffectType.SubOffensivePower:
+                player.OffensivePower -= num;
+                valueUpdater.AddVal(-num, ValueUpdater.valType.pow);
+                break;
+            case EventCardEffectType.AddPiercingDamage:
+                player.PiercingDamage += num;
+                valueUpdater.AddVal(num, ValueUpdater.valType.piercing);
+                break;
+            case EventCardEffectType.SubPiercingDamage:
+                player.PiercingDamage -= num;
+                valueUpdater.AddVal(-num, ValueUpdater.valType.piercing);
+                break;
+            case EventCardEffectType.AddMaxHp:
+                player.MaxHp += num;
+                player.InfoWindow.UpdateHpBar(player.Hp, player.MaxHp);
+                break;
+            case EventCardEffectType.SubMaxHp:
+                player.MaxHp -= num;
+                player.InfoWindow.UpdateHpBar(player.Hp, player.MaxHp);
+                break;
+            case EventCardEffectType.AddHp:
+                player.ToHeal(num);
+                player.InfoWindow.UpdateHpBar(player.Hp, player.MaxHp);
+                break;
+            case EventCardEffectType.SubHp:
+                player.ToPiercingDamage(num);
+                player.InfoWindow.UpdateHpBar(player.Hp, player.MaxHp);
+                break;
+            case EventCardEffectType.AddDefensivePower:
+                player.DefensivePower += num;
+                valueUpdater.AddVal(num, ValueUpdater.valType.def);
+                break;
+            case EventCardEffectType.SubDefensivePower:
+                player.DefensivePower -= num;
+                valueUpdater.AddVal(-num, ValueUpdater.valType.def);
+                break;
+            case EventCardEffectType.NoEffect:
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 }

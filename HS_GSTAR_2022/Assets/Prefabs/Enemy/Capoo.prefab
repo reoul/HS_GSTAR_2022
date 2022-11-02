@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5690635501145629382}
-  - component: {fileID: 3723722869301374344}
   - component: {fileID: 3186204418735259927}
   - component: {fileID: 4316949595268259350}
   - component: {fileID: 509089980494768495}
+  - component: {fileID: 1586145359823296422}
   m_Layer: 5
   m_Name: Capoo
   m_TagString: Enemy
@@ -40,20 +40,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -99.900024}
   m_SizeDelta: {x: 190, y: 185}
   m_Pivot: {x: 0.5, y: 0.32}
---- !u!114 &3723722869301374344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5690635501145629383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 320ce929acba8f142a9ad05b459e2986, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthText: {fileID: 0}
-  _shieldText: {fileID: 0}
 --- !u!222 &3186204418735259927
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -112,3 +98,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1586145359823296422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690635501145629383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adaa4bbafd5906046b56bdfacff44b79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

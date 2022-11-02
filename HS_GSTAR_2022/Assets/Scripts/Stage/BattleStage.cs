@@ -17,17 +17,26 @@ public class BattleStage : Stage
 
     public InfoWindow EnemyInfoWindow;
     
+    public bool IsFinishBattle { get; set; }
+
+    private float _battleTime;
+    
     public override void StageEnter()
     {
-        //Debug.Assert(BattleStageInfo != null);
         Logger.Log("스테이지 오픈");
+        Time.timeScale = 1;
+        _battleTime = 0;
     }
 
     public override void StageUpdate()
     {
+        //_battleTime += Time.deltaTime;
+        //Time.timeScale = 1 + Mathf.Min(_battleTime, 3f);
     }
 
     public override void StageExit()
     {
+        Time.timeScale = 1;
+        _battleTime = 0;
     }
 }

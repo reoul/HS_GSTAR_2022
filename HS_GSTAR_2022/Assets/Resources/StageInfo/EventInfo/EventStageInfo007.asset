@@ -48,5 +48,3 @@ MonoBehaviour:
     CardEffectInfos3: []
     Context6: "\uCD5C\uB300\uCCB4\uB825 N\uAC10\uC18C"
     EventCardEffectType6: 5
-  CardCreatePosition: {x: 0, y: 0, z: 0}
-  DiceCreatePosition: {x: 0, y: 0, z: 0}

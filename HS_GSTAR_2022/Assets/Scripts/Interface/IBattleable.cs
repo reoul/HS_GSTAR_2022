@@ -2,11 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ECrowdControl
-{
-    Poison
-}
-
 public interface IBattleable
 {
     GameObject OwnerObj { get; }
@@ -39,11 +34,6 @@ public interface IBattleable
 
     /// <summary> 방어력 설정 </summary>
     void SetDefensivePower(int defensivePower);
-
-    /// <summary> 상태이상을 준다 </summary>
-    /// <param name="cc">상태이상 타입</param>
-    /// <param name="coefficient">상태이상 계수</param>
-    void ToCC(ECrowdControl cc, int coefficient);
 
     /// <summary> 체력을 회복한다 </summary>
     /// <param name="heal">힐</param>

@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum StageType
+{
+    Event,
+    Battle
+}
+
 public class MapManager : MonoBehaviour
 {
-    public enum StageType { Event, Battle }
-
     public struct StageInfo
     {
         public StageType type;
@@ -15,7 +19,7 @@ public class MapManager : MonoBehaviour
         public StageInfo(StageType initType, Transform parent, Vector3 createPos)
         {
             type = initType;
-            if(type == StageType.Event)
+            if (type == StageType.Event)
             {
                 mapIcon = GameObject.Instantiate(Resources.Load<GameObject>("EventMapIcon"), parent);
             }
@@ -23,6 +27,7 @@ public class MapManager : MonoBehaviour
             {
                 mapIcon = GameObject.Instantiate(Resources.Load<GameObject>("BattleMapIcon"), parent);
             }
+
             mapIcon.transform.localPosition = createPos;
         }
     }
@@ -31,8 +36,7 @@ public class MapManager : MonoBehaviour
 
     private float IconWidth;
 
-    [SerializeField]
-    Transform createPos;
+    [SerializeField] Transform createPos;
 
     private void Awake()
     {
@@ -40,15 +44,15 @@ public class MapManager : MonoBehaviour
         IconWidth = Resources.Load<GameObject>("EventMapIcon").GetComponent<Image>().rectTransform.sizeDelta.x;
     }
 
-    public void addStage(StageType type)
+    public void AddStage(StageType type)
     {
         mapQueue.Enqueue(new StageInfo(type, this.transform, createPos.localPosition));
         UpdateIconPosition();
     }
 
-    public void subStage()
+    public void SubStage()
     {
-        if(mapQueue.TryDequeue(out StageInfo result))
+        if (mapQueue.TryDequeue(out StageInfo result))
         {
             Destroy(result.mapIcon);
             UpdateIconPosition();
@@ -58,11 +62,11 @@ public class MapManager : MonoBehaviour
     private void UpdateIconPosition()
     {
         Vector3 lastPos = transform.position;
-        foreach(StageInfo value in mapQueue)
+        foreach (StageInfo value in mapQueue)
         {
             value.mapIcon.GetComponent<IconMover>().targetPos = lastPos;
 
-            lastPos += new Vector3(IconWidth + IconWidth *0.5f, 0, 0);
+            lastPos += new Vector3(IconWidth + IconWidth * 0.5f, 0, 0);
         }
     }
 
@@ -70,15 +74,15 @@ public class MapManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.A))
         {
-            addStage(StageType.Event);
+            AddStage(StageType.Event);
         }
         else if (Input.GetKeyDown(KeyCode.S))
         {
-            addStage(StageType.Battle);
+            AddStage(StageType.Battle);
         }
         else if (Input.GetKeyDown(KeyCode.Space))
         {
-            subStage();
+            SubStage();
         }
     }
 }

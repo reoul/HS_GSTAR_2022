@@ -31,6 +31,14 @@ public enum EventCardType
     [InspectorName("N")] Six
 }
 
+public enum EventRatingType
+{
+    [InspectorName("나쁜")] Bad,
+    [InspectorName("레어")] Rare,
+    [InspectorName("에픽")] Epic,
+    [InspectorName("레전드리")] Legendary
+}
+
 #if UNITY_EDITOR
 [CustomPropertyDrawer(typeof(EventCardEffectInfo))]
 public class EventCardEffectInfoDrawer : PropertyDrawer
@@ -177,11 +185,13 @@ public class EventCardInfoDrawer : PropertyDrawer
                     throw new ArgumentOutOfRangeException();
             }
 
+
             EditorGUILayout.Space();
             EditorGUILayout.Space();
 
             //EditorGUI.indentLevel = indent;
             EditorGUI.indentLevel = oldIndentLevel;
+
             EditorGUILayout.EndVertical();
         }
     }
@@ -196,12 +206,13 @@ public class EventCardInfoDrawer : PropertyDrawer
             SerializedProperty property = list.GetArrayElementAtIndex(i);
             SerializedProperty enumProperty = property.FindPropertyRelative("EventCardEffectType");
             SerializedProperty numProperty = property.FindPropertyRelative("Num");
-            
+
             string labelName = $"효과{i + 1} : {enumProperty.enumNames[enumProperty.enumValueIndex]}";
             if (enumProperty.enumValueIndex != (int) EventCardEffectType.NoEffect) // 효과 없음이면 값 안뜨게 설정
             {
                 labelName += $"  [{numProperty.intValue.ToString()}]";
             }
+
             EditorGUILayout.PropertyField(property, new GUIContent(labelName));
         }
     }
@@ -260,9 +271,8 @@ public class EventStageInfoInspector : Editor
         GuiLine();
         EditorGUILayout.Space();
         EditorGUILayout.Space();
-
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("CardCreatePosition"), new GUIContent("카드 생성 위치"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("DiceCreatePosition"), new GUIContent("주사위 생성 위치"));
+        
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("ratingType"), new GUIContent("등급 타입"));
 
         serializedObject.ApplyModifiedProperties();
 
@@ -303,7 +313,6 @@ public class EventStageInfo : ScriptableObject
     [TextArea(5, 15)] public string Description;
 
     public EventCardInfo[] EventCardInfos;
-
-    public Vector3 CardCreatePosition;
-    public Vector3 DiceCreatePosition;
+    
+    public EventRatingType ratingType;
 }

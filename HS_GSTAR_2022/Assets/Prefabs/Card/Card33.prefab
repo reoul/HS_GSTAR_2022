@@ -550,10 +550,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8769601048438688860}
   - component: {fileID: 8769601048438688856}
-  - component: {fileID: 8769601048438688858}
   - component: {fileID: 7219705540996032825}
+  - component: {fileID: 5933899612638258975}
   m_Layer: 8
-  m_Name: Card
+  m_Name: Card33
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -589,23 +589,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8769601048438688861}
   m_CullTransparentMesh: 1
---- !u!114 &8769601048438688858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8769601048438688861}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5aa4cd50fd397b48b2be77e8c87340c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NameText: {fileID: 1623280596}
-  ContextText: {fileID: 277632125}
-  CardShowObj: {fileID: 8769601048086299639}
-  CardEffectAnimator: {fileID: 1885362945}
-  CardCode: 
 --- !u!65 &7219705540996032825
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -619,3 +602,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 225, y: 330, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5933899612638258975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8769601048438688861}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f946daae2f20f346833315d4fb97e45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nameText: {fileID: 1623280596}
+  _contextText: {fileID: 277632125}
+  _cardShowObj: {fileID: 8769601048086299639}
+  _cardEffectAnimator: {fileID: 1885362945}
+  EffectInfoList123: []
+  EffectInfoList456: []

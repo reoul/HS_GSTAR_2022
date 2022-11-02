@@ -1,12 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public sealed class Player : MonoBehaviour, IBattleable
 {
     public GameObject OwnerObj => this.gameObject;
 
     private int _maxHp;
-
     public int MaxHp
     {
         get { return _maxHp; }
@@ -16,25 +16,29 @@ public sealed class Player : MonoBehaviour, IBattleable
             Hp = _maxHp > Hp ? Hp : MaxHp;
         }
     }
-
+    
+    private int _hp;
     public int Hp
     {
         get => _hp;
         set => _hp = value > 0 ? value : 0;
     }
-
+    
+    private int _offensivePower;
     public int OffensivePower
     {
         get => _offensivePower;
         set => _offensivePower = value > 0 ? value : 0;
     }
-
+    
+    private int _defensivePower;
     public int DefensivePower
     {
         get => _defensivePower;
         set => _defensivePower = value > 0 ? value : 0;
     }
 
+    private int _piercingDamage;
     public int PiercingDamage
     {
         get => _piercingDamage;
@@ -43,16 +47,14 @@ public sealed class Player : MonoBehaviour, IBattleable
 
     [SerializeField] private InfoWindow _infoWindow;
     private Animator _animator;
-    private int _hp;
-    private int _offensivePower;
-    private int _defensivePower;
-    private int _piercingDamage;
 
     public InfoWindow InfoWindow
     {
         get { return _infoWindow; }
         set { _infoWindow = value; }
     }
+
+    public ValueUpdater ValueUpdater { get; private set; }
 
     public void Init()
     {
@@ -66,12 +68,10 @@ public sealed class Player : MonoBehaviour, IBattleable
         _infoWindow.UpdateOffensivePowerText(OffensivePower);
         _infoWindow.UpdateDefensivePowerText(DefensivePower);
         _infoWindow.UpdatePiercingDamageText(PiercingDamage);
+        ValueUpdater = FindObjectOfType<ValueUpdater>(true);
     }
 
-    private void Start()
-    {
-    }
-
+    /// <summary> 공격 애니메이션에서 호출 (삭제 금지) </summary>
     public void AttackEnemy()
     {
         IBattleable enemy = BattleManager.Instance.EnemyBattleable;
@@ -120,11 +120,6 @@ public sealed class Player : MonoBehaviour, IBattleable
         Logger.Log($"플레이어 방어력 {defensivePower}로 설정됨", gameObject);
     }
 
-    public void ToCC(ECrowdControl cc, int coefficient)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public void ToHeal(int heal)
     {
         Logger.Assert(_infoWindow != null);
@@ -155,16 +150,17 @@ public sealed class Player : MonoBehaviour, IBattleable
 
         _animator.SetTrigger("Death");
     }
-    
+
+    /// <summary> 공격 애니메이션 끝났을 때 호출 (삭제 금지) </summary>
     public void FinishAttackAnimation()
     {
         BattleManager.Instance.FinishAttack = true;
     }
 
+    /// <summary> Death 애니메이션 끝났을 때 호출 (삭제 금지) </summary>
     public void FinishDeathAnimation()
     {
-        Destroy(this.gameObject);
-        FadeManager.Instance.StartFadeOut();
-        StageManager.Instance.OpenStageAddListener(StageManager.Instance.GetNextStage());
+        Destroy(gameObject);
+        SceneManager.LoadScene(0);
     }
 }

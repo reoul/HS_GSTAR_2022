@@ -55,7 +55,7 @@ public class FadeManager : Singleton<FadeManager>
             IntroObj.SetActive(false);
         });
         StartFadeOut();
-        StageManager.Instance.OpenStageAddListener(StageManager.Instance.GetNextStage());
+        StageManager.Instance.SetFadeEvent(StageManager.Instance.NextStageType);
     }
 
     /// <summary> 밝은 화면에서 서서히 어두어짐 </summary>

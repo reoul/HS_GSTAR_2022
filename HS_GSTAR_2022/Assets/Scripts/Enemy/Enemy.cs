@@ -4,15 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public abstract class Enemy : MonoBehaviour, IBattleable
+public sealed class Enemy : MonoBehaviour, IBattleable
 {
     public GameObject OwnerObj => this.gameObject;
-    public abstract string EnemyName { get; }
-    public abstract int MaxHp { get; set; }
+    public string EnemyName { get; }
+    public int MaxHp { get; set; }
     public int Hp { get; set; }
-    public abstract int OffensivePower { get; set; }
-    public abstract int DefensivePower { get; set; }
-    public abstract int PiercingDamage { get; set; }
+    public int OffensivePower { get; set; }
+    public int DefensivePower { get; set; }
+    public int PiercingDamage { get; set; }
     public InfoWindow InfoWindow { get; set; }
 
     private Animator _animator;
@@ -73,11 +73,6 @@ public abstract class Enemy : MonoBehaviour, IBattleable
         Logger.Log($"적 {name}의 방어력 {defensivePower}로 설정됨", gameObject);
     }
 
-    public void ToCC(ECrowdControl cc, int coefficient)
-    {
-        throw new System.NotImplementedException();
-    }
-
     public void ToHeal(int heal)
     {
         Hp = Hp + heal < MaxHp ? Hp + heal : MaxHp;
@@ -116,6 +111,6 @@ public abstract class Enemy : MonoBehaviour, IBattleable
     {
         Destroy(this.gameObject);
         FadeManager.Instance.StartFadeOut();
-        StageManager.Instance.OpenStageAddListener(StageManager.Instance.GetNextStage());
+        StageManager.Instance.SetFadeEvent(StageManager.Instance.NextStageType);
     }
 }
