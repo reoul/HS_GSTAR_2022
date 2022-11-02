@@ -39,7 +39,10 @@ public class StageManager : Singleton<StageManager>
         _enemyInfoList = Resources.LoadAll<EnemyInfo>("StageInfo/EnemyInfo");
 
         _stageQueue = new Queue<StageType>();
+    }
 
+    private void Start()
+    {
         SetRandomStage();
     }
 
