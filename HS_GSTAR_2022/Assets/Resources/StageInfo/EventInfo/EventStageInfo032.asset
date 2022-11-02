@@ -19,7 +19,7 @@ MonoBehaviour:
     \uD574\uCE58\uC6B0\uB294 \uC870\uAC74\uC73C\uB85C \n\uC5F0\uAE08\uC220\uC0AC\uC758
     \uBB3C\uC57D\uC744 \uBC1B\uC558\uC2B5\uB2C8\uB2E4."
   EventCardInfos:
-  - Title: 
+  - Title: "\uD798\uC758 \uBB3C\uC57D"
     Type: 0
     Context1: "\uAD00\uD1B5 \uB370\uBBF8\uC9C0 3\uC99D\uAC00"
     CardEffectInfos1:
@@ -67,5 +67,4 @@ MonoBehaviour:
       Num: 10
     Context6: 
     EventCardEffectType6: 0
-  CardCreatePosition: {x: 0, y: 0, z: 0}
-  DiceCreatePosition: {x: 0, y: 0, z: 0}
+  ratingType: 2

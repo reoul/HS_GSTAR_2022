@@ -37,5 +37,4 @@ MonoBehaviour:
     CardEffectInfos3: []
     Context6: "N\uC758 \uD53C\uD574\uB97C \uC785\uC74C"
     EventCardEffectType6: 7
-  CardCreatePosition: {x: 0, y: 0, z: 0}
-  DiceCreatePosition: {x: 0, y: 0, z: 0}
+  ratingType: 1

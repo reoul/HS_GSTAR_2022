@@ -19,31 +19,38 @@ MonoBehaviour:
   EventCardInfos:
   - Title: "\uB2EC\uC778\uC758 \uAC00\uB974\uCE68"
     Type: 1
-    Context1: "\uACF5\uACA9\uB825 5\uC99D\uAC00"
+    Context1: "\uACF5\uACA9\uB825 5\uC99D\uAC00, \uCCB4\uB825 2\uAC10\uC18C"
     CardEffectInfos1:
     - EventCardEffectType: 0
       Num: 5
-    Context2: "\uACF5\uACA9\uB825 7\uC99D\uAC00"
+    - EventCardEffectType: 7
+      Num: 2
+    Context2: "\uACF5\uACA9\uB825 7\uC99D\uAC00, \uCCB4\uB825 3\uAC10\uC18C"
     CardEffectInfos2:
     - EventCardEffectType: 0
       Num: 7
+    - EventCardEffectType: 7
+      Num: 3
     Context3: 
     CardEffectInfos3: []
     Context6: 
     EventCardEffectType6: 0
   - Title: "\uAC00\uB974\uCE68\uC758 \uB300\uAC00"
     Type: 1
-    Context1: "\uAD00\uD1B5 \uB370\uBBF8\uC9C0 4\uC99D\uAC00"
+    Context1: "\uAD00\uD1B5 \uB370\uBBF8\uC9C0 4\uC99D\uAC00, \uCCB4\uB825 3\uAC10\uC18C"
     CardEffectInfos1:
     - EventCardEffectType: 2
       Num: 4
-    Context2: "\uAD00\uD1B5 \uB370\uBBF8\uC9C0 6\uC99D\uAC00"
+    - EventCardEffectType: 7
+      Num: 3
+    Context2: "\uAD00\uD1B5 \uB370\uBBF8\uC9C0 6\uC99D\uAC00,\uCCB4\uB825 4\uAC10\uC18C"
     CardEffectInfos2:
     - EventCardEffectType: 2
       Num: 6
+    - EventCardEffectType: 7
+      Num: 4
     Context3: 
     CardEffectInfos3: []
     Context6: 
     EventCardEffectType6: 0
-  CardCreatePosition: {x: 0, y: 0, z: 0}
-  DiceCreatePosition: {x: 0, y: 0, z: 0}
+  ratingType: 1

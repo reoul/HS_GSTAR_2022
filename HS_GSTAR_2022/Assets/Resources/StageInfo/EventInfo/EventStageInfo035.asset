@@ -48,5 +48,4 @@ MonoBehaviour:
     CardEffectInfos3: []
     Context6: 
     EventCardEffectType6: 0
-  CardCreatePosition: {x: 0, y: 0, z: 0}
-  DiceCreatePosition: {x: 0, y: 0, z: 0}
+  ratingType: 2
