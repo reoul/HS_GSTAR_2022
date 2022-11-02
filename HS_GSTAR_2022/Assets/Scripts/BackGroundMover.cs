@@ -27,8 +27,8 @@ public class BackGroundMover : MonoBehaviour
 
         public void Move()
         {
-            backGound.transform.localPosition -= new Vector3(1 * speed, 0, 0);
-            copiedBG.transform.localPosition -= new Vector3(1 * speed, 0, 0);
+            backGound.transform.localPosition -= new Vector3(100 * speed * Time.deltaTime, 0, 0);
+            copiedBG.transform.localPosition -= new Vector3(100 * speed * Time.deltaTime, 0, 0);
             if(backGound.transform.localPosition.x <= -width)
             {
                 backGound.transform.localPosition += new Vector3(width * 2, 0, 0);

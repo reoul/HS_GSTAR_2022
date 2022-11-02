@@ -115,6 +115,7 @@ public class StageManager : Singleton<StageManager>
 
             DiceManager.Instance.CreateDices(createdCardCount, 0.2f);
         });
+        SoundManager.Instance.BGMChange("BattleSound2", 1);
     }
 
     /// <summary> 전투 스테이지에 대해 페이드 이벤트 등록 </summary>
@@ -147,6 +148,7 @@ public class StageManager : Singleton<StageManager>
         });
 
         FadeManager.Instance.FadeInFinishEvent.AddListener(() => { BattleManager.Instance.StartBattle(); });
+        SoundManager.Instance.BGMChange("Event", 1);
     }
 
     public void OpenStage(Stage stage)
