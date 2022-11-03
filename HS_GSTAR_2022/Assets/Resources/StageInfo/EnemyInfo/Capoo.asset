@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c3172bce4ceffd41bf3cfb0c46a9e85, type: 3}
-  m_Name: TaurosInfo
+  m_Name: Capoo
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 5690635501145629383, guid: 8c061b273c20cf547a71350d91fc859d, type: 3}
-  Name: "\uACE8\uB818 \uAC00\uB514\uC5B8"
-  MaxHp: 500
-  Hp: 500
-  OffensivePower: 40
-  DefensivePower: 40
-  PiercingDamage: 20
+  Prefab: {fileID: 5690635501145629383, guid: dd23b1ef49241ba4c8dd195009582eea, type: 3}
+  Name: "\uCE74\uD478"
+  MaxHp: 200
+  Hp: 200
+  OffensivePower: 20
+  DefensivePower: 10
+  PiercingDamage: 10
