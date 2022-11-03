@@ -128,7 +128,7 @@ public class ItemCard : MonoBehaviour
                 player.InfoWindow.UpdateHpBar(player.Hp, player.MaxHp);
                 break;
             case ItemEffectType.Gold:
-                FindObjectOfType<Player>().Money += num;
+                player.OwnerObj.GetComponent<Player>().Money += num;
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(effectType), effectType, null);
