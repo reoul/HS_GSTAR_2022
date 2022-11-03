@@ -28,7 +28,7 @@ public class BackPack : Singleton<BackPack>
 
         Items.Add(newObj);
         newObj.transform.SetParent(ItemParent.transform);
-        newObj.transform.localScale = new Vector3(0.75f, 0.75f, 0.75f);
+        newObj.transform.localScale = new Vector3(1, 1, 1);
     }
 
 
