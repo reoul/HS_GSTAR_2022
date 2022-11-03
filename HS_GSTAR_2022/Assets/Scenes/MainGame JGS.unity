@@ -2781,8 +2781,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1786732787}
   m_HandleRect: {fileID: 1786732786}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.90760124
+  m_Value: 0
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5475,7 +5475,7 @@ MonoBehaviour:
   Items: []
   inventory: {fileID: 1220700054}
   ItemParent: {fileID: 1933166721}
-  contents: {fileID: 0}
+  cardPref: {fileID: 8769601048438688861, guid: b40889dae95f0ff4c8b1feabca57cd5d, type: 3}
 --- !u!1 &1663833456
 GameObject:
   m_ObjectHideFlags: 0
@@ -6442,7 +6442,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 472.99496, y: -515.7}
+  m_AnchoredPosition: {x: 472.99496, y: -515.7001}
   m_SizeDelta: {x: 945.99, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1933166723

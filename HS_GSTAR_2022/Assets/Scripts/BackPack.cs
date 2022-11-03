@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +10,9 @@ public class BackPack : Singleton<BackPack>
     [SerializeField]
     private GameObject inventory, ItemParent;
 
+    [SerializeField]
+    private GameObject cardPref;
+
 
     private void Start()
     {
@@ -17,9 +21,13 @@ public class BackPack : Singleton<BackPack>
 
     public void AddItem(GameObject obj)
     {
-        Items.Add(obj);
-        obj.transform.SetParent(ItemParent.transform);
-        obj.transform.localScale = new Vector3(1, 1, 1);
+
+        GameObject newObj = GameObject.Instantiate(cardPref, ItemParent.transform);
+        newObj.GetComponent<ItemCard>().SetCard(obj.GetComponent<ItemCard>().GetCardName(), obj.GetComponent<ItemCard>().GetContext(), 1);
+
+        Items.Add(newObj);
+        newObj.transform.SetParent(ItemParent.transform);
+        newObj.transform.localScale = new Vector3(1, 1, 1);
     }
 
 
