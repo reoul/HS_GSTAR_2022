@@ -55,7 +55,7 @@ public class BattleStage : Stage
         else
         {
             _battleTime += Time.deltaTime;
-            Time.timeScale = 1 + Mathf.Min(_battleTime, 2f);
+            Time.timeScale = 1 + Mathf.Min(_battleTime, 4f);
         }
         
     }

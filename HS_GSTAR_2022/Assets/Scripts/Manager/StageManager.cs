@@ -71,14 +71,15 @@ public class StageManager : Singleton<StageManager>
     {
         _mapManager.AddStage(StageType.Event);
         
-        _stageQueue.Enqueue(StageType.Shop);
-        _mapManager.AddStage(StageType.Shop);
-        _stageQueue.Enqueue(StageType.Shop);
-        _mapManager.AddStage(StageType.Shop);
-        _stageQueue.Enqueue(StageType.Shop);
-        _mapManager.AddStage(StageType.Shop);
+        AddStage(StageType.Shop);
+        AddStage(StageType.Shop);
+        AddStage(StageType.Shop);
         
-        for (int i = 0; i < 8; ++i)
+        AddStage(StageType.Battle);
+        AddStage(StageType.Battle);
+        AddStage(StageType.Battle);
+        
+        /*for (int i = 0; i < 8; ++i)
         {
             _stageQueue.Enqueue(StageType.Event);
             _mapManager.AddStage(StageType.Event);
@@ -94,10 +95,16 @@ public class StageManager : Singleton<StageManager>
             
             _stageQueue.Enqueue(StageType.Battle);
             _mapManager.AddStage(StageType.Battle);
-        }
+        }*/
         
         _stageQueue.Enqueue(StageType.Victory);
         _mapManager.AddStage(StageType.Victory);
+    }
+
+    private void AddStage(StageType type)
+    {
+        _stageQueue.Enqueue(type);
+        _mapManager.AddStage(type);
     }
 
     public void SetFadeEvent(StageType stageType)

@@ -77,11 +77,11 @@ public sealed class Player : MonoBehaviour, IBattleable
         DefensivePower = new Status();
         PiercingDamage = new Status();
         
-        MaxHp = 100;
+        MaxHp = 1000;
         Hp = MaxHp;
-        OffensivePower.DefaultStatus = 100;
-        DefensivePower.DefaultStatus = 100;
-        PiercingDamage.DefaultStatus = 100;
+        OffensivePower.DefaultStatus = 10;
+        PiercingDamage.DefaultStatus = 10;
+        DefensivePower.DefaultStatus = 10;
         
         _animator = GetComponent<Animator>();
         _infoWindow.UpdateHpBar(Hp, MaxHp);

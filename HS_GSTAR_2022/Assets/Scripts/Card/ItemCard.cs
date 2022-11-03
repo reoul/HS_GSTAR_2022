@@ -155,7 +155,7 @@ public class ItemCard : MonoBehaviour
         StageManager.Instance.BattleStage.FinishBattleEvent.AddListener(() =>
         {
             Debug.Log($"전투 종료 후 {effectType} {num} 발동");
-            ApplyItem(effectType, num, true);
+            ApplyItem(effectType, num, false);
         });
     }
 
