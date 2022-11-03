@@ -1,6 +1,6 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BackPack : Singleton<BackPack>
 {
@@ -8,6 +8,7 @@ public class BackPack : Singleton<BackPack>
 
     [SerializeField]
     private GameObject inventory, ItemParent;
+
 
     private void Start()
     {
@@ -25,10 +26,5 @@ public class BackPack : Singleton<BackPack>
     public void OpenInventory()
     {
         inventory.SetActive(!inventory.activeSelf);
-
-        foreach(GameObject obj in Items)
-        {
-            obj.transform.localPosition = Vector3.zero;
-        }
     }
 }
