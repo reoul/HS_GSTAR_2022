@@ -69,7 +69,7 @@ public class StageManager : Singleton<StageManager>
     private void SetRandomStage()
     {
         _mapManager.AddStage(StageType.Event);
-        for (int i = 0; i < 5; ++i)
+        for (int i = 0; i < 8; ++i)
         {
             _stageQueue.Enqueue(StageType.Event);
             _mapManager.AddStage(StageType.Event);
