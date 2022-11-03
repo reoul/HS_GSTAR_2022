@@ -11,7 +11,6 @@ public class ShopStage : Stage
 
     public override void StageEnter()
     {
-        Debug.Log("adsasdas");
         int itemIndex1, itemIndex2, itemIndex3;
         itemIndex1 = Random.Range(0, ItemInfoArray.Length);
         do

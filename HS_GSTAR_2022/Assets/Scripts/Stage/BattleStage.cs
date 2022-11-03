@@ -37,10 +37,6 @@ public class BattleStage : Stage
         player.PiercingDamage.ItemStatus = 0;
         player.DefensivePower.ItemStatus = 0;
 
-        player.InfoWindow.UpdateOffensivePowerText(player.OffensivePower.DefaultStatus);
-        player.InfoWindow.UpdatePiercingDamageText(player.PiercingDamage.DefaultStatus);
-        player.InfoWindow.UpdateDefensivePowerText(player.DefensivePower.DefaultStatus);
-        
         // 전투 시작 아이템 발동
         StartBattleEvent.Invoke();
         
@@ -67,13 +63,15 @@ public class BattleStage : Stage
     public override void StageExit()
     {
         IBattleable player = BattleManager.Instance.PlayerBattleable;
+        
+        ValueUpdater valueUpdater = player.OwnerObj.GetComponent<ValueUpdater>();
+        valueUpdater.AddVal(-player.OffensivePower.ItemStatus, ValueUpdater.valType.pow);
+        valueUpdater.AddVal(-player.PiercingDamage.ItemStatus, ValueUpdater.valType.piercing);
+        valueUpdater.AddVal(-player.DefensivePower.ItemStatus, ValueUpdater.valType.def);
+        
         player.OffensivePower.ItemStatus = 0;
         player.PiercingDamage.ItemStatus = 0;
         player.DefensivePower.ItemStatus = 0;
-
-        player.InfoWindow.UpdateOffensivePowerText(player.OffensivePower.DefaultStatus);
-        player.InfoWindow.UpdatePiercingDamageText(player.PiercingDamage.DefaultStatus);
-        player.InfoWindow.UpdateDefensivePowerText(player.DefensivePower.DefaultStatus);
         
         // 전투 종료 아이템 발동
         if (IsPlayerWin)

@@ -14,7 +14,7 @@ public class ValueUpdater : MonoBehaviour
         public ValStruct(TMP_Text tmpText)
         {
             text = tmpText;
-            val = System.Convert.ToInt32(tmpText.text);
+            val = 0;
             targetVal = val;
         }
     }
@@ -23,7 +23,7 @@ public class ValueUpdater : MonoBehaviour
 
     public enum valType{ pow, piercing, def }
 
-    private void Start()
+    public void Init()
     {
         powVal = new ValStruct(powText);
         piercingVal = new ValStruct(piercingText);
@@ -35,15 +35,6 @@ public class ValueUpdater : MonoBehaviour
         valUpdate(ref powVal);
         valUpdate(ref piercingVal);
         valUpdate(ref defVal);
-
-        if (Input.GetKeyDown(KeyCode.D))
-        {
-            AddVal(10, valType.pow);
-        }
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            AddVal(-10, valType.pow);
-        }
     }
 
     private void valUpdate(ref ValStruct valStruct)

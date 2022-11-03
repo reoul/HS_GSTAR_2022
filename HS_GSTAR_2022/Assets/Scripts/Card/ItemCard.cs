@@ -57,20 +57,25 @@ public class ItemCard : MonoBehaviour
         _nameText.text = inputName;
         _contextText.text = InputContext;
         _rank = rank;
-        _gem.sprite = _gemSprite[(int)rank];
+        _gem.sprite = _gemSprite[(int) rank];
     }
 
-    public string GetCardName() { 
+    public string GetCardName()
+    {
         return _nameText.text;
     }
-    public string GetContext() { 
+
+    public string GetContext()
+    {
         return _contextText.text;
     }
-    public ItemRatingType GetRank() { 
+
+    public ItemRatingType GetRank()
+    {
         return _rank;
     }
-    
-    private void ApplyItem(ItemEffectType effectType, int num)
+
+    private void ApplyItem(ItemEffectType effectType, int num, bool isItemStatus)
     {
         IBattleable player = BattleManager.Instance.PlayerBattleable;
 
@@ -82,16 +87,40 @@ public class ItemCard : MonoBehaviour
                 player.ToHeal(num);
                 break;
             case ItemEffectType.OffensivePower:
-                player.OffensivePower.ItemStatus += num;
-                player.InfoWindow.UpdateOffensivePowerText(player.OffensivePower.FinalStatus);
+                if (isItemStatus)
+                {
+                    player.OffensivePower.ItemStatus += num;
+                }
+                else
+                {
+                    player.OffensivePower.DefaultStatus += num;
+                }
+
+                player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(num, ValueUpdater.valType.pow);
                 break;
             case ItemEffectType.PiercingDamage:
-                player.PiercingDamage.ItemStatus += num;
-                player.InfoWindow.UpdatePiercingDamageText(player.PiercingDamage.FinalStatus);
+                if (isItemStatus)
+                {
+                    player.PiercingDamage.ItemStatus += num;
+                }
+                else
+                {
+                    player.PiercingDamage.DefaultStatus += num;
+                }
+
+                player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(num, ValueUpdater.valType.piercing);
                 break;
             case ItemEffectType.DefensivePower:
-                player.DefensivePower.ItemStatus += num;
-                player.InfoWindow.UpdateDefensivePowerText(player.DefensivePower.FinalStatus);
+                if (isItemStatus)
+                {
+                    player.DefensivePower.ItemStatus += num;
+                }
+                else
+                {
+                    player.DefensivePower.DefaultStatus += num;
+                }
+
+                player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(num, ValueUpdater.valType.def);
                 break;
             case ItemEffectType.MaxHp:
                 player.MaxHp += num;
@@ -113,7 +142,7 @@ public class ItemCard : MonoBehaviour
         StageManager.Instance.BattleStage.StartBattleEvent.AddListener(() =>
         {
             Debug.Log($"전투 시작 시 {effectType} {num} 발동");
-            ApplyItem(effectType, num);
+            ApplyItem(effectType, num, true);
         });
     }
 
@@ -125,7 +154,7 @@ public class ItemCard : MonoBehaviour
         StageManager.Instance.BattleStage.FinishBattleEvent.AddListener(() =>
         {
             Debug.Log($"전투 종료 후 {effectType} {num} 발동");
-            ApplyItem(effectType, num);
+            ApplyItem(effectType, num, true);
         });
     }
 
@@ -137,7 +166,7 @@ public class ItemCard : MonoBehaviour
         BattleManager.Instance.PlayerBattleable.FinishAttackEvent.AddListener(() =>
         {
             Debug.Log($"공격 후 {effectType} {num} 발동");
-            ApplyItem(effectType, num);
+            ApplyItem(effectType, num, true);
         });
     }
 
@@ -147,6 +176,6 @@ public class ItemCard : MonoBehaviour
     private void ApplyItemOfGetType(ItemEffectType effectType, int num)
     {
         Debug.Log($"획득 시 {effectType} {num} 발동");
-        ApplyItem(effectType, num);
+        ApplyItem(effectType, num, false);
     }
 }
