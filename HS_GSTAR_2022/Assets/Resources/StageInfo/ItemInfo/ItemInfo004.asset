@@ -17,3 +17,5 @@ MonoBehaviour:
   EffectInvokeTimeType: 3
   EffectType: 0
   Num: 15
+  Price: 50
+  ratingType: 1

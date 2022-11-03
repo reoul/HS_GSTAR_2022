@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: ItemInfo008
   m_EditorClassIdentifier: 
   Name: "\uB5A8\uC5B4\uC9C4 \uC7AC\uD654"
-  Description: "\uC804\uD22C \uC2A4\uD14C\uC774\uC9C0 \uC885\uB8CC\uD6C4 +1\uACE8\uB4DC
+  Description: "\uC804\uD22C \uC2A4\uD14C\uC774\uC9C0 \uC885\uB8CC\uD6C4 +5\uACE8\uB4DC
     \uD68D\uB4DD"
   EffectInvokeTimeType: 1
   EffectType: 5
-  Num: 1
+  Num: 5
+  Price: 50
+  ratingType: 1
