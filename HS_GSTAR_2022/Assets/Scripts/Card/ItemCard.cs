@@ -110,6 +110,7 @@ public class ItemCard : MonoBehaviour
     {
         StageManager.Instance.BattleStage.StartBattleEvent.AddListener(() =>
         {
+            Debug.Log($"전투 시작 시 {effectType} {num} 발동");
             ApplyItem(effectType, num);
         });
     }
@@ -121,6 +122,7 @@ public class ItemCard : MonoBehaviour
     {
         StageManager.Instance.BattleStage.FinishBattleEvent.AddListener(() =>
         {
+            Debug.Log($"전투 종료 후 {effectType} {num} 발동");
             ApplyItem(effectType, num);
         });
     }
@@ -132,6 +134,7 @@ public class ItemCard : MonoBehaviour
     {
         BattleManager.Instance.PlayerBattleable.FinishAttackEvent.AddListener(() =>
         {
+            Debug.Log($"공격 후 {effectType} {num} 발동");
             ApplyItem(effectType, num);
         });
     }
@@ -141,22 +144,7 @@ public class ItemCard : MonoBehaviour
     /// <param name="num">수치</param>
     private void ApplyItemOfGetType(ItemEffectType effectType, int num)
     {
-        switch (effectType)
-        {
-            case ItemEffectType.Heal:
-                break;
-            case ItemEffectType.OffensivePower:
-                break;
-            case ItemEffectType.PiercingDamage:
-                break;
-            case ItemEffectType.DefensivePower:
-                break;
-            case ItemEffectType.MaxHp:
-                break;
-            case ItemEffectType.Gold:
-                break;
-            default:
-                throw new ArgumentOutOfRangeException(nameof(effectType), effectType, null);
-        }
+        Debug.Log($"획득 시 {effectType} {num} 발동");
+        ApplyItem(effectType, num);
     }
 }
