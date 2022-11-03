@@ -1,12 +1,20 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+public enum StageType
+{
+    Event,
+    Battle,
+    Shop,
+    Victory,
+    GameOver,
+}
+
 public class MapManager : MonoBehaviour
 {
-    public enum StageType { Event, Battle }
-
     public struct StageInfo
     {
         public StageType type;
@@ -15,40 +23,50 @@ public class MapManager : MonoBehaviour
         public StageInfo(StageType initType, Transform parent, Vector3 createPos)
         {
             type = initType;
-            if(type == StageType.Event)
+            switch (type)
             {
-                mapIcon = GameObject.Instantiate(Resources.Load<GameObject>("EventMapIcon"), parent);
+                case StageType.Event:
+                    mapIcon = Instantiate(Resources.Load<GameObject>("EventMapIcon"), parent);
+                    break;
+                case StageType.Battle:
+                    mapIcon = Instantiate(Resources.Load<GameObject>("BattleMapIcon"), parent);
+                    break;
+                case StageType.Shop:
+                    mapIcon = Instantiate(Resources.Load<GameObject>("ShopMapIcon"), parent);
+                    break;
+                case StageType.Victory:
+                    mapIcon = Instantiate(Resources.Load<GameObject>("VictoryMapIcon"), parent);
+                    break;
+                case StageType.GameOver:
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
-            else
-            {
-                mapIcon = GameObject.Instantiate(Resources.Load<GameObject>("BattleMapIcon"), parent);
-            }
+
             mapIcon.transform.localPosition = createPos;
         }
     }
 
-    Queue<StageInfo> mapQueue;
+    private Queue<StageInfo> _mapQueue;
 
     private float IconWidth;
 
-    [SerializeField]
-    Transform createPos;
+    [SerializeField] Transform createPos;
 
     private void Awake()
     {
-        mapQueue = new Queue<StageInfo>();
+        _mapQueue = new Queue<StageInfo>();
         IconWidth = Resources.Load<GameObject>("EventMapIcon").GetComponent<Image>().rectTransform.sizeDelta.x;
     }
 
-    public void addStage(StageType type)
+    public void AddStage(StageType type)
     {
-        mapQueue.Enqueue(new StageInfo(type, this.transform, createPos.localPosition));
+        _mapQueue.Enqueue(new StageInfo(type, this.transform, createPos.localPosition));
         UpdateIconPosition();
     }
 
-    public void subStage()
+    public void SubStage()
     {
-        if(mapQueue.TryDequeue(out StageInfo result))
+        if (_mapQueue.TryDequeue(out StageInfo result))
         {
             Destroy(result.mapIcon);
             UpdateIconPosition();
@@ -58,27 +76,11 @@ public class MapManager : MonoBehaviour
     private void UpdateIconPosition()
     {
         Vector3 lastPos = transform.position;
-        foreach(StageInfo value in mapQueue)
+        foreach (StageInfo value in _mapQueue)
         {
             value.mapIcon.GetComponent<IconMover>().targetPos = lastPos;
 
-            lastPos += new Vector3(IconWidth + IconWidth *0.5f, 0, 0);
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            addStage(StageType.Event);
-        }
-        else if (Input.GetKeyDown(KeyCode.S))
-        {
-            addStage(StageType.Battle);
-        }
-        else if (Input.GetKeyDown(KeyCode.Space))
-        {
-            subStage();
+            lastPos += new Vector3(IconWidth + IconWidth * 0.5f, 0, 0);
         }
     }
 }

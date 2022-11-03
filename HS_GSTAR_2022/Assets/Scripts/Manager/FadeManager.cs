@@ -22,6 +22,10 @@ public class FadeManager : Singleton<FadeManager>
     [SerializeField] private float _fadeTime;
     [SerializeField] private Image _fadeImage;
     [SerializeField] private BoxCollider _boxCollider;
+
+
+    public GameObject IntroObj;
+    
     public bool IsFading { get; private set; }
 
     private void Awake()
@@ -42,6 +46,16 @@ public class FadeManager : Singleton<FadeManager>
     public void StartFadeIn()
     {
         StartCoroutine(FadeInCoroutine());
+    }
+
+    public void NextStage()
+    {
+        FadeOutFinishEvent.AddListener(() =>
+        {
+            IntroObj.SetActive(false);
+        });
+        StartFadeOut();
+        StageManager.Instance.SetFadeEvent(StageManager.Instance.NextStageType);
     }
 
     /// <summary> 밝은 화면에서 서서히 어두어짐 </summary>

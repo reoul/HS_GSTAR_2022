@@ -5,32 +5,25 @@ using TMPro;
 
 public class EventStage : Stage
 {
-    [SerializeField]
-    private TMP_Text _title, _description;
-    
+    [SerializeField] private TMP_Text _title, _description;
+
+    [SerializeField] private Transform _cardParent, _diceParent;
+
     public EventStageInfo EventStageInfo { get; set; }
 
     public override void StageEnter()
     {
-        Debug.Assert(EventStageInfo != null);
-        
-        // 플레이어 설정
-        GameObject playerObj = BattleManager.Instance.PlayerBattleable.OwnerObj;
-        playerObj.SetActive(true);
+        //Debug.Assert(EventStageInfo != null);
+
         Logger.Log("스테이지 오픈");
 
-        // 영역 설정
-        GameObject BattleAreaObj = GameObject.Find("BattleAreaImg");
-        
-        GameObject.Find("CardParent").transform.localPosition = EventStageInfo.CardCreatePosition;
-        GameObject.Find("DiceParent").transform.localPosition = EventStageInfo.DiceCreatePosition;
-
-        playerObj.SetActive(true);
+        //_cardParent.localPosition = EventStageInfo.CardCreatePosition;
+        //_diceParent.localPosition = EventStageInfo.DiceCreatePosition;
     }
 
     public override void StageExit()
     {
-        FindObjectOfType<Player>().gameObject.SetActive(false);
+        //FindObjectOfType<Player>().gameObject.SetActive(false);
     }
 
     public override void StageUpdate()
@@ -43,4 +36,11 @@ public class EventStage : Stage
         _description.text = description;
     }
 
+    public void CreateEventCards()
+    {
+        foreach (EventCardInfo cardInfo in EventStageInfo.EventCardInfos)
+        {
+            //cardInfo.
+        }
+    }
 }

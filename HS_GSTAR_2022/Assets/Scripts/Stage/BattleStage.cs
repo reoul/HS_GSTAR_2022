@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable]
 public struct BattleEnemyData
@@ -11,53 +12,76 @@ public struct BattleEnemyData
 
 public class BattleStage : Stage
 {
-    public BattleStageInfo BattleStageInfo { get; set; }
+    public Transform EnemyCreatePos;
+
+    public InfoWindow EnemyInfoWindow;
+    
+    public bool IsFinishBattle { get; set; }
+
+    public bool IsPlayerWin { get; set; }
+    
+    private float _battleTime;
+    
+    /// <summary> 전투 시작 시 발동 </summary>
+    public UnityEvent StartBattleEvent { get; set; }
+    
+    /// <summary> 전투 종료 시 발동 </summary>
+    public UnityEvent FinishBattleEvent { get; set; }
     
     public override void StageEnter()
     {
-        Debug.Assert(BattleStageInfo != null);
-
-        // 플레이어 설정
-        GameObject playerObj = BattleManager.Instance.PlayerBattleable.OwnerObj;
-        playerObj.transform.localPosition = BattleStageInfo.PlayerPosition;
-        playerObj.transform.localScale = BattleStageInfo.PlayerScale;
-        playerObj.SetActive(true);
         Logger.Log("스테이지 오픈");
 
-        // 영역 설정
-        GameObject BattleAreaObj = GameObject.Find("BattleAreaImg");
-        BattleAreaObj.transform.localPosition = BattleStageInfo.BattleAreaPosition;
-        BattleAreaObj.transform.localScale = BattleStageInfo.BattleAreaScale;
-        BattleAreaObj.GetComponent<RectTransform>().sizeDelta = BattleStageInfo.BattleAreaRect;
+        IBattleable player = BattleManager.Instance.PlayerBattleable;
+        player.OffensivePower.ItemStatus = 0;
+        player.PiercingDamage.ItemStatus = 0;
+        player.DefensivePower.ItemStatus = 0;
+
+        // 전투 시작 아이템 발동
+        StartBattleEvent.Invoke();
         
-        GameObject.Find("CardParent").transform.localPosition = BattleStageInfo.CardCreatePosition;
-        GameObject.Find("DiceParent").transform.localPosition = BattleStageInfo.DiceCreatePosition;
-        
-        // 적 생성
-        Transform enemyParent = GameObject.Find("EnemyParent").transform;
-        foreach (StageEnemyInfo enemyInfo in BattleStageInfo.StageEnemyInfos)
-        {
-            Debug.Assert(enemyInfo.EnemyPrefab != null);
-            
-            GameObject enemyObj = Instantiate(enemyInfo.EnemyPrefab, enemyParent);
-            enemyObj.transform.localPosition = enemyInfo.Position;
-            
-            BattleManager.Instance.SetEnemy(enemyObj.GetComponent<IBattleable>());
-            Logger.Log($"{enemyObj.name} 적 추가");
-        }
-        
-        BattleManager.Instance.NextTurn();
+        Time.timeScale = 1;
+        IsFinishBattle = false;
+        IsPlayerWin = false;
+        _battleTime = 0;
     }
 
     public override void StageUpdate()
     {
+        if (IsFinishBattle)
+        {
+            Time.timeScale = 1;
+        }
+        else
+        {
+            _battleTime += Time.deltaTime;
+            Time.timeScale = 1 + Mathf.Min(_battleTime, 4f);
+        }
+        
     }
 
     public override void StageExit()
     {
-        CardManager.Instance.RemoveAllCard();
-        DiceManager.Instance.RemoveAllDice();
-        BattleManager.Instance.PlayerBattleable.OwnerObj.SetActive(false);
-        Destroy(this.gameObject);
+        IBattleable player = BattleManager.Instance.PlayerBattleable;
+        
+        // 전투 종료 아이템 발동
+        if (IsPlayerWin)
+        {
+            ValueUpdater valueUpdater = player.InfoWindow.GetComponent<ValueUpdater>();
+            valueUpdater.AddVal(-player.OffensivePower.ItemStatus, ValueUpdater.valType.pow, false);
+            valueUpdater.AddVal(-player.PiercingDamage.ItemStatus, ValueUpdater.valType.piercing, false);
+            valueUpdater.AddVal(-player.DefensivePower.ItemStatus, ValueUpdater.valType.def, false);
+        
+            player.OffensivePower.ItemStatus = 0;
+            player.PiercingDamage.ItemStatus = 0;
+            player.DefensivePower.ItemStatus = 0;
+            
+            FinishBattleEvent.Invoke();
+        }
+        
+        Time.timeScale = 1;
+        IsFinishBattle = false;
+        IsPlayerWin = false;
+        _battleTime = 0;
     }
 }

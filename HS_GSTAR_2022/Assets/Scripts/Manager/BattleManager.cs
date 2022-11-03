@@ -6,17 +6,19 @@ using UnityEngine.Assertions;
 
 public class BattleManager : Singleton<BattleManager>
 {
-    public IBattleable PlayerBattleable;
-    public IBattleable EnemyBattleable;
-
-    [SerializeField] private GameObject _playerPrefab;
+    [SerializeField] private Player _player;
+    public IBattleable PlayerBattleable { get; private set; }
+    public IBattleable EnemyBattleable { get; private set; }
+    
+    /// <summary> 공격 애니메이션이 끝났는지 여부 </summary>
+    public bool FinishAttack { get; set; }
 
     private void Awake()
     {
-        GameObject playerObj = Instantiate(_playerPrefab, GameObject.Find("Canvas").transform);
-        playerObj.SetActive(false);
-        PlayerBattleable = playerObj.GetComponent<IBattleable>();
-        Debug.Assert(PlayerBattleable != null);
+        Debug.Assert(_player != null);
+        
+        PlayerBattleable = _player.GetComponent<IBattleable>();
+        _player.Init();
     }
 
     /// <summary> 적 설정 </summary>
@@ -24,25 +26,6 @@ public class BattleManager : Singleton<BattleManager>
     public void SetEnemy(IBattleable battleable)
     {
         EnemyBattleable = battleable;
-    }
-
-    /// <summary> 적 제거 </summary>
-    /// <param name="battleable">적 battleable</param>
-    public void RemoveEnemy(IBattleable battleable)
-    {
-        /*Logger.Assert(EnemyBattleables.Remove(battleable));
-        Destroy(battleable.OwnerObj);
-        if (EnemyBattleables.Count == 0)
-        {
-            Logger.Log("모든 적이 제거되었습니다.");
-            // todo : 전투 종료 로직 구현
-            FadeManager.Instance.FadeInStartEvent.AddListener(() =>
-            {
-                StageManager.Instance.OpenStage(FindObjectOfType<Map>(true));
-                GameObject.Find("MapManager").transform.GetChild(0).gameObject.SetActive(true);
-            });
-            FadeManager.Instance.StartFadeOut();
-        }*/
     }
 
     /// <summary> 전투 시작 </summary>
@@ -53,33 +36,34 @@ public class BattleManager : Singleton<BattleManager>
 
     private IEnumerator BattleCoroutine()
     {
-        WaitForSeconds waitOneSecond = new WaitForSeconds(1);
         while (true)
         {
+            FinishAttack = false;
             // 플레이어 공격
-            EnemyBattleable.ToDamage(PlayerBattleable.OffensivePower);
-            EnemyBattleable.ToPiercingDamage(PlayerBattleable.PiercingDamage);
-
-            yield return waitOneSecond;
+            PlayerBattleable.StartAttackAnimation();
+            
+            while (!FinishAttack)
+            {
+                yield return null;
+            }
             if (EnemyBattleable.Hp == 0)
             {
                 break;
             }
             
+            FinishAttack = false;
             // 적 공격
-            PlayerBattleable.ToDamage(EnemyBattleable.OffensivePower);
-            PlayerBattleable.ToPiercingDamage(EnemyBattleable.PiercingDamage);
+            Logger.Log("적 공격 시작");
+            EnemyBattleable.StartAttackAnimation();
 
-            yield return waitOneSecond;
+            while (!FinishAttack)
+            {
+                yield return null;
+            }
             if (PlayerBattleable.Hp == 0)
             {
                 break;
             }
         }
-    }
-
-    /// <summary> 다음 턴으로 세팅 </summary>
-    public void NextTurn()
-    {
     }
 }

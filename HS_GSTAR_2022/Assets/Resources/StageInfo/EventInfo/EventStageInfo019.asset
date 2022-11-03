@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ef6cc71ba18ef45b18a3ea08d8d406, type: 3}
+  m_Name: EventStageInfo019
+  m_EditorClassIdentifier: 
+  Title: "\uCD94\uB77D \uC0AC\uACE0"
+  Description: "\uB2F9\uC2E0\uC740 \uC808\uBCBD\uC744 \uC9C0\uB098\uB358 \uC911 \uBC1C\uC744
+    \uD5DB\uB514\uB38C \uCD94\uB77D\uD558\uB294 \uC0AC\uACE0\uB97C \uB2F9\uD558\uAC8C
+    \uB418\uC5C8\uC2B5\uB2C8\uB2E4."
+  EventCardInfos:
+  - Title: "\uCC22\uC5B4\uC9C4 \uC0C1\uCC98"
+    Type: 0
+    Context1: "\uD53C\uD574\uB97C 5\uC785\uC74C"
+    CardEffectInfos1:
+    - EventCardEffectType: 7
+      Num: 5
+    Context2: "\uD53C\uD574\uB97C 10\uC785\uC74C"
+    CardEffectInfos2:
+    - EventCardEffectType: 7
+      Num: 10
+    Context3: "\uD53C\uD574\uB97C 15\uC785\uC74C"
+    CardEffectInfos3:
+    - EventCardEffectType: 7
+      Num: 15
+    Context6: 
+    EventCardEffectType6: 0
+  - Title: "\uBD80\uC11C\uC9C4 \uBC29\uC5B4\uAD6C"
+    Type: 0
+    Context1: "\uBC29\uC5B4\uB825 5\uAC10\uC18C"
+    CardEffectInfos1:
+    - EventCardEffectType: 9
+      Num: 5
+    Context2: "\uBC29\uC5B4\uB825 10\uAC10\uC18C"
+    CardEffectInfos2:
+    - EventCardEffectType: 9
+      Num: 10
+    Context3: "\uBC29\uC5B4\uB825 15\uAC10\uC18C"
+    CardEffectInfos3:
+    - EventCardEffectType: 9
+      Num: 15
+    Context6: 
+    EventCardEffectType6: 0
+  - Title: "\uC774 \uB098\uAC04 \uAC80"
+    Type: 0
+    Context1: "\uAD00\uD1B5 \uB370\uBBF8\uC9C0 1\uAC10\uC18C"
+    CardEffectInfos1:
+    - EventCardEffectType: 3
+      Num: 1
+    Context2: "\uAD00\uD1B5 \uB370\uBBF8\uC9C0 2\uAC10\uC18C"
+    CardEffectInfos2:
+    - EventCardEffectType: 3
+      Num: 2
+    Context3: "\uAD00\uD1B5 \uB370\uBBF8\uC9C0 3\uAC10\uC18C"
+    CardEffectInfos3:
+    - EventCardEffectType: 3
+      Num: 3
+    Context6: 
+    EventCardEffectType6: 0
+  CardCreatePosition: {x: 0, y: 0, z: 0}
+  DiceCreatePosition: {x: 0, y: 0, z: 0}

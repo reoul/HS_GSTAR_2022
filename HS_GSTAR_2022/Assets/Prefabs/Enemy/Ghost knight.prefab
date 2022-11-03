@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5690635501145629382}
-  - component: {fileID: 123329450882497375}
   - component: {fileID: 4649110077105300954}
   - component: {fileID: 5305922141017039669}
   - component: {fileID: 4808725521701914612}
+  - component: {fileID: 706245014801463092}
   m_Layer: 5
   m_Name: Ghost knight
   m_TagString: Enemy
@@ -40,20 +40,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -69.600006}
   m_SizeDelta: {x: 130, y: 145}
   m_Pivot: {x: 0.5, y: 0.34}
---- !u!114 &123329450882497375
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5690635501145629383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c464b1b4666fd2542988ea04183aace2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthText: {fileID: 0}
-  _shieldText: {fileID: 0}
 --- !u!222 &4649110077105300954
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -112,3 +98,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &706245014801463092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690635501145629383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adaa4bbafd5906046b56bdfacff44b79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5690635501145629382}
-  - component: {fileID: 3968700977735468989}
   - component: {fileID: 6083155784676139592}
   - component: {fileID: 6913791663727865388}
   - component: {fileID: 3112336408324500570}
+  - component: {fileID: 8581616813779830989}
   m_Layer: 5
   m_Name: Enemymonster_pmg_4
   m_TagString: Enemy
@@ -40,20 +40,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: -78}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.37}
---- !u!114 &3968700977735468989
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5690635501145629383}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cdc83669698fa14e97178653ae22d31, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _healthText: {fileID: 0}
-  _shieldText: {fileID: 0}
 --- !u!222 &6083155784676139592
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -112,3 +98,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8581616813779830989
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5690635501145629383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adaa4bbafd5906046b56bdfacff44b79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

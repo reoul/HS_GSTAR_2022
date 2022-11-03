@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ef6cc71ba18ef45b18a3ea08d8d406, type: 3}
+  m_Name: EventStageInfo041
+  m_EditorClassIdentifier: 
+  Title: "\uD604\uC0C1\uAE08 \uC0AC\uB0E5\uAFBC"
+  Description: "\uBA70\uCE60 \uB3D9\uC548 \uB3C8\uC774 \uC5C6\uC5B4 \uBC30\uB97C
+    \uCC44\uC6B0\uC9C0 \uBABB\uD574\r\n\uD604\uC0C1\uAE08 \uBC8C\uC774\uB97C \uD558\uAC8C
+    \uB429\uB2C8\uB2E4.\r\n\uC774\uB984 \uC788\uB294 \uD604\uC0C1 \uBC95\uC744 \uC5EC\uB7FF
+    \uC7A1\uC544\r\n\uD604\uC0C1\uAE08 \uC0AC\uB0E5\uAFBC\uC73C\uB85C \uC758\uB3C4\uCE58
+    \uC54A\uAC8C \uC774\uB984\uC744 \uB0A0\uB9AC\uAC8C \uB429\uB2C8\uB2E4."
+  EventCardInfos:
+  - Title: "\uD604\uC0C1\uAE08"
+    Type: 1
+    Context1: "\uCD5C\uB300\uCCB4\uB825 5\uC99D\uAC00"
+    CardEffectInfos1:
+    - EventCardEffectType: 4
+      Num: 5
+    Context2: "\uCD5C\uB300\uCCB4\uB825 8\uC99D\uAC00"
+    CardEffectInfos2:
+    - EventCardEffectType: 4
+      Num: 8
+    Context3: 
+    CardEffectInfos3: []
+    Context6: 
+    EventCardEffectType6: 0
+  - Title: "\uCE6D\uD638: \uD604\uC0C1\uAE08 \uC0AC\uB0E5\uAFBC"
+    Type: 1
+    Context1: "\uACF5\uACA9\uB825 6\uC99D\uAC00"
+    CardEffectInfos1:
+    - EventCardEffectType: 0
+      Num: 6
+    Context2: "\uACF5\uACA9\uB825 8\uC99D\uAC00"
+    CardEffectInfos2:
+    - EventCardEffectType: 0
+      Num: 8
+    Context3: 
+    CardEffectInfos3: []
+    Context6: 
+    EventCardEffectType6: 0
+  - Title: "\uCF54\uC778"
+    Type: 1
+    Context1: "\uCF54\uC778 10\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos1:
+    - EventCardEffectType: 11
+      Num: 10
+    Context2: "\uCF54\uC778 15\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos2:
+    - EventCardEffectType: 11
+      Num: 15
+    Context3: 
+    CardEffectInfos3: []
+    Context6: 
+    EventCardEffectType6: 0
+  ratingType: 2

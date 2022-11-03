@@ -17,6 +17,7 @@ public enum EDiceNumber
 public abstract class Dice : MonoBehaviour
 {
     public EDiceNumber Number { get; protected set; }
+    public Vector3 FirstPosition { get; set; }
     private bool _canMoveToMouse;
 
     private void Start()
@@ -33,6 +34,8 @@ public abstract class Dice : MonoBehaviour
     private void OnMouseDown()
     {
         // 잡았으면 마우스나 터치 좌표로 이동시켜주는 코루틴 실행
+        SoundManager.Instance.PlaySound("PickUpDice");
+
         _canMoveToMouse = true;
         StartCoroutine(MoveCoroutine());
     }
@@ -57,6 +60,10 @@ public abstract class Dice : MonoBehaviour
             }
             else
                 Logger.LogError("레이어는 Card로 설정되어 있는데 Card 스크립트가 적용 안되어있음");
+        }
+        else
+        {
+            transform.localPosition = FirstPosition;
         }
     }
 

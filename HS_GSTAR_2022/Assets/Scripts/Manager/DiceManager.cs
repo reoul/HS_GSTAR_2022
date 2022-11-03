@@ -14,6 +14,7 @@ public class DiceManager : Singleton<DiceManager>
     /// <param name="createDelay">주사위간의 생성 딜레이 시간</param>
     public void CreateDices(int diceCount, float createDelay = 0)
     {
+        SoundManager.Instance.PlaySound("DiceCreate");
         StartCoroutine(CreateDicesCoroutine(diceCount, createDelay));
     }
 
@@ -38,7 +39,11 @@ public class DiceManager : Singleton<DiceManager>
             GameObject diceObj = Instantiate(_dicePrefab, _diceParent);
             Vector3 pos = positionList[i] + new Vector3((sorterInfo.CardWidth + sorterInfo.CardPaddingX) / 2, 0, 0);
             diceObj.transform.localPosition = pos;
-            _dices.Add(diceObj.GetComponent<Dice>());
+            
+            Dice dice = diceObj.GetComponent<Dice>();
+            dice.FirstPosition = pos;
+            _dices.Add(dice);
+            
             diceObj.SetActive(false);
             createDiceObjs.Add(diceObj);
         }

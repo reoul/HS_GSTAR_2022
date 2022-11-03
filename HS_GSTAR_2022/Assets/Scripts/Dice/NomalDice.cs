@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-public class NomalDice : Dice
+public sealed class NomalDice : Dice
 {
     public override void Roll()
     {

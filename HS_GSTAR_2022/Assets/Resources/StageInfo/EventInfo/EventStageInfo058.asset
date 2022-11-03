@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ef6cc71ba18ef45b18a3ea08d8d406, type: 3}
+  m_Name: EventStageInfo058
+  m_EditorClassIdentifier: 
+  Title: "\uC2E0\uC758 \uD589\uC6B4"
+  Description: "\uB2F9\uC2E0\uC740 \uD558\uB298\uC5D0\uC11C \uB4E4\uB824\uC624\uB294
+    \uB204\uAD70\uAC00\uC758 \uBD80\uB984\uC744 \uBC1B\uACE0 \uD55C \uB3D9\uAD74
+    \uC548\uC73C\uB85C \uB4E4\uC5B4\uAC00\uAC8C \uB418\uC5C8\uC2B5\uB2C8\uB2E4. \uC774
+    \uB3D9\uAD74 \uC548\uC5D0\uC11C \uADF8 \uD558\uB298\uC758 \uBD80\uB984\uC73C\uB85C
+    \uC740\uCD1D\uC744 \uC785\uC5B4 \uCF54\uC778\uC744 \uCD5C\uB300\uD55C \uB9CE\uC774
+    \uC637\uC5D0 \uB2F4\uC544\uAC00\uB824\uACE0 \uD569\uB2C8\uB2E4."
+  EventCardInfos:
+  - Title: "\uB0A1\uC740 \uC637"
+    Type: 0
+    Context1: "\uCF54\uC778 3\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos1:
+    - EventCardEffectType: 11
+      Num: 3
+    Context2: "\uCF54\uC778 6\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos2:
+    - EventCardEffectType: 11
+      Num: 6
+    Context3: "\uCF54\uC778 9\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos3:
+    - EventCardEffectType: 11
+      Num: 9
+    Context6: 
+    EventCardEffectType6: 0
+  - Title: "\uC0B4\uC9DD \uCC22\uAE34 \uC637"
+    Type: 0
+    Context1: "\uCF54\uC778 5\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos1:
+    - EventCardEffectType: 11
+      Num: 5
+    Context2: "\uCF54\uC778 10\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos2:
+    - EventCardEffectType: 11
+      Num: 10
+    Context3: "\uCF54\uC778 15\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos3:
+    - EventCardEffectType: 11
+      Num: 15
+    Context6: 
+    EventCardEffectType6: 0
+  - Title: "\uD3C9\uBC94\uD55C \uC637"
+    Type: 0
+    Context1: "\uCF54\uC778 10\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos1:
+    - EventCardEffectType: 11
+      Num: 10
+    Context2: "\uCF54\uC778 20\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos2:
+    - EventCardEffectType: 11
+      Num: 20
+    Context3: "\uCF54\uC778 30\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos3:
+    - EventCardEffectType: 11
+      Num: 30
+    Context6: 
+    EventCardEffectType6: 0
+  - Title: "\uCD5C\uC0C1\uAE09 \uC637"
+    Type: 0
+    Context1: "\uCF54\uC778 15\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos1:
+    - EventCardEffectType: 11
+      Num: 15
+    Context2: "\uCF54\uC778 30\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos2:
+    - EventCardEffectType: 11
+      Num: 30
+    Context3: "\uCF54\uC778 45\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos3:
+    - EventCardEffectType: 11
+      Num: 45
+    Context6: 
+    EventCardEffectType6: 0
+  ratingType: 3

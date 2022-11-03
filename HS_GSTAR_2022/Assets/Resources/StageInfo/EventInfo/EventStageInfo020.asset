@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ef6cc71ba18ef45b18a3ea08d8d406, type: 3}
+  m_Name: EventStageInfo020
+  m_EditorClassIdentifier: 
+  Title: "\uD3EC\uC158\uBA54\uC774\uCEE4"
+  Description: "\"\uC5B4\uC11C\uC624\uC138\uC694!\n\uC5EC\uAE30\uB294 \uC785\uB9DB\uB300\uB85C
+    \uD3EC\uC158\uC744 \uB9CC\uB4E4 \uC218 \uC788\uB294 '\uD3EC\uC158\uBA54\uC774\uCEE4'\uC785\uB2C8\uB2E4!\n\uD544\uC694\uD55C
+    \uD6A8\uACFC\uC758 \uBB3C\uC57D\uC744 \uC11E\uC5B4 \uC790\uC2E0\uB9CC\uC758 \uD3EC\uC158\uC744
+    \uB9CC\uB4E4\uC5B4\uBCF4\uC138\uC694!\""
+  EventCardInfos:
+  - Title: "\uCCB4\uB825 \uBB3C\uC57D"
+    Type: 0
+    Context1: "\uCD5C\uB300\uCCB4\uB825 1\uC99D\uAC00"
+    CardEffectInfos1:
+    - EventCardEffectType: 4
+      Num: 1
+    Context2: "\uCD5C\uB300\uCCB4\uB825 2\uC99D\uAC00"
+    CardEffectInfos2:
+    - EventCardEffectType: 4
+      Num: 2
+    Context3: "\uCD5C\uB300\uCCB4\uB825 3\uC99D\uAC00"
+    CardEffectInfos3:
+    - EventCardEffectType: 4
+      Num: 3
+    Context6: 
+    EventCardEffectType6: 0
+  - Title: "\uAC15\uCCA0\uC758 \uC601\uC57D"
+    Type: 0
+    Context1: "\uBC29\uC5B4\uB825 1\uC99D\uAC00"
+    CardEffectInfos1:
+    - EventCardEffectType: 8
+      Num: 1
+    Context2: "\uBC29\uC5B4\uB825 2\uC99D\uAC00"
+    CardEffectInfos2:
+    - EventCardEffectType: 8
+      Num: 2
+    Context3: "\uBC29\uC5B4\uB825 3\uC99D\uAC00"
+    CardEffectInfos3:
+    - EventCardEffectType: 8
+      Num: 3
+    Context6: "\uCD5C\uB300\uCCB4\uB825 N\uC99D\uAC00"
+    EventCardEffectType6: 4
+  - Title: "\uC2A4\uD14C\uB85C\uC774\uB4DC"
+    Type: 0
+    Context1: "\uACF5\uACA9\uB825 1\uC99D\uAC00"
+    CardEffectInfos1:
+    - EventCardEffectType: 0
+      Num: 1
+    Context2: "\uACF5\uACA9\uB825 2\uC99D\uAC00"
+    CardEffectInfos2:
+    - EventCardEffectType: 0
+      Num: 2
+    Context3: "\uACF5\uACA9\uB825 3\uC99D\uAC00"
+    CardEffectInfos3:
+    - EventCardEffectType: 0
+      Num: 3
+    Context6: 
+    EventCardEffectType6: 0
+  ratingType: 1
