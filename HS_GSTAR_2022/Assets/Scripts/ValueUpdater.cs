@@ -59,7 +59,7 @@ public class ValueUpdater : MonoBehaviour
     }
 
 
-    public void AddVal(int val, valType type)
+    public void AddVal(int val, valType type, bool isSoundOn = true)
     {
         switch (type)
         {
@@ -74,13 +74,18 @@ public class ValueUpdater : MonoBehaviour
                 break;
         }
 
+        if (!isSoundOn)
+        {
+            return;
+        }
+        
         if(val > 0)
         {
             SoundManager.Instance.PlaySound("StatU");
         }
         else
         {
-            SoundManager.Instance.PlaySound("StatD");
+            SoundManager.Instance.PlaySound("StatD2");
         }
     }
 }

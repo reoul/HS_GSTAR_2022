@@ -66,9 +66,4 @@ public class BattleManager : Singleton<BattleManager>
             }
         }
     }
-
-    /// <summary> 다음 턴으로 세팅 </summary>
-    public void NextTurn()
-    {
-    }
 }

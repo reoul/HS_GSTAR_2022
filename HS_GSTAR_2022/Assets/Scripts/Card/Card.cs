@@ -46,6 +46,7 @@ public abstract class Card : OverlayBase
     {
         GetComponent<BoxCollider>().enabled = false;
         _cardEffectAnimator.SetTrigger("Destroy");  // 삭제 애니메이션 호출
+        SoundManager.Instance.PlaySound("CardDownDice2");
     }
 
     protected override void ShowOverlay()
@@ -118,11 +119,11 @@ public abstract class Card : OverlayBase
             case EventCardEffectType.NoEffect:
                 break;
             case EventCardEffectType.AddMoney:
-                SoundManager.Instance.PlaySound("MP_Coin Drop(mp3cut.net)");
+                SoundManager.Instance.PlaySound("CoinSound");
                 player.OwnerObj.GetComponent<Player>().Money += num;
                 break;
             case EventCardEffectType.SubMoney:
-                SoundManager.Instance.PlaySound("MP_동전 짤랑이는 소리");
+                SoundManager.Instance.PlaySound("CoinSound");
                 player.OwnerObj.GetComponent<Player>().Money -= num;
                 break;
             default:

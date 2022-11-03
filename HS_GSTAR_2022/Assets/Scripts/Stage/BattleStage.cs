@@ -68,9 +68,9 @@ public class BattleStage : Stage
         if (IsPlayerWin)
         {
             ValueUpdater valueUpdater = player.InfoWindow.GetComponent<ValueUpdater>();
-            valueUpdater.AddVal(-player.OffensivePower.ItemStatus, ValueUpdater.valType.pow);
-            valueUpdater.AddVal(-player.PiercingDamage.ItemStatus, ValueUpdater.valType.piercing);
-            valueUpdater.AddVal(-player.DefensivePower.ItemStatus, ValueUpdater.valType.def);
+            valueUpdater.AddVal(-player.OffensivePower.ItemStatus, ValueUpdater.valType.pow, false);
+            valueUpdater.AddVal(-player.PiercingDamage.ItemStatus, ValueUpdater.valType.piercing, false);
+            valueUpdater.AddVal(-player.DefensivePower.ItemStatus, ValueUpdater.valType.def, false);
         
             player.OffensivePower.ItemStatus = 0;
             player.PiercingDamage.ItemStatus = 0;

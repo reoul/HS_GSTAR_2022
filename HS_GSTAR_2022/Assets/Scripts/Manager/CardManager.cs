@@ -103,7 +103,6 @@ public class CardManager : Singleton<CardManager>
     /// <param name="card">제거할 카드</param>
     public void RemoveCard(Card card)
     {
-        SoundManager.Instance.PlaySound("CardDownDice");
         Logger.Assert(_cards.Remove(card));
         if (_cards.Count == 0)
         {

@@ -80,8 +80,8 @@ public sealed class Player : MonoBehaviour, IBattleable
         MaxHp = 1000;
         Hp = MaxHp;
         OffensivePower.DefaultStatus = 5;
-        PiercingDamage.DefaultStatus = 7;
-        DefensivePower.DefaultStatus = 10;
+        PiercingDamage.DefaultStatus = 20;
+        DefensivePower.DefaultStatus = 30;
         
         _animator = GetComponent<Animator>();
         _infoWindow.UpdateHpBar(Hp, MaxHp);
@@ -90,9 +90,9 @@ public sealed class Player : MonoBehaviour, IBattleable
         
         ValueUpdater.Init();
         
-        ValueUpdater.AddVal(OffensivePower.DefaultStatus, ValueUpdater.valType.pow);
-        ValueUpdater.AddVal(PiercingDamage.DefaultStatus, ValueUpdater.valType.piercing);
-        ValueUpdater.AddVal(DefensivePower.DefaultStatus, ValueUpdater.valType.def);
+        ValueUpdater.AddVal(OffensivePower.DefaultStatus, ValueUpdater.valType.pow, false);
+        ValueUpdater.AddVal(PiercingDamage.DefaultStatus, ValueUpdater.valType.piercing, false);
+        ValueUpdater.AddVal(DefensivePower.DefaultStatus, ValueUpdater.valType.def, false);
         
         FinishAttackEvent = new UnityEvent();
         Money = 1000;
@@ -113,7 +113,7 @@ public sealed class Player : MonoBehaviour, IBattleable
         enemy.ToDamage(OffensivePower.FinalStatus);
         enemy.ToPiercingDamage(PiercingDamage.FinalStatus);
 
-        SoundManager.Instance.PlaySound("MP_AttackSound");
+        SoundManager.Instance.PlaySound("AttackSound");
 
         if (enemy.Hp != 0)
         {

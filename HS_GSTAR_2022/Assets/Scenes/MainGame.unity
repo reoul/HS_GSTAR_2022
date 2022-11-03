@@ -595,7 +595,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 74741713}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1825672886}
+        m_TargetAssemblyTypeName: SettingWindow, Assembly-CSharp
+        m_MethodName: Open
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &74741713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1982,7 +1994,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 271311378}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1825672886}
+        m_TargetAssemblyTypeName: SettingWindow, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &271311378
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2565,9 +2589,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7556674424677892966, guid: 76e50dbbfbff7dd41a0b211356011c76, type: 3}
+      propertyPath: BGMClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 64920bc3f5ece814f957eb618b0710ba, type: 3}
+    - target: {fileID: 7556674424677892966, guid: 76e50dbbfbff7dd41a0b211356011c76, type: 3}
       propertyPath: sfxClip.Array.size
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 7556674424677892966, guid: 76e50dbbfbff7dd41a0b211356011c76, type: 3}
+      propertyPath: sfxClip.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 76ea593e34ef61c4dac2dd275d258e8a, type: 3}
+    - target: {fileID: 7556674424677892966, guid: 76e50dbbfbff7dd41a0b211356011c76, type: 3}
+      propertyPath: sfxClip.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: e8a874aea9a039245a0cd38c8bc5e3a7, type: 3}
     - target: {fileID: 7556674424677892966, guid: 76e50dbbfbff7dd41a0b211356011c76, type: 3}
       propertyPath: sfxClip.Array.data[7]
       value: 
@@ -2575,23 +2611,23 @@ PrefabInstance:
     - target: {fileID: 7556674424677892966, guid: 76e50dbbfbff7dd41a0b211356011c76, type: 3}
       propertyPath: sfxClip.Array.data[8]
       value: 
-      objectReference: {fileID: 8300000, guid: f748512954c11a047872f8cb32a5e2e4, type: 3}
+      objectReference: {fileID: 8300000, guid: 477c6abfa7ea3d1499012ca3d5cde10e, type: 3}
     - target: {fileID: 7556674424677892966, guid: 76e50dbbfbff7dd41a0b211356011c76, type: 3}
       propertyPath: sfxClip.Array.data[9]
       value: 
-      objectReference: {fileID: 8300000, guid: 5ba569f6dcfff5e41872233fd6c41621, type: 3}
+      objectReference: {fileID: 8300000, guid: a3375d23aca01834097fcd8c83b0b51b, type: 3}
     - target: {fileID: 7556674424677892966, guid: 76e50dbbfbff7dd41a0b211356011c76, type: 3}
       propertyPath: sfxClip.Array.data[10]
       value: 
-      objectReference: {fileID: 8300000, guid: 51fc5fd66fe77584e8e464605c1da20a, type: 3}
+      objectReference: {fileID: 8300000, guid: c2b8027c52900954596bf2f68611c1d4, type: 3}
     - target: {fileID: 7556674424677892966, guid: 76e50dbbfbff7dd41a0b211356011c76, type: 3}
       propertyPath: sfxClip.Array.data[11]
       value: 
-      objectReference: {fileID: 8300000, guid: fecb0c3cef11d864880a9b9c2c6516a1, type: 3}
+      objectReference: {fileID: 8300000, guid: 73020d567c1a55246a6fd27b62e41336, type: 3}
     - target: {fileID: 7556674424677892966, guid: 76e50dbbfbff7dd41a0b211356011c76, type: 3}
       propertyPath: sfxClip.Array.data[12]
       value: 
-      objectReference: {fileID: 8300000, guid: 9f1dc19b6f40873449368eedd8627abd, type: 3}
+      objectReference: {fileID: 8300000, guid: 9707c668e88ba6c42b982aa67783d249, type: 3}
     - target: {fileID: 7556674424677892966, guid: 76e50dbbfbff7dd41a0b211356011c76, type: 3}
       propertyPath: sfxClip.Array.data[13]
       value: 
@@ -2867,7 +2903,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2997,8 +3033,8 @@ RectTransform:
   m_Father: {fileID: 3378223}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -11.5, y: -1.1000004}
   m_SizeDelta: {x: 7, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3794,8 +3830,8 @@ RectTransform:
   m_Father: {fileID: 10007493}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: -11.5, y: -1.1000004}
   m_SizeDelta: {x: 7, y: -13}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -5502,10 +5538,22 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1825672886}
+        m_TargetAssemblyTypeName: SettingWindow, Assembly-CSharp
+        m_MethodName: ChangeSfxVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -6263,7 +6311,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1109002692}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1825672886}
+        m_TargetAssemblyTypeName: SettingWindow, Assembly-CSharp
+        m_MethodName: Open
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1109002692
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6499,7 +6559,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1147516180}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1825672886}
+        m_TargetAssemblyTypeName: SettingWindow, Assembly-CSharp
+        m_MethodName: ExitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1147516180
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7383,7 +7455,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1243909651}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 8867518}
+        m_TargetAssemblyTypeName: StageManager, Assembly-CSharp
+        m_MethodName: LoadTitleScene
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1243909651
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9054,7 +9138,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -10740,6 +10824,53 @@ MonoBehaviour:
   _description: {fileID: 157305083}
   _cardParent: {fileID: 1794235394}
   _diceParent: {fileID: 173406918}
+--- !u!1 &1825672885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1825672887}
+  - component: {fileID: 1825672886}
+  m_Layer: 0
+  m_Name: SettingWindow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1825672886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825672885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5edcd725af964fd489840fa89ebbaace, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _settingWindowObj: {fileID: 423732715}
+  _bgmSlider: {fileID: 2067122218}
+  _sfxSlider: {fileID: 874537837}
+--- !u!4 &1825672887
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825672885}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.797467, y: 14.167656, z: -2.2791073}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1828572374
 GameObject:
   m_ObjectHideFlags: 0
@@ -12118,10 +12249,22 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.5
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1825672886}
+        m_TargetAssemblyTypeName: SettingWindow, Assembly-CSharp
+        m_MethodName: ChangeBgmVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2080387433
 GameObject:
   m_ObjectHideFlags: 0

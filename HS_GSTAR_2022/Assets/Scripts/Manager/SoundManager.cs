@@ -5,8 +5,8 @@ using UnityEngine;
 public class SoundManager : Singleton<SoundManager>
 {
 
-    public float masterVolumeSFX = 1f;
-    public float masterVolumeBGM = 1f;
+    public float masterVolumeSFX = 0.5f;
+    public float masterVolumeBGM = 0.5f;
 
     [SerializeField]
     AudioClip BGMClip; // 배경 소스 지정.
@@ -28,6 +28,7 @@ public class SoundManager : Singleton<SoundManager>
     {
         SetupBGM();
         SetVolumeBGM(0.5f);
+        SetVolumeSFX(0.5f);
 
         // 딕셔너리로 오디오클립 배열에서 원하는 오디오를 탐색
         audioClipsDic = new Dictionary<string, AudioClip>();
@@ -50,7 +51,7 @@ public class SoundManager : Singleton<SoundManager>
         bgmPlayer.loop = true;
     }
 
-    public void BGMChange(string bgmName, float bgmVolume)
+    public void BGMChange(string bgmName)
     {
         if (audioClipsDic.ContainsKey(bgmName))
         {
@@ -59,7 +60,6 @@ public class SoundManager : Singleton<SoundManager>
                 return;
             }
             bgmPlayer.clip = audioClipsDic[bgmName];
-            bgmPlayer.volume = bgmVolume;
             bgmPlayer.loop = true;
             bgmPlayer.Play();
         }
@@ -87,8 +87,8 @@ public class SoundManager : Singleton<SoundManager>
                 Logger.Log(sfxName + " 이 포함된 오디오가 없습니다.");
                 return;
             }
-            else
-                sfxPlayer.PlayOneShot(audioClipsDic[sfxName], sfxVolume * masterVolumeSFX);
+            sfxPlayer.PlayOneShot(audioClipsDic[sfxName], sfxVolume * masterVolumeSFX);
+            Logger.Log($"{sfxName} 사운드 재생");
         }
         catch (System.Exception)
         {

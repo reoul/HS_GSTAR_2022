@@ -46,7 +46,7 @@ public sealed class Enemy : MonoBehaviour, IBattleable
         player.ToDamage(OffensivePower.FinalStatus);
         player.ToPiercingDamage(PiercingDamage.FinalStatus);
 
-        SoundManager.Instance.PlaySound("MP_AttackSound");
+        SoundManager.Instance.PlaySound("AttackSound");
 
         if (player.Hp != 0)
         {
