@@ -24,6 +24,7 @@ public class BuyItemCard : MonoBehaviour
             itemCard.ApplyItem();
             _soldOutObj.SetActive(true);
             _soldOutButton.SetActive(true);
+            SoundManager.Instance.PlaySound("MP_µ¿Àü Â©¶ûÀÌ´Â ¼Ò¸®");
         }
     }
 }

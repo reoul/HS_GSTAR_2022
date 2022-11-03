@@ -118,9 +118,11 @@ public abstract class Card : OverlayBase
             case EventCardEffectType.NoEffect:
                 break;
             case EventCardEffectType.AddMoney:
+                SoundManager.Instance.PlaySound("MP_Coin Drop(mp3cut.net)");
                 player.OwnerObj.GetComponent<Player>().Money += num;
                 break;
             case EventCardEffectType.SubMoney:
+                SoundManager.Instance.PlaySound("MP_동전 짤랑이는 소리");
                 player.OwnerObj.GetComponent<Player>().Money -= num;
                 break;
             default:
