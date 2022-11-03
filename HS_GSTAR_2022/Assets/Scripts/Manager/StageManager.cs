@@ -70,16 +70,16 @@ public class StageManager : Singleton<StageManager>
     private void SetRandomStage()
     {
         _mapManager.AddStage(StageType.Event);
+        
+        _stageQueue.Enqueue(StageType.Shop);
+        _mapManager.AddStage(StageType.Shop);
+        _stageQueue.Enqueue(StageType.Shop);
+        _mapManager.AddStage(StageType.Shop);
+        _stageQueue.Enqueue(StageType.Shop);
+        _mapManager.AddStage(StageType.Shop);
+        
         for (int i = 0; i < 8; ++i)
         {
-            _stageQueue.Enqueue(StageType.Shop);
-            _mapManager.AddStage(StageType.Shop);
-            _stageQueue.Enqueue(StageType.Shop);
-            _mapManager.AddStage(StageType.Shop);
-            _stageQueue.Enqueue(StageType.Shop);
-            _mapManager.AddStage(StageType.Shop);
-            
-            
             _stageQueue.Enqueue(StageType.Event);
             _mapManager.AddStage(StageType.Event);
             

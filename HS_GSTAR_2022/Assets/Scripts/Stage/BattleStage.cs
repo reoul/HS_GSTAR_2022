@@ -64,18 +64,18 @@ public class BattleStage : Stage
     {
         IBattleable player = BattleManager.Instance.PlayerBattleable;
         
-        ValueUpdater valueUpdater = player.OwnerObj.GetComponent<ValueUpdater>();
-        valueUpdater.AddVal(-player.OffensivePower.ItemStatus, ValueUpdater.valType.pow);
-        valueUpdater.AddVal(-player.PiercingDamage.ItemStatus, ValueUpdater.valType.piercing);
-        valueUpdater.AddVal(-player.DefensivePower.ItemStatus, ValueUpdater.valType.def);
-        
-        player.OffensivePower.ItemStatus = 0;
-        player.PiercingDamage.ItemStatus = 0;
-        player.DefensivePower.ItemStatus = 0;
-        
         // 전투 종료 아이템 발동
         if (IsPlayerWin)
         {
+            ValueUpdater valueUpdater = player.InfoWindow.GetComponent<ValueUpdater>();
+            valueUpdater.AddVal(-player.OffensivePower.ItemStatus, ValueUpdater.valType.pow);
+            valueUpdater.AddVal(-player.PiercingDamage.ItemStatus, ValueUpdater.valType.piercing);
+            valueUpdater.AddVal(-player.DefensivePower.ItemStatus, ValueUpdater.valType.def);
+        
+            player.OffensivePower.ItemStatus = 0;
+            player.PiercingDamage.ItemStatus = 0;
+            player.DefensivePower.ItemStatus = 0;
+            
             FinishBattleEvent.Invoke();
         }
         

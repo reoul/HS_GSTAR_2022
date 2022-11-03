@@ -124,6 +124,7 @@ public class ItemCard : MonoBehaviour
                 break;
             case ItemEffectType.MaxHp:
                 player.MaxHp += num;
+                player.Hp += num;
                 player.InfoWindow.UpdateHpBar(player.Hp, player.MaxHp);
                 break;
             case ItemEffectType.Gold:
