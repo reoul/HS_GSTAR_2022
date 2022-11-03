@@ -46,7 +46,7 @@ MonoBehaviour:
     CardEffectInfos2:
     - EventCardEffectType: 7
       Num: 5
-    Context3: "\uCCB4\uB825 5\uD68C\uBCF5"
+    Context3: "\uCCB4\uB825 8\uD68C\uBCF5"
     CardEffectInfos3:
     - EventCardEffectType: 6
       Num: 8
@@ -62,7 +62,7 @@ MonoBehaviour:
     CardEffectInfos2:
     - EventCardEffectType: 1
       Num: 5
-    Context3: "\uACF5\uACA9\uB825 5\uC99D\uAC00"
+    Context3: "\uACF5\uACA9\uB825 8\uC99D\uAC00"
     CardEffectInfos3:
     - EventCardEffectType: 0
       Num: 8
