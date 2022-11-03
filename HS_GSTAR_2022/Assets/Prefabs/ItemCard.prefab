@@ -926,7 +926,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _nameText: {fileID: 1623280596}
   _contextText: {fileID: 277632125}
-  _rank: 1
+  _gem: {fileID: 8052967334118509105}
+  _rank: 0
+  _gemSprite:
+  - {fileID: 896008859028648996, guid: 7925c5a97139a264499510ff29e4e028, type: 3}
+  - {fileID: 8802978331890681932, guid: 7925c5a97139a264499510ff29e4e028, type: 3}
+  - {fileID: 8479903185287042497, guid: 7925c5a97139a264499510ff29e4e028, type: 3}
 --- !u!1 &9044868799024471522
 GameObject:
   m_ObjectHideFlags: 0
