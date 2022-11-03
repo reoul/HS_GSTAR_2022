@@ -9,6 +9,8 @@ public enum StageType
     Event,
     Battle,
     Shop,
+    Victory,
+    GameOver,
 }
 
 public class MapManager : MonoBehaviour
@@ -32,6 +34,10 @@ public class MapManager : MonoBehaviour
                 case StageType.Shop:
                     mapIcon = Instantiate(Resources.Load<GameObject>("ShopMapIcon"), parent);
                     break;
+                case StageType.Victory:
+                    mapIcon = Instantiate(Resources.Load<GameObject>("VictoryMapIcon"), parent);
+                    break;
+                case StageType.GameOver:
                 default:
                     throw new ArgumentOutOfRangeException();
             }

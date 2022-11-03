@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class StageManager : Singleton<StageManager>
@@ -21,6 +22,8 @@ public class StageManager : Singleton<StageManager>
     public EventStage EventStage;
     public BattleStage BattleStage;
     public ShopStage ShopStage;
+    public VictoryStage VictoryStage;
+    public GameOverStage GameOverStage;
 
     private int _curStageIndex;
 
@@ -79,6 +82,9 @@ public class StageManager : Singleton<StageManager>
             _stageQueue.Enqueue(StageType.Battle);
             _mapManager.AddStage(StageType.Battle);
         }
+        
+        _stageQueue.Enqueue(StageType.Victory);
+        _mapManager.AddStage(StageType.Victory);
     }
 
     public void SetFadeEvent(StageType stageType)
@@ -93,6 +99,12 @@ public class StageManager : Singleton<StageManager>
                 break;
             case StageType.Shop:
                 SetFadeEventByShopStage();
+                break;
+            case StageType.Victory:
+                SetFadeEventByVictoryStage();
+                break;
+            case StageType.GameOver:
+                SetFadeEventByGameOverStage();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(stageType), stageType, null);
@@ -184,6 +196,36 @@ public class StageManager : Singleton<StageManager>
 
         //SoundManager.Instance.BGMChange("Event", 1);
     }
+    
+    /// <summary> 승리 스테이지에 대해 페이드 이벤트 등록 </summary>
+    private void SetFadeEventByVictoryStage()
+    {
+        FadeManager.Instance.FadeInStartEvent.AddListener(() =>
+        {
+            EventStage.gameObject.SetActive(false);
+            BattleStage.gameObject.SetActive(false);
+            ShopStage.gameObject.SetActive(false);
+            VictoryStage.gameObject.SetActive(true);
+            OpenStage(GetNextStage());
+        });
+
+        //SoundManager.Instance.BGMChange("Event", 1);
+    }
+    
+    /// <summary> 게임오버 스테이지에 대해 페이드 이벤트 등록 </summary>
+    private void SetFadeEventByGameOverStage()
+    {
+        FadeManager.Instance.FadeInStartEvent.AddListener(() =>
+        {
+            EventStage.gameObject.SetActive(false);
+            BattleStage.gameObject.SetActive(false);
+            ShopStage.gameObject.SetActive(false);
+            GameOverStage.gameObject.SetActive(true);
+            OpenStage(GameOverStage);
+        });
+
+        //SoundManager.Instance.BGMChange("Event", 1);
+    }
 
     public void OpenStage(Stage stage)
     {
@@ -208,6 +250,10 @@ public class StageManager : Singleton<StageManager>
                 return BattleStage;
             case StageType.Shop:
                 return ShopStage;
+            case StageType.Victory:
+                return VictoryStage;
+            case StageType.GameOver:
+                return GameOverStage;
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -218,5 +264,16 @@ public class StageManager : Singleton<StageManager>
     {
         FadeManager.Instance.StartFadeOut();
         SetFadeEvent(NextStageType);
+    }
+
+    /// <summary> 타이틀로 가기 </summary>
+    public void LoadTitleScene()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void OpenGameOverStage()
+    {
+        
     }
 }

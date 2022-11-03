@@ -189,6 +189,7 @@ public sealed class Player : MonoBehaviour, IBattleable
         Destroy(gameObject);
         FindObjectOfType<BattleStage>().IsFinishBattle = true;
         Time.timeScale = 1;
-        SceneManager.LoadScene(0);
+        FadeManager.Instance.StartFadeOut();
+        StageManager.Instance.SetFadeEvent(StageType.GameOver);
     }
 }
