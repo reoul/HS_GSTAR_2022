@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c3172bce4ceffd41bf3cfb0c46a9e85, type: 3}
-  m_Name: Ghost warrior
+  m_Name: 3_Capoo
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 5690635501145629383, guid: 7c8456abc51c9ec479c9a5b374b73d7f, type: 3}
-  Name: "\uC720\uB839 \uAC80\uC0AC"
-  MaxHp: 400
-  Hp: 400
-  OffensivePower: 35
-  DefensivePower: 15
-  PiercingDamage: 15
+  Prefab: {fileID: 5690635501145629383, guid: dd23b1ef49241ba4c8dd195009582eea, type: 3}
+  Name: "\uCE74\uD478"
+  MaxHp: 150
+  Hp: 150
+  OffensivePower: 10
+  DefensivePower: 10
+  PiercingDamage: 3

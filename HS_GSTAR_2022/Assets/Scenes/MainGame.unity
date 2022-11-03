@@ -168,7 +168,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _eventStageInfoArray: []
-  _enemyInfoArray: []
+  _enemyInfoArray:
+  - {fileID: 11400000, guid: 3a04cd543940de141ac3310fa2c53e1a, type: 2}
+  - {fileID: 11400000, guid: 24c84fe2fa3da9446be270fd8c546b69, type: 2}
+  - {fileID: 11400000, guid: 89850b397919b164eaf4acb4b0429e99, type: 2}
+  - {fileID: 11400000, guid: 5e535db168b99a340965f6325d3db9d9, type: 2}
+  - {fileID: 11400000, guid: 7f43c67768194d742a409030e7156f56, type: 2}
+  - {fileID: 11400000, guid: 7643e362138fd134982c24f86903cdcf, type: 2}
+  - {fileID: 11400000, guid: 3392fe713a86b994490ad8d883f70858, type: 2}
+  - {fileID: 11400000, guid: 45ea7dbf4fe0337408272f49a66137f1, type: 2}
   _curStage: {fileID: 773638744}
   EventStage: {fileID: 1820862177}
   BattleStage: {fileID: 457737235}

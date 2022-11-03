@@ -36,13 +36,15 @@ public class StageManager : Singleton<StageManager>
 
     [SerializeField] private MapManager _mapManager;
 
+    private int _curMonsterIndex = 0;
+
     private void Awake()
     {
         Debug.Assert(_mapManager != null);
         
         // Resources 폴더에서 이벤트 정보와 적 정보 불러오기
         _eventStageInfoArray = Resources.LoadAll<EventStageInfo>("StageInfo/EventInfo");
-        _enemyInfoArray = Resources.LoadAll<EnemyInfo>("StageInfo/EnemyInfo");
+        //_enemyInfoArray = Resources.LoadAll<EnemyInfo>("StageInfo/EnemyInfo");
         ShopStage.ItemInfoArray = Resources.LoadAll<ItemInfo>("StageInfo/ItemInfo");
 
         _stageQueue = new Queue<StageType>();
@@ -50,6 +52,8 @@ public class StageManager : Singleton<StageManager>
         // 전투 스테이지 이벤트 등록
         BattleStage.StartBattleEvent = new UnityEvent();
         BattleStage.FinishBattleEvent = new UnityEvent();
+        
+        _curMonsterIndex = 0;
     }
 
     private void Start()
@@ -157,12 +161,12 @@ public class StageManager : Singleton<StageManager>
             ShopStage.gameObject.SetActive(false);
             
             BattleStage.gameObject.SetActive(true);
-            int rand = Random.Range(0, _enemyInfoArray.Length);
-            GameObject enemyObj = Instantiate(_enemyInfoArray[rand].Prefab, BattleStage.EnemyCreatePos);
+            //int rand = Random.Range(0, _enemyInfoArray.Length);
+            GameObject enemyObj = Instantiate(_enemyInfoArray[_curMonsterIndex].Prefab, BattleStage.EnemyCreatePos);
             enemyObj.transform.localPosition = Vector3.zero;
-            enemyObj.transform.localScale *= 3;
+            enemyObj.transform.localScale *= 2;
 
-            EnemyInfo enemyInfo = _enemyInfoArray[rand];
+            EnemyInfo enemyInfo = _enemyInfoArray[_curMonsterIndex++];
             IBattleable enemy = enemyObj.GetComponent<IBattleable>();
             BattleManager.Instance.SetEnemy(enemy);
             enemy.InfoWindow = FindObjectOfType<BattleStage>(true).EnemyInfoWindow;

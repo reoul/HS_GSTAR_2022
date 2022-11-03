@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c3172bce4ceffd41bf3cfb0c46a9e85, type: 3}
-  m_Name: Cabras
+  m_Name: 7_Ghost warrior
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 5690635501145629383, guid: 27e65f5e898ded348a420eab38bf6da8, type: 3}
-  Name: "\uCE74\uBE0C\uB77C\uC2A4"
-  MaxHp: 100
-  Hp: 100
-  OffensivePower: 10
-  DefensivePower: 20
-  PiercingDamage: 10
+  Prefab: {fileID: 5690635501145629383, guid: 7c8456abc51c9ec479c9a5b374b73d7f, type: 3}
+  Name: "\uC720\uB839 \uAC80\uC0AC"
+  MaxHp: 700
+  Hp: 700
+  OffensivePower: 40
+  DefensivePower: 40
+  PiercingDamage: 5
