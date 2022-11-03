@@ -79,8 +79,8 @@ public sealed class Player : MonoBehaviour, IBattleable
         
         MaxHp = 1000;
         Hp = MaxHp;
-        OffensivePower.DefaultStatus = 10;
-        PiercingDamage.DefaultStatus = 10;
+        OffensivePower.DefaultStatus = 5;
+        PiercingDamage.DefaultStatus = 7;
         DefensivePower.DefaultStatus = 10;
         
         _animator = GetComponent<Animator>();
@@ -96,6 +96,14 @@ public sealed class Player : MonoBehaviour, IBattleable
         
         FinishAttackEvent = new UnityEvent();
         Money = 1000;
+    }
+
+    public void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            ToHeal(100);
+        }
     }
 
     /// <summary> 공격 애니메이션에서 호출 (삭제 금지) </summary>

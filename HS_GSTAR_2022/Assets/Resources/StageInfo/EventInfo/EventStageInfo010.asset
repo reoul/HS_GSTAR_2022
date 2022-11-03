@@ -54,7 +54,7 @@ MonoBehaviour:
       Num: 5
     Context2: "\uCD5C\uB300\uCCB4\uB825 10\uAC10\uC18C"
     CardEffectInfos2:
-    - EventCardEffectType: 9
+    - EventCardEffectType: 5
       Num: 10
     Context3: 
     CardEffectInfos3: []

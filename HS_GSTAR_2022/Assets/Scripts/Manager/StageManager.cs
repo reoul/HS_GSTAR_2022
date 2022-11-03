@@ -71,12 +71,21 @@ public class StageManager : Singleton<StageManager>
     {
         _mapManager.AddStage(StageType.Event);
         
-        AddStage(StageType.Shop);
-        AddStage(StageType.Shop);
-        AddStage(StageType.Shop);
+        AddStage(StageType.Event);
+        AddStage(StageType.Event);
+        AddStage(StageType.Event);
         
+        AddStage(StageType.Shop);
         AddStage(StageType.Battle);
+        
+        AddStage(StageType.Event);
+        AddStage(StageType.Event);
+        AddStage(StageType.Event);
+        
+        AddStage(StageType.Shop);
         AddStage(StageType.Battle);
+        
+        AddStage(StageType.Shop);
         AddStage(StageType.Battle);
         
         /*for (int i = 0; i < 8; ++i)
