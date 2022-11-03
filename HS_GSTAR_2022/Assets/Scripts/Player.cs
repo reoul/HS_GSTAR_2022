@@ -66,7 +66,7 @@ public sealed class Player : MonoBehaviour, IBattleable
         get => _money;
         set
         {
-            _money = value;
+            _money = value > 0 ? value : 0;
             _moneyText.text = value.ToString();
         }
     }

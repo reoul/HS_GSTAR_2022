@@ -22,6 +22,9 @@ public enum EventCardEffectType
     [InspectorName("방어력 감소")] SubDefensivePower,
 
     [InspectorName("효과 없음")] NoEffect,
+    
+    [InspectorName("돈 증가")] AddMoney,
+    [InspectorName("돈 감소")] SubMoney,
 }
 
 public enum EventCardType

@@ -76,16 +76,18 @@ public abstract class Card : OverlayBase
                 valueUpdater.AddVal(num, ValueUpdater.valType.pow);
                 break;
             case EventCardEffectType.SubOffensivePower:
+                int oldOffensivePower = player.OffensivePower.DefaultStatus;
                 player.OffensivePower.DefaultStatus -= num;
-                valueUpdater.AddVal(-num, ValueUpdater.valType.pow);
+                valueUpdater.AddVal(player.OffensivePower.DefaultStatus > 0 ? -num : -oldOffensivePower, ValueUpdater.valType.pow);
                 break;
             case EventCardEffectType.AddPiercingDamage:
                 player.PiercingDamage.DefaultStatus += num;
                 valueUpdater.AddVal(num, ValueUpdater.valType.piercing);
                 break;
             case EventCardEffectType.SubPiercingDamage:
+                int oldPiercingDamage = player.PiercingDamage.DefaultStatus;
                 player.PiercingDamage.DefaultStatus -= num;
-                valueUpdater.AddVal(-num, ValueUpdater.valType.piercing);
+                valueUpdater.AddVal(player.OffensivePower.DefaultStatus > 0 ? -num : -oldPiercingDamage, ValueUpdater.valType.piercing);
                 break;
             case EventCardEffectType.AddMaxHp:
                 player.MaxHp += num;
@@ -109,10 +111,17 @@ public abstract class Card : OverlayBase
                 valueUpdater.AddVal(num, ValueUpdater.valType.def);
                 break;
             case EventCardEffectType.SubDefensivePower:
+                int oldDefensivePower = player.DefensivePower.DefaultStatus;
                 player.DefensivePower.DefaultStatus -= num;
-                valueUpdater.AddVal(-num, ValueUpdater.valType.def);
+                valueUpdater.AddVal(player.OffensivePower.DefaultStatus > 0 ? -num : -oldDefensivePower, ValueUpdater.valType.def);
                 break;
             case EventCardEffectType.NoEffect:
+                break;
+            case EventCardEffectType.AddMoney:
+                player.OwnerObj.GetComponent<Player>().Money += num;
+                break;
+            case EventCardEffectType.SubMoney:
+                player.OwnerObj.GetComponent<Player>().Money -= num;
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
