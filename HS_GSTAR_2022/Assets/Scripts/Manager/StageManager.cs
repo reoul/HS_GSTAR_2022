@@ -29,6 +29,7 @@ public class StageManager : Singleton<StageManager>
 
     public Transform EventStagePlayerInfoWindowPos;
     public Transform BattleStagePlayerInfoWindowPos;
+    public Transform ShopStagePlayerInfoWindowPos;
 
     public InfoWindow PlayerInfoWindow;
 
@@ -193,6 +194,9 @@ public class StageManager : Singleton<StageManager>
         {
             EventStage.gameObject.SetActive(false);
             BattleStage.gameObject.SetActive(false);
+            
+            PlayerInfoWindow.transform.parent = ShopStagePlayerInfoWindowPos;
+            PlayerInfoWindow.transform.localPosition = Vector3.zero;
             
             ShopStage.gameObject.SetActive(true);
             OpenStage(GetNextStage());

@@ -12,6 +12,7 @@ public class ItemCard : MonoBehaviour
     [SerializeField] private Image _gem;
     [SerializeField] private ItemRatingType _rank;
     [SerializeField] private Sprite[] _gemSprite;
+    [SerializeField] private TMP_Text _priceText;
 
     public ItemInfo ItemInfo { get; private set; }
 
@@ -27,6 +28,7 @@ public class ItemCard : MonoBehaviour
         ItemInfo = itemInfo;
         SetCard(itemInfo.Name, itemInfo.Description, itemInfo.ratingType);
         GetComponent<BuyItemCard>().Init();
+        _priceText.text = itemInfo.Price.ToString();
     }
 
     public void ApplyItem()
