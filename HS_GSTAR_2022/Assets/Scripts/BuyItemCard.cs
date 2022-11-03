@@ -5,8 +5,25 @@ using UnityEngine;
 
 public class BuyItemCard : MonoBehaviour
 {
+    [SerializeField] private GameObject _soldOutObj;
+    [SerializeField] private GameObject _soldOutButton;
+
+    public void Init()
+    {
+        _soldOutObj.SetActive(false);
+        _soldOutButton.SetActive(false);
+    }
+    
     public void BuyCard()
     {
-        BackPack.Instance.AddItem(this.gameObject);
+        ItemCard itemCard = GetComponent<ItemCard>();
+        if (itemCard.CanBuy)
+        {
+            BattleManager.Instance.PlayerBattleable.OwnerObj.GetComponent<Player>().Money -= itemCard.ItemInfo.Price;
+            BackPack.Instance.AddItem(this.gameObject);
+            itemCard.ApplyItem();
+            _soldOutObj.SetActive(true);
+            _soldOutButton.SetActive(true);
+        }
     }
 }

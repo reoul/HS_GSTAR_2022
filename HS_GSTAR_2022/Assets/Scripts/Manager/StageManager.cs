@@ -200,7 +200,17 @@ public class StageManager : Singleton<StageManager>
     public Stage GetNextStage()
     {
         StageType nextStageType = _stageQueue.Dequeue();
-        return nextStageType == StageType.Battle ? BattleStage : EventStage;
+        switch (nextStageType)
+        {
+            case StageType.Event:
+                return EventStage;
+            case StageType.Battle:
+                return BattleStage;
+            case StageType.Shop:
+                return ShopStage;
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 
     /// <summary> 다음 스테이지 </summary>

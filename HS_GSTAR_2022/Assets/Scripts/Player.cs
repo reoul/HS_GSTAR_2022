@@ -91,7 +91,7 @@ public sealed class Player : MonoBehaviour, IBattleable
         
         ValueUpdater = FindObjectOfType<ValueUpdater>(true);
         FinishAttackEvent = new UnityEvent();
-        Money = 0;
+        Money = 1000;
     }
 
     /// <summary> 공격 애니메이션에서 호출 (삭제 금지) </summary>
@@ -188,6 +188,7 @@ public sealed class Player : MonoBehaviour, IBattleable
     {
         Destroy(gameObject);
         FindObjectOfType<BattleStage>().IsFinishBattle = true;
+        Time.timeScale = 1;
         SceneManager.LoadScene(0);
     }
 }

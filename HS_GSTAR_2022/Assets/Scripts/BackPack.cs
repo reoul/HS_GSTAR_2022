@@ -23,7 +23,8 @@ public class BackPack : Singleton<BackPack>
     {
 
         GameObject newObj = GameObject.Instantiate(cardPref, ItemParent.transform);
-        newObj.GetComponent<ItemCard>().SetCard(obj.GetComponent<ItemCard>().GetCardName(), obj.GetComponent<ItemCard>().GetContext(), obj.GetComponent<ItemCard>().GetRank());
+        ItemCard itemCard = obj.GetComponent<ItemCard>();
+        newObj.GetComponent<ItemCard>().SetCard(itemCard.GetCardName(), itemCard.GetContext(), itemCard.GetRank());
 
         Items.Add(newObj);
         newObj.transform.SetParent(ItemParent.transform);
