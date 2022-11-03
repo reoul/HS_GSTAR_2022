@@ -39,7 +39,11 @@ public class DiceManager : Singleton<DiceManager>
             GameObject diceObj = Instantiate(_dicePrefab, _diceParent);
             Vector3 pos = positionList[i] + new Vector3((sorterInfo.CardWidth + sorterInfo.CardPaddingX) / 2, 0, 0);
             diceObj.transform.localPosition = pos;
-            _dices.Add(diceObj.GetComponent<Dice>());
+            
+            Dice dice = diceObj.GetComponent<Dice>();
+            dice.FirstPosition = pos;
+            _dices.Add(dice);
+            
             diceObj.SetActive(false);
             createDiceObjs.Add(diceObj);
         }

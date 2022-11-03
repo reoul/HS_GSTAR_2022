@@ -17,6 +17,7 @@ public enum EDiceNumber
 public abstract class Dice : MonoBehaviour
 {
     public EDiceNumber Number { get; protected set; }
+    public Vector3 FirstPosition { get; set; }
     private bool _canMoveToMouse;
 
     private void Start()
@@ -59,6 +60,10 @@ public abstract class Dice : MonoBehaviour
             }
             else
                 Logger.LogError("레이어는 Card로 설정되어 있는데 Card 스크립트가 적용 안되어있음");
+        }
+        else
+        {
+            transform.localPosition = FirstPosition;
         }
     }
 
