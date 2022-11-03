@@ -1,6 +1,22 @@
 using System;
+using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
+
+public class Status
+{
+    private int _defaultStatus;
+
+    public int DefaultStatus
+    {
+        get => _defaultStatus;
+        set => _defaultStatus = value > 0 ? value : 0;
+    }
+    
+    public int ItemStatus { get; set; }
+    public int FinalStatus => DefaultStatus + ItemStatus;
+}
 
 public sealed class Player : MonoBehaviour, IBattleable
 {
@@ -9,14 +25,14 @@ public sealed class Player : MonoBehaviour, IBattleable
     private int _maxHp;
     public int MaxHp
     {
-        get { return _maxHp; }
+        get => _maxHp;
         set
         {
             _maxHp = value;
             Hp = _maxHp > Hp ? Hp : MaxHp;
         }
     }
-    
+
     private int _hp;
     public int Hp
     {
@@ -24,26 +40,10 @@ public sealed class Player : MonoBehaviour, IBattleable
         set => _hp = value > 0 ? value : 0;
     }
     
-    private int _offensivePower;
-    public int OffensivePower
-    {
-        get => _offensivePower;
-        set => _offensivePower = value > 0 ? value : 0;
-    }
-    
-    private int _defensivePower;
-    public int DefensivePower
-    {
-        get => _defensivePower;
-        set => _defensivePower = value > 0 ? value : 0;
-    }
+    public Status OffensivePower { get; set; }
+    public Status DefensivePower { get; set; }
+    public Status PiercingDamage { get; set; }
 
-    private int _piercingDamage;
-    public int PiercingDamage
-    {
-        get => _piercingDamage;
-        set => _piercingDamage = value > 0 ? value : 0;
-    }
 
     [SerializeField] private InfoWindow _infoWindow;
     private Animator _animator;
@@ -56,21 +56,41 @@ public sealed class Player : MonoBehaviour, IBattleable
 
     public ValueUpdater ValueUpdater { get; private set; }
     
-    public int Money { get; set; }
+    public UnityEvent FinishAttackEvent { get; set; }
+
+    [SerializeField] private TMP_Text _moneyText; 
     
+    private int _money;
+    public int Money
+    {
+        get => _money;
+        set
+        {
+            _money = value;
+            _moneyText.text = value.ToString();
+        }
+    }
+
     public void Init()
     {
+        OffensivePower = new Status();
+        DefensivePower = new Status();
+        PiercingDamage = new Status();
+        
         MaxHp = 100;
         Hp = MaxHp;
-        OffensivePower = 10;
-        DefensivePower = 10;
-        PiercingDamage = 10;
+        OffensivePower.DefaultStatus = 10;
+        DefensivePower.DefaultStatus = 10;
+        PiercingDamage.DefaultStatus = 10;
+        
         _animator = GetComponent<Animator>();
         _infoWindow.UpdateHpBar(Hp, MaxHp);
-        _infoWindow.UpdateOffensivePowerText(OffensivePower);
-        _infoWindow.UpdateDefensivePowerText(DefensivePower);
-        _infoWindow.UpdatePiercingDamageText(PiercingDamage);
+        _infoWindow.UpdateOffensivePowerText(OffensivePower.FinalStatus);
+        _infoWindow.UpdateDefensivePowerText(DefensivePower.FinalStatus);
+        _infoWindow.UpdatePiercingDamageText(PiercingDamage.FinalStatus);
+        
         ValueUpdater = FindObjectOfType<ValueUpdater>(true);
+        FinishAttackEvent = new UnityEvent();
         Money = 0;
     }
 
@@ -78,8 +98,8 @@ public sealed class Player : MonoBehaviour, IBattleable
     public void AttackEnemy()
     {
         IBattleable enemy = BattleManager.Instance.EnemyBattleable;
-        enemy.ToDamage(OffensivePower);
-        enemy.ToPiercingDamage(PiercingDamage);
+        enemy.ToDamage(OffensivePower.FinalStatus);
+        enemy.ToPiercingDamage(PiercingDamage.FinalStatus);
 
         SoundManager.Instance.PlaySound("MP_AttackSound");
 
@@ -97,11 +117,11 @@ public sealed class Player : MonoBehaviour, IBattleable
     {
         Logger.Assert(_infoWindow != null);
 
-        damage = damage >= DefensivePower ? damage - DefensivePower : 0;
+        damage = damage >= DefensivePower.FinalStatus ? damage - DefensivePower.FinalStatus : 0;
         Hp = Hp - damage > 0 ? Hp - damage : 0;
 
         _infoWindow.UpdateHpBar(Hp, MaxHp);
-        Logger.Log($"플레이어 데미지 {damage} 입음. 현재 체력 {Hp}", gameObject);
+        Logger.Log($"플레이어 데미지 {damage} 입음. 현재 체력 {Hp.ToString()}", gameObject);
     }
 
     public void ToPiercingDamage(int piercingDamage)
@@ -111,15 +131,15 @@ public sealed class Player : MonoBehaviour, IBattleable
         Hp = Hp - piercingDamage > 0 ? Hp - piercingDamage : 0;
 
         _infoWindow.UpdateHpBar(Hp, MaxHp);
-        Logger.Log($"플레이어 관통 데미지 {piercingDamage} 입음. 현재 체력 {Hp}", gameObject);
+        Logger.Log($"플레이어 관통 데미지 {piercingDamage} 입음. 현재 체력 {Hp.ToString()}", gameObject);
     }
 
     public void SetDefensivePower(int defensivePower)
     {
         Logger.Assert(_infoWindow != null);
 
-        DefensivePower = defensivePower;
-        _infoWindow.UpdateDefensivePowerText(DefensivePower);
+        DefensivePower.DefaultStatus = defensivePower;
+        _infoWindow.UpdateDefensivePowerText(DefensivePower.FinalStatus);
         Logger.Log($"플레이어 방어력 {defensivePower}로 설정됨", gameObject);
     }
 
@@ -130,7 +150,7 @@ public sealed class Player : MonoBehaviour, IBattleable
         Hp = Hp + heal < MaxHp ? Hp + heal : MaxHp;
 
         _infoWindow.UpdateHpBar(Hp, MaxHp);
-        Logger.Log($"플레이어 {heal} 힐. 현재 체력 : {Hp}", gameObject);
+        Logger.Log($"플레이어 {heal} 힐. 현재 체력 : {Hp.ToString()}", gameObject);
     }
 
     public void StartAttackAnimation()
@@ -157,6 +177,9 @@ public sealed class Player : MonoBehaviour, IBattleable
     /// <summary> 공격 애니메이션 끝났을 때 호출 (삭제 금지) </summary>
     public void FinishAttackAnimation()
     {
+        // 공격 후 이벤트 발동
+        FinishAttackEvent.Invoke();
+        
         BattleManager.Instance.FinishAttack = true;
     }
 

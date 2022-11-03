@@ -72,23 +72,24 @@ public abstract class Card : OverlayBase
         switch (effectType)
         {
             case EventCardEffectType.AddOffensivePower:
-                player.OffensivePower += num;
+                player.OffensivePower.DefaultStatus += num;
                 valueUpdater.AddVal(num, ValueUpdater.valType.pow);
                 break;
             case EventCardEffectType.SubOffensivePower:
-                player.OffensivePower -= num;
+                player.OffensivePower.DefaultStatus -= num;
                 valueUpdater.AddVal(-num, ValueUpdater.valType.pow);
                 break;
             case EventCardEffectType.AddPiercingDamage:
-                player.PiercingDamage += num;
+                player.PiercingDamage.DefaultStatus += num;
                 valueUpdater.AddVal(num, ValueUpdater.valType.piercing);
                 break;
             case EventCardEffectType.SubPiercingDamage:
-                player.PiercingDamage -= num;
+                player.PiercingDamage.DefaultStatus -= num;
                 valueUpdater.AddVal(-num, ValueUpdater.valType.piercing);
                 break;
             case EventCardEffectType.AddMaxHp:
                 player.MaxHp += num;
+                player.Hp += num;
                 player.InfoWindow.UpdateHpBar(player.Hp, player.MaxHp);
                 break;
             case EventCardEffectType.SubMaxHp:
@@ -104,11 +105,11 @@ public abstract class Card : OverlayBase
                 player.InfoWindow.UpdateHpBar(player.Hp, player.MaxHp);
                 break;
             case EventCardEffectType.AddDefensivePower:
-                player.DefensivePower += num;
+                player.DefensivePower.DefaultStatus += num;
                 valueUpdater.AddVal(num, ValueUpdater.valType.def);
                 break;
             case EventCardEffectType.SubDefensivePower:
-                player.DefensivePower -= num;
+                player.DefensivePower.DefaultStatus -= num;
                 valueUpdater.AddVal(-num, ValueUpdater.valType.def);
                 break;
             case EventCardEffectType.NoEffect:

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,7 +7,8 @@ using UnityEngine.UI;
 public enum StageType
 {
     Event,
-    Battle
+    Battle,
+    Shop,
 }
 
 public class MapManager : MonoBehaviour
@@ -19,13 +21,19 @@ public class MapManager : MonoBehaviour
         public StageInfo(StageType initType, Transform parent, Vector3 createPos)
         {
             type = initType;
-            if (type == StageType.Event)
+            switch (type)
             {
-                mapIcon = Instantiate(Resources.Load<GameObject>("EventMapIcon"), parent);
-            }
-            else
-            {
-                mapIcon = Instantiate(Resources.Load<GameObject>("BattleMapIcon"), parent);
+                case StageType.Event:
+                    mapIcon = Instantiate(Resources.Load<GameObject>("EventMapIcon"), parent);
+                    break;
+                case StageType.Battle:
+                    mapIcon = Instantiate(Resources.Load<GameObject>("BattleMapIcon"), parent);
+                    break;
+                case StageType.Shop:
+                    mapIcon = Instantiate(Resources.Load<GameObject>("ShopMapIcon"), parent);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
             mapIcon.transform.localPosition = createPos;

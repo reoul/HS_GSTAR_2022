@@ -3,21 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 public class StageManager : Singleton<StageManager>
 {
     /// <summary> 이벤트 스테이지 정보 배열 </summary>
-    [SerializeField] private EventStageInfo[] _eventStageInfoList;
+    [SerializeField] private EventStageInfo[] _eventStageInfoArray;
 
     /// <summary> 적 정보 배열 </summary>
-    [SerializeField] private EnemyInfo[] _enemyInfoList;
+    [SerializeField] private EnemyInfo[] _enemyInfoArray;
+
 
     private Queue<StageType> _stageQueue;
     [SerializeField] private Stage _curStage;
 
-    [SerializeField] private EventStage _eventStage;
-    [SerializeField] private BattleStage _battleStage;
+    public EventStage EventStage;
+    public BattleStage BattleStage;
+    public ShopStage ShopStage;
 
     private int _curStageIndex;
 
@@ -35,10 +38,15 @@ public class StageManager : Singleton<StageManager>
         Debug.Assert(_mapManager != null);
         
         // Resources 폴더에서 이벤트 정보와 적 정보 불러오기
-        _eventStageInfoList = Resources.LoadAll<EventStageInfo>("StageInfo/EventInfo");
-        _enemyInfoList = Resources.LoadAll<EnemyInfo>("StageInfo/EnemyInfo");
+        _eventStageInfoArray = Resources.LoadAll<EventStageInfo>("StageInfo/EventInfo");
+        _enemyInfoArray = Resources.LoadAll<EnemyInfo>("StageInfo/EnemyInfo");
+        ShopStage.ItemInfoArray = Resources.LoadAll<ItemInfo>("StageInfo/ItemInfo");
 
         _stageQueue = new Queue<StageType>();
+
+        // 전투 스테이지 이벤트 등록
+        BattleStage.StartBattleEvent = new UnityEvent();
+        BattleStage.FinishBattleEvent = new UnityEvent();
     }
 
     private void Start()
@@ -65,6 +73,9 @@ public class StageManager : Singleton<StageManager>
             _stageQueue.Enqueue(StageType.Event);
             _mapManager.AddStage(StageType.Event);
             
+            _stageQueue.Enqueue(StageType.Shop);
+            _mapManager.AddStage(StageType.Shop);
+            
             _stageQueue.Enqueue(StageType.Battle);
             _mapManager.AddStage(StageType.Battle);
         }
@@ -80,6 +91,9 @@ public class StageManager : Singleton<StageManager>
             case StageType.Battle:
                 SetFadeEventByBattleStage();
                 break;
+            case StageType.Shop:
+                SetFadeEventByShopStage();
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(stageType), stageType, null);
         }
@@ -88,14 +102,16 @@ public class StageManager : Singleton<StageManager>
     /// <summary> 이벤트 스테이지에 대해 페이드 이벤트 등록 </summary>
     private void SetFadeEventByEventStage()
     {
-        int rand = Random.Range(0, _eventStageInfoList.Length);
-        EventStageInfo eventStageInfo = _eventStageInfoList[rand];
+        int rand = Random.Range(0, _eventStageInfoArray.Length);
+        EventStageInfo eventStageInfo = _eventStageInfoArray[rand];
 
         FadeManager.Instance.FadeInStartEvent.AddListener(() =>
         {
-            _battleStage.gameObject.SetActive(false);
-            _eventStage.InitEvent(eventStageInfo.Title, eventStageInfo.Description);
-            _eventStage.gameObject.SetActive(true);
+            BattleStage.gameObject.SetActive(false);
+            ShopStage.gameObject.SetActive(false);
+            
+            EventStage.InitEvent(eventStageInfo.Title, eventStageInfo.Description);
+            EventStage.gameObject.SetActive(true);
 
             PlayerInfoWindow.transform.SetParent(EventStagePlayerInfoWindowPos);
             PlayerInfoWindow.transform.localPosition = Vector3.zero;
@@ -125,21 +141,24 @@ public class StageManager : Singleton<StageManager>
 
         FadeManager.Instance.FadeInStartEvent.AddListener(() =>
         {
-            _battleStage.gameObject.SetActive(true);
-            int rand = Random.Range(0, _enemyInfoList.Length);
-            GameObject enemyObj = Instantiate(_enemyInfoList[rand].Prefab, _battleStage.EnemyCreatePos);
+            EventStage.gameObject.SetActive(false);
+            ShopStage.gameObject.SetActive(false);
+            
+            BattleStage.gameObject.SetActive(true);
+            int rand = Random.Range(0, _enemyInfoArray.Length);
+            GameObject enemyObj = Instantiate(_enemyInfoArray[rand].Prefab, BattleStage.EnemyCreatePos);
             enemyObj.transform.localPosition = Vector3.zero;
             enemyObj.transform.localScale *= 3;
 
-            EnemyInfo enemyInfo = _enemyInfoList[rand];
+            EnemyInfo enemyInfo = _enemyInfoArray[rand];
             IBattleable enemy = enemyObj.GetComponent<IBattleable>();
             BattleManager.Instance.SetEnemy(enemy);
             enemy.InfoWindow = FindObjectOfType<BattleStage>(true).EnemyInfoWindow;
             enemy.MaxHp = enemyInfo.MaxHp;
             enemy.Hp = enemyInfo.Hp;
-            enemy.OffensivePower = enemyInfo.OffensivePower;
-            enemy.PiercingDamage = enemyInfo.PiercingDamage;
-            enemy.DefensivePower = enemyInfo.DefensivePower;
+            enemy.OffensivePower.DefaultStatus = enemyInfo.OffensivePower;
+            enemy.PiercingDamage.DefaultStatus = enemyInfo.PiercingDamage;
+            enemy.DefensivePower.DefaultStatus = enemyInfo.DefensivePower;
 
             PlayerInfoWindow.transform.parent = BattleStagePlayerInfoWindowPos;
             PlayerInfoWindow.transform.localPosition = Vector3.zero;
@@ -149,6 +168,21 @@ public class StageManager : Singleton<StageManager>
 
         FadeManager.Instance.FadeInFinishEvent.AddListener(() => { BattleManager.Instance.StartBattle(); });
         SoundManager.Instance.BGMChange("Event", 1);
+    }
+    
+    /// <summary> 상점 스테이지에 대해 페이드 이벤트 등록 </summary>
+    private void SetFadeEventByShopStage()
+    {
+        FadeManager.Instance.FadeInStartEvent.AddListener(() =>
+        {
+            EventStage.gameObject.SetActive(false);
+            BattleStage.gameObject.SetActive(false);
+            
+            ShopStage.gameObject.SetActive(true);
+            OpenStage(GetNextStage());
+        });
+
+        //SoundManager.Instance.BGMChange("Event", 1);
     }
 
     public void OpenStage(Stage stage)
@@ -166,6 +200,13 @@ public class StageManager : Singleton<StageManager>
     public Stage GetNextStage()
     {
         StageType nextStageType = _stageQueue.Dequeue();
-        return nextStageType == StageType.Battle ? _battleStage : _eventStage;
+        return nextStageType == StageType.Battle ? BattleStage : EventStage;
+    }
+
+    /// <summary> 다음 스테이지 </summary>
+    public void NextStage()
+    {
+        FadeManager.Instance.StartFadeOut();
+        SetFadeEvent(NextStageType);
     }
 }

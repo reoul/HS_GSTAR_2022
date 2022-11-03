@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public interface IBattleable
 {
@@ -13,13 +14,13 @@ public interface IBattleable
     int Hp { get; set; }
 
     /// <summary> 공격력 </summary>
-    int OffensivePower { get; set; }
+    Status OffensivePower { get; set; }
 
     /// <summary> 방어력 </summary>
-    int DefensivePower { get; set; }
+    Status DefensivePower { get; set; }
 
     /// <summary> 관통 데미지 </summary>
-    int PiercingDamage { get; set; }
+    Status PiercingDamage { get; set; }
 
     /// <summary> 정보창 </summary>
     public InfoWindow InfoWindow { get; set; }
@@ -47,4 +48,7 @@ public interface IBattleable
 
     /// <summary> Dead 애니메이션 시작 </summary>
     void StartDeadAnimation();
+
+    /// <summary> 공격이 끝났을 때 발동할 이벤트 </summary>
+    UnityEvent FinishAttackEvent { get; set; }
 }
