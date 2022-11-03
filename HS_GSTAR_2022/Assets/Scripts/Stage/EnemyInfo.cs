@@ -1,8 +1,6 @@
 using System;
 using UnityEditor;
 using UnityEngine;
-using UnityEditor.UIElements;
-using UnityEngine.UIElements;
 
 #if UNITY_EDITOR
 [CustomEditor(typeof(EnemyInfo))]

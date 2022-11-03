@@ -55,7 +55,9 @@ public sealed class Player : MonoBehaviour, IBattleable
     }
 
     public ValueUpdater ValueUpdater { get; private set; }
-
+    
+    public int Money { get; set; }
+    
     public void Init()
     {
         MaxHp = 100;
@@ -69,6 +71,7 @@ public sealed class Player : MonoBehaviour, IBattleable
         _infoWindow.UpdateDefensivePowerText(DefensivePower);
         _infoWindow.UpdatePiercingDamageText(PiercingDamage);
         ValueUpdater = FindObjectOfType<ValueUpdater>(true);
+        Money = 0;
     }
 
     /// <summary> 공격 애니메이션에서 호출 (삭제 금지) </summary>
@@ -161,6 +164,7 @@ public sealed class Player : MonoBehaviour, IBattleable
     public void FinishDeathAnimation()
     {
         Destroy(gameObject);
+        FindObjectOfType<BattleStage>().IsFinishBattle = true;
         SceneManager.LoadScene(0);
     }
 }

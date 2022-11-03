@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c3172bce4ceffd41bf3cfb0c46a9e85, type: 3}
-  m_Name: EnemyInfo001
+  m_Name: TaurosInfo
   m_EditorClassIdentifier: 
   Prefab: {fileID: 5690635501145629383, guid: 61570a9902b7b7e4db7c71487e6f6365, type: 3}
   Name: "\uBD88\uBA78\uC790"
-  MaxHp: 100
-  Hp: 100
+  MaxHp: 200
+  Hp: 200
   OffensivePower: 10
   DefensivePower: 10
   PiercingDamage: 10

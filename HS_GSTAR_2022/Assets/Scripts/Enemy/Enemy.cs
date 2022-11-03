@@ -110,6 +110,7 @@ public sealed class Enemy : MonoBehaviour, IBattleable
     public void FinishDeathAnimation()
     {
         Destroy(this.gameObject);
+        FindObjectOfType<BattleStage>().IsFinishBattle = true;
         FadeManager.Instance.StartFadeOut();
         StageManager.Instance.SetFadeEvent(StageManager.Instance.NextStageType);
     }
