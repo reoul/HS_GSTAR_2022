@@ -87,7 +87,7 @@ public abstract class Card : OverlayBase
             case EventCardEffectType.SubPiercingDamage:
                 int oldPiercingDamage = player.PiercingDamage.DefaultStatus;
                 player.PiercingDamage.DefaultStatus -= num;
-                valueUpdater.AddVal(player.OffensivePower.DefaultStatus > 0 ? -num : -oldPiercingDamage, ValueUpdater.valType.piercing);
+                valueUpdater.AddVal(player.PiercingDamage.DefaultStatus > 0 ? -num : -oldPiercingDamage, ValueUpdater.valType.piercing);
                 break;
             case EventCardEffectType.AddMaxHp:
                 player.MaxHp += num;
@@ -113,7 +113,7 @@ public abstract class Card : OverlayBase
             case EventCardEffectType.SubDefensivePower:
                 int oldDefensivePower = player.DefensivePower.DefaultStatus;
                 player.DefensivePower.DefaultStatus -= num;
-                valueUpdater.AddVal(player.OffensivePower.DefaultStatus > 0 ? -num : -oldDefensivePower, ValueUpdater.valType.def);
+                valueUpdater.AddVal(player.DefensivePower.DefaultStatus > 0 ? -num : -oldDefensivePower, ValueUpdater.valType.def);
                 break;
             case EventCardEffectType.NoEffect:
                 break;
