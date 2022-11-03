@@ -35,6 +35,7 @@ public class ItemInfoInspector : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("EffectInvokeTimeType"), new GUIContent("발동 시점"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("EffectType"), new GUIContent("발동 효과 타입"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("Num"), new GUIContent("수치"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("Price"), new GUIContent("가격"));
 
         serializedObject.ApplyModifiedProperties();
     }
@@ -50,4 +51,5 @@ public class ItemInfo : ScriptableObject
     public ItemEffectInvokeTimeType EffectInvokeTimeType;
     public ItemEffectType EffectType;
     public int Num;
+    public int Price;
 }
