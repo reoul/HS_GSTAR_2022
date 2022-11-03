@@ -123,6 +123,7 @@ public sealed class Enemy : MonoBehaviour, IBattleable
     {
         Destroy(this.gameObject);
         FindObjectOfType<BattleStage>().IsFinishBattle = true;
+        FindObjectOfType<BattleStage>().IsPlayerWin = true;
         StageManager.Instance.NextStage();
     }
 }

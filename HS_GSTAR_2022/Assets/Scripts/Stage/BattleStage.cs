@@ -18,6 +18,8 @@ public class BattleStage : Stage
     
     public bool IsFinishBattle { get; set; }
 
+    public bool IsPlayerWin { get; set; }
+    
     private float _battleTime;
     
     /// <summary> 전투 시작 시 발동 </summary>
@@ -44,6 +46,7 @@ public class BattleStage : Stage
         
         Time.timeScale = 1;
         IsFinishBattle = false;
+        IsPlayerWin = false;
         _battleTime = 0;
     }
 
@@ -73,10 +76,14 @@ public class BattleStage : Stage
         player.InfoWindow.UpdateDefensivePowerText(player.DefensivePower.DefaultStatus);
         
         // 전투 종료 아이템 발동
-        FinishBattleEvent.Invoke();
+        if (IsPlayerWin)
+        {
+            FinishBattleEvent.Invoke();
+        }
         
         Time.timeScale = 1;
         IsFinishBattle = false;
+        IsPlayerWin = false;
         _battleTime = 0;
     }
 }
