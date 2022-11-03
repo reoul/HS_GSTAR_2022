@@ -52,4 +52,18 @@ MonoBehaviour:
     CardEffectInfos3: []
     Context6: 
     EventCardEffectType6: 0
+  - Title: "\uCF54\uC778"
+    Type: 1
+    Context1: "\uCF54\uC778 10\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos1:
+    - EventCardEffectType: 11
+      Num: 10
+    Context2: "\uCF54\uC778 15\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos2:
+    - EventCardEffectType: 11
+      Num: 15
+    Context3: 
+    CardEffectInfos3: []
+    Context6: 
+    EventCardEffectType6: 0
   ratingType: 2

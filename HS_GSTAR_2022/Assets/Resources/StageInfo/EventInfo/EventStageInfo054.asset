@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0ef6cc71ba18ef45b18a3ea08d8d406, type: 3}
+  m_Name: EventStageInfo054
+  m_EditorClassIdentifier: 
+  Title: "\uCF54\uC778 \uC81C\uC870 \uACF5\uC7A5"
+  Description: "\uB2F9\uC2E0\uC740 \uC5B4\uB5A0\uD55C \uACF5\uC7A5\uC548\uC5D0 \uB4E4\uC5B4\uAC00\uAC8C
+    \uB418\uC5C8\uC2B5\uB2C8\uB2E4.\n\uBC14\uB85C \uCF54\uC778\uC744 \uC0DD\uC0B0\uD558\uB294
+    \uACF5\uC7A5\uC548\uC73C\uB85C \uB4E4\uC5B4 \uC624\uAC8C \uB418\uC5C8\uC2B5\uB2C8\uB2E4.
+    \uB9C8\uC74C\uAECF \uCF54\uC778\uC744 \uC0DD\uC0B0\uD558\uAC8C \uB429\uB2C8\uB2E4."
+  EventCardInfos:
+  - Title: "\uCD08\uAE09 \uC791\uC5C5"
+    Type: 0
+    Context1: "\uCF54\uC778 1\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos1:
+    - EventCardEffectType: 11
+      Num: 1
+    Context2: "\uCF54\uC778 2\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos2:
+    - EventCardEffectType: 11
+      Num: 2
+    Context3: "\uCF54\uC778 3\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos3:
+    - EventCardEffectType: 11
+      Num: 3
+    Context6: 
+    EventCardEffectType6: 0
+  - Title: "\uC911\uAE09 \uC791\uC5C5"
+    Type: 0
+    Context1: "\uCF54\uC778 5\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos1:
+    - EventCardEffectType: 11
+      Num: 5
+    Context2: "\uCF54\uC778 10\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos2:
+    - EventCardEffectType: 11
+      Num: 10
+    Context3: "\uCF54\uC778 15\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos3:
+    - EventCardEffectType: 11
+      Num: 15
+    Context6: 
+    EventCardEffectType6: 0
+  - Title: "\uC0C1\uAE09 \uC791\uC5C5"
+    Type: 0
+    Context1: "\uCF54\uC778 10\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos1:
+    - EventCardEffectType: 11
+      Num: 10
+    Context2: "\uCF54\uC778 20\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos2:
+    - EventCardEffectType: 11
+      Num: 20
+    Context3: "\uCF54\uC778 30\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos3:
+    - EventCardEffectType: 11
+      Num: 30
+    Context6: 
+    EventCardEffectType6: 0
+  ratingType: 1
