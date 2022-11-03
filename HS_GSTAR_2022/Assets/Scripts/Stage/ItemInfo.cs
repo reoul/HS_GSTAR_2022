@@ -22,6 +22,13 @@ public enum ItemEffectType
     [InspectorName("골드 획득")] Gold,
 }
 
+public enum ItemRatingType
+{
+    [InspectorName("레어")] Rare,
+    [InspectorName("에픽")] Epic,
+    [InspectorName("레전드리")] Legendary
+}
+
 #if UNITY_EDITOR
 [CustomEditor(typeof(ItemInfo))]
 public class ItemInfoInspector : Editor
@@ -36,6 +43,7 @@ public class ItemInfoInspector : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("EffectType"), new GUIContent("발동 효과 타입"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("Num"), new GUIContent("수치"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("Price"), new GUIContent("가격"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("ratingType"), new GUIContent("등급"));
 
         serializedObject.ApplyModifiedProperties();
     }
@@ -52,4 +60,5 @@ public class ItemInfo : ScriptableObject
     public ItemEffectType EffectType;
     public int Num;
     public int Price;
+    public ItemRatingType ratingType;
 }
