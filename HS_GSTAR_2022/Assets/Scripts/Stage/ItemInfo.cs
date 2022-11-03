@@ -9,6 +9,7 @@ public enum ItemEffectInvokeTimeType
     [InspectorName("전투 시작 시")] BattleStart,
     [InspectorName("전투 종료 시")] BattleFinish,
     [InspectorName("공격 후")] AttackFinish,
+    [InspectorName("획득 시")] GetItem,
 }
 
 public enum ItemEffectType
