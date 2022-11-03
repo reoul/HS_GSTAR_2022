@@ -21,6 +21,8 @@ public class CardEffect : MonoBehaviour
 
     public void Destroy()
     {
-        Destroy(transform.GetComponentInParent<Card>().gameObject);
+        Card card = transform.GetComponentInParent<Card>();
+        CardManager.Instance.RemoveCard(card);
+        Destroy(card.gameObject);
     }
 }

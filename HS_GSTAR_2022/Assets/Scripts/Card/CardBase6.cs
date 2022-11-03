@@ -20,7 +20,6 @@ public sealed class CardBase6 : Card
     {
         ApplyEffect(EffectType, (int) dice.Number);
         Logger.Log($"{Name} : {dice} : {Description}");
-        CardManager.Instance.RemoveCard(this);
         StartDestroyAnimation(); // 카드 삭제
     }
 }

@@ -64,7 +64,6 @@ public sealed class CardBase222 : Card
         }
 
         Logger.Log($"{Name} : {dice} : {description}");
-        CardManager.Instance.RemoveCard(this);
         StartDestroyAnimation(); // 카드 삭제
     }
 }
