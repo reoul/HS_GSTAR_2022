@@ -78,6 +78,7 @@ public abstract class Dice : MonoBehaviour
             if (Physics.Raycast(ray, out var hit, 1000, layerMask))
             {
                 transform.position = new Vector3(hit.point.x, hit.point.y, hit.point.z);     // 주사위 바닥에서 살짝 위로 위치 고정
+                transform.localPosition = new Vector3(transform.localPosition.x, transform.localPosition.y, 0);
             }
             yield return null;
         }
