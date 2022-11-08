@@ -19,3 +19,4 @@ MonoBehaviour:
   OffensivePower: 35
   DefensivePower: 15
   PiercingDamage: 15
+  ratingType: 1
