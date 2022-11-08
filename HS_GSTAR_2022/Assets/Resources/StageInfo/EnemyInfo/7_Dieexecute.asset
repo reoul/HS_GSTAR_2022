@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c3172bce4ceffd41bf3cfb0c46a9e85, type: 3}
-  m_Name: 9_Skeleton
+  m_Name: 7_Dieexecute
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 5690635501145629383, guid: 09cfdfeef2d663f4ab2fda50691f3f7b, type: 3}
-  Name: "\uC2A4\uCF08\uB808\uD1A4"
-  MaxHp: 150
-  Hp: 150
-  OffensivePower: 20
-  DefensivePower: 10
+  Prefab: {fileID: 5690635501145629383, guid: 4f63d694c2f4f6244ac6dc9a9e4bba49, type: 3}
+  Name: "\uC0AC\uD615\uC758 \uC9D1\uD589\uC790"
+  MaxHp: 200
+  Hp: 200
+  OffensivePower: 25
+  DefensivePower: 20
   PiercingDamage: 10

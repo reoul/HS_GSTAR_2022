@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c3172bce4ceffd41bf3cfb0c46a9e85, type: 3}
-  m_Name: 15_Flying eye
+  m_Name: 12_Soul Reaver
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 5690635501145629383, guid: 018a9b18dcd0b324e8c1d464db250916, type: 3}
-  Name: "\uC678\uB208\uB0A0\uAC1C"
-  MaxHp: 150
-  Hp: 150
-  OffensivePower: 10
-  DefensivePower: 10
+  Prefab: {fileID: 5690635501145629383, guid: a8f364ebcf8113f48abee4b00aa61bd6, type: 3}
+  Name: "\uC601\uD63C \uC57D\uD0C8\uC790"
+  MaxHp: 250
+  Hp: 250
+  OffensivePower: 30
+  DefensivePower: 25
   PiercingDamage: 10

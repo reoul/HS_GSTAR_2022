@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4c3172bce4ceffd41bf3cfb0c46a9e85, type: 3}
-  m_Name: 12_Ghost spearman
+  m_Name: 11_GolemGuardian
   m_EditorClassIdentifier: 
-  Prefab: {fileID: 5690635501145629383, guid: b132d4bdff852ff4aa40b1d9b30d04e1, type: 3}
-  Name: "\uC720\uB839 \uCC3D\uBCD1"
-  MaxHp: 550
-  Hp: 550
-  OffensivePower: 45
-  DefensivePower: 25
-  PiercingDamage: 25
+  Prefab: {fileID: 5690635501145629383, guid: 8c061b273c20cf547a71350d91fc859d, type: 3}
+  Name: "\uACE8\uB818 \uAC00\uB514\uC5B8"
+  MaxHp: 500
+  Hp: 500
+  OffensivePower: 35
+  DefensivePower: 35
+  PiercingDamage: 5
