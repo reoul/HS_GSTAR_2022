@@ -20,6 +20,8 @@ public enum ItemEffectType
     [InspectorName("방어력 증가")] DefensivePower,
     [InspectorName("최대 체력 증가")] MaxHp,
     [InspectorName("골드 획득")] Gold,
+    [InspectorName("데미지 2배, 피해량 2배")] DoubleDamage,
+    [InspectorName("커스텀 기능")] Custom,
 }
 
 public enum ItemRatingType
@@ -41,7 +43,18 @@ public class ItemInfoInspector : Editor
         EditorGUILayout.PropertyField(serializedObject.FindProperty("Description"), new GUIContent("설명"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("EffectInvokeTimeType"), new GUIContent("발동 시점"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("EffectType"), new GUIContent("발동 효과 타입"));
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("Num"), new GUIContent("수치"));
+        
+        int effectTypeIndex = serializedObject.FindProperty("EffectType").enumValueIndex;
+        if (effectTypeIndex < (int) ItemEffectType.DoubleDamage)
+        {
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("Num"), new GUIContent("수치"));
+        }
+
+        if (effectTypeIndex == (int) ItemEffectType.Custom)
+        {
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("className"), new GUIContent("아이템 클래스 이름"));
+        }
+        
         EditorGUILayout.PropertyField(serializedObject.FindProperty("Price"), new GUIContent("가격"));
         EditorGUILayout.PropertyField(serializedObject.FindProperty("ratingType"), new GUIContent("등급"));
 
@@ -61,4 +74,5 @@ public class ItemInfo : ScriptableObject
     public int Num;
     public int Price;
     public ItemRatingType ratingType;
+    public string className;
 }

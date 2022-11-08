@@ -21,6 +21,9 @@ public interface IBattleable
 
     /// <summary> 관통 데미지 </summary>
     Status PiercingDamage { get; set; }
+    
+    /// <summary> 가장 최근 입힌 데미지 </summary>
+    int LastAttackDamage { get; set; }
 
     /// <summary> 정보창 </summary>
     public InfoWindow InfoWindow { get; set; }

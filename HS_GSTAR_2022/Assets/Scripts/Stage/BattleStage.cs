@@ -40,7 +40,7 @@ public class BattleStage : Stage
         // 전투 시작 아이템 발동
         StartBattleEvent.Invoke();
         
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         IsFinishBattle = false;
         IsPlayerWin = false;
         _battleTime = 0;
@@ -48,7 +48,7 @@ public class BattleStage : Stage
 
     public override void StageUpdate()
     {
-        if (IsFinishBattle)
+        /*if (IsFinishBattle)
         {
             Time.timeScale = 1;
         }
@@ -57,6 +57,7 @@ public class BattleStage : Stage
             _battleTime += Time.deltaTime;
             Time.timeScale = 1 + Mathf.Min(_battleTime, 4f);
         }
+        */
         
     }
 
@@ -79,7 +80,7 @@ public class BattleStage : Stage
             FinishBattleEvent.Invoke();
         }
         
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
         IsFinishBattle = false;
         IsPlayerWin = false;
         _battleTime = 0;

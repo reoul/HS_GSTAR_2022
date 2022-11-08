@@ -1,7 +1,5 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -60,6 +58,7 @@ public class StageManager : Singleton<StageManager>
     private void Start()
     {
         SetRandomStage();
+        //Time.timeScale = 3;
     }
 
     private void Update()
@@ -168,7 +167,7 @@ public class StageManager : Singleton<StageManager>
                 infos.Add(eventCardInfo);
             }
 
-            int createdCardCount = CardManager.Instance.CreateCards(infos, Vector3.one, 0.2f);
+            int createdCardCount = CardManager.Instance.CreateCards(infos, Vector3.one * 1.3f, 0.2f);
 
             DiceManager.Instance.CreateDices(createdCardCount, 0.2f);
         });

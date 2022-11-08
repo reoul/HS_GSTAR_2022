@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System.Reflection;
 
 public class ItemCard : MonoBehaviour
 {
@@ -36,16 +37,16 @@ public class ItemCard : MonoBehaviour
         switch (ItemInfo.EffectInvokeTimeType)
         {
             case ItemEffectInvokeTimeType.BattleStart:
-                ApplyItemOfBattleStart(ItemInfo.EffectType, ItemInfo.Num);
+                ApplyItemOfBattleStart(ItemInfo);
                 break;
             case ItemEffectInvokeTimeType.BattleFinish:
-                ApplyItemOfBattleFinish(ItemInfo.EffectType, ItemInfo.Num);
+                ApplyItemOfBattleFinish(ItemInfo);
                 break;
             case ItemEffectInvokeTimeType.AttackFinish:
-                ApplyItemOfAttackFinish(ItemInfo.EffectType, ItemInfo.Num);
+                ApplyItemOfAttackFinish(ItemInfo);
                 break;
             case ItemEffectInvokeTimeType.GetItem:
-                ApplyItemOfGetType(ItemInfo.EffectType, ItemInfo.Num);
+                ApplyItemOfGetType(ItemInfo);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -75,108 +76,116 @@ public class ItemCard : MonoBehaviour
         return _rank;
     }
 
-    private void ApplyItem(ItemEffectType effectType, int num, bool isItemStatus)
+    private void ApplyItem(ItemInfo itemInfo, bool isItemStatus)
     {
         IBattleable player = BattleManager.Instance.PlayerBattleable;
 
         Debug.Assert(player != null);
 
-        switch (effectType)
+        switch (itemInfo.EffectType)
         {
             case ItemEffectType.Heal:
-                player.ToHeal(num);
+                player.ToHeal(itemInfo.Num);
                 break;
             case ItemEffectType.OffensivePower:
                 if (isItemStatus)
                 {
-                    player.OffensivePower.ItemStatus += num;
+                    player.OffensivePower.ItemStatus += itemInfo.Num;
                 }
                 else
                 {
-                    player.OffensivePower.DefaultStatus += num;
+                    player.OffensivePower.DefaultStatus += itemInfo.Num;
                 }
 
-                player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(num, ValueUpdater.valType.pow);
+                player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(itemInfo.Num, ValueUpdater.valType.pow);
                 break;
             case ItemEffectType.PiercingDamage:
                 if (isItemStatus)
                 {
-                    player.PiercingDamage.ItemStatus += num;
+                    player.PiercingDamage.ItemStatus += itemInfo.Num;
                 }
                 else
                 {
-                    player.PiercingDamage.DefaultStatus += num;
+                    player.PiercingDamage.DefaultStatus += itemInfo.Num;
                 }
 
-                player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(num, ValueUpdater.valType.piercing);
+                player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(itemInfo.Num, ValueUpdater.valType.piercing);
                 break;
             case ItemEffectType.DefensivePower:
                 if (isItemStatus)
                 {
-                    player.DefensivePower.ItemStatus += num;
+                    player.DefensivePower.ItemStatus += itemInfo.Num;
                 }
                 else
                 {
-                    player.DefensivePower.DefaultStatus += num;
+                    player.DefensivePower.DefaultStatus += itemInfo.Num;
                 }
 
-                player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(num, ValueUpdater.valType.def);
+                player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(itemInfo.Num, ValueUpdater.valType.def);
                 break;
             case ItemEffectType.MaxHp:
-                player.MaxHp += num;
-                player.Hp += num;
+                player.MaxHp += itemInfo.Num;
+                player.Hp += itemInfo.Num;
                 player.InfoWindow.UpdateHpBar(player.Hp, player.MaxHp);
                 break;
             case ItemEffectType.Gold:
-                player.OwnerObj.GetComponent<Player>().Money += num;
+                player.OwnerObj.GetComponent<Player>().Money += itemInfo.Num;
+                break;
+            case ItemEffectType.DoubleDamage:
+                BattleManager.IsDoubleDamage = true;
+                break;
+            case ItemEffectType.Custom:
+                Type type = Type.GetType(itemInfo.className);
+                var method = type.GetMethod("ApplyEffect", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
+                method.Invoke(null, null);
                 break;
             default:
-                throw new ArgumentOutOfRangeException(nameof(effectType), effectType, null);
+                throw new ArgumentOutOfRangeException(nameof(itemInfo.EffectType), itemInfo.EffectType, null);
         }
     }
 
     /// <summary> 전투 시작 시에 발동되는 아이템 적용 </summary>
     /// <param name="effectType">발동 효과 타입</param>
     /// <param name="num">수치</param>
-    private void ApplyItemOfBattleStart(ItemEffectType effectType, int num)
+    private void ApplyItemOfBattleStart(ItemInfo itemInfo)
     {
         StageManager.Instance.BattleStage.StartBattleEvent.AddListener(() =>
         {
-            Debug.Log($"전투 시작 시 {effectType} {num} 발동");
-            ApplyItem(effectType, num, true);
+            Debug.Log($"전투 시작 시 {itemInfo.EffectType} {itemInfo.Num} 발동");
+            ApplyItem(itemInfo, true);
         });
     }
 
     /// <summary> 전투 종료 시에 발동되는 아이템 적용 </summary>
     /// <param name="effectType">발동 효과 타입</param>
     /// <param name="num">수치</param>
-    private void ApplyItemOfBattleFinish(ItemEffectType effectType, int num)
+    private void ApplyItemOfBattleFinish(ItemInfo itemInfo)
     {
         StageManager.Instance.BattleStage.FinishBattleEvent.AddListener(() =>
         {
-            Debug.Log($"전투 종료 후 {effectType} {num} 발동");
-            ApplyItem(effectType, num, false);
+            Debug.Log($"전투 종료 후 {itemInfo.EffectType} {itemInfo.Num} 발동");
+            ApplyItem(itemInfo, true);
         });
     }
 
     /// <summary> 공격 후 발동되는 아이템 적용 </summary>
     /// <param name="effectType">발동 효과 타입</param>
     /// <param name="num">수치</param>
-    private void ApplyItemOfAttackFinish(ItemEffectType effectType, int num)
+    private void ApplyItemOfAttackFinish(ItemInfo itemInfo)
     {
         BattleManager.Instance.PlayerBattleable.FinishAttackEvent.AddListener(() =>
         {
-            Debug.Log($"공격 후 {effectType} {num} 발동");
-            ApplyItem(effectType, num, true);
+            Debug.Log($"공격 후 {itemInfo.EffectType} {itemInfo.Num} 발동");
+            ApplyItem(itemInfo, true);
         });
     }
 
     /// <summary> 획득 시 발동되는 아이템 적용 </summary>
     /// <param name="effectType">발동 효과 타입</param>
     /// <param name="num">수치</param>
-    private void ApplyItemOfGetType(ItemEffectType effectType, int num)
+    private void ApplyItemOfGetType(ItemInfo itemInfo)
     {
-        Debug.Log($"획득 시 {effectType} {num} 발동");
-        ApplyItem(effectType, num, false);
+        Debug.Log($"획득 시 {itemInfo.EffectType} {itemInfo.Num} 발동");
+        ApplyItem(itemInfo, true);
     }
 }

@@ -9,6 +9,8 @@ public class BattleManager : Singleton<BattleManager>
     [SerializeField] private Player _player;
     public IBattleable PlayerBattleable { get; private set; }
     public IBattleable EnemyBattleable { get; private set; }
+
+    public static bool IsDoubleDamage;
     
     /// <summary> 공격 애니메이션이 끝났는지 여부 </summary>
     public bool FinishAttack { get; set; }
@@ -19,6 +21,7 @@ public class BattleManager : Singleton<BattleManager>
         
         PlayerBattleable = _player.GetComponent<IBattleable>();
         _player.Init();
+        IsDoubleDamage = false;
     }
 
     /// <summary> 적 설정 </summary>
