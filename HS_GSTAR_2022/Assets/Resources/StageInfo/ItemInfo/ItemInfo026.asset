@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75e32a9dd5ddb4646a782d900ea767a2, type: 3}
-  m_Name: ItemInfo012
+  m_Name: ItemInfo026
   m_EditorClassIdentifier: 
-  Name: "\uD761\uD608\uADC0\uC758 \uC774\uBE68"
-  Description: "\uC785\uD78C \uD53C\uD574\uC758 10% \uD761\uD608"
+  Name: "\uD761\uD608 \uAC80"
+  Description: "\uACF5\uACA9 \uC2DC \uCCB4\uB825 1\uD761\uD608"
   EffectInvokeTimeType: 2
   EffectType: 7
-  Num: 3
+  Num: 5
   Price: 50
   ratingType: 1
-  itemObj: {fileID: 7720528880046833304, guid: 395484555b2c4e14e9a059fdfa000f41, type: 3}
+  itemObj: {fileID: 7720528880046833304, guid: cb8964a693306e04c90e6fbbb21cb2c6, type: 3}

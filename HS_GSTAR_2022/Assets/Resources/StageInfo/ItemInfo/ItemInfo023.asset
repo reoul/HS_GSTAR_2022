@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75e32a9dd5ddb4646a782d900ea767a2, type: 3}
-  m_Name: ItemInfo012
+  m_Name: ItemInfo023
   m_EditorClassIdentifier: 
-  Name: "\uD761\uD608\uADC0\uC758 \uC774\uBE68"
-  Description: "\uC785\uD78C \uD53C\uD574\uC758 10% \uD761\uD608"
-  EffectInvokeTimeType: 2
+  Name: "\uB3C4\uAE08\uB41C \uAC80"
+  Description: "\uC804\uD22C \uC2DC\uC791 \uC2DC 100\uACE8\uB4DC \uB2F9 \uACF5\uACA9\uB825
+    2\uC99D\uAC00"
+  EffectInvokeTimeType: 0
   EffectType: 7
-  Num: 3
-  Price: 50
-  ratingType: 1
-  itemObj: {fileID: 7720528880046833304, guid: 395484555b2c4e14e9a059fdfa000f41, type: 3}
+  Num: 5
+  Price: 20
+  ratingType: 0
+  itemObj: {fileID: 7720528880046833304, guid: 15665ed11f50293429778635d23de71f, type: 3}

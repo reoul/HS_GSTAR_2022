@@ -15,9 +15,9 @@ public class ItemCard : MonoBehaviour
     [SerializeField] private Sprite[] _gemSprite;
     [SerializeField] private TMP_Text _priceText;
 
-    public ItemInfo ItemInfo { get; private set; }
+    public ItemInfo ItemCardInfo { get; private set; }
 
-    public bool CanBuy => BattleManager.Instance.PlayerBattleable.OwnerObj.GetComponent<Player>().Money >= ItemInfo.Price;
+    public bool CanBuy => BattleManager.Instance.PlayerBattleable.OwnerObj.GetComponent<Player>().Money >= ItemCardInfo.Price;
 
     void Start()
     {
@@ -26,7 +26,7 @@ public class ItemCard : MonoBehaviour
 
     public void SetInfo(ItemInfo itemInfo)
     {
-        ItemInfo = itemInfo;
+        ItemCardInfo = itemInfo;
         SetCard(itemInfo.Name, itemInfo.Description, itemInfo.ratingType);
         GetComponent<BuyItemCard>().Init();
         _priceText.text = itemInfo.Price.ToString();
@@ -34,21 +34,23 @@ public class ItemCard : MonoBehaviour
 
     public void ApplyItem()
     {
-        switch (ItemInfo.EffectInvokeTimeType)
+        ItemInfo itemInfo = new ItemInfo(ItemCardInfo);
+        switch (ItemCardInfo.EffectInvokeTimeType)
         {
             case ItemEffectInvokeTimeType.BattleStart:
-                ApplyItemOfBattleStart(ItemInfo);
+                ApplyItemOfBattleStart(itemInfo);
                 break;
             case ItemEffectInvokeTimeType.BattleFinish:
-                ApplyItemOfBattleFinish(ItemInfo);
+                ApplyItemOfBattleFinish(itemInfo);
                 break;
             case ItemEffectInvokeTimeType.AttackFinish:
-                ApplyItemOfAttackFinish(ItemInfo);
+                ApplyItemOfAttackFinish(itemInfo);
                 break;
             case ItemEffectInvokeTimeType.GetItem:
-                ApplyItemOfGetType(ItemInfo);
+                ApplyItemOfGetType(itemInfo);
                 break;
             case ItemEffectInvokeTimeType.Hit:
+                ApplyItemOfHit(itemInfo);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -137,7 +139,7 @@ public class ItemCard : MonoBehaviour
                 BattleManager.IsDoubleDamage = true;
                 break;
             case ItemEffectType.Custom:
-                ItemInfo.itemObj.GetComponent<Item>().Active();
+                itemInfo.itemObj.GetComponent<Item>().Active();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(itemInfo.EffectType), itemInfo.EffectType, null);
@@ -187,10 +189,11 @@ public class ItemCard : MonoBehaviour
     {
         BattleManager.Instance.PlayerBattleable.HitEvent.AddListener(() =>
         {
-            Debug.Log($"공격 시 {itemInfo.EffectType} {itemInfo.Num} 발동");
+            Debug.Log($"피격 시 {itemInfo.EffectType} {itemInfo.Num} 발동");
             ApplyItem(itemInfo, true);
         });
     }
+
 
     /// <summary> 획득 시 발동되는 아이템 적용 </summary>
     /// <param name="effectType">발동 효과 타입</param>
