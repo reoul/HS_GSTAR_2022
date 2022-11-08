@@ -9,6 +9,6 @@ public class Item002 : MonoBehaviour
         IBattleable playerBattleable = BattleManager.Instance.PlayerBattleable;
         IBattleable EnemyBattleable = BattleManager.Instance.EnemyBattleable;
 
-        EnemyBattleable.ToDamage(Mathf.FloorToInt(playerBattleable.DefensivePower.FinalStatus * 0.1f));
+        EnemyBattleable.ToPiercingDamage(Mathf.FloorToInt(playerBattleable.DefensivePower.FinalStatus * 0.1f));
     }
 }

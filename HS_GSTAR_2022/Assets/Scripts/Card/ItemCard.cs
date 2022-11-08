@@ -48,6 +48,8 @@ public class ItemCard : MonoBehaviour
             case ItemEffectInvokeTimeType.GetItem:
                 ApplyItemOfGetType(ItemInfo);
                 break;
+            case ItemEffectInvokeTimeType.Hit:
+                break;
             default:
                 throw new ArgumentOutOfRangeException();
         }
@@ -176,6 +178,18 @@ public class ItemCard : MonoBehaviour
         BattleManager.Instance.PlayerBattleable.FinishAttackEvent.AddListener(() =>
         {
             Debug.Log($"공격 후 {itemInfo.EffectType} {itemInfo.Num} 발동");
+            ApplyItem(itemInfo, true);
+        });
+    }
+
+    /// <summary> 피격 시 발동되는 아이템 적용 </summary>
+    /// <param name="effectType">발동 효과 타입</param>
+    /// <param name="num">수치</param>
+    private void ApplyItemOfHit(ItemInfo itemInfo)
+    {
+        BattleManager.Instance.PlayerBattleable.HitEvent.AddListener(() =>
+        {
+            Debug.Log($"공격 시 {itemInfo.EffectType} {itemInfo.Num} 발동");
             ApplyItem(itemInfo, true);
         });
     }
