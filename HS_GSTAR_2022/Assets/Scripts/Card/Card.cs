@@ -106,10 +106,6 @@ public abstract class Card : OverlayBase
             case EventCardEffectType.SubHp:
                 player.ToPiercingDamage(num);
                 player.InfoWindow.UpdateHpBar(player.Hp, player.MaxHp);
-                if (player.Hp == 0)
-                {
-                    
-                }
                 break;
             case EventCardEffectType.AddDefensivePower:
                 player.DefensivePower.DefaultStatus += num;
