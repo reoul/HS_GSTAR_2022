@@ -39,7 +39,7 @@ public class ValueUpdater : MonoBehaviour
 
     private void valUpdate(ref ValStruct valStruct)
     {
-        valStruct.val = Mathf.Lerp(valStruct.val, valStruct.targetVal, 0.025f);
+        valStruct.val = Mathf.Lerp(valStruct.val, valStruct.targetVal, 3 * Time.deltaTime);
 
         valStruct.text.text = Mathf.Round(valStruct.val).ToString();
 
