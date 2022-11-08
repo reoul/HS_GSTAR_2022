@@ -53,7 +53,7 @@ public class ItemInfoInspector : Editor
 
         if (effectTypeIndex == (int) ItemEffectType.Custom)
         {
-            EditorGUILayout.PropertyField(serializedObject.FindProperty("className"), new GUIContent("아이템 클래스 이름"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("itemObj"), new GUIContent("아이템 오브젝트"));
         }
         
         EditorGUILayout.PropertyField(serializedObject.FindProperty("Price"), new GUIContent("가격"));
@@ -75,5 +75,5 @@ public class ItemInfo : ScriptableObject
     public int Num;
     public int Price;
     public ItemRatingType ratingType;
-    public string className;
+    public GameObject itemObj;
 }

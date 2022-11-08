@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Item001 : MonoBehaviour
+public class Item001 : Item
 {
-    static void ApplyEffect()
+    public override void Active()
     {
         IBattleable playerBattleable = BattleManager.Instance.PlayerBattleable;
 

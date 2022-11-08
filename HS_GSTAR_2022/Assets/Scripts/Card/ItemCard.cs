@@ -137,9 +137,7 @@ public class ItemCard : MonoBehaviour
                 BattleManager.IsDoubleDamage = true;
                 break;
             case ItemEffectType.Custom:
-                Type type = Type.GetType(itemInfo.className);
-                var method = type.GetMethod("ApplyEffect", BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Static);
-                method.Invoke(null, null);
+                ItemInfo.itemObj.GetComponent<Item>().Active();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(itemInfo.EffectType), itemInfo.EffectType, null);
