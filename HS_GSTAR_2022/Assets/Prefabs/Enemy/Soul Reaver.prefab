@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2331630876549570433}
   - component: {fileID: 3318797914737370017}
   m_Layer: 5
-  m_Name: G Warrior1
+  m_Name: Soul Reaver
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,19 +27,19 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5690635501145629383}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -42.63675, y: -212.35947}
-  m_SizeDelta: {x: 315, y: 307}
-  m_Pivot: {x: 0.45488176, y: 0.0601997}
+  m_AnchoredPosition: {x: 0, y: -83.71684}
+  m_SizeDelta: {x: 160, y: 160}
+  m_Pivot: {x: 0.5, y: 0.32475656}
 --- !u!222 &4338288244303937247
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -68,7 +68,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 608603273, guid: 07941bd97dedee246b03cb66c0e3247d, type: 3}
+  m_Sprite: {fileID: -1928784997, guid: 94a824836da3a6c44b73f2020d501574, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -88,7 +88,7 @@ Animator:
   m_GameObject: {fileID: 5690635501145629383}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8b486b79b6e0c834a87acb05c42c2674, type: 2}
+  m_Controller: {fileID: 9100000, guid: c5264a19afb67af458ca2776511c0985, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
