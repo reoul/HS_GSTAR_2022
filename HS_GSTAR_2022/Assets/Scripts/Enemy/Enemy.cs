@@ -18,6 +18,7 @@ public sealed class Enemy : MonoBehaviour, IBattleable
     public InfoWindow InfoWindow { get; set; }
 
     public UnityEvent FinishAttackEvent { get; set; }
+    public UnityEvent HitEvent { get; set; }
 
     private Animator _animator;
 
@@ -28,6 +29,7 @@ public sealed class Enemy : MonoBehaviour, IBattleable
         PiercingDamage = new Status();
 
         FinishAttackEvent = new UnityEvent();
+        HitEvent = new UnityEvent();
 
         Hp = MaxHp;
         _animator = GetComponent<Animator>();
@@ -49,8 +51,7 @@ public sealed class Enemy : MonoBehaviour, IBattleable
         LastAttackDamage = damage;
         player.ToDamage(damage);
         player.ToPiercingDamage(PiercingDamage.FinalStatus);
-
-        SoundManager.Instance.PlaySound("AttackSound");
+        player.HitEvent.Invoke();
 
         if (player.Hp != 0)
         {
@@ -60,6 +61,8 @@ public sealed class Enemy : MonoBehaviour, IBattleable
         {
             player.StartDeadAnimation();
         }
+
+        SoundManager.Instance.PlaySound("AttackSound");
     }
 
     public void ToDamage(int damage)

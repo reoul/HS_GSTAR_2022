@@ -21,7 +21,7 @@ public interface IBattleable
 
     /// <summary> 관통 데미지 </summary>
     Status PiercingDamage { get; set; }
-    
+
     /// <summary> 가장 최근 입힌 데미지 </summary>
     int LastAttackDamage { get; set; }
 
@@ -54,4 +54,7 @@ public interface IBattleable
 
     /// <summary> 공격이 끝났을 때 발동할 이벤트 </summary>
     UnityEvent FinishAttackEvent { get; set; }
+
+    /// <summary> 피격 당했을 때 이벤트 </summary>
+    UnityEvent HitEvent { get; set; }
 }

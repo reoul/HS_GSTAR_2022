@@ -60,6 +60,8 @@ public sealed class Player : MonoBehaviour, IBattleable
     public ValueUpdater ValueUpdater { get; private set; }
 
     public UnityEvent FinishAttackEvent { get; set; }
+    public UnityEvent HitEvent { get; set; }
+
 
     [SerializeField] private TMP_Text _moneyText;
 
@@ -74,6 +76,7 @@ public sealed class Player : MonoBehaviour, IBattleable
             _moneyText.text = value.ToString();
         }
     }
+
 
     public void Init()
     {
@@ -99,6 +102,7 @@ public sealed class Player : MonoBehaviour, IBattleable
         ValueUpdater.AddVal(DefensivePower.DefaultStatus, ValueUpdater.valType.def, false);
 
         FinishAttackEvent = new UnityEvent();
+        HitEvent = new UnityEvent();
         Money = 1000;
     }
 
@@ -119,8 +123,7 @@ public sealed class Player : MonoBehaviour, IBattleable
         LastAttackDamage = damage;
         enemy.ToDamage(damage);
         enemy.ToPiercingDamage(PiercingDamage.FinalStatus);
-
-        SoundManager.Instance.PlaySound("AttackSound");
+        enemy.HitEvent.Invoke();
 
         if (enemy.Hp != 0)
         {
@@ -130,6 +133,8 @@ public sealed class Player : MonoBehaviour, IBattleable
         {
             enemy.StartDeadAnimation();
         }
+
+        SoundManager.Instance.PlaySound("AttackSound");
     }
 
     public void ToDamage(int damage)
