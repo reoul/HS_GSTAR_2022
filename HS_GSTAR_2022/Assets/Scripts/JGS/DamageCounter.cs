@@ -19,7 +19,7 @@ public class DamageCounter : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            CycleDamageCount();
+            DamageCount(transform.position);
         }
     }
 
@@ -35,11 +35,10 @@ public class DamageCounter : MonoBehaviour
         }
     }
 
-    private void CycleDamageCount()
+    public void DamageCount(Vector3 pos)
     {
         DamageTextMover tmpObj = _objPool.Dequeue();
-        tmpObj.Enable(100);
+        tmpObj.Enable(100, pos);
         _objPool.Enqueue(tmpObj);
-
     }
 }
