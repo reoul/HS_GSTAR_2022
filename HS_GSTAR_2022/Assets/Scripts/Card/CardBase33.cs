@@ -15,16 +15,18 @@ public sealed class CardBase33 : Card
 
     public override string GetDescription() => $"1~3: {Description123}\n" +
                                                $"4~6: {Description456}\n";
-    
+
     /// <summary> 주사위 눈금 1 ~ 3번 발동 효과 정보 배열 </summary>
     public EventCardEffectInfo[] EffectInfoList123;
-    
+
     /// <summary> 주사위 눈금 4 ~ 6번 발동 효과 정보 배열 </summary>
     public EventCardEffectInfo[] EffectInfoList456;
-    
+
     public override void Use(Dice dice)
     {
         string description;
+        string tmpStr, applyDescription = "";
+
         switch (dice.Number)
         {
             case EDiceNumber.One:
@@ -32,8 +34,10 @@ public sealed class CardBase33 : Card
             case EDiceNumber.Three:
                 foreach (EventCardEffectInfo effectInfo in EffectInfoList123)
                 {
-                    ApplyEffect(effectInfo.EventCardEffectType, (int) effectInfo.Num);
+                    tmpStr = ApplyEffect(effectInfo.EventCardEffectType, (int) effectInfo.Num);
+                    applyDescription += $"{tmpStr}";
                 }
+
                 description = Description123;
                 break;
             case EDiceNumber.Four:
@@ -41,8 +45,10 @@ public sealed class CardBase33 : Card
             case EDiceNumber.Six:
                 foreach (EventCardEffectInfo effectInfo in EffectInfoList456)
                 {
-                    ApplyEffect(effectInfo.EventCardEffectType, (int) effectInfo.Num);
+                    tmpStr = ApplyEffect(effectInfo.EventCardEffectType, (int) effectInfo.Num);
+                    applyDescription += $"{tmpStr}";
                 }
+
                 description = Description456;
                 break;
             case EDiceNumber.Max:
@@ -50,7 +56,10 @@ public sealed class CardBase33 : Card
                 throw new ArgumentOutOfRangeException();
         }
 
-        Logger.Log($"{Name} : {dice} : {description}");
+        Logger.Log($"카드 사용 완료, 이름 : {Name}, 주사위 눈금 : {(int) dice.Number}, 사용된 효과 : {description} \n{GetDescription()}");
+        Logger.Log($"카드 사용 효과 결과\n{applyDescription}");
+
+        Logger.Log("카드 삭제 애니메이션 시작");
         StartDestroyAnimation(); // 카드 삭제
     }
 }

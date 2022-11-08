@@ -88,4 +88,9 @@ public class ItemInfo : ScriptableObject
         ratingType = itemInfo.ratingType;
         itemObj = itemInfo.itemObj;
     }
+
+    public override string ToString()
+    {
+        return $"[{Name}, {Description}, {EffectInvokeTimeType}, {EffectType}, 수치 : {Num}, 가격 : {Price}, 등급 : {ratingType}, 스크립트 오브젝트 : {(itemObj != null ? "있음" : "없음")}]";
+    }
 }

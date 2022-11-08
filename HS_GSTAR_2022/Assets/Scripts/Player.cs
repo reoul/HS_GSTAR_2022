@@ -16,6 +16,11 @@ public class Status
 
     public int ItemStatus { get; set; }
     public int FinalStatus => DefaultStatus + ItemStatus;
+
+    public override string ToString()
+    {
+        return $"[기본 스텟 : {_defaultStatus}, 아이템 스텟 : {ItemStatus}, 최종 스탯 : {FinalStatus}]";
+    }
 }
 
 public sealed class Player : MonoBehaviour, IBattleable

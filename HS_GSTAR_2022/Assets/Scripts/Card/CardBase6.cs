@@ -18,8 +18,11 @@ public sealed class CardBase6 : Card
 
     public override void Use(Dice dice)
     {
-        ApplyEffect(EffectType, (int) dice.Number);
-        Logger.Log($"{Name} : {dice} : {Description}");
+        string applyDescription = ApplyEffect(EffectType, (int) dice.Number);
+        Logger.Log($"카드 사용 완료, 이름 : {Name}, 주사위 눈금 : {(int) dice.Number}, 사용된 효과 : {GetDescription()}");
+        Logger.Log($"카드 사용 효과 결과\n{applyDescription}");
+
+        Logger.Log("카드 삭제 애니메이션 시작");
         StartDestroyAnimation(); // 카드 삭제
     }
 }

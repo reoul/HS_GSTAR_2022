@@ -16,7 +16,7 @@ public abstract class OverlayBase : MonoBehaviour
     {
         _overTime = 0;
         _isShowOverlay = false;
-        Logger.Log("오버레이 시작");
+        //Logger.Log("오버레이 시작");
     }
 
     /// <summary> 오브젝트에 마우스를 계속 올려놨을 때 </summary>

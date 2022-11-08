@@ -35,6 +35,8 @@ public class ItemCard : MonoBehaviour
     public void ApplyItem()
     {
         ItemInfo itemInfo = new ItemInfo(ItemCardInfo);
+        Logger.Log($"아이템 등록 시작 {itemInfo}");
+        
         switch (ItemCardInfo.EffectInvokeTimeType)
         {
             case ItemEffectInvokeTimeType.BattleStart:
@@ -55,6 +57,8 @@ public class ItemCard : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
+        
+        Logger.Log("아이템 등록 종료");
     }
 
     public void SetCard(string inputName, string InputContext, ItemRatingType rank)
@@ -80,70 +84,110 @@ public class ItemCard : MonoBehaviour
         return _rank;
     }
 
-    private void ApplyItem(ItemInfo itemInfo, bool isItemStatus)
+    private string ApplyItem(ItemInfo itemInfo, bool isItemStatus)
     {
         IBattleable player = BattleManager.Instance.PlayerBattleable;
 
         Debug.Assert(player != null);
+        
+        // 효과 설명 문자열
+        string effectDescription;
+        // 이전 스텟 관련 정보 문자열
+        string previousStatusStr;
 
         switch (itemInfo.EffectType)
         {
             case ItemEffectType.Heal:
+                previousStatusStr = $"체력/최대체력 : {player.Hp}/{player.MaxHp}";
+                
                 player.ToHeal(itemInfo.Num);
+                
+                effectDescription = $"체력 {itemInfo.Num} 증가, \n이전 {previousStatusStr}\n이후 체력/최대체력 : {player.Hp}/{player.MaxHp}";
                 break;
             case ItemEffectType.OffensivePower:
+                previousStatusStr = player.OffensivePower.ToString();
+                
                 if (isItemStatus)
                 {
                     player.OffensivePower.ItemStatus += itemInfo.Num;
+                    effectDescription = $"공격력 아이템스텟 {itemInfo.Num} 증가";
                 }
                 else
                 {
                     player.OffensivePower.DefaultStatus += itemInfo.Num;
+                    effectDescription = $"공격력 기본스텟 {itemInfo.Num} 증가";
                 }
 
                 player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(itemInfo.Num, ValueUpdater.valType.pow);
+                
+                effectDescription += $", \n이전 {previousStatusStr}\n이후 {player.OffensivePower}";
                 break;
             case ItemEffectType.PiercingDamage:
+                previousStatusStr = player.PiercingDamage.ToString();
+
                 if (isItemStatus)
                 {
                     player.PiercingDamage.ItemStatus += itemInfo.Num;
+                    effectDescription = $"관통데미지 아이템스텟 {itemInfo.Num} 증가";
                 }
                 else
                 {
                     player.PiercingDamage.DefaultStatus += itemInfo.Num;
+                    effectDescription = $"관통데미지 기본스텟 {itemInfo.Num} 증가";
                 }
 
                 player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(itemInfo.Num, ValueUpdater.valType.piercing);
+                
+                effectDescription += $", \n이전 {previousStatusStr}\n이후 {player.PiercingDamage}";
                 break;
             case ItemEffectType.DefensivePower:
+                previousStatusStr = player.DefensivePower.ToString();
+
                 if (isItemStatus)
                 {
                     player.DefensivePower.ItemStatus += itemInfo.Num;
+                    effectDescription = $"방어력 아이템스텟 {itemInfo.Num} 증가";
                 }
                 else
                 {
                     player.DefensivePower.DefaultStatus += itemInfo.Num;
+                    effectDescription = $"방어력 기본스텟 {itemInfo.Num} 증가";
                 }
 
                 player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(itemInfo.Num, ValueUpdater.valType.def);
+                
+                effectDescription += $", \n이전 {previousStatusStr}\n이후 {player.DefensivePower}";
                 break;
             case ItemEffectType.MaxHp:
+                previousStatusStr = $"체력/최대체력 : {player.Hp}/{player.MaxHp}";
+                
                 player.MaxHp += itemInfo.Num;
                 player.Hp += itemInfo.Num;
                 player.InfoWindow.UpdateHpBar(player.Hp, player.MaxHp);
+                
+                effectDescription = $"최대체력 {itemInfo.Num} 증가, \n이전 {previousStatusStr}\n이후 체력/최대체력 : {player.Hp}/{player.MaxHp}";
                 break;
             case ItemEffectType.Gold:
-                player.OwnerObj.GetComponent<Player>().Money += itemInfo.Num;
+                Player player_ = player.OwnerObj.GetComponent<Player>();
+                previousStatusStr = $"돈 : {player_.Money}";
+                
+                player_.Money += itemInfo.Num;
+                
+                effectDescription = $"돈 {itemInfo.Num} 증가, \n이전 {previousStatusStr}\n이후 돈 : {player_.Money}";
                 break;
             case ItemEffectType.DoubleDamage:
                 BattleManager.IsDoubleDamage = true;
+                effectDescription = "데미지 2배, 피해량 2배 활성화";
                 break;
             case ItemEffectType.Custom:
                 itemInfo.itemObj.GetComponent<Item>().Active();
+                effectDescription = "커스텀 아이템 적용";
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(itemInfo.EffectType), itemInfo.EffectType, null);
         }
+
+        return effectDescription;
     }
 
     /// <summary> 전투 시작 시에 발동되는 아이템 적용 </summary>
@@ -153,8 +197,9 @@ public class ItemCard : MonoBehaviour
     {
         StageManager.Instance.BattleStage.StartBattleEvent.AddListener(() =>
         {
-            Debug.Log($"전투 시작 시 {itemInfo.EffectType} {itemInfo.Num} 발동");
-            ApplyItem(itemInfo, true);
+            Logger.Log($"[전투 시작 시]아이템 발동 {itemInfo}");
+            string applyDescription = ApplyItem(itemInfo, true);
+            Logger.Log($"아이템 사용 효과 결과 : {applyDescription}");
         });
     }
 
@@ -165,8 +210,9 @@ public class ItemCard : MonoBehaviour
     {
         StageManager.Instance.BattleStage.FinishBattleEvent.AddListener(() =>
         {
-            Debug.Log($"전투 종료 후 {itemInfo.EffectType} {itemInfo.Num} 발동");
-            ApplyItem(itemInfo, true);
+            Logger.Log($"[전투 종료 시]아이템 발동 {itemInfo}");
+            string applyDescription = ApplyItem(itemInfo, false);
+            Logger.Log($"아이템 사용 효과 결과 : {applyDescription}");
         });
     }
 
@@ -177,8 +223,9 @@ public class ItemCard : MonoBehaviour
     {
         BattleManager.Instance.PlayerBattleable.FinishAttackEvent.AddListener(() =>
         {
-            Debug.Log($"공격 후 {itemInfo.EffectType} {itemInfo.Num} 발동");
-            ApplyItem(itemInfo, true);
+            Logger.Log($"[공격 후]아이템 발동 {itemInfo}");
+            string applyDescription = ApplyItem(itemInfo, true);
+            Logger.Log($"아이템 사용 효과 결과 : {applyDescription}");
         });
     }
 
@@ -189,8 +236,9 @@ public class ItemCard : MonoBehaviour
     {
         BattleManager.Instance.PlayerBattleable.HitEvent.AddListener(() =>
         {
-            Debug.Log($"피격 시 {itemInfo.EffectType} {itemInfo.Num} 발동");
-            ApplyItem(itemInfo, true);
+            Logger.Log($"[피격 시]아이템 발동 {itemInfo}");
+            string applyDescription = ApplyItem(itemInfo, false);
+            Logger.Log($"아이템 사용 효과 결과 : {applyDescription}");
         });
     }
 
@@ -200,7 +248,8 @@ public class ItemCard : MonoBehaviour
     /// <param name="num">수치</param>
     private void ApplyItemOfGetType(ItemInfo itemInfo)
     {
-        Debug.Log($"획득 시 {itemInfo.EffectType} {itemInfo.Num} 발동");
-        ApplyItem(itemInfo, true);
+        Logger.Log($"[즉시]아이템 발동 {itemInfo}");
+        string applyDescription = ApplyItem(itemInfo, false);
+        Logger.Log($"아이템 사용 효과 결과 : {applyDescription}");
     }
 }
