@@ -43,6 +43,7 @@ public sealed class Enemy : MonoBehaviour, IBattleable
         InfoWindow.UpdatePiercingDamageText(PiercingDamage.FinalStatus);
     }
 
+    /// <summary> 애니메이션에서 호출 (삭제 금지) </summary>
     public void AttackPlayer()
     {
         IBattleable player = BattleManager.Instance.PlayerBattleable;
