@@ -17,5 +17,6 @@ MonoBehaviour:
   MaxHp: 100
   Hp: 100
   OffensivePower: 10
-  DefensivePower: 20
+  DefensivePower: 15
   PiercingDamage: 10
+  ratingType: 0

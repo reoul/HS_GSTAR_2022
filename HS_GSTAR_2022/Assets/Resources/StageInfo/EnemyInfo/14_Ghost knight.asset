@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 5690635501145629383, guid: 586cb36e5050dc4409a9dcca4e4cb43b, type: 3}
   Name: "\uC720\uB839 \uAE30\uC0AC"
-  MaxHp: 1000
-  Hp: 1000
-  OffensivePower: 15
-  DefensivePower: 10
-  PiercingDamage: 15
+  MaxHp: 2000
+  Hp: 2000
+  OffensivePower: 60
+  DefensivePower: 40
+  PiercingDamage: 40
   ratingType: 2
