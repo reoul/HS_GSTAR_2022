@@ -167,7 +167,7 @@ public class StageManager : Singleton<StageManager>
             BattleStage.gameObject.SetActive(false);
             ShopStage.gameObject.SetActive(false);
 
-            EventStage.InitEvent(eventStageInfo.Title, eventStageInfo.Description);
+            EventStage.InitEvent(eventStageInfo.Title, eventStageInfo.Description, eventStageInfo.ratingType);
             EventStage.gameObject.SetActive(true);
 
             PlayerInfoWindow.transform.SetParent(EventStagePlayerInfoWindowPos);
