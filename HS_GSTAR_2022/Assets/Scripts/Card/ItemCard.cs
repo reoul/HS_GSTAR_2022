@@ -244,7 +244,7 @@ public class ItemCard : MonoBehaviour
         BattleManager.Instance.PlayerBattleable.HitEvent.AddListener(() =>
         {
             Logger.Log($"[피격 시]아이템 발동 {itemInfo}");
-            string applyDescription = ApplyItem(itemInfo, false);
+            string applyDescription = ApplyItem(itemInfo, true);
             Logger.Log($"아이템 사용 효과 결과 : {applyDescription}");
         });
     }
