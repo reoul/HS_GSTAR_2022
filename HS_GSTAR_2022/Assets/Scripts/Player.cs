@@ -224,9 +224,15 @@ public sealed class Player : MonoBehaviour, IBattleable
     {
         // 공격 후 이벤트 발동
         Logger.Log("플레이어 공격 후 이벤트 시작");
+        
         FinishAttackEvent.Invoke();
-
+        
         Logger.Log("플레이어 공격 후 이벤트 종료");
+        
+        if (BattleManager.Instance.EnemyBattleable.Hp == 0)
+        {
+            BattleManager.Instance.EnemyBattleable.StartDeadAnimation();
+        }
 
         BattleManager.Instance.FinishAttack = true;
     }
