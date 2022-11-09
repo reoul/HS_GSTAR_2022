@@ -205,7 +205,6 @@ public class StageManager : Singleton<StageManager>
             //int rand = Random.Range(0, _enemyInfoArray.Length);
             GameObject enemyObj = Instantiate(_enemyInfoArray[_curMonsterIndex].Prefab, BattleStage.EnemyCreatePos);
             enemyObj.transform.localPosition = Vector3.zero;
-            enemyObj.transform.localScale *= 2;
 
             EnemyInfo enemyInfo = _enemyInfoArray[_curMonsterIndex++];
             IBattleable enemy = enemyObj.GetComponent<IBattleable>();
