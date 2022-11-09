@@ -147,6 +147,7 @@ public sealed class Player : MonoBehaviour, IBattleable
         else
         {
             enemy.StartDeadAnimation();
+            Time.timeScale = 1;
         }
 
         Logger.Log("플레이어 AttackEnemy() 종료");
