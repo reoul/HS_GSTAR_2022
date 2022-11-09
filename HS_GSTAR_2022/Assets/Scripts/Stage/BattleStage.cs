@@ -36,7 +36,6 @@ public class BattleStage : Stage
         player.OffensivePower.ItemStatus = 0;
         player.PiercingDamage.ItemStatus = 0;
         player.DefensivePower.ItemStatus = 0;
-
         
         Logger.Log("전투 시작 시 아이템 이벤트 시작");
         
@@ -45,7 +44,7 @@ public class BattleStage : Stage
         
         Logger.Log("전투 시작 시 아이템 이벤트 종료");
         
-        Time.timeScale = 1;
+        Time.timeScale = BattleAttach.Instance.AttachArray[BattleAttach.Instance.CurAttachIndex];
         IsFinishBattle = false;
         IsPlayerWin = false;
         _battleTime = 0;
@@ -55,15 +54,6 @@ public class BattleStage : Stage
 
     public override void StageUpdate()
     {
-        if (IsFinishBattle)
-        {
-            Time.timeScale = 1;
-        }
-        else
-        {
-            _battleTime += Time.deltaTime;
-            Time.timeScale = 1 + Mathf.Min(_battleTime, 3f);
-        }
     }
 
     public override void StageExit()
