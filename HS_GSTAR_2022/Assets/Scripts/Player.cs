@@ -108,7 +108,7 @@ public sealed class Player : MonoBehaviour, IBattleable
 
         FinishAttackEvent = new UnityEvent();
         HitEvent = new UnityEvent();
-        Money = 1000;
+        Money = 150;
     }
 
     public void Update()

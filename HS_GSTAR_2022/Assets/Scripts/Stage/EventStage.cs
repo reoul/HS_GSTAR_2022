@@ -32,16 +32,16 @@ public class EventStage : Stage
         switch (ratingType)
         {
             case EventRatingType.Bad:
-                _ratingText.text = "노말";
+                _ratingText.text = "<color=white>노말</color>";
                 break;
             case EventRatingType.Rare:
-                _ratingText.text = "레어";
+                _ratingText.text = "<#5CC6DB>레어</color>";
                 break;
             case EventRatingType.Epic:
-                _ratingText.text = "에픽";
+                _ratingText.text = "<#C682EF>에픽</color>";
                 break;
             case EventRatingType.Legendary:
-                _ratingText.text = "레전더리";
+                _ratingText.text = "<#EFAD47>레전더리</color>";
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(ratingType), ratingType, null);
