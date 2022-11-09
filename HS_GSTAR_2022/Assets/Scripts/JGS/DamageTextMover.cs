@@ -9,6 +9,8 @@ public class DamageTextMover : MonoBehaviour
     private TMP_Text _text;
     private Vector3 _targetPos, _startPos;
 
+    private float _upSpeed = 1, _disappearSpeed = 1; //default = 1
+
     private void Update()
     {
         if(_text.color.a <= 0)
@@ -17,9 +19,9 @@ public class DamageTextMover : MonoBehaviour
         }
         _runningTime += Time.deltaTime;
 
-        transform.position = Vector3.Lerp(transform.position, _targetPos, 0.003f) + new Vector3(Mathf.Cos(_runningTime * 10) * 0.01f,0,0);
+        transform.position = Vector3.Lerp(transform.position, _targetPos, 0.3f * Time.deltaTime * _upSpeed) + new Vector3(Mathf.Cos(_runningTime * 10) * Time.deltaTime, 0,0);
         Color tmpColor = _text.color;
-        tmpColor.a -= 0.0035f;
+        tmpColor.a -= 0.35f * Time.deltaTime * _disappearSpeed;
         _text.color = tmpColor;
 
     }
