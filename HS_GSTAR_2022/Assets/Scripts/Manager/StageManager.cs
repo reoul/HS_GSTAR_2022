@@ -136,10 +136,10 @@ public class StageManager : Singleton<StageManager>
         switch (stageType)
         {
             case StageType.Event:
-            case StageType.Boss:
                 SetFadeEventByEventStage();
                 break;
             case StageType.Battle:
+            case StageType.Boss:
                 SetFadeEventByBattleStage();
                 break;
             case StageType.Shop:

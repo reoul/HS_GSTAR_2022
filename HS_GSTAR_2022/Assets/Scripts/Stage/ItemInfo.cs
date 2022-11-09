@@ -80,7 +80,7 @@ public class ItemInfo : ScriptableObject
     public ItemInfo(ItemInfo itemInfo)
     {
         Name = itemInfo.Name;
-        Description  = itemInfo.Name;
+        Description  = itemInfo.Description;
         EffectInvokeTimeType = itemInfo.EffectInvokeTimeType;
         EffectType = itemInfo.EffectType;
         Num = itemInfo.Num;
