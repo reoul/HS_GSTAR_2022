@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 /// <summary> 주사위 눈금 1 ~ 6 발동 카드 </summary>
@@ -15,6 +16,13 @@ public sealed class CardBase6 : Card
     public override string GetDescription() => Description;
 
     public EventCardEffectType EffectType { get; set; }
+    
+    [SerializeField] private TMP_Text _contentText;
+    
+    public override void SetContentText()
+    {
+        _contentText.text = Description;
+    }
 
     public override void Use(Dice dice)
     {

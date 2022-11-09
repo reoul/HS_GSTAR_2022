@@ -5,7 +5,6 @@ using TMPro;
 public abstract class Card : OverlayBase
 {
     [SerializeField] private TMP_Text _nameText;
-    [SerializeField] private TMP_Text _contextText;
     [SerializeField] private GameObject _cardShowObj;
     [SerializeField] private Animator _cardEffectAnimator;
 
@@ -16,6 +15,9 @@ public abstract class Card : OverlayBase
     /// <summary> 발동 효과 설명 반환 </summary>
     /// <returns>발동 효과 설명</returns>
     public abstract string GetDescription();
+
+    /// <summary> 카드 설명 적용 </summary>
+    public abstract void SetContentText();
 
     /// <summary> 카드 효과 사용 </summary>
     /// <param name="dice">주사위</param>
@@ -36,7 +38,8 @@ public abstract class Card : OverlayBase
     {
         gameObject.name = GetName();
         _nameText.text = GetName();
-        _contextText.text = GetDescription();
+        //_contextText.text = GetDescription();
+        SetContentText();
 
         _cardEffectAnimator.SetTrigger("Create"); // 생성 애니메이션 호출
     }

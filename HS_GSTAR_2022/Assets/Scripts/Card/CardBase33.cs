@@ -1,4 +1,5 @@
 using System;
+using TMPro;
 using UnityEngine;
 
 /// <summary> 주사위 눈금 1 ~ 3, 4 ~ 6 발동 카드 </summary>
@@ -22,6 +23,15 @@ public sealed class CardBase33 : Card
     /// <summary> 주사위 눈금 4 ~ 6번 발동 효과 정보 배열 </summary>
     public EventCardEffectInfo[] EffectInfoList456;
 
+    [SerializeField] private TMP_Text _descriptionText123;
+    [SerializeField] private TMP_Text _descriptionText456;
+    
+    public override void SetContentText()
+    {
+        _descriptionText123.text = $"1~3: {Description123}";
+        _descriptionText456.text = $"4~6: {Description456}";
+    }
+    
     public override void Use(Dice dice)
     {
         string description;

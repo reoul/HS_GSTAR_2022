@@ -131,7 +131,8 @@ public sealed class Player : MonoBehaviour, IBattleable
         enemy.ToDamage(damage);
         enemy.ToPiercingDamage(PiercingDamage.FinalStatus);
 
-        DamageCounter.Instance.DamageCount(enemy.OwnerObj.transform.position, damage + PiercingDamage.FinalStatus);
+        int effectiveDamage = Mathf.Max(damage - enemy.DefensivePower.FinalStatus, 0) + PiercingDamage.FinalStatus;   // 유효 데미지
+        DamageCounter.Instance.DamageCount(enemy.OwnerObj.transform.position, effectiveDamage);
 
         Logger.Log("적 피격 이벤트 시작");
 
