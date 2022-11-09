@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: "\uAE30\uC2B5 \uACF5\uACA9"
   Description: "\uB2F9\uC2E0\uC740 \uAE38\uC744 \uAC77\uB2E4 \uAE30\uC2B5 \uACF5\uACA9\uC744
-    \uB2F9\uD588\uC2B5\uB2C8\uB2E4. \uC6B4 \uC88B\uAC8C\r\n\uCE58\uBA85\uC0C1\uC740
-    \uD53C\uD588\uC2B5\uB2C8\uB2E4. \uD558\uC9C0\uB9CC \uC5EC\uB7EC \uACF3\uC5D0
-    \uC0C1\uCC98\uAC00\r\n\uB0A8\uAC8C \uB418\uC5C8\uC2B5\uB2C8\uB2E4."
+    \uB2F9\uD588\uC2B5\uB2C8\uB2E4.\n\uC6B4 \uC88B\uAC8C \uCE58\uBA85\uC0C1\uC740
+    \uD53C\uD588\uC2B5\uB2C8\uB2E4.\n\uD558\uC9C0\uB9CC \uC5EC\uB7EC \uACF3\uC5D0
+    \uC0C1\uCC98\uAC00 \uB0A8\uAC8C \uB418\uC5C8\uC2B5\uB2C8\uB2E4."
   EventCardInfos:
   - Title: "\uAE68\uC9C4 \uBC29\uC5B4\uAD6C"
     Type: 0
@@ -82,5 +82,4 @@ MonoBehaviour:
       Num: 3
     Context6: 
     EventCardEffectType6: 0
-  CardCreatePosition: {x: 0, y: 0, z: 0}
-  DiceCreatePosition: {x: 0, y: 0, z: 0}
+  ratingType: 0

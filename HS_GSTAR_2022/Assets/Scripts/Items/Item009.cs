@@ -4,7 +4,7 @@ public class Item009 : Item
 {
     public override void Active()
     {
-        if (0.03f >= Random.RandomRange(0, 1))
+        if (0.03f >= Random.RandomRange(0f, 1f))
         {
             IBattleable EnemyBattleable = BattleManager.Instance.EnemyBattleable;
 
