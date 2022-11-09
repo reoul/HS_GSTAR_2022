@@ -131,13 +131,13 @@ public sealed class Player : MonoBehaviour, IBattleable
         enemy.ToDamage(damage);
         enemy.ToPiercingDamage(PiercingDamage.FinalStatus);
 
+        DamageCounter.Instance.DamageCount(enemy.OwnerObj.transform.position, damage + PiercingDamage.FinalStatus);
+
         Logger.Log("적 피격 이벤트 시작");
 
         enemy.HitEvent.Invoke();
 
         Logger.Log("적 피격 이벤트 종료");
-
-        Logger.Log("플레이어 AttackEnemy() 종료");
 
         if (enemy.Hp != 0)
         {

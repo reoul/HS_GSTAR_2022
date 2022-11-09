@@ -46,13 +46,22 @@ public sealed class Enemy : MonoBehaviour, IBattleable
     /// <summary> 애니메이션에서 호출 (삭제 금지) </summary>
     public void AttackPlayer()
     {
+        Logger.Log("적 AttackPlayer() 시작");
+
         IBattleable player = BattleManager.Instance.PlayerBattleable;
-        
+
         int damage = OffensivePower.FinalStatus * (BattleManager.IsDoubleDamage ? 2 : 1);
         LastAttackDamage = damage;
         player.ToDamage(damage);
         player.ToPiercingDamage(PiercingDamage.FinalStatus);
+
+        DamageCounter.Instance.DamageCount(player.OwnerObj.transform.position, damage + PiercingDamage.FinalStatus);
+
+        Logger.Log("플레이어 피격 이벤트 시작");
+
         player.HitEvent.Invoke();
+
+        Logger.Log("플레이어 피격 이벤트 종료");
 
         if (player.Hp != 0)
         {
@@ -62,6 +71,8 @@ public sealed class Enemy : MonoBehaviour, IBattleable
         {
             player.StartDeadAnimation();
         }
+
+        Logger.Log("적 AttackEnemy() 종료");
 
         SoundManager.Instance.PlaySound("AttackSound");
     }

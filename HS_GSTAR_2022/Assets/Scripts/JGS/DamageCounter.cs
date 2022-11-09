@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DamageCounter : MonoBehaviour
+public class DamageCounter : Singleton<DamageCounter>
 {
     [SerializeField]
     private GameObject _textPref;
@@ -13,14 +13,6 @@ public class DamageCounter : MonoBehaviour
     private void Start()
     {
         InitPool();
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            DamageCount(transform.position);
-        }
     }
 
     private void InitPool()
@@ -35,10 +27,10 @@ public class DamageCounter : MonoBehaviour
         }
     }
 
-    public void DamageCount(Vector3 pos)
+    public void DamageCount(Vector3 pos, int damage)
     {
         DamageTextMover tmpObj = _objPool.Dequeue();
-        tmpObj.Enable(100, pos);
+        tmpObj.Enable(damage, pos);
         _objPool.Enqueue(tmpObj);
     }
 }
