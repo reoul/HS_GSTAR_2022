@@ -122,13 +122,22 @@ public sealed class Player : MonoBehaviour, IBattleable
     /// <summary> 공격 애니메이션에서 호출 (삭제 금지) </summary>
     public void AttackEnemy()
     {
+        Logger.Log("플레이어 AttackEnemy() 시작");
+
         IBattleable enemy = BattleManager.Instance.EnemyBattleable;
         
         int damage = OffensivePower.FinalStatus * (BattleManager.IsDoubleDamage ? 2 : 1);
         LastAttackDamage = damage;
         enemy.ToDamage(damage);
         enemy.ToPiercingDamage(PiercingDamage.FinalStatus);
+
+        Logger.Log("적 피격 이벤트 시작");
+
         enemy.HitEvent.Invoke();
+
+        Logger.Log("적 피격 이벤트 종료");
+
+        Logger.Log("플레이어 AttackEnemy() 종료");
 
         if (enemy.Hp != 0)
         {
@@ -138,6 +147,8 @@ public sealed class Player : MonoBehaviour, IBattleable
         {
             enemy.StartDeadAnimation();
         }
+
+        Logger.Log("플레이어 AttackEnemy() 종료");
 
         SoundManager.Instance.PlaySound("AttackSound");
     }
@@ -187,6 +198,8 @@ public sealed class Player : MonoBehaviour, IBattleable
         Logger.Assert(_animator != null);
 
         _animator.SetTrigger("Attack");
+
+        Logger.Log("플레이어 Attack Trigger On");
     }
 
     public void StartHitAnimation()
@@ -194,6 +207,7 @@ public sealed class Player : MonoBehaviour, IBattleable
         Logger.Assert(_animator != null);
 
         _animator.SetTrigger("Hit");
+        Logger.Log("플레이어 Hit Trigger On");
     }
 
     public void StartDeadAnimation()
@@ -201,13 +215,17 @@ public sealed class Player : MonoBehaviour, IBattleable
         Logger.Assert(_animator != null);
 
         _animator.SetTrigger("Death");
+        Logger.Log("플레이어 Death Trigger On");
     }
 
     /// <summary> 공격 애니메이션 끝났을 때 호출 (삭제 금지) </summary>
     public void FinishAttackAnimation()
     {
         // 공격 후 이벤트 발동
+        Logger.Log("플레이어 공격 후 이벤트 시작");
         FinishAttackEvent.Invoke();
+
+        Logger.Log("플레이어 공격 후 이벤트 종료");
 
         BattleManager.Instance.FinishAttack = true;
     }
@@ -215,10 +233,12 @@ public sealed class Player : MonoBehaviour, IBattleable
     /// <summary> Death 애니메이션 끝났을 때 호출 (삭제 금지) </summary>
     public void FinishDeathAnimation()
     {
+        Logger.Log("플레이어 Death 애니메이션 끝 시작");
         Destroy(gameObject);
         FindObjectOfType<BattleStage>().IsFinishBattle = true;
         Time.timeScale = 1;
         FadeManager.Instance.StartFadeOut();
         StageManager.Instance.SetFadeEvent(StageType.GameOver);
+        Logger.Log("플레이어 Death 애니메이션 끝 종료");
     }
 }

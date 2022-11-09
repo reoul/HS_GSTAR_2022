@@ -103,6 +103,8 @@ public sealed class Enemy : MonoBehaviour, IBattleable
         Logger.Assert(_animator != null);
 
         _animator.SetTrigger("Attack");
+
+        Logger.Log("적 Attack Trigger On");
     }
 
     public void StartHitAnimation()
@@ -110,6 +112,8 @@ public sealed class Enemy : MonoBehaviour, IBattleable
         Logger.Assert(_animator != null);
 
         _animator.SetTrigger("Hit");
+
+        Logger.Log("적 Hit Trigger On");
     }
 
     public void StartDeadAnimation()
@@ -117,21 +121,31 @@ public sealed class Enemy : MonoBehaviour, IBattleable
         Logger.Assert(_animator != null);
 
         _animator.SetTrigger("Death");
+
+        Logger.Log("적 Death Trigger On");
     }
 
     public void FinishAttackAnimation()
     {
         // 공격 후 이벤트 발동
+        Logger.Log("적 공격 후 이벤트 시작");
+
         FinishAttackEvent.Invoke();
+
+        Logger.Log("적 공격 후 이벤트 종료");
 
         BattleManager.Instance.FinishAttack = true;
     }
 
     public void FinishDeathAnimation()
     {
+        Logger.Log("적 Death 애니메이션 끝 시작");
+
         Destroy(this.gameObject);
         FindObjectOfType<BattleStage>().IsFinishBattle = true;
         FindObjectOfType<BattleStage>().IsPlayerWin = true;
         StageManager.Instance.NextStage();
+
+        Logger.Log("적 Death 애니메이션 끝 종료");
     }
 }

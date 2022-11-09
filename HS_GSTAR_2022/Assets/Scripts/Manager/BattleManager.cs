@@ -43,14 +43,19 @@ public class BattleManager : Singleton<BattleManager>
         {
             FinishAttack = false;
             // 플레이어 공격
+            Logger.Log("플레이어 공격 시작");
             PlayerBattleable.StartAttackAnimation();
             
             while (!FinishAttack)
             {
                 yield return null;
             }
+
+            Logger.Log("플레이어 공격 끝");
+
             if (EnemyBattleable.Hp == 0)
             {
+                Logger.Log("적 체력 0");
                 break;
             }
             
@@ -63,8 +68,12 @@ public class BattleManager : Singleton<BattleManager>
             {
                 yield return null;
             }
+
+            Logger.Log("적 공격 끝");
+
             if (PlayerBattleable.Hp == 0)
             {
+                Logger.Log("플레이어 체력 0");
                 break;
             }
         }
