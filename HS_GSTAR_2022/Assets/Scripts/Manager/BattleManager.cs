@@ -40,6 +40,8 @@ public class BattleManager : Singleton<BattleManager>
 
     private IEnumerator BattleCoroutine()
     {
+        WaitForSeconds waitTime = new WaitForSeconds(0.1f);
+        
         while (true)
         {
             FinishAttack = false;
@@ -51,6 +53,8 @@ public class BattleManager : Singleton<BattleManager>
             {
                 yield return null;
             }
+
+            yield return waitTime;
 
             Logger.Log("플레이어 공격 끝");
 
@@ -69,6 +73,8 @@ public class BattleManager : Singleton<BattleManager>
             {
                 yield return null;
             }
+            
+            yield return waitTime;
 
             Logger.Log("적 공격 끝");
 
