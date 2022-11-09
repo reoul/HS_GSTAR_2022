@@ -22,6 +22,7 @@ public class BattleManager : Singleton<BattleManager>
         PlayerBattleable = _player.GetComponent<IBattleable>();
         _player.Init();
         IsDoubleDamage = false;
+        Time.timeScale = 1;
     }
 
     /// <summary> 적 설정 </summary>
