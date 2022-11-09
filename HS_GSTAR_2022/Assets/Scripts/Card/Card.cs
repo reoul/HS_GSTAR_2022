@@ -193,6 +193,13 @@ public abstract class Card : OverlayBase
                 throw new ArgumentOutOfRangeException();
         }
 
+        if (player.Hp == 0)
+        {
+            Logger.Log("아이템 사용 중에 HP가 0이 되어 게임오버 되었습니다.");
+            FadeManager.Instance.StartFadeOut();
+            StageManager.Instance.SetFadeEvent(StageType.GameOver);
+        }
+
         return effectDescription;
     }
 }
