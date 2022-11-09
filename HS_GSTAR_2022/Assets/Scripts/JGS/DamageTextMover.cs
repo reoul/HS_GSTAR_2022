@@ -9,7 +9,7 @@ public class DamageTextMover : MonoBehaviour
     private TMP_Text _text;
     private Vector3 _targetPos, _startPos;
 
-    private float _upSpeed = 1, _disappearSpeed = 1; //default = 1
+    private float _upSpeed = 3, _disappearSpeed = 2; //default = 1
 
     private void Update()
     {
