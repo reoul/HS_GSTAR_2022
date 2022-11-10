@@ -19,8 +19,13 @@ public sealed class Enemy : MonoBehaviour, IBattleable
 
     public UnityEvent FinishAttackEvent { get; set; }
     public UnityEvent HitEvent { get; set; }
-
+    
     private Animator _animator;
+    public Animator Animator => _animator;
+
+    private static readonly int AttackHash = Animator.StringToHash("Attack");
+    private static readonly int HitHash = Animator.StringToHash("Hit");
+    private static readonly int DeathHash = Animator.StringToHash("Death");
 
     private void Awake()
     {
@@ -43,10 +48,9 @@ public sealed class Enemy : MonoBehaviour, IBattleable
         InfoWindow.UpdatePiercingDamageText(PiercingDamage.FinalStatus);
     }
 
-    /// <summary> 애니메이션에서 호출 (삭제 금지) </summary>
-    public void AttackPlayer()
+    public void Attack()
     {
-        Logger.Log("적 AttackPlayer() 시작");
+        Logger.Log("적 Attack() 시작");
 
         IBattleable player = BattleManager.Instance.PlayerBattleable;
 
@@ -73,11 +77,11 @@ public sealed class Enemy : MonoBehaviour, IBattleable
             player.StartDeadAnimation();
         }
 
-        Logger.Log("적 AttackEnemy() 종료");
+        Logger.Log("적 Attack() 종료");
 
         SoundManager.Instance.PlaySound("AttackSound");
     }
-
+    
     public void ToDamage(int damage)
     {
         damage = damage >= DefensivePower.FinalStatus ? damage - DefensivePower.FinalStatus : 0;
@@ -114,7 +118,7 @@ public sealed class Enemy : MonoBehaviour, IBattleable
     {
         Logger.Assert(_animator != null);
 
-        _animator.SetTrigger("Attack");
+        _animator.SetTrigger(AttackHash);
 
         Logger.Log("적 Attack Trigger On");
     }
@@ -122,8 +126,15 @@ public sealed class Enemy : MonoBehaviour, IBattleable
     public void StartHitAnimation()
     {
         Logger.Assert(_animator != null);
-
-        _animator.SetTrigger("Hit");
+        
+        if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            _animator.SetTrigger(HitHash);
+        }
+        else
+        {
+            Logger.LogError("적 공격 도중 Hit 실행");
+        }
 
         Logger.Log("적 Hit Trigger On");
     }
@@ -132,7 +143,7 @@ public sealed class Enemy : MonoBehaviour, IBattleable
     {
         Logger.Assert(_animator != null);
 
-        _animator.SetTrigger("Death");
+        _animator.SetTrigger(DeathHash);
 
         Logger.Log("적 Death Trigger On");
     }
@@ -145,8 +156,6 @@ public sealed class Enemy : MonoBehaviour, IBattleable
         FinishAttackEvent.Invoke();
 
         Logger.Log("적 공격 후 이벤트 종료");
-
-        BattleManager.Instance.FinishAttack = true;
     }
 
     public void FinishDeathAnimation()

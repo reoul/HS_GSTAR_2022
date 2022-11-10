@@ -54,13 +54,14 @@ public sealed class Player : MonoBehaviour, IBattleable
 
 
     [SerializeField] private InfoWindow _infoWindow;
-    private Animator _animator;
-
     public InfoWindow InfoWindow
     {
         get { return _infoWindow; }
         set { _infoWindow = value; }
     }
+
+    private Animator _animator;
+    public Animator Animator => _animator;
 
     public ValueUpdater ValueUpdater { get; private set; }
 
@@ -71,6 +72,9 @@ public sealed class Player : MonoBehaviour, IBattleable
     [SerializeField] private TMP_Text _moneyText;
 
     private int _money;
+    private static readonly int AttackHash = Animator.StringToHash("Attack");
+    private static readonly int HitHash = Animator.StringToHash("Hit");
+    private static readonly int DeathHash = Animator.StringToHash("Death");
 
     public int Money
     {
@@ -89,10 +93,10 @@ public sealed class Player : MonoBehaviour, IBattleable
         DefensivePower = new Status();
         PiercingDamage = new Status();
 
-        MaxHp = 300;
+        MaxHp = 999900;
         Hp = MaxHp;
         OffensivePower.DefaultStatus = 5;
-        PiercingDamage.DefaultStatus = 5;
+        PiercingDamage.DefaultStatus = 0;
         DefensivePower.DefaultStatus = 20;
 
         _animator = GetComponent<Animator>();
@@ -119,10 +123,9 @@ public sealed class Player : MonoBehaviour, IBattleable
         }
     }
 
-    /// <summary> 공격 애니메이션에서 호출 (삭제 금지) </summary>
-    public void AttackEnemy()
+    public void Attack()
     {
-        Logger.Log("플레이어 AttackEnemy() 시작");
+        Logger.Log("플레이어 Attack() 시작");
 
         IBattleable enemy = BattleManager.Instance.EnemyBattleable;
         
@@ -150,11 +153,11 @@ public sealed class Player : MonoBehaviour, IBattleable
             Time.timeScale = 1;
         }
 
-        Logger.Log("플레이어 AttackEnemy() 종료");
+        Logger.Log("플레이어 Attack() 종료");
 
         SoundManager.Instance.PlaySound("AttackSound");
     }
-
+    
     public void ToDamage(int damage)
     {
         Logger.Assert(_infoWindow != null);
@@ -199,7 +202,7 @@ public sealed class Player : MonoBehaviour, IBattleable
     {
         Logger.Assert(_animator != null);
 
-        _animator.SetTrigger("Attack");
+        _animator.SetTrigger(AttackHash);
 
         Logger.Log("플레이어 Attack Trigger On");
     }
@@ -207,8 +210,16 @@ public sealed class Player : MonoBehaviour, IBattleable
     public void StartHitAnimation()
     {
         Logger.Assert(_animator != null);
+        
+        if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
+        {
+            _animator.SetTrigger(HitHash);
+        }
+        else
+        {
+            Logger.LogError("플레이어 공격 도중 Hit 실행");
+        }
 
-        _animator.SetTrigger("Hit");
         Logger.Log("플레이어 Hit Trigger On");
     }
 
@@ -216,11 +227,10 @@ public sealed class Player : MonoBehaviour, IBattleable
     {
         Logger.Assert(_animator != null);
 
-        _animator.SetTrigger("Death");
+        _animator.SetTrigger(DeathHash);
         Logger.Log("플레이어 Death Trigger On");
     }
 
-    /// <summary> 공격 애니메이션 끝났을 때 호출 (삭제 금지) </summary>
     public void FinishAttackAnimation()
     {
         // 공격 후 이벤트 발동
@@ -234,8 +244,6 @@ public sealed class Player : MonoBehaviour, IBattleable
         {
             BattleManager.Instance.EnemyBattleable.StartDeadAnimation();
         }
-
-        BattleManager.Instance.FinishAttack = true;
     }
 
     /// <summary> Death 애니메이션 끝났을 때 호출 (삭제 금지) </summary>

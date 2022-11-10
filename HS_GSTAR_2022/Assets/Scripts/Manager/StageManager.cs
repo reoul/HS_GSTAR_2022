@@ -52,6 +52,8 @@ public class StageManager : Singleton<StageManager>
         BattleStage.FinishBattleEvent = new UnityEvent();
 
         _curMonsterIndex = 0;
+
+        Application.targetFrameRate = 60;
     }
 
     private void Start()

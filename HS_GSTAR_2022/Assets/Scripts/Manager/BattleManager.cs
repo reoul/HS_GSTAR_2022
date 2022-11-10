@@ -11,9 +11,6 @@ public class BattleManager : Singleton<BattleManager>
     public IBattleable EnemyBattleable { get; private set; }
 
     public static bool IsDoubleDamage;
-    
-    /// <summary> 공격 애니메이션이 끝났는지 여부 </summary>
-    public bool FinishAttack { get; set; }
 
     private void Awake()
     {
@@ -40,21 +37,28 @@ public class BattleManager : Singleton<BattleManager>
 
     private IEnumerator BattleCoroutine()
     {
-        WaitForSeconds waitTime = new WaitForSeconds(0.1f);
+        float attackTime = AnimationTime.Duration(AnimationType.Attack, PlayerBattleable.Animator);
+        WaitForSeconds waitPlayerAttackTime = new WaitForSeconds(attackTime * 0.8f);
+        WaitForSeconds waitPlayerFinishAnim = new WaitForSeconds(attackTime * 0.2f);
+        
+        attackTime = AnimationTime.Duration(AnimationType.Attack, EnemyBattleable.Animator);
+        WaitForSeconds waitEnemyAttackTime = new WaitForSeconds(attackTime * 0.9f);
+        WaitForSeconds waitEnemyFinishAnim = new WaitForSeconds(attackTime * 0.1f);
         
         while (true)
         {
-            FinishAttack = false;
             // 플레이어 공격
             Logger.Log("플레이어 공격 시작");
-            PlayerBattleable.StartAttackAnimation();
-            
-            while (!FinishAttack)
-            {
-                yield return null;
-            }
 
-            yield return waitTime;
+            PlayerBattleable.StartAttackAnimation();
+
+            yield return waitPlayerAttackTime;
+            
+            PlayerBattleable.Attack();
+
+            yield return waitPlayerFinishAnim;
+            
+            PlayerBattleable.FinishAttackAnimation();
 
             Logger.Log("플레이어 공격 끝");
 
@@ -64,17 +68,17 @@ public class BattleManager : Singleton<BattleManager>
                 break;
             }
             
-            FinishAttack = false;
             // 적 공격
             Logger.Log("적 공격 시작");
             EnemyBattleable.StartAttackAnimation();
 
-            while (!FinishAttack)
-            {
-                yield return null;
-            }
+            yield return waitEnemyAttackTime;
             
-            yield return waitTime;
+            EnemyBattleable.Attack();
+
+            yield return waitEnemyFinishAnim;
+            
+            EnemyBattleable.FinishAttackAnimation();
 
             Logger.Log("적 공격 끝");
 

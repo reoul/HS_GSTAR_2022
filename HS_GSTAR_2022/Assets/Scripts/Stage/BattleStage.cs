@@ -19,9 +19,7 @@ public class BattleStage : Stage
     public bool IsFinishBattle { get; set; }
 
     public bool IsPlayerWin { get; set; }
-    
-    private float _battleTime;
-    
+
     /// <summary> 전투 시작 시 발동 </summary>
     public UnityEvent StartBattleEvent { get; set; }
     
@@ -47,7 +45,6 @@ public class BattleStage : Stage
         Time.timeScale = BattleAttach.Instance.AttachArray[BattleAttach.Instance.CurAttachIndex];
         IsFinishBattle = false;
         IsPlayerWin = false;
-        _battleTime = 0;
         
         Logger.Log("전투 스테이지 입장 로직 종료");
     }
@@ -83,7 +80,6 @@ public class BattleStage : Stage
         Time.timeScale = 1;
         IsFinishBattle = false;
         IsPlayerWin = false;
-        _battleTime = 0;
         Logger.Log("전투 스테이지 퇴장 로직 종료");
     }
 }
