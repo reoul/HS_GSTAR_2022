@@ -23,18 +23,18 @@ MonoBehaviour:
   EventCardInfos:
   - Title: "\uC548\uC804\uD55C \uB8E8\uD2B8\uAC00 \uC801\uD78C \uC9C0\uB3C4"
     Type: 0
-    Context1: "\uCCB4\uB825 5\uD68C\uBCF5"
+    Context1: "\uCCB4\uB825 20\uD68C\uBCF5"
     CardEffectInfos1:
     - EventCardEffectType: 6
-      Num: 5
-    Context2: "\uCCB4\uB825 8\uD68C\uBCF5"
+      Num: 20
+    Context2: "\uCCB4\uB825 30\uD68C\uBCF5"
     CardEffectInfos2:
     - EventCardEffectType: 6
-      Num: 8
-    Context3: "\uCCB4\uB825 10\uD68C\uBCF5"
+      Num: 30
+    Context3: "\uCCB4\uB825 40\uD68C\uBCF5"
     CardEffectInfos3:
     - EventCardEffectType: 6
-      Num: 10
+      Num: 40
     Context6: 
     EventCardEffectType6: 0
   - Title: "\uBD80\uC801"

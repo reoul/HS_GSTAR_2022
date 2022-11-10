@@ -22,38 +22,6 @@ MonoBehaviour:
   EventCardInfos:
   - Title: "\uB0A1\uC740 \uC637"
     Type: 0
-    Context1: "\uCF54\uC778 3\uC6D0 \uD68D\uB4DD"
-    CardEffectInfos1:
-    - EventCardEffectType: 11
-      Num: 3
-    Context2: "\uCF54\uC778 6\uC6D0 \uD68D\uB4DD"
-    CardEffectInfos2:
-    - EventCardEffectType: 11
-      Num: 6
-    Context3: "\uCF54\uC778 9\uC6D0 \uD68D\uB4DD"
-    CardEffectInfos3:
-    - EventCardEffectType: 11
-      Num: 9
-    Context6: 
-    EventCardEffectType6: 0
-  - Title: "\uC0B4\uC9DD \uCC22\uAE34 \uC637"
-    Type: 0
-    Context1: "\uCF54\uC778 5\uC6D0 \uD68D\uB4DD"
-    CardEffectInfos1:
-    - EventCardEffectType: 11
-      Num: 5
-    Context2: "\uCF54\uC778 10\uC6D0 \uD68D\uB4DD"
-    CardEffectInfos2:
-    - EventCardEffectType: 11
-      Num: 10
-    Context3: "\uCF54\uC778 15\uC6D0 \uD68D\uB4DD"
-    CardEffectInfos3:
-    - EventCardEffectType: 11
-      Num: 15
-    Context6: 
-    EventCardEffectType6: 0
-  - Title: "\uD3C9\uBC94\uD55C \uC637"
-    Type: 0
     Context1: "\uCF54\uC778 10\uC6D0 \uD68D\uB4DD"
     CardEffectInfos1:
     - EventCardEffectType: 11
@@ -66,6 +34,38 @@ MonoBehaviour:
     CardEffectInfos3:
     - EventCardEffectType: 11
       Num: 30
+    Context6: 
+    EventCardEffectType6: 0
+  - Title: "\uC0B4\uC9DD \uCC22\uAE34 \uC637"
+    Type: 0
+    Context1: "\uCF54\uC778 20\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos1:
+    - EventCardEffectType: 11
+      Num: 20
+    Context2: "\uCF54\uC778 40\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos2:
+    - EventCardEffectType: 11
+      Num: 40
+    Context3: "\uCF54\uC778 60\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos3:
+    - EventCardEffectType: 11
+      Num: 60
+    Context6: 
+    EventCardEffectType6: 0
+  - Title: "\uD3C9\uBC94\uD55C \uC637"
+    Type: 0
+    Context1: "\uCF54\uC778 30\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos1:
+    - EventCardEffectType: 11
+      Num: 30
+    Context2: "\uCF54\uC778 60\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos2:
+    - EventCardEffectType: 11
+      Num: 60
+    Context3: "\uCF54\uC778 90\uC6D0 \uD68D\uB4DD"
+    CardEffectInfos3:
+    - EventCardEffectType: 11
+      Num: 90
     Context6: 
     EventCardEffectType6: 0
   - Title: "\uCD5C\uC0C1\uAE09 \uC637"

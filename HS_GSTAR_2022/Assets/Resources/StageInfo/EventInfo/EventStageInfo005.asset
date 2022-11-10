@@ -37,31 +37,31 @@ MonoBehaviour:
     EventCardEffectType6: 0
   - Title: "\uC2E0\uC758 \uC740\uCD1D"
     Type: 0
-    Context1: "\uCCB4\uB825 10\uD68C\uBCF5"
+    Context1: "\uCCB4\uB825 20\uD68C\uBCF5"
     CardEffectInfos1:
     - EventCardEffectType: 6
-      Num: 10
-    Context2: "\uCCB4\uB825 15\uD68C\uBCF5"
+      Num: 20
+    Context2: "\uCCB4\uB825 30\uD68C\uBCF5"
     CardEffectInfos2:
     - EventCardEffectType: 6
-      Num: 15
-    Context3: "\uCCB4\uB825 20\uD68C\uBCF5"
+      Num: 30
+    Context3: "\uCCB4\uB825 40\uD68C\uBCF5"
     CardEffectInfos3:
     - EventCardEffectType: 6
-      Num: 20
+      Num: 40
     Context6: 
     EventCardEffectType6: 0
   - Title: "\uCF54\uC778"
     Type: 0
-    Context1: "\uCF54\uC778 5\uC6D0 \uD68D\uB4DD"
+    Context1: "\uCF54\uC778 10\uC6D0 \uD68D\uB4DD"
     CardEffectInfos1:
     - EventCardEffectType: 11
       Num: 5
-    Context2: "\uCF54\uC778 10\uC6D0 \uD68D\uB4DD"
+    Context2: "\uCF54\uC778 20\uC6D0 \uD68D\uB4DD"
     CardEffectInfos2:
     - EventCardEffectType: 11
       Num: 10
-    Context3: "\uCF54\uC778 15\uC6D0 \uD68D\uB4DD"
+    Context3: "\uCF54\uC778 30\uC6D0 \uD68D\uB4DD"
     CardEffectInfos3:
     - EventCardEffectType: 11
       Num: 15

@@ -51,18 +51,18 @@ MonoBehaviour:
     EventCardEffectType6: 0
   - Title: "\uCF54\uC778"
     Type: 0
-    Context1: "\uCF54\uC778 5\uC6D0 \uD68D\uB4DD"
+    Context1: "\uCF54\uC778 10\uC6D0 \uD68D\uB4DD"
     CardEffectInfos1:
     - EventCardEffectType: 11
-      Num: 5
-    Context2: "\uCF54\uC778 10\uC6D0 \uD68D\uB4DD"
+      Num: 10
+    Context2: "\uCF54\uC778 20\uC6D0 \uD68D\uB4DD"
     CardEffectInfos2:
     - EventCardEffectType: 11
-      Num: 10
-    Context3: "\uCF54\uC778 15\uC6D0 \uD68D\uB4DD"
+      Num: 20
+    Context3: "\uCF54\uC778 30\uC6D0 \uD68D\uB4DD"
     CardEffectInfos3:
     - EventCardEffectType: 11
-      Num: 15
+      Num: 30
     Context6: 
     EventCardEffectType6: 0
   ratingType: 2
