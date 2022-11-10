@@ -33,8 +33,8 @@ MonoBehaviour:
     CardEffectInfos3:
     - EventCardEffectType: 7
       Num: 3
-    Context6: "\uCF54\uC778 N\uB9CC\uD07C \uD68D\uB4DD"
-    EventCardEffectType6: 11
+    Context6: "\uCF54\uC778 N x N\uB9CC\uD07C \uD68D\uB4DD"
+    EventCardEffectType6: 13
   - Title: "\uC6B4\uC218 \uB098\uC05C\uB0A0"
     Type: 2
     Context1: "\uCF54\uC778 30\uC6D0 \uAC10\uC18C"
@@ -49,6 +49,6 @@ MonoBehaviour:
     CardEffectInfos3:
     - EventCardEffectType: 2
       Num: 3
-    Context6: "\uCF54\uC778 N\uB9CC\uD07C \uAC10\uC18C"
-    EventCardEffectType6: 12
+    Context6: "\uCF54\uC778 N x N\uB9CC\uD07C \uAC10\uC18C"
+    EventCardEffectType6: 14
   ratingType: 2

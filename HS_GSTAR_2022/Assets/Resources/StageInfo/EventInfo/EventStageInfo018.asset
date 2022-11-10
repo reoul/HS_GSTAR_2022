@@ -46,6 +46,6 @@ MonoBehaviour:
     CardEffectInfos2: []
     Context3: 
     CardEffectInfos3: []
-    Context6: "\uCF54\uC778 N\uB9CC\uD07C \uAC10\uC18C"
-    EventCardEffectType6: 12
+    Context6: "\uCF54\uC778 N x N\uB9CC\uD07C \uAC10\uC18C"
+    EventCardEffectType6: 14
   ratingType: 0
