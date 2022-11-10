@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
+using TMPro;
 
 public enum EDiceNumber
 {
@@ -19,6 +20,11 @@ public abstract class Dice : MonoBehaviour
     public EDiceNumber Number { get; protected set; }
     public Vector3 FirstPosition { get; set; }
     private bool _canMoveToMouse;
+
+    [SerializeField]
+    protected Animator _diceAni;
+    [SerializeField]
+    protected GameObject _textObj;
 
     private void Start()
     {
@@ -38,6 +44,8 @@ public abstract class Dice : MonoBehaviour
 
         _canMoveToMouse = true;
         StartCoroutine(MoveCoroutine());
+
+        _textObj.gameObject.SetActive(false);
     }
 
     /// <summary> 주사위에 대한 터치나 클릭을 끝냈을 때 </summary>
@@ -65,6 +73,8 @@ public abstract class Dice : MonoBehaviour
         {
             transform.localPosition = FirstPosition;
         }
+
+        _textObj.gameObject.SetActive(true);
     }
 
     /// <summary> 주사위를 마우스 위치나 터치 위치로 이동시켜주는 코루틴 </summary>
