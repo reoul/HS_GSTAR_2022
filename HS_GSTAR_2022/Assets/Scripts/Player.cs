@@ -224,6 +224,10 @@ public sealed class Player : MonoBehaviour, IBattleable
         Logger.Assert(_animator != null);
 
         _animator.SetTrigger(DeathHash);
+        
+        float deathAnimTime = AnimationTime.Duration(AnimationType.Death, _animator);
+        Invoke(nameof(FinishDeathAnimation), deathAnimTime);
+        
         Logger.Log("플레이어 Death Trigger On");
     }
 
@@ -242,7 +246,7 @@ public sealed class Player : MonoBehaviour, IBattleable
         }
     }
 
-    /// <summary> Death 애니메이션 끝났을 때 호출 (삭제 금지) </summary>
+    /// <summary> Death 애니메이션 끝날 때 </summary>
     public void FinishDeathAnimation()
     {
         Logger.Log("플레이어 Death 애니메이션 끝 시작");

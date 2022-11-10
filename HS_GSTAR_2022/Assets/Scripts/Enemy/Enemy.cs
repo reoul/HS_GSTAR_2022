@@ -140,7 +140,10 @@ public sealed class Enemy : MonoBehaviour, IBattleable
         Logger.Assert(_animator != null);
 
         _animator.SetTrigger(DeathHash);
-
+        
+        float deathAnimTime = AnimationTime.Duration(AnimationType.Death, _animator);
+        Invoke(nameof(FinishDeathAnimation), deathAnimTime);
+        
         Logger.Log("적 Death Trigger On");
     }
 
@@ -153,7 +156,8 @@ public sealed class Enemy : MonoBehaviour, IBattleable
 
         Logger.Log("적 공격 후 이벤트 종료");
     }
-
+    
+    /// <summary> Death 애니메이션 끝날 때 </summary>
     public void FinishDeathAnimation()
     {
         Logger.Log("적 Death 애니메이션 끝 시작");
