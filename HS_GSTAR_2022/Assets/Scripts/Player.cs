@@ -93,11 +93,11 @@ public sealed class Player : MonoBehaviour, IBattleable
         DefensivePower = new Status();
         PiercingDamage = new Status();
 
-        MaxHp = 999900;
+        MaxHp = 300;
         Hp = MaxHp;
         OffensivePower.DefaultStatus = 5;
-        PiercingDamage.DefaultStatus = 0;
-        DefensivePower.DefaultStatus = 20;
+        PiercingDamage.DefaultStatus = 5;
+        DefensivePower.DefaultStatus = 10;
 
         _animator = GetComponent<Animator>();
         _infoWindow.UpdateHpBar(Hp, MaxHp);
@@ -214,10 +214,6 @@ public sealed class Player : MonoBehaviour, IBattleable
         if (!_animator.GetCurrentAnimatorStateInfo(0).IsName("Attack"))
         {
             _animator.SetTrigger(HitHash);
-        }
-        else
-        {
-            Logger.LogError("플레이어 공격 도중 Hit 실행");
         }
 
         Logger.Log("플레이어 Hit Trigger On");

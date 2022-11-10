@@ -131,11 +131,7 @@ public sealed class Enemy : MonoBehaviour, IBattleable
         {
             _animator.SetTrigger(HitHash);
         }
-        else
-        {
-            Logger.LogError("적 공격 도중 Hit 실행");
-        }
-
+        
         Logger.Log("적 Hit Trigger On");
     }
 
