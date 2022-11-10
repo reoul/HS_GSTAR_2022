@@ -31,6 +31,13 @@ public abstract class Dice : MonoBehaviour
         _canMoveToMouse = false;
         
         Roll();
+        
+        Invoke(nameof(ShowDiceNumber), 1);
+    }
+
+    private void ShowDiceNumber()
+    {
+        _textObj.gameObject.SetActive(true);
     }
     
     /// <summary> 주사위 굴리기 </summary>
@@ -81,6 +88,7 @@ public abstract class Dice : MonoBehaviour
     IEnumerator MoveCoroutine()
     {
         Debug.Assert(Camera.main != null);
+
         int layerMask = ~(1 << LayerMask.NameToLayer("Dice"));
         while (_canMoveToMouse)
         {

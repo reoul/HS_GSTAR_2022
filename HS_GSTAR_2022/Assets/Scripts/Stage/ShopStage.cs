@@ -6,28 +6,64 @@ using Random = UnityEngine.Random;
 
 public class ShopStage : Stage
 {
-    public ItemInfo[] ItemInfoArray { get; set; }
+    public List<ItemInfo> RareItemInfoList { get; set; }
+    public List<ItemInfo> EpicItemInfoList { get; set; }
+    public List<ItemInfo> LegendaryItemInfoList { get; set; }
     public ItemCard[] ItemCards;
 
     public override void StageEnter()
     {
         Logger.Log("상점 스테이지 입장 로직 시작");
         
-        int itemIndex1, itemIndex2, itemIndex3;
-        itemIndex1 = Random.Range(0, ItemInfoArray.Length);
+        int[] itemRatings = new int[3];
+        int[] itemIndexs = new int[3];
+
         do
         {
-            itemIndex2 = Random.Range(0, ItemInfoArray.Length);
-            itemIndex3 = Random.Range(0, ItemInfoArray.Length);
-        } while (itemIndex1 == itemIndex3 || itemIndex1 == itemIndex2 || itemIndex2 == itemIndex3);
+            for (int i = 0; i < 3; ++i)
+            {
+                int rand = Random.Range(0, 100);
+                if (rand < 60) // 레어
+                {
+                    itemRatings[i] = 1000;
+                    itemIndexs[i] = Random.Range(0, RareItemInfoList.Count);
+                }
+                else if (rand < 90) // 에픽
+                {
+                    itemRatings[i] = 2000;
+                    itemIndexs[i] = Random.Range(0, EpicItemInfoList.Count);
+                }
+                else // 레전더리
+                {
+                    itemRatings[i] = 3000;
+                    itemIndexs[i] = Random.Range(0, LegendaryItemInfoList.Count);
+                }
+            }
+        } while (itemRatings[0] + itemIndexs[0] == itemRatings[2] + itemIndexs[2] ||
+                 itemRatings[0] + itemIndexs[0] == itemRatings[1] + itemIndexs[1] ||
+                 itemRatings[1] + itemIndexs[1] == itemRatings[2] + itemIndexs[2]);
 
-        ItemCards[0].SetInfo(ItemInfoArray[itemIndex1]);
-        Logger.Log($"첫 번째 아이템({itemIndex1}) {ItemInfoArray[itemIndex1]} 으로 설정됨");
-        ItemCards[1].SetInfo(ItemInfoArray[itemIndex2]);
-        Logger.Log($"두 번째 아이템({itemIndex2}) {ItemInfoArray[itemIndex2]} 으로 설정됨");
-        ItemCards[2].SetInfo(ItemInfoArray[itemIndex3]);
-        Logger.Log($"세 번째 아이템({itemIndex3}) {ItemInfoArray[itemIndex3]} 으로 설정됨");
-        
+        List<ItemInfo> itemInfos;
+        for (int i = 0; i < 3; ++i)
+        {
+            switch (itemRatings[i])
+            {
+                case 1000:
+                    itemInfos = RareItemInfoList;
+                    break;
+                case 2000:
+                    itemInfos = EpicItemInfoList;
+                    break;
+                case 3000:
+                    itemInfos = LegendaryItemInfoList;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            ItemCards[i].SetInfo(itemInfos[itemIndexs[i]]);
+            Logger.Log($"{i}번째 아이템({itemIndexs[i]}) {itemInfos[itemIndexs[i]]} 으로 설정됨");
+        }
+
         Logger.Log("상점 스테이지 입장 로직 종료");
     }
 

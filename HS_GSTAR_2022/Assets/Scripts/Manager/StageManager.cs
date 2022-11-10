@@ -44,7 +44,28 @@ public class StageManager : Singleton<StageManager>
 
         // Resources 폴더에서 이벤트 정보와 적 정보 불러오기
         _eventStageInfoArray = Resources.LoadAll<EventStageInfo>("StageInfo/EventInfo");
-        ShopStage.ItemInfoArray = Resources.LoadAll<ItemInfo>("StageInfo/ItemInfo");
+        
+        ShopStage.RareItemInfoList = new List<ItemInfo>(32);
+        ShopStage.EpicItemInfoList = new List<ItemInfo>(32);
+        ShopStage.LegendaryItemInfoList = new List<ItemInfo>(32);
+        
+        foreach (ItemInfo itemInfo in Resources.LoadAll<ItemInfo>("StageInfo/ItemInfo"))
+        {
+            switch (itemInfo.ratingType)
+            {
+                case ItemRatingType.Rare:
+                    ShopStage.RareItemInfoList.Add(itemInfo);
+                    break;
+                case ItemRatingType.Epic:
+                    ShopStage.EpicItemInfoList.Add(itemInfo);
+                    break;
+                case ItemRatingType.Legendary:
+                    ShopStage.LegendaryItemInfoList.Add(itemInfo);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
 
         _stageQueue = new Queue<StageType>();
 
@@ -75,63 +96,47 @@ public class StageManager : Singleton<StageManager>
         AddStage(StageType.Event);
         AddStage(StageType.Battle);
 
-        AddStage(StageType.Event);
-        AddStage(StageType.Event);
+        AddStage(StageType.Event, 2);
         AddStage(StageType.Shop);
         AddStage(StageType.Battle);
 
-        AddStage(StageType.Event);
-        AddStage(StageType.Event);
+        AddStage(StageType.Event, 2);
         AddStage(StageType.Shop);
         AddStage(StageType.Battle);
 
-        AddStage(StageType.Event);
-        AddStage(StageType.Event);
-        AddStage(StageType.Event);
+        AddStage(StageType.Event, 3);
         AddStage(StageType.Shop);
         AddStage(StageType.Battle);
 
-        AddStage(StageType.Event);
-        AddStage(StageType.Event);
-        AddStage(StageType.Event);
+        AddStage(StageType.Event, 3);
         AddStage(StageType.Shop);
-        AddStage(StageType.Battle);
-        AddStage(StageType.Battle);
+        AddStage(StageType.Battle, 2);
 
-        AddStage(StageType.Event);
-        AddStage(StageType.Event);
-        AddStage(StageType.Event);
+        AddStage(StageType.Event, 3);
         AddStage(StageType.Shop);
-        AddStage(StageType.Battle);
-        AddStage(StageType.Battle);
+        AddStage(StageType.Battle, 2);
 
-        AddStage(StageType.Event);
-        AddStage(StageType.Event);
-        AddStage(StageType.Event);
+        AddStage(StageType.Event, 3);
         AddStage(StageType.Shop);
-        AddStage(StageType.Battle);
-        AddStage(StageType.Battle);
+        AddStage(StageType.Battle, 2);
 
-        AddStage(StageType.Shop);
-        AddStage(StageType.Shop);
-        AddStage(StageType.Battle);
-        AddStage(StageType.Battle);
-        AddStage(StageType.Battle);
+        AddStage(StageType.Shop, 2);
+        AddStage(StageType.Battle, 3);
 
-        AddStage(StageType.Event);
-        AddStage(StageType.Event);
-        AddStage(StageType.Event);
-        AddStage(StageType.Shop);
-        AddStage(StageType.Shop);
+        AddStage(StageType.Event, 3);
+        AddStage(StageType.Shop, 2);
         AddStage(StageType.Boss);
 
         AddStage(StageType.Victory);
     }
 
-    private void AddStage(StageType type)
+    private void AddStage(StageType type, int count = 1)
     {
-        _stageQueue.Enqueue(type);
-        _mapManager.AddStage(type);
+        for (int i = 0; i < count; ++i)
+        {
+            _stageQueue.Enqueue(type);
+            _mapManager.AddStage(type);
+        }
     }
 
     public void SetFadeEvent(StageType stageType)
@@ -294,6 +299,8 @@ public class StageManager : Singleton<StageManager>
         _curStage = stage;
     }
 
+    /// <summary> 다음 스테이지 가져오기 </summary>
+    /// <returns>다음 스테이지</returns>
     public Stage GetNextStage()
     {
         StageType nextStageType = _stageQueue.Dequeue();
