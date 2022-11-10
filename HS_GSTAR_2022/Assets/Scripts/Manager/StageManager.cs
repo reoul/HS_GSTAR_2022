@@ -7,13 +7,15 @@ using Random = UnityEngine.Random;
 
 public class StageManager : Singleton<StageManager>
 {
-    /// <summary> 이벤트 스테이지 정보 배열 </summary>
-    [SerializeField] private EventStageInfo[] _eventStageInfoArray;
+    // 이벤트 스테이지 정보 배열
+    private List<EventStageInfo> _badEventStageInfoList;
+    private List<EventStageInfo> _rareEventStageInfoList;
+    private List<EventStageInfo> _epicEventStageInfoList;
+    private List<EventStageInfo> _legendaryEventStageInfoList;
 
     /// <summary> 적 정보 배열 </summary>
     [SerializeField] private EnemyInfo[] _enemyInfoArray;
-
-
+    
     private Queue<StageType> _stageQueue;
     [SerializeField] private Stage _curStage;
 
@@ -43,7 +45,32 @@ public class StageManager : Singleton<StageManager>
         Debug.Assert(_mapManager != null);
 
         // Resources 폴더에서 이벤트 정보와 적 정보 불러오기
-        _eventStageInfoArray = Resources.LoadAll<EventStageInfo>("StageInfo/EventInfo");
+        _badEventStageInfoList = new List<EventStageInfo>(32);
+        _rareEventStageInfoList = new List<EventStageInfo>(32);
+        _epicEventStageInfoList = new List<EventStageInfo>(32);
+        _legendaryEventStageInfoList = new List<EventStageInfo>(32);
+
+        foreach (EventStageInfo eventInfo in Resources.LoadAll<EventStageInfo>("StageInfo/EventInfo"))
+        {
+            switch (eventInfo.ratingType)
+            {
+                case EventRatingType.Bad:
+                    _badEventStageInfoList.Add(eventInfo);
+                    break;
+                case EventRatingType.Rare:
+                    _rareEventStageInfoList.Add(eventInfo);
+                    break;
+                case EventRatingType.Epic:
+                    _epicEventStageInfoList.Add(eventInfo);
+                    break;
+                case EventRatingType.Legendary:
+                    _legendaryEventStageInfoList.Add(eventInfo);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+        
         
         ShopStage.RareItemInfoList = new List<ItemInfo>(32);
         ShopStage.EpicItemInfoList = new List<ItemInfo>(32);
@@ -81,7 +108,6 @@ public class StageManager : Singleton<StageManager>
     private void Start()
     {
         SetRandomStage();
-        //Time.timeScale = 3;
     }
 
     private void Update()
@@ -167,8 +193,27 @@ public class StageManager : Singleton<StageManager>
     /// <summary> 이벤트 스테이지에 대해 페이드 이벤트 등록 </summary>
     private void SetFadeEventByEventStage()
     {
-        int rand = Random.Range(0, _eventStageInfoArray.Length);
-        EventStageInfo eventStageInfo = _eventStageInfoArray[rand];
+        int rand = Random.Range(0, 100);
+        List<EventStageInfo> eventStageInfos;
+        if (rand < 20)
+        {
+            eventStageInfos = _badEventStageInfoList;
+        }
+        else if (rand < 60)
+        {
+            eventStageInfos = _rareEventStageInfoList;
+        }
+        else if (rand < 90)
+        {
+            eventStageInfos = _epicEventStageInfoList;
+        }
+        else
+        {
+            eventStageInfos = _legendaryEventStageInfoList;
+        }
+        
+        rand = Random.Range(0, eventStageInfos.Count);
+        EventStageInfo eventStageInfo = eventStageInfos[rand];
 
         FadeManager.Instance.FadeInStartEvent.AddListener(() =>
         {
