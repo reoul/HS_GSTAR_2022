@@ -102,7 +102,7 @@ public class StageManager : Singleton<StageManager>
 
         _curMonsterIndex = 0;
 
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 300;
     }
 
     private void Start()
