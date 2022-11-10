@@ -5,6 +5,13 @@ using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
+public enum Difficulty
+{
+    Easy,
+    Normal,
+    Hard
+}
+
 public class StageManager : Singleton<StageManager>
 {
     // 이벤트 스테이지 정보 배열
@@ -41,7 +48,7 @@ public class StageManager : Singleton<StageManager>
     private int _curMonsterIndex = 0;
 
     /// <summary> 난이도에 따른 적 능력치 배율 </summary>
-    public float DifficultyMultiple = 1;
+    public Difficulty Difficulty = Difficulty.Easy;
 
     private void Awake()
     {
@@ -108,17 +115,12 @@ public class StageManager : Singleton<StageManager>
         Application.targetFrameRate = 300;
     }
 
-    private void Start()
-    {
-        SetRandomStage();
-    }
-
     private void Update()
     {
         _curStage.StageUpdate();
     }
 
-    private void SetRandomStage()
+    public void SetRandomStage()
     {
         _mapManager.AddStage(StageType.Event);
 
@@ -161,6 +163,11 @@ public class StageManager : Singleton<StageManager>
 
     private void AddStage(StageType type, int count = 1)
     {
+        if (type == StageType.Event && Difficulty == Difficulty.Hard)
+        {
+            count += 2;
+        }
+        
         for (int i = 0; i < count; ++i)
         {
             _stageQueue.Enqueue(type);
@@ -264,15 +271,32 @@ public class StageManager : Singleton<StageManager>
             GameObject enemyObj = Instantiate(_enemyInfoArray[_curMonsterIndex].Prefab, BattleStage.EnemyCreatePos);
             enemyObj.transform.localPosition = Vector3.zero;
 
+
+            float difficultyMultiple;
+            switch (Difficulty)
+            {
+                case Difficulty.Easy:
+                    difficultyMultiple = 1;
+                    break;
+                case Difficulty.Normal:
+                    difficultyMultiple = 1.5f;
+                    break;
+                case Difficulty.Hard:
+                    difficultyMultiple = 2;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+            
             EnemyInfo enemyInfo = _enemyInfoArray[_curMonsterIndex++];
             IBattleable enemy = enemyObj.GetComponent<IBattleable>();
             BattleManager.Instance.SetEnemy(enemy);
             enemy.InfoWindow = FindObjectOfType<BattleStage>(true).EnemyInfoWindow;
-            enemy.MaxHp = (int) (enemyInfo.MaxHp * DifficultyMultiple);
-            enemy.Hp = (int) (enemyInfo.Hp * DifficultyMultiple);
-            enemy.OffensivePower.DefaultStatus = (int) (enemyInfo.OffensivePower * DifficultyMultiple);
-            enemy.PiercingDamage.DefaultStatus = (int) (enemyInfo.PiercingDamage * DifficultyMultiple);
-            enemy.DefensivePower.DefaultStatus = (int) (enemyInfo.DefensivePower * DifficultyMultiple);
+            enemy.MaxHp = (int) (enemyInfo.MaxHp * difficultyMultiple);
+            enemy.Hp = (int) (enemyInfo.Hp * difficultyMultiple);
+            enemy.OffensivePower.DefaultStatus = (int) (enemyInfo.OffensivePower * difficultyMultiple);
+            enemy.PiercingDamage.DefaultStatus = (int) (enemyInfo.PiercingDamage * difficultyMultiple);
+            enemy.DefensivePower.DefaultStatus = (int) (enemyInfo.DefensivePower * difficultyMultiple);
 
             PlayerInfoWindow.transform.parent = BattleStagePlayerInfoWindowPos;
             PlayerInfoWindow.transform.localPosition = Vector3.zero;
