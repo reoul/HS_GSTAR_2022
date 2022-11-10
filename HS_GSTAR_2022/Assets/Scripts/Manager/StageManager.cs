@@ -40,6 +40,9 @@ public class StageManager : Singleton<StageManager>
 
     private int _curMonsterIndex = 0;
 
+    /// <summary> 난이도에 따른 적 능력치 배율 </summary>
+    public float DifficultyMultiple = 1;
+
     private void Awake()
     {
         Debug.Assert(_mapManager != null);
@@ -265,11 +268,11 @@ public class StageManager : Singleton<StageManager>
             IBattleable enemy = enemyObj.GetComponent<IBattleable>();
             BattleManager.Instance.SetEnemy(enemy);
             enemy.InfoWindow = FindObjectOfType<BattleStage>(true).EnemyInfoWindow;
-            enemy.MaxHp = enemyInfo.MaxHp;
-            enemy.Hp = enemyInfo.Hp;
-            enemy.OffensivePower.DefaultStatus = enemyInfo.OffensivePower;
-            enemy.PiercingDamage.DefaultStatus = enemyInfo.PiercingDamage;
-            enemy.DefensivePower.DefaultStatus = enemyInfo.DefensivePower;
+            enemy.MaxHp = (int) (enemyInfo.MaxHp * DifficultyMultiple);
+            enemy.Hp = (int) (enemyInfo.Hp * DifficultyMultiple);
+            enemy.OffensivePower.DefaultStatus = (int) (enemyInfo.OffensivePower * DifficultyMultiple);
+            enemy.PiercingDamage.DefaultStatus = (int) (enemyInfo.PiercingDamage * DifficultyMultiple);
+            enemy.DefensivePower.DefaultStatus = (int) (enemyInfo.DefensivePower * DifficultyMultiple);
 
             PlayerInfoWindow.transform.parent = BattleStagePlayerInfoWindowPos;
             PlayerInfoWindow.transform.localPosition = Vector3.zero;
