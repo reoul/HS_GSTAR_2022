@@ -184,9 +184,31 @@ public abstract class Card : OverlayBase
                 previousStatusStr = $"돈 : {player_.Money}";
 
                 SoundManager.Instance.PlaySound("CoinSound");
-                player.OwnerObj.GetComponent<Player>().Money -= num;
+                player_.Money -= num;
 
                 effectDescription = $"돈 {num} 감소, \n이전 {previousStatusStr}\n이후 돈 : {player_.Money}";
+            }
+                break;
+            case EventCardEffectType.AddGoldSquared:
+            {
+                Player player_ = player.OwnerObj.GetComponent<Player>();
+                previousStatusStr = $"돈 : {player_.Money}";
+
+                SoundManager.Instance.PlaySound("CoinSound");
+                player_.Money += num * num;
+
+                effectDescription = $"돈 {num * num} 증가, \n이전 {previousStatusStr}\n이후 돈 : {player_.Money}";
+            }
+                break;
+            case EventCardEffectType.SubGoldSquared:
+            {
+                Player player_ = player.OwnerObj.GetComponent<Player>();
+                previousStatusStr = $"돈 : {player_.Money}";
+
+                SoundManager.Instance.PlaySound("CoinSound");
+                player_.Money -= num * num;
+
+                effectDescription = $"돈 {num * num} 감소, \n이전 {previousStatusStr}\n이후 돈 : {player_.Money}";
             }
                 break;
             default:

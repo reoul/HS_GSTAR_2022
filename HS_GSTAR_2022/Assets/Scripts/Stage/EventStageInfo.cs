@@ -23,6 +23,9 @@ public enum EventCardEffectType
     
     [InspectorName("돈 증가")] AddMoney,
     [InspectorName("돈 감소")] SubMoney,
+    
+    [InspectorName("돈 제곱 증가")] AddGoldSquared,
+    [InspectorName("돈 제곱 감소")] SubGoldSquared,
 }
 
 public enum EventCardType
