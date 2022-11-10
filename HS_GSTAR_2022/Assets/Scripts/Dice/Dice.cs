@@ -32,7 +32,7 @@ public abstract class Dice : MonoBehaviour
         
         Roll();
         
-        Invoke(nameof(ShowDiceNumber), 1);
+        Invoke(nameof(ShowDiceNumber), 0.8f);
     }
 
     private void ShowDiceNumber()
