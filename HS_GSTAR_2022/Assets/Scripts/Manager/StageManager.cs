@@ -17,6 +17,7 @@ public class StageManager : Singleton<StageManager>
     private Queue<StageType> _stageQueue;
     [SerializeField] private Stage _curStage;
 
+    public IntroStage IntroStage;
     public EventStage EventStage;
     public BattleStage BattleStage;
     public ShopStage ShopStage;
@@ -166,6 +167,7 @@ public class StageManager : Singleton<StageManager>
 
         FadeManager.Instance.FadeInStartEvent.AddListener(() =>
         {
+            IntroStage.gameObject.SetActive(false);
             BattleStage.gameObject.SetActive(false);
             ShopStage.gameObject.SetActive(false);
 
@@ -200,6 +202,7 @@ public class StageManager : Singleton<StageManager>
 
         FadeManager.Instance.FadeInStartEvent.AddListener(() =>
         {
+            IntroStage.gameObject.SetActive(false);
             EventStage.gameObject.SetActive(false);
             ShopStage.gameObject.SetActive(false);
 
@@ -233,6 +236,7 @@ public class StageManager : Singleton<StageManager>
     {
         FadeManager.Instance.FadeInStartEvent.AddListener(() =>
         {
+            IntroStage.gameObject.SetActive(false);
             EventStage.gameObject.SetActive(false);
             BattleStage.gameObject.SetActive(false);
 
@@ -251,6 +255,7 @@ public class StageManager : Singleton<StageManager>
     {
         FadeManager.Instance.FadeInStartEvent.AddListener(() =>
         {
+            IntroStage.gameObject.SetActive(false);
             EventStage.gameObject.SetActive(false);
             BattleStage.gameObject.SetActive(false);
             ShopStage.gameObject.SetActive(false);
@@ -266,6 +271,7 @@ public class StageManager : Singleton<StageManager>
     {
         FadeManager.Instance.FadeInStartEvent.AddListener(() =>
         {
+            IntroStage.gameObject.SetActive(false);
             EventStage.gameObject.SetActive(false);
             BattleStage.gameObject.SetActive(false);
             ShopStage.gameObject.SetActive(false);
