@@ -70,18 +70,18 @@ MonoBehaviour:
     EventCardEffectType6: 0
   - Title: "\uCD5C\uC0C1\uAE09 \uC637"
     Type: 0
-    Context1: "\uCF54\uC778 15\uC6D0 \uD68D\uB4DD"
+    Context1: "\uCF54\uC778 40\uC6D0 \uD68D\uB4DD"
     CardEffectInfos1:
     - EventCardEffectType: 11
-      Num: 15
-    Context2: "\uCF54\uC778 30\uC6D0 \uD68D\uB4DD"
+      Num: 40
+    Context2: "\uCF54\uC778 80\uC6D0 \uD68D\uB4DD"
     CardEffectInfos2:
     - EventCardEffectType: 11
-      Num: 30
-    Context3: "\uCF54\uC778 45\uC6D0 \uD68D\uB4DD"
+      Num: 80
+    Context3: "\uCF54\uC778 120\uC6D0 \uD68D\uB4DD"
     CardEffectInfos3:
     - EventCardEffectType: 11
-      Num: 45
+      Num: 120
     Context6: 
     EventCardEffectType6: 0
   ratingType: 3
