@@ -324,7 +324,7 @@ public class StageManager : Singleton<StageManager>
             OpenStage(GetNextStage());
         });
 
-        SoundManager.Instance.BGMChange("shop_bgm1");
+        SoundManager.Instance.BGMChange("item Store");
     }
 
     /// <summary> 승리 스테이지에 대해 페이드 이벤트 등록 </summary>

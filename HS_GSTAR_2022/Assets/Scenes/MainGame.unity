@@ -3012,7 +3012,7 @@ PrefabInstance:
     - target: {fileID: 7556674424677892966, guid: 76e50dbbfbff7dd41a0b211356011c76, type: 3}
       propertyPath: sfxClip.Array.data[14]
       value: 
-      objectReference: {fileID: 8300000, guid: 327590c1a559ee044a54b7b18517572f, type: 3}
+      objectReference: {fileID: 8300000, guid: b6eb35e302453174f86e8aaab7af8424, type: 3}
     - target: {fileID: 7556674424677892967, guid: 76e50dbbfbff7dd41a0b211356011c76, type: 3}
       propertyPath: m_RootOrder
       value: 9
