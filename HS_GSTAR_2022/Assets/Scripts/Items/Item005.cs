@@ -4,7 +4,7 @@ public class Item005 : Item
     {
         IBattleable PlayerBattleable = BattleManager.Instance.PlayerBattleable;
 
-        PlayerBattleable.Hp += 10;
+        PlayerBattleable.Hp += 20;
         PlayerBattleable.OffensivePower.DefaultStatus += 10;
         PlayerBattleable.InfoWindow.UpdateHpBar(PlayerBattleable.Hp, PlayerBattleable.MaxHp);
         PlayerBattleable.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(6, ValueUpdater.valType.pow);

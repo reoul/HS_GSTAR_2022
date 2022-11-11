@@ -7,6 +7,6 @@ public class Item002 : Item
         IBattleable playerBattleable = BattleManager.Instance.PlayerBattleable;
         IBattleable EnemyBattleable = BattleManager.Instance.EnemyBattleable;
 
-        EnemyBattleable.ToPiercingDamage(Mathf.FloorToInt(playerBattleable.DefensivePower.FinalStatus * 0.1f));
+        EnemyBattleable.ToPiercingDamage(Mathf.FloorToInt(playerBattleable.DefensivePower.FinalStatus * 0.3f));
     }
 }

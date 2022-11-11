@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ItemInfo024
   m_EditorClassIdentifier: 
   Name: "\uB3C4\uAE08\uB41C \uAC11\uC637"
-  Description: "\uC804\uD22C \uC2DC\uC791 \uC2DC 100\uACE8\uB4DC \uB2F9 \uBC29\uC5B4\uB825
+  Description: "\uC804\uD22C \uC2DC\uC791 \uC2DC 50\uACE8\uB4DC \uB2F9 \uBC29\uC5B4\uB825
     2\uC99D\uAC00"
   EffectInvokeTimeType: 0
   EffectType: 7

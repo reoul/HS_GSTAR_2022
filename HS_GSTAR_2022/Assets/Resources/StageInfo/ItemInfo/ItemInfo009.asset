@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uD669\uAE08\uBE5B \uAC11\uC637"
   Description: "\uC804\uD22C \uC2A4\uD14C\uC774\uC9C0 \uC2DC\uC791\uC2DC \uBC29\uC5B4\uB825
-    3\uC99D\uAC00"
+    5\uC99D\uAC00"
   EffectInvokeTimeType: 0
   EffectType: 3
-  Num: 3
+  Num: 5
   Price: 20
   ratingType: 0
+  itemObj: {fileID: 0}

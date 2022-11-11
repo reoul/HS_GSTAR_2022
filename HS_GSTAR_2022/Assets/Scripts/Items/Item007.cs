@@ -6,7 +6,7 @@ public class Item007 : Item
     {
         IBattleable PlayerBattleable = BattleManager.Instance.PlayerBattleable;
 
-        int tmpPow = Mathf.FloorToInt((float)PlayerBattleable.OwnerObj.GetComponent<Player>().Money * 0.01f) * 2;
+        int tmpPow = Mathf.FloorToInt((float)PlayerBattleable.OwnerObj.GetComponent<Player>().Money * 0.005f) * 2;
 
         PlayerBattleable.OffensivePower.ItemStatus += tmpPow;
 
