@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: "\uC720\uB839 \uAE30\uC0AC"
   MaxHp: 400
   Hp: 400
-  OffensivePower: 45
+  OffensivePower: 60
   DefensivePower: 35
-  PiercingDamage: 35
+  PiercingDamage: 25
   ratingType: 2

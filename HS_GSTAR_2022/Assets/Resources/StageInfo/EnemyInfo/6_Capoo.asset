@@ -16,7 +16,7 @@ MonoBehaviour:
   Name: "\uCE74\uD478"
   MaxHp: 200
   Hp: 200
-  OffensivePower: 15
+  OffensivePower: 20
   DefensivePower: 15
-  PiercingDamage: 10
+  PiercingDamage: 5
   ratingType: 1
