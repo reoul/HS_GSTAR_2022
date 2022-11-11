@@ -165,7 +165,7 @@ public class StageManager : Singleton<StageManager>
     {
         if (type == StageType.Event && Difficulty == Difficulty.Hard)
         {
-            count += 2;
+            count += 1;
         }
         
         for (int i = 0; i < count; ++i)
