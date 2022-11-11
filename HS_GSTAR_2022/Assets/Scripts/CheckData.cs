@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -155,12 +156,19 @@ public class CheckData : EditorWindow
         string tmp;
         foreach (ItemInfo itemInfo in Resources.LoadAll<ItemInfo>("StageInfo/ItemInfo"))
         {
-            tmp = Regex.Replace(itemInfo.Description, @"\D", "");
-
-            if (itemInfo.Num != System.Convert.ToUInt32(tmp) && itemInfo.EffectType < ItemEffectType.DoubleDamage)
+            try
             {
-                Debug.LogError($"아이템 데이터가 다름 : [{itemInfo.Name}] 아이템 : {itemInfo.Num} != {System.Convert.ToUInt32(tmp)}");
+                tmp = Regex.Replace(itemInfo.Description, @"\D", "");
+
+                if (itemInfo.Num != System.Convert.ToUInt32(tmp) && itemInfo.EffectType < ItemEffectType.DoubleDamage)
+                {
+                    Debug.LogError($"아이템 데이터가 다름 : [{itemInfo.Name}] 아이템 : {itemInfo.Num} != {System.Convert.ToUInt32(tmp)}");
+                }
             }
+            catch
+            {
+            }
+            
         }
     }
 }
