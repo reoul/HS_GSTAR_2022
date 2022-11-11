@@ -16,11 +16,16 @@ public class CheckData : EditorWindow
     {
         if (GUILayout.Button("이벤트 데이터 검증"))
         {
-            StartCheckData();
+            CheckEventData();
+        }
+
+        if (GUILayout.Button("아이템 데이터 검증"))
+        {
+            CheckItemData();
         }
     }
 
-    private void StartCheckData()
+    private void CheckEventData()
     {
         string tmp;
         uint sum = 0;
@@ -46,7 +51,7 @@ public class CheckData : EditorWindow
 
                             if (sum != System.Convert.ToUInt32(tmp))
                             {
-                                Debug.LogError($"데이터가 다름 : [{eventInfo.Title}]의 [{cardInfo.Title}] 카드 1~2 카드");
+                                Debug.LogError($"이벤트 데이터가 다름 : [{eventInfo.Title}]의 [{cardInfo.Title}] 카드 1~2 카드");
                             }
 
                             sum = 0;
@@ -62,7 +67,7 @@ public class CheckData : EditorWindow
 
                             if (sum != System.Convert.ToUInt32(tmp))
                             {
-                                Debug.LogError($"데이터가 다름 : [{eventInfo.Title}]의 [{cardInfo.Title}] 카드 3~4 카드");
+                                Debug.LogError($"이벤트 데이터가 다름 : [{eventInfo.Title}]의 [{cardInfo.Title}] 카드 3~4 카드");
                             }
 
                             sum = 0;
@@ -78,7 +83,7 @@ public class CheckData : EditorWindow
 
                             if (sum != System.Convert.ToUInt32(tmp))
                             {
-                                Debug.LogError($"데이터가 다름 : [{eventInfo.Title}]의 [{cardInfo.Title}] 카드 5~6 카드");
+                                Debug.LogError($"이벤트 데이터가 다름 : [{eventInfo.Title}]의 [{cardInfo.Title}] 카드 5~6 카드");
                             }
 
                             sum = 0;
@@ -104,7 +109,7 @@ public class CheckData : EditorWindow
 
                             if (sum != System.Convert.ToUInt32(tmp))
                             {
-                                Debug.LogError($"데이터가 다름 : [{eventInfo.Title}]의 [{cardInfo.Title}] 카드 1~3 카드");
+                                Debug.LogError($"이벤트 데이터가 다름 : [{eventInfo.Title}]의 [{cardInfo.Title}] 카드 1~3 카드");
                             }
 
                             sum = 0;
@@ -120,7 +125,7 @@ public class CheckData : EditorWindow
 
                             if (sum != System.Convert.ToUInt32(tmp))
                             {
-                                Debug.LogError($"데이터가 다름 : [{eventInfo.Title}]의 [{cardInfo.Title}] 카드 4~6 카드");
+                                Debug.LogError($"이벤트 데이터가 다름 : [{eventInfo.Title}]의 [{cardInfo.Title}] 카드 4~6 카드");
                             }
 
                             sum = 0;
@@ -138,6 +143,20 @@ public class CheckData : EditorWindow
                 
             }
 
+        }
+    }
+
+    private void CheckItemData()
+    {
+        string tmp;
+        foreach (ItemInfo itemInfo in Resources.LoadAll<ItemInfo>("StageInfo/ItemInfo"))
+        {
+            tmp = Regex.Replace(itemInfo.Description, @"\D", "");
+
+            if (itemInfo.Num != System.Convert.ToUInt32(tmp) && itemInfo.EffectType < ItemEffectType.DoubleDamage)
+            {
+                Debug.LogError($"아이템 데이터가 다름 : [{itemInfo.Name}] 아이템 : {itemInfo.Num} != {System.Convert.ToUInt32(tmp)}");
+            }
         }
     }
 }
