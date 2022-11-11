@@ -37,5 +37,14 @@ public sealed class CardBase6 : Card
     public override void DiceHint(Dice dice, Color color)
     {
         _descriptionText.color = color;
+
+        if (color == dice.DefaultCardColor)
+        {
+            _descriptionText.text = Description;
+        }
+        else
+        {
+            _descriptionText.text = Description.Replace("N", Convert.ToString((int)dice.Number));
+        }
     }
 }

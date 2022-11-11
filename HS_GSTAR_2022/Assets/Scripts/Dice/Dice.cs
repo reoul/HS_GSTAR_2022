@@ -26,8 +26,8 @@ public abstract class Dice : MonoBehaviour
     [SerializeField]
     protected GameObject _textObj;
 
-    private Color _defaultCardColor = new Color(0.245283f, 0.1492524f, 0.1492524f);
-    private Color _hintCardColor = Color.white;
+    public readonly Color DefaultCardColor = new Color(0.245283f, 0.1492524f, 0.1492524f);
+    public readonly Color HintCardColor = Color.white;
 
     private void Start()
     {
@@ -57,7 +57,7 @@ public abstract class Dice : MonoBehaviour
 
         foreach(Card card in FindObjectsOfType<Card>())
         {
-            card.DiceHint(this, _hintCardColor);
+            card.DiceHint(this, HintCardColor);
         }
 
         _textObj.gameObject.SetActive(false);
@@ -74,7 +74,7 @@ public abstract class Dice : MonoBehaviour
         foreach (Card card in FindObjectsOfType<Card>())
         {
             Debug.Log("asasdasdasd");
-            card.DiceHint(this, _defaultCardColor);
+            card.DiceHint(this, DefaultCardColor);
         }
 
         // 마우스 좌표에 카드가 있으면 카드 능력 실행
