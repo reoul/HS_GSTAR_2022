@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\uB3CC\uC544\uC624\uB294 \uC0DD\uBA85"
   Description: "\uC804\uD22C \uC2A4\uD14C\uC774\uC9C0 \uC885\uB8CC \uD6C4 \uCCB4\uB825
-    50\uD68C\uBCF5"
+    40\uD68C\uBCF5"
   EffectInvokeTimeType: 1
   EffectType: 0
-  Num: 50
+  Num: 40
   Price: 50
   ratingType: 1
   itemObj: {fileID: 0}
