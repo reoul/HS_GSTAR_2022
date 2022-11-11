@@ -69,7 +69,7 @@ public sealed class Player : MonoBehaviour, IBattleable
     public UnityEvent HitEvent { get; set; }
 
 
-    [SerializeField] private TMP_Text _moneyText;
+    [SerializeField] private DisplayMoney _moneySC;
 
     private int _money;
     private static readonly int AttackHash = Animator.StringToHash("Attack");
@@ -82,7 +82,7 @@ public sealed class Player : MonoBehaviour, IBattleable
         set
         {
             _money = value > 0 ? value : 0;
-            _moneyText.text = value.ToString();
+            _moneySC.SetTargetMoney(_money);
         }
     }
 
