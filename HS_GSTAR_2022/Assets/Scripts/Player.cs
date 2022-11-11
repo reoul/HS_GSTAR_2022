@@ -251,7 +251,6 @@ public sealed class Player : MonoBehaviour, IBattleable
     {
         Logger.Log("플레이어 Death 애니메이션 끝 시작");
         Destroy(gameObject);
-        FindObjectOfType<BattleStage>().IsFinishBattle = true;
         Time.timeScale = 1;
         FadeManager.Instance.StartFadeOut();
         StageManager.Instance.SetFadeEvent(StageType.GameOver);

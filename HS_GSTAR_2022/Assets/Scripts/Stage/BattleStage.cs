@@ -15,8 +15,6 @@ public class BattleStage : Stage
     public Transform EnemyCreatePos;
 
     public InfoWindow EnemyInfoWindow;
-    
-    public bool IsFinishBattle { get; set; }
 
     public bool IsPlayerWin { get; set; }
 
@@ -43,7 +41,6 @@ public class BattleStage : Stage
         Logger.Log("전투 시작 시 아이템 이벤트 종료");
         
         Time.timeScale = BattleAttach.Instance.AttachArray[BattleAttach.Instance.CurAttachIndex];
-        IsFinishBattle = false;
         IsPlayerWin = false;
         
         Logger.Log("전투 스테이지 입장 로직 종료");
@@ -78,7 +75,6 @@ public class BattleStage : Stage
         }
         
         Time.timeScale = 1;
-        IsFinishBattle = false;
         IsPlayerWin = false;
         Logger.Log("전투 스테이지 퇴장 로직 종료");
     }
