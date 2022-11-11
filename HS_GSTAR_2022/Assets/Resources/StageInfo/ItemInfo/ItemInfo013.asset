@@ -17,6 +17,6 @@ MonoBehaviour:
   EffectInvokeTimeType: 2
   EffectType: 1
   Num: 1
-  Price: 100
-  ratingType: 2
-  className: EffectAA
+  Price: 50
+  ratingType: 1
+  itemObj: {fileID: 0}

@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: ItemInfo026
   m_EditorClassIdentifier: 
   Name: "\uD761\uD608 \uAC80"
-  Description: "\uACF5\uACA9 \uC2DC \uCCB4\uB825 1\uD761\uD608"
+  Description: "\uACF5\uACA9 \uC2DC \uCCB4\uB825 5\uD761\uD608"
   EffectInvokeTimeType: 2
   EffectType: 7
   Num: 5
-  Price: 50
-  ratingType: 1
+  Price: 20
+  ratingType: 0
   itemObj: {fileID: 7720528880046833304, guid: cb8964a693306e04c90e6fbbb21cb2c6, type: 3}

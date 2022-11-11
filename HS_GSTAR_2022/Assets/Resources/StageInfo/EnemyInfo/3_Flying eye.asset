@@ -18,5 +18,5 @@ MonoBehaviour:
   Hp: 100
   OffensivePower: 10
   DefensivePower: 10
-  PiercingDamage: 10
+  PiercingDamage: 5
   ratingType: 0

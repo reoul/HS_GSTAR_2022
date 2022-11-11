@@ -18,6 +18,6 @@ MonoBehaviour:
   EffectInvokeTimeType: 4
   EffectType: 3
   Num: 1
-  Price: 100
-  ratingType: 2
+  Price: 50
+  ratingType: 1
   itemObj: {fileID: 7720528880046833304, guid: aa51a28dd9345504aab3b6f2461174f7, type: 3}
