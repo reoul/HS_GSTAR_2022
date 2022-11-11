@@ -72,4 +72,24 @@ public sealed class CardBase33 : Card
         Logger.Log("카드 삭제 애니메이션 시작");
         StartDestroyAnimation(); // 카드 삭제
     }
+
+    public override void DiceHint(Dice dice, Color color)
+    {
+        switch (dice.Number)
+        {
+            case EDiceNumber.One:
+            case EDiceNumber.Two:
+            case EDiceNumber.Three:
+                _descriptionText123.color = color;
+                break;
+            case EDiceNumber.Four:
+            case EDiceNumber.Five:
+            case EDiceNumber.Six:
+                _descriptionText456.color = color;
+                break;
+            case EDiceNumber.Max:
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
+    }
 }

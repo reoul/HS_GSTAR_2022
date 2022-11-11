@@ -23,6 +23,10 @@ public abstract class Card : OverlayBase
     /// <param name="dice">주사위</param>
     public abstract void Use(Dice dice);
 
+    /// <summary> 주사위 들었을 때 해당하는 효과만 색깔 바꿔줌 </summary>
+    /// <param name="dice">주사위</param>
+    public abstract void DiceHint(Dice dice, Color color);
+
     private void Awake()
     {
         _cardShowObj.SetActive(false);

@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: HS_2022_GSTAR_1
+  companyName: HS_2022_1
   productName: Card&Dice
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}

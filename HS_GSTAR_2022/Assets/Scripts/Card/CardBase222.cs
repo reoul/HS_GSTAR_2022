@@ -32,15 +32,15 @@ public sealed class CardBase222 : Card
     /// <summary> 주사위 눈금 5 ~ 6번 발동 효과 정보 배열 </summary>
     public EventCardEffectInfo[] EffectInfoList56;
 
-    [SerializeField] private TMP_Text _descriptionTmp12;
-    [SerializeField] private TMP_Text _descriptionTmp34;
-    [SerializeField] private TMP_Text _descriptionTmp56;
+    [SerializeField] private TMP_Text _descriptionText12;
+    [SerializeField] private TMP_Text _descriptionText34;
+    [SerializeField] private TMP_Text _descriptionText56;
 
     public override void SetContentText()
     {
-        _descriptionTmp12.text = $"1~2: {Description12}";
-        _descriptionTmp34.text = $"3~4: {Description34}";
-        _descriptionTmp56.text = $"5~6: {Description56}";
+        _descriptionText12.text = $"1~2: {Description12}";
+        _descriptionText34.text = $"3~4: {Description34}";
+        _descriptionText56.text = $"5~6: {Description56}";
     }
     
     public override void Use(Dice dice)
@@ -90,5 +90,27 @@ public sealed class CardBase222 : Card
 
         Logger.Log("카드 삭제 애니메이션 시작");
         StartDestroyAnimation(); // 카드 삭제
+    }
+
+    public override void DiceHint(Dice dice, Color color)
+    {
+        switch (dice.Number)
+        {
+            case EDiceNumber.One:
+            case EDiceNumber.Two:
+                _descriptionText12.color = color;
+                break;
+            case EDiceNumber.Three:
+            case EDiceNumber.Four:
+                _descriptionText34.color = color;
+                break;
+            case EDiceNumber.Five:
+            case EDiceNumber.Six:
+                _descriptionText56.color = color;
+                break;
+            case EDiceNumber.Max:
+            default:
+                throw new ArgumentOutOfRangeException();
+        }
     }
 }

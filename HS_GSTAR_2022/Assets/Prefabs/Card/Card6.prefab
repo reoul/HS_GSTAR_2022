@@ -613,4 +613,4 @@ MonoBehaviour:
   _nameText: {fileID: 1623280596}
   _cardShowObj: {fileID: 8769601048086299639}
   _cardEffectAnimator: {fileID: 1885362945}
-  _contentText: {fileID: 8116647757145941710}
+  _descriptionText: {fileID: 8116647757145941710}

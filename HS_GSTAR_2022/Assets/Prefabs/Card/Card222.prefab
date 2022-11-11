@@ -888,6 +888,6 @@ MonoBehaviour:
   EffectInfoList12: []
   EffectInfoList34: []
   EffectInfoList56: []
-  _descriptionTmp12: {fileID: 277632125}
-  _descriptionTmp34: {fileID: 79517501714366812}
-  _descriptionTmp56: {fileID: 6371201362546886101}
+  _descriptionText12: {fileID: 277632125}
+  _descriptionText34: {fileID: 79517501714366812}
+  _descriptionText56: {fileID: 6371201362546886101}

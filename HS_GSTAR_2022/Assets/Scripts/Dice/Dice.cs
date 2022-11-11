@@ -26,6 +26,9 @@ public abstract class Dice : MonoBehaviour
     [SerializeField]
     protected GameObject _textObj;
 
+    private Color _defaultCardColor = new Color(0.245283f, 0.1492524f, 0.1492524f);
+    private Color _hintCardColor = Color.white;
+
     private void Start()
     {
         _canMoveToMouse = false;
@@ -52,6 +55,11 @@ public abstract class Dice : MonoBehaviour
         _canMoveToMouse = true;
         StartCoroutine(MoveCoroutine());
 
+        foreach(Card card in FindObjectsOfType<Card>())
+        {
+            card.DiceHint(this, _hintCardColor);
+        }
+
         _textObj.gameObject.SetActive(false);
     }
 
@@ -62,6 +70,13 @@ public abstract class Dice : MonoBehaviour
         _canMoveToMouse = false;
         
         Debug.Assert(Camera.main != null);
+
+        foreach (Card card in FindObjectsOfType<Card>())
+        {
+            Debug.Log("asasdasdasd");
+            card.DiceHint(this, _defaultCardColor);
+        }
+
         // 마우스 좌표에 카드가 있으면 카드 능력 실행
         int layerMask = 1 << LayerMask.NameToLayer("Card");
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);

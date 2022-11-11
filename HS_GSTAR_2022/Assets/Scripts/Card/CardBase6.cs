@@ -17,11 +17,11 @@ public sealed class CardBase6 : Card
 
     public EventCardEffectType EffectType { get; set; }
     
-    [SerializeField] private TMP_Text _contentText;
+    [SerializeField] private TMP_Text _descriptionText;
     
     public override void SetContentText()
     {
-        _contentText.text = Description;
+        _descriptionText.text = Description;
     }
 
     public override void Use(Dice dice)
@@ -32,5 +32,10 @@ public sealed class CardBase6 : Card
 
         Logger.Log("카드 삭제 애니메이션 시작");
         StartDestroyAnimation(); // 카드 삭제
+    }
+
+    public override void DiceHint(Dice dice, Color color)
+    {
+        _descriptionText.color = color;
     }
 }
