@@ -115,14 +115,6 @@ public sealed class Player : MonoBehaviour, IBattleable
         Money = 150;
     }
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            ToHeal(100);
-        }
-    }
-
     public void Attack()
     {
         Logger.Log("플레이어 Attack() 시작");
