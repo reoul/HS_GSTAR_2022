@@ -107,7 +107,7 @@ public sealed class CardBase222 : Card
                 }
                 else
                 {
-                    _descriptionText12.text = $"3~4: {Description12}";
+                    _descriptionText12.text = $"1~2: {Description12}";
                 }
                 break;
             case EDiceNumber.Three:
