@@ -73,7 +73,6 @@ public abstract class Dice : MonoBehaviour
 
         foreach (Card card in FindObjectsOfType<Card>())
         {
-            Debug.Log("asasdasdasd");
             card.DiceHint(this, DefaultCardColor);
         }
 
