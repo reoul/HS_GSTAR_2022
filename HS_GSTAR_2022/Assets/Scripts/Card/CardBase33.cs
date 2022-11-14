@@ -81,11 +81,29 @@ public sealed class CardBase33 : Card
             case EDiceNumber.Two:
             case EDiceNumber.Three:
                 _descriptionText123.color = color;
+
+                if (color == dice.HintCardColor)
+                {
+                    _descriptionText123.text = $"1~3: {ChangeColorStr(Description123)}";
+                }
+                else
+                {
+                    _descriptionText123.text = $"1~3: {Description123}";
+                };
                 break;
             case EDiceNumber.Four:
             case EDiceNumber.Five:
             case EDiceNumber.Six:
                 _descriptionText456.color = color;
+
+                if (color == dice.HintCardColor)
+                {
+                    _descriptionText456.text = $"4~6: {ChangeColorStr(Description456)}";
+                }
+                else
+                {
+                    _descriptionText456.text = $"4~6: {Description456}";
+                }
                 break;
             case EDiceNumber.Max:
             default:

@@ -44,7 +44,8 @@ public sealed class CardBase6 : Card
         }
         else
         {
-            _descriptionText.text = Description.Replace("N", Convert.ToString((int)dice.Number));
+            string tmp = Description.Replace("N", Convert.ToString((int)dice.Number));
+            _descriptionText.text = ChangeColorStr(tmp);
         }
     }
 }

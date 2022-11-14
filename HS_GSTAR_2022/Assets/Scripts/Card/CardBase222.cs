@@ -99,14 +99,44 @@ public sealed class CardBase222 : Card
             case EDiceNumber.One:
             case EDiceNumber.Two:
                 _descriptionText12.color = color;
+                _descriptionText12.text = ChangeColorStr(_descriptionText12.text);
+
+                if (color == dice.HintCardColor)
+                {
+                    _descriptionText12.text = $"1~2: {ChangeColorStr(Description12)}";
+                }
+                else
+                {
+                    _descriptionText12.text = $"3~4: {Description12}";
+                }
                 break;
             case EDiceNumber.Three:
             case EDiceNumber.Four:
                 _descriptionText34.color = color;
+                _descriptionText34.text = ChangeColorStr(_descriptionText34.text);
+
+                if (color == dice.HintCardColor)
+                {
+                    _descriptionText34.text = $"3~4: {ChangeColorStr(Description34)}";
+                }
+                else
+                {
+                    _descriptionText34.text = $"3~4: {Description34}";
+                }
                 break;
             case EDiceNumber.Five:
             case EDiceNumber.Six:
                 _descriptionText56.color = color;
+                _descriptionText56.text = ChangeColorStr(_descriptionText56.text);
+
+                if (color == dice.HintCardColor)
+                {
+                    _descriptionText56.text = $"5~6: {ChangeColorStr(Description56)}";
+                }
+                else
+                {
+                    _descriptionText56.text = $"5~6: {Description56}";
+                }
                 break;
             case EDiceNumber.Max:
             default:

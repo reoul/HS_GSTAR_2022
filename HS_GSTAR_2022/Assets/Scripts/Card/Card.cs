@@ -27,6 +27,36 @@ public abstract class Card : OverlayBase
     /// <param name="dice">주사위</param>
     public abstract void DiceHint(Dice dice, Color color);
 
+    protected string ChangeColorStr(string description)
+    {
+        if (description.Contains("증가"))
+        {
+            description = description.Replace("증가", "<#4FE24A>증가</color>");
+        }
+
+        if (description.Contains("회복"))
+        {
+            description = description.Replace("회복", "<#4FE24A>회복</color>");
+        }
+
+        if (description.Contains("획득"))
+        {
+            description = description.Replace("획득", "<#4FE24A>획득</color>");
+        }
+
+        if (description.Contains("감소"))
+        {
+            description = description.Replace("감소", "<#E34A4A>감소</color>");
+        }
+
+        if (description.Contains("입음"))
+        {
+            description = description.Replace("입음", "<#E34A4A>입음</color>");
+        }
+
+        return description;
+    }
+
     private void Awake()
     {
         _cardShowObj.SetActive(false);
