@@ -340,7 +340,7 @@ public class StageManager : Singleton<StageManager>
             OpenStage(GetNextStage());
         });
 
-        //SoundManager.Instance.BGMChange("Event", 1);
+        SoundManager.Instance.BGMChange("Victory2");
     }
 
     /// <summary> 게임오버 스테이지에 대해 페이드 이벤트 등록 </summary>
@@ -356,7 +356,7 @@ public class StageManager : Singleton<StageManager>
             OpenStage(GameOverStage);
         });
 
-        //SoundManager.Instance.BGMChange("Event", 1);
+        SoundManager.Instance.BGMChange("shop_bgm1");
     }
 
     public void OpenStage(Stage stage)
