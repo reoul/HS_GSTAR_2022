@@ -174,6 +174,12 @@ public class ItemCard : MonoBehaviour
                 player_.Money += itemInfo.Num;
                 
                 effectDescription = $"돈 {itemInfo.Num} 증가, \n이전 {previousStatusStr}\n이후 돈 : {player_.Money}";
+
+                if (isSoundOn)
+                {
+                    SoundManager.Instance.PlaySound("MP_Coin Drop (mp3cut.net)", 1);
+                }
+
                 break;
             case ItemEffectType.DoubleDamage:
                 BattleManager.IsDoubleDamage = true;

@@ -10,6 +10,5 @@ public class Item007 : Item
 
         PlayerBattleable.OffensivePower.ItemStatus += tmpPow;
 
-        PlayerBattleable.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(tmpPow, ValueUpdater.valType.pow);
     }
 }
