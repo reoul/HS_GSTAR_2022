@@ -84,7 +84,7 @@ public class ItemCard : MonoBehaviour
         return _rank;
     }
 
-    private string ApplyItem(ItemInfo itemInfo, bool isItemStatus)
+    private string ApplyItem(ItemInfo itemInfo, bool isItemStatus, bool isSoundOn)
     {
         IBattleable player = BattleManager.Instance.PlayerBattleable;
 
@@ -118,7 +118,7 @@ public class ItemCard : MonoBehaviour
                     effectDescription = $"공격력 기본스텟 {itemInfo.Num} 증가";
                 }
 
-                player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(itemInfo.Num, ValueUpdater.valType.pow);
+                player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(itemInfo.Num, ValueUpdater.valType.pow, isSoundOn);
                 
                 effectDescription += $", \n이전 {previousStatusStr}\n이후 {player.OffensivePower}";
                 break;
@@ -136,7 +136,7 @@ public class ItemCard : MonoBehaviour
                     effectDescription = $"관통데미지 기본스텟 {itemInfo.Num} 증가";
                 }
 
-                player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(itemInfo.Num, ValueUpdater.valType.piercing);
+                player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(itemInfo.Num, ValueUpdater.valType.piercing, isSoundOn);
                 
                 effectDescription += $", \n이전 {previousStatusStr}\n이후 {player.PiercingDamage}";
                 break;
@@ -154,7 +154,7 @@ public class ItemCard : MonoBehaviour
                     effectDescription = $"방어력 기본스텟 {itemInfo.Num} 증가";
                 }
 
-                player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(itemInfo.Num, ValueUpdater.valType.def);
+                player.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(itemInfo.Num, ValueUpdater.valType.def, isSoundOn);
                 
                 effectDescription += $", \n이전 {previousStatusStr}\n이후 {player.DefensivePower}";
                 break;
@@ -205,7 +205,7 @@ public class ItemCard : MonoBehaviour
         StageManager.Instance.BattleStage.StartBattleEvent.AddListener(() =>
         {
             Logger.Log($"[전투 시작 시]아이템 발동 {itemInfo}");
-            string applyDescription = ApplyItem(itemInfo, true);
+            string applyDescription = ApplyItem(itemInfo, true, false);
             Logger.Log($"아이템 사용 효과 결과 : {applyDescription}");
         });
     }
@@ -218,7 +218,7 @@ public class ItemCard : MonoBehaviour
         StageManager.Instance.BattleStage.FinishBattleEvent.AddListener(() =>
         {
             Logger.Log($"[전투 종료 시]아이템 발동 {itemInfo}");
-            string applyDescription = ApplyItem(itemInfo, false);
+            string applyDescription = ApplyItem(itemInfo, false, false);
             Logger.Log($"아이템 사용 효과 결과 : {applyDescription}");
         });
     }
@@ -231,7 +231,7 @@ public class ItemCard : MonoBehaviour
         BattleManager.Instance.PlayerBattleable.FinishAttackEvent.AddListener(() =>
         {
             Logger.Log($"[공격 후]아이템 발동 {itemInfo}");
-            string applyDescription = ApplyItem(itemInfo, true);
+            string applyDescription = ApplyItem(itemInfo, true, false);
             Logger.Log($"아이템 사용 효과 결과 : {applyDescription}");
         });
     }
@@ -244,7 +244,7 @@ public class ItemCard : MonoBehaviour
         BattleManager.Instance.PlayerBattleable.HitEvent.AddListener(() =>
         {
             Logger.Log($"[피격 시]아이템 발동 {itemInfo}");
-            string applyDescription = ApplyItem(itemInfo, true);
+            string applyDescription = ApplyItem(itemInfo, true, false);
             Logger.Log($"아이템 사용 효과 결과 : {applyDescription}");
         });
     }
@@ -256,7 +256,7 @@ public class ItemCard : MonoBehaviour
     private void ApplyItemOfGetType(ItemInfo itemInfo)
     {
         Logger.Log($"[즉시]아이템 발동 {itemInfo}");
-        string applyDescription = ApplyItem(itemInfo, false);
+        string applyDescription = ApplyItem(itemInfo, false, true);
         Logger.Log($"아이템 사용 효과 결과 : {applyDescription}");
     }
 }
