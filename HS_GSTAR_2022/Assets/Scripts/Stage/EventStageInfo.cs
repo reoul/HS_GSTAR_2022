@@ -26,6 +26,9 @@ public enum EventCardEffectType
     
     [InspectorName("돈 제곱 증가")] AddGoldSquared,
     [InspectorName("돈 제곱 감소")] SubGoldSquared,
+
+    [InspectorName("체력 제곱 증가")] AddHpSquared,
+    [InspectorName("체력 제곱 감소")] SubHpSquared,
 }
 
 public enum EventCardType

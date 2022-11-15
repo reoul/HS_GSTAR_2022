@@ -202,48 +202,64 @@ public abstract class Card : OverlayBase
                 effectDescription = $"아무 효과 없음";
                 break;
             case EventCardEffectType.AddMoney:
-            {
-                Player player_ = player.OwnerObj.GetComponent<Player>();
-                previousStatusStr = $"돈 : {player_.Money}";
+                {
+                    Player player_ = player.OwnerObj.GetComponent<Player>();
+                    previousStatusStr = $"돈 : {player_.Money}";
 
-                SoundManager.Instance.PlaySound("CoinSound");
-                player_.Money += num;
+                    SoundManager.Instance.PlaySound("CoinSound");
+                    player_.Money += num;
 
-                effectDescription = $"돈 {num} 증가, \n이전 {previousStatusStr}\n이후 돈 : {player_.Money}";
-            }
+                    effectDescription = $"돈 {num} 증가, \n이전 {previousStatusStr}\n이후 돈 : {player_.Money}";
+                }
                 break;
             case EventCardEffectType.SubMoney:
-            {
-                Player player_ = player.OwnerObj.GetComponent<Player>();
-                previousStatusStr = $"돈 : {player_.Money}";
+                {
+                    Player player_ = player.OwnerObj.GetComponent<Player>();
+                    previousStatusStr = $"돈 : {player_.Money}";
 
-                SoundManager.Instance.PlaySound("CoinSound");
-                player_.Money -= num;
+                    SoundManager.Instance.PlaySound("CoinSound");
+                    player_.Money -= num;
 
-                effectDescription = $"돈 {num} 감소, \n이전 {previousStatusStr}\n이후 돈 : {player_.Money}";
-            }
+                    effectDescription = $"돈 {num} 감소, \n이전 {previousStatusStr}\n이후 돈 : {player_.Money}";
+                }
                 break;
             case EventCardEffectType.AddGoldSquared:
-            {
-                Player player_ = player.OwnerObj.GetComponent<Player>();
-                previousStatusStr = $"돈 : {player_.Money}";
+                {
+                    Player player_ = player.OwnerObj.GetComponent<Player>();
+                    previousStatusStr = $"돈 : {player_.Money}";
 
-                SoundManager.Instance.PlaySound("CoinSound");
-                player_.Money += num * num;
+                    SoundManager.Instance.PlaySound("CoinSound");
+                    player_.Money += num * num;
 
-                effectDescription = $"돈 {num * num} 증가, \n이전 {previousStatusStr}\n이후 돈 : {player_.Money}";
-            }
+                    effectDescription = $"돈 {num * num} 증가, \n이전 {previousStatusStr}\n이후 돈 : {player_.Money}";
+                }
                 break;
             case EventCardEffectType.SubGoldSquared:
-            {
-                Player player_ = player.OwnerObj.GetComponent<Player>();
-                previousStatusStr = $"돈 : {player_.Money}";
+                {
+                    Player player_ = player.OwnerObj.GetComponent<Player>();
+                    previousStatusStr = $"돈 : {player_.Money}";
 
-                SoundManager.Instance.PlaySound("CoinSound");
-                player_.Money -= num * num;
+                    SoundManager.Instance.PlaySound("CoinSound");
+                    player_.Money -= num * num;
 
-                effectDescription = $"돈 {num * num} 감소, \n이전 {previousStatusStr}\n이후 돈 : {player_.Money}";
-            }
+                    effectDescription = $"돈 {num * num} 감소, \n이전 {previousStatusStr}\n이후 돈 : {player_.Money}";
+                }
+                break;
+            case EventCardEffectType.AddHpSquared:
+                previousStatusStr = $"체력/최대체력 : {player.Hp}/{player.MaxHp}";
+
+                player.ToHeal(num * num);
+                player.InfoWindow.UpdateHpBar(player.Hp, player.MaxHp);
+
+                effectDescription = $"체력 {num * num} 증가, \n이전 {previousStatusStr}\n이후 체력/최대체력 : {player.Hp}/{player.MaxHp}";
+                break;
+            case EventCardEffectType.SubHpSquared:
+                previousStatusStr = $"체력/최대체력 : {player.Hp}/{player.MaxHp}";
+
+                player.ToPiercingDamage(num * num);
+                player.InfoWindow.UpdateHpBar(player.Hp, player.MaxHp);
+
+                effectDescription = $"체력 {num * num} 감소, \n이전 {previousStatusStr}\n이후 체력/최대체력 : {player.Hp}/{player.MaxHp}";
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
