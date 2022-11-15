@@ -10,6 +10,6 @@ public class Item016 : Item
         int tmpPow = Mathf.FloorToInt(EnemyBattleable.OffensivePower.FinalStatus * 0.1f);
 
         PlayerBattleable.OffensivePower.ItemStatus += tmpPow;
-        PlayerBattleable.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(tmpPow, ValueUpdater.valType.pow);
+        PlayerBattleable.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(tmpPow, ValueUpdater.valType.pow, false);
     }
 }

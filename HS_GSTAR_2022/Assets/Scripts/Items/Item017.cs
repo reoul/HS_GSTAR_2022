@@ -11,6 +11,6 @@ public class Item017 : Item
         //EnemyBattleable.OwnerObj.GetComponent<Enemy>().ValueUpdater.AddVal(5, ValueUpdater.valType.def);
 
         PlayerBattleable.PiercingDamage.ItemStatus += 10;
-        PlayerBattleable.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(10, ValueUpdater.valType.piercing);
+        PlayerBattleable.OwnerObj.GetComponent<Player>().ValueUpdater.AddVal(10, ValueUpdater.valType.piercing, false);
     }
 }
