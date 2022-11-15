@@ -26,8 +26,8 @@ MonoBehaviour:
     CardEffectInfos2: []
     Context3: 
     CardEffectInfos3: []
-    Context6: "\uCCB4\uB825 N\uD68C\uBCF5"
-    EventCardEffectType6: 6
+    Context6: "\uCCB4\uB825 N x N\uD68C\uBCF5"
+    EventCardEffectType6: 15
   - Title: "\uC9C8\uAE34 \uBC84\uC12F"
     Type: 2
     Context1: 
