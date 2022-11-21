@@ -84,11 +84,11 @@ public class SoundManager : Singleton<SoundManager>
         {
             if (audioClipsDic.ContainsKey(sfxName) == false /*|| sfxPlayer.GetComponent<AudioSource>().isPlaying*/)
             {
-                Logger.Log(sfxName + " 이 포함된 오디오가 없습니다.");
+                Logger.LogError($"{sfxName} 이 포함된 오디오가 없습니다.");
                 return;
             }
             sfxPlayer.PlayOneShot(audioClipsDic[sfxName], sfxVolume * masterVolumeSFX);
-            Logger.Log($"{sfxName} 사운드 재생");
+            //Logger.Log($"{sfxName} 사운드 재생");
         }
         catch (System.Exception)
         {

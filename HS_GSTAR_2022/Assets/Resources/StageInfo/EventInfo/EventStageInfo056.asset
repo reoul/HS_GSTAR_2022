@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: "\uCF54\uC778 \uB8F0\uB81B"
   Description: "\uB2F9\uC2E0\uC740 \uAE38\uC744 \uAC00\uB358\uC911 \uD55C \uB8F0\uB81B\uC7A5
-    \uC548\uC73C\uB85C \uB4E4\uC5B4\uAC00\uAC8C \uB418\uC5C8\uC2B5\uB2C8\uB2E4. \uC5EC\uAE30\uC11C
+    \uC548\uC73C\uB85C \uB4E4\uC5B4\uAC00\uAC8C \uB418\uC5C8\uC2B5\uB2C8\uB2E4.\n\uC5EC\uAE30\uC11C
     \uB8F0\uB81B\uC744 \uD1B5\uD574 \uCF54\uC778\uC744 \uB9CE\uC774 \uAC00\uC838
     \uAC00\uAC70\uB098 \uB9CE\uC774 \uC783\uAC8C\uB418\uB294 \uB3C4\uBC15\uC744 \uD558\uAC8C
     \uB429\uB2C8\uB2E4."
@@ -33,8 +33,8 @@ MonoBehaviour:
     CardEffectInfos3:
     - EventCardEffectType: 7
       Num: 3
-    Context6: "\uCF54\uC778 N\uB9CC\uD07C \uD68D\uB4DD"
-    EventCardEffectType6: 11
+    Context6: "\uCF54\uC778 N x N\uB9CC\uD07C \uD68D\uB4DD"
+    EventCardEffectType6: 13
   - Title: "\uC6B4\uC218 \uB098\uC05C\uB0A0"
     Type: 2
     Context1: "\uCF54\uC778 30\uC6D0 \uAC10\uC18C"
@@ -49,6 +49,6 @@ MonoBehaviour:
     CardEffectInfos3:
     - EventCardEffectType: 2
       Num: 3
-    Context6: "\uCF54\uC778 N\uB9CC\uD07C \uAC10\uC18C"
-    EventCardEffectType6: 12
+    Context6: "\uCF54\uC778 N x N\uB9CC\uD07C \uAC10\uC18C"
+    EventCardEffectType6: 14
   ratingType: 2

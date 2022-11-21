@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: "\uBBF8\uC9C0\uC758 \uC0D8\uBB3C"
   Description: "\uB2F9\uC2E0\uC740 \uAE38\uC744 \uAC77\uB358 \uC911 \uB9C8\uC2DC\uB77C\uACE0
-    \uB9CC\uB4E0 \uAC83\uCC98\uB7FC \uBCF4\uC774\uB294\r\n\uC0D8\uBB3C\uC744 \uBC1C\uACAC\uD558\uACE0
+    \uB9CC\uB4E0\uAC83\uCC98\uB7FC \uBCF4\uC774\uB294 \uC0D8\uBB3C\uC744 \uBC1C\uACAC\uD558\uACE0
     \uB9C8\uC2DC\uAC8C \uB429\uB2C8\uB2E4."
   EventCardInfos:
   - Title: "\uB9D1\uC740 \uC0D8\uBB3C"
@@ -45,6 +45,6 @@ MonoBehaviour:
     CardEffectInfos2: []
     Context3: 
     CardEffectInfos3: []
-    Context6: "\uCF54\uC778 N\uB9CC\uD07C \uD68D\uB4DD"
-    EventCardEffectType6: 11
+    Context6: "\uCF54\uC778 N x N\uB9CC\uD07C \uD68D\uB4DD"
+    EventCardEffectType6: 13
   ratingType: 1

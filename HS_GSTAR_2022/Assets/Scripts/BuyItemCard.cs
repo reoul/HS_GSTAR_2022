@@ -19,7 +19,7 @@ public class BuyItemCard : MonoBehaviour
         ItemCard itemCard = GetComponent<ItemCard>();
         if (itemCard.CanBuy)
         {
-            BattleManager.Instance.PlayerBattleable.OwnerObj.GetComponent<Player>().Money -= itemCard.ItemInfo.Price;
+            BattleManager.Instance.PlayerBattleable.OwnerObj.GetComponent<Player>().Money -= itemCard.ItemCardInfo.Price;
             BackPack.Instance.AddItem(this.gameObject);
             itemCard.ApplyItem();
             _soldOutObj.SetActive(true);

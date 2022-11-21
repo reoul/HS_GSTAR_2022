@@ -57,7 +57,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7ac913dd7183c904cad9aad0b0e0b13f, type: 3}
   - {fileID: 8300000, guid: 0541c5b54a1215f42a80ab4d5da020ac, type: 3}
   - {fileID: 8300000, guid: 5ba569f6dcfff5e41872233fd6c41621, type: 3}
-  - {fileID: 8300000, guid: 51fc5fd66fe77584e8e464605c1da20a, type: 3}
+  - {fileID: 8300000, guid: 715001adb5ca00a43964481c33c3c630, type: 3}
   - {fileID: 8300000, guid: fecb0c3cef11d864880a9b9c2c6516a1, type: 3}
   - {fileID: 8300000, guid: 9f1dc19b6f40873449368eedd8627abd, type: 3}
   - {fileID: 8300000, guid: 77bcdb8a2f831b64c8bd56ef857058fc, type: 3}
@@ -82,7 +82,7 @@ AudioSource:
   Spatialize: 0
   SpatializePostEffects: 0
   Priority: 128
-  DopplerLevel: 1
+  DopplerLevel: 0
   MinDistance: 1
   MaxDistance: 500
   Pan2D: 0
@@ -149,7 +149,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0
       inSlope: 0
       outSlope: 0
       tangentMode: 0

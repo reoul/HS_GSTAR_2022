@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uAD6C\n\uB9E4\n\uC644\n\uB8CC"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 395edc858a338434097c5a3be1e4138b, type: 2}
-  m_sharedMaterial: {fileID: 8470608934981535021, guid: 395edc858a338434097c5a3be1e4138b, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 54bb9163f088f624f8b4ed6a58a52cad, type: 2}
+  m_sharedMaterial: {fileID: 7554231374516950877, guid: 54bb9163f088f624f8b4ed6a58a52cad, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

@@ -36,7 +36,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -19}
-  m_SizeDelta: {x: 200, y: 259.1503}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &277632126
 CanvasRenderer:
@@ -68,8 +68,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC544\uC774\uD15C \uD6A8\uACFC"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cfd77cf47a5e992418f99588eb3baab9, type: 2}
-  m_sharedMaterial: {fileID: -2130985006390690960, guid: cfd77cf47a5e992418f99588eb3baab9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 54bb9163f088f624f8b4ed6a58a52cad, type: 2}
+  m_sharedMaterial: {fileID: 7554231374516950877, guid: 54bb9163f088f624f8b4ed6a58a52cad, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -93,12 +93,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 25
+  m_fontSizeBase: 22
   m_fontWeight: 400
-  m_enableAutoSizing: 0
-  m_fontSizeMin: 5
-  m_fontSizeMax: 17
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 20
+  m_fontSizeMax: 25
   m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
@@ -170,7 +170,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0.0209}
+  m_AnchoredPosition: {x: 0, y: -1.7}
   m_SizeDelta: {x: 200, y: 37.6842}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1623280597
@@ -203,8 +203,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uC774\uB984"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: cfd77cf47a5e992418f99588eb3baab9, type: 2}
-  m_sharedMaterial: {fileID: -2130985006390690960, guid: cfd77cf47a5e992418f99588eb3baab9, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 54bb9163f088f624f8b4ed6a58a52cad, type: 2}
+  m_sharedMaterial: {fileID: 7554231374516950877, guid: 54bb9163f088f624f8b4ed6a58a52cad, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -232,7 +232,7 @@ MonoBehaviour:
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
-  m_fontSizeMin: 20
+  m_fontSizeMin: 15
   m_fontSizeMax: 30
   m_fontStyle: 0
   m_HorizontalAlignment: 2
@@ -908,6 +908,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cfbc09cecd77513459b815d16b641cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _soldOutObj: {fileID: 0}
+  _soldOutButton: {fileID: 0}
 --- !u!114 &1407061267027988664
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -928,6 +930,7 @@ MonoBehaviour:
   - {fileID: 896008859028648996, guid: 7925c5a97139a264499510ff29e4e028, type: 3}
   - {fileID: 8802978331890681932, guid: 7925c5a97139a264499510ff29e4e028, type: 3}
   - {fileID: 8479903185287042497, guid: 7925c5a97139a264499510ff29e4e028, type: 3}
+  _priceText: {fileID: 0}
 --- !u!1 &9044868799024471522
 GameObject:
   m_ObjectHideFlags: 0

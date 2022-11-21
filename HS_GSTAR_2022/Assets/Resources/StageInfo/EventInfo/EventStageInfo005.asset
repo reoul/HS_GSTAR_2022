@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: "\uC2E0\uC758 \uC120\uBB3C"
   Description: "\uB2F9\uC2E0\uC740 \uAE38\uC744 \uAC77\uB2E4\uAC00 \uC5B4\uB514\uC120\uAC00
-    \uB4E4\uB824\uC624\uB294 \uBD80\uB984\uC5D0\r\n\uC751\uB2F5\uD558\uAC8C \uB429\uB2C8\uB2E4.
-    \uADF8\uAC83\uC740 \uB2E4\uB984 \uC544\uB2CC \uC2E0\uC758 \uBD80\uB984\uC774\uC5C8\uC2B5\uB2C8\uB2E4.\r\n\uBD80\uB984\uC5D0
+    \uB4E4\uB824\uC624\uB294 \uBD80\uB984\uC5D0 \uC751\uB2F5\uD558\uAC8C \uB429\uB2C8\uB2E4.\n\uADF8\uAC83\uC740
+    \uB2E4\uB984 \uC544\uB2CC \uC2E0\uC758 \uBD80\uB984\uC774\uC5C8\uC2B5\uB2C8\uB2E4.\n\uBD80\uB984\uC5D0
     \uC751\uB2F5\uD55C \uB2F9\uC2E0\uC5D0\uAC8C \uC2E0\uC740 \uC120\uBB3C\uC744 \uC8FC\uB824\uACE0
     \uD569\uB2C8\uB2E4."
   EventCardInfos:
@@ -37,34 +37,34 @@ MonoBehaviour:
     EventCardEffectType6: 0
   - Title: "\uC2E0\uC758 \uC740\uCD1D"
     Type: 0
-    Context1: "\uCCB4\uB825 10\uD68C\uBCF5"
+    Context1: "\uCCB4\uB825 20\uD68C\uBCF5"
     CardEffectInfos1:
     - EventCardEffectType: 6
-      Num: 10
-    Context2: "\uCCB4\uB825 15\uD68C\uBCF5"
+      Num: 20
+    Context2: "\uCCB4\uB825 30\uD68C\uBCF5"
     CardEffectInfos2:
     - EventCardEffectType: 6
-      Num: 15
-    Context3: "\uCCB4\uB825 20\uD68C\uBCF5"
+      Num: 30
+    Context3: "\uCCB4\uB825 40\uD68C\uBCF5"
     CardEffectInfos3:
     - EventCardEffectType: 6
-      Num: 20
+      Num: 40
     Context6: 
     EventCardEffectType6: 0
   - Title: "\uCF54\uC778"
     Type: 0
-    Context1: "\uCF54\uC778 5\uC6D0 \uD68D\uB4DD"
+    Context1: "\uCF54\uC778 10\uC6D0 \uD68D\uB4DD"
     CardEffectInfos1:
     - EventCardEffectType: 11
-      Num: 5
-    Context2: "\uCF54\uC778 10\uC6D0 \uD68D\uB4DD"
+      Num: 10
+    Context2: "\uCF54\uC778 20\uC6D0 \uD68D\uB4DD"
     CardEffectInfos2:
     - EventCardEffectType: 11
-      Num: 10
-    Context3: "\uCF54\uC778 15\uC6D0 \uD68D\uB4DD"
+      Num: 20
+    Context3: "\uCF54\uC778 30\uC6D0 \uD68D\uB4DD"
     CardEffectInfos3:
     - EventCardEffectType: 11
-      Num: 15
+      Num: 30
     Context6: 
     EventCardEffectType6: 0
   ratingType: 3

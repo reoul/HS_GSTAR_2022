@@ -11,6 +11,7 @@ public enum StageType
     Shop,
     Victory,
     GameOver,
+    Boss,
 }
 
 public class MapManager : MonoBehaviour
@@ -36,6 +37,9 @@ public class MapManager : MonoBehaviour
                     break;
                 case StageType.Victory:
                     mapIcon = Instantiate(Resources.Load<GameObject>("VictoryMapIcon"), parent);
+                    break;
+                case StageType.Boss:
+                    mapIcon = Instantiate(Resources.Load<GameObject>("BossMapIcon"), parent);
                     break;
                 case StageType.GameOver:
                 default:

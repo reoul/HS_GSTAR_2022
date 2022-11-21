@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: "\uBAAC\uC2A4\uD130 \uC8FC\uB454\uC9C0 \uC2B5\uACA9"
   Description: "\uC810\uC810 \uAE09\uC99D\uD558\uACE0 \uC788\uB294 \uBAAC\uC2A4\uD130\uC758
-    \uC218\uB97C \uC904\uC774\uAE30 \uC704\uD574 \uC131\uCCB4\uAC00 \n\uB418\uC9C0
+    \uC218\uB97C \uC904\uC774\uAE30 \uC704\uD574 \uC131\uCCB4\uAC00 \uB418\uC9C0
     \uBABB\uD55C \uC5B4\uB9B0 \uBAAC\uC2A4\uD130\uB4E4\uC744 \uC2B5\uACA9\uD558\uAC8C
-    \uB418\uC5B4 \n\uBAAC\uC2A4\uD130\uC758 \uAC1C\uCCB4 \uC218\uB97C \uD06C\uAC8C
+    \uB418\uC5B4 \uBAAC\uC2A4\uD130\uC758 \uAC1C\uCCB4 \uC218\uB97C \uD06C\uAC8C
     \uC904\uC774\uAC8C \uB418\uC5B4 \uC774\uB984\uC744 \uB110\uB9AC \uC54C\uB9AC\uAC8C
     \uB429\uB2C8\uB2E4."
   EventCardInfos:
@@ -50,14 +50,14 @@ MonoBehaviour:
     EventCardEffectType6: 0
   - Title: "\uCF54\uC778"
     Type: 1
-    Context1: "\uCF54\uC778 10\uC6D0 \uD68D\uB4DD"
+    Context1: "\uCF54\uC778 30\uC6D0 \uD68D\uB4DD"
     CardEffectInfos1:
     - EventCardEffectType: 11
-      Num: 10
-    Context2: "\uCF54\uC778 15\uC6D0 \uD68D\uB4DD"
+      Num: 30
+    Context2: "\uCF54\uC778 40\uC6D0 \uD68D\uB4DD"
     CardEffectInfos2:
     - EventCardEffectType: 11
-      Num: 15
+      Num: 40
     Context3: 
     CardEffectInfos3: []
     Context6: 

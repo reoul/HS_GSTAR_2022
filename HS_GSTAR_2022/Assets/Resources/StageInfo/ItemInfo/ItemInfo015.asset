@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75e32a9dd5ddb4646a782d900ea767a2, type: 3}
+  m_Name: ItemInfo015
+  m_EditorClassIdentifier: 
+  Name: "\uAC00\uC2DC \uAC11\uC637"
+  Description: "\uD53C\uD574\uB97C \uC785\uC744 \uB54C\uB9C8\uB2E4 \uC801\uC5D0\uAC8C
+    \uBC29\uC5B4\uB825\uC758 30%\uC758 \uD53C\uD574\uB97C \uC90D\uB2C8\uB2E4."
+  EffectInvokeTimeType: 4
+  EffectType: 7
+  Num: 3
+  Price: 50
+  ratingType: 1
+  itemObj: {fileID: 7720528880046833304, guid: 8b1b3c2b6ab7abc4b9db39b029420a97, type: 3}

@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75e32a9dd5ddb4646a782d900ea767a2, type: 3}
   m_Name: ItemInfo005
   m_EditorClassIdentifier: 
-  Name: "\uC804\uC124\uC758 \uBE44\uC57D"
-  Description: "\uCD5C\uB300\uCCB4\uB825 3 \uC99D\uAC00"
+  Name: "\uD76C\uADC0\uD55C \uBE44\uC57D"
+  Description: "\uCD5C\uB300\uCCB4\uB825 5 \uC99D\uAC00"
   EffectInvokeTimeType: 3
   EffectType: 4
-  Num: 3
+  Num: 5
   Price: 20
   ratingType: 0
+  itemObj: {fileID: 0}

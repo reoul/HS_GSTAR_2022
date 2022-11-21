@@ -21,6 +21,7 @@ public class BackGroundMover : MonoBehaviour
             backGound = bg;
             copiedBG = new GameObject();
             copiedBG = GameObject.Instantiate(backGound.gameObject, backGound.transform.parent);
+            copiedBG.transform.SetSiblingIndex(bg.transform.GetSiblingIndex() + 1);
             width = backGound.rectTransform.rect.width * backGound.rectTransform.localScale.x;
             copiedBG.transform.localPosition = backGound.transform.localPosition + new Vector3(width, 0, 0);
         }

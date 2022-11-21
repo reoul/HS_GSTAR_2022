@@ -22,8 +22,16 @@ public interface IBattleable
     /// <summary> 관통 데미지 </summary>
     Status PiercingDamage { get; set; }
 
+    /// <summary> 가장 최근 입힌 데미지 </summary>
+    int LastAttackDamage { get; set; }
+
     /// <summary> 정보창 </summary>
     public InfoWindow InfoWindow { get; set; }
+    
+    public Animator Animator { get; }
+
+    /// <summary> 공격 </summary>
+    void Attack();
 
     /// <summary> 데미지를 준다 </summary>
     /// <param name="damage">데미지</param>
@@ -49,6 +57,12 @@ public interface IBattleable
     /// <summary> Dead 애니메이션 시작 </summary>
     void StartDeadAnimation();
 
+    /// <summary> 공격 애니메이션이 끝났을 때 </summary>
+    void FinishAttackAnimation();
+
     /// <summary> 공격이 끝났을 때 발동할 이벤트 </summary>
     UnityEvent FinishAttackEvent { get; set; }
+
+    /// <summary> 피격 당했을 때 이벤트 </summary>
+    UnityEvent HitEvent { get; set; }
 }

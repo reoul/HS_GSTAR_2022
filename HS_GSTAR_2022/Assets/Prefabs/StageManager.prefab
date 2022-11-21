@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8149369478432189513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8149369478432189512}
+  - component: {fileID: 8149369478432189515}
+  m_Layer: 0
+  m_Name: StageManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8149369478432189512
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8149369478432189513}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8149369478432189515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8149369478432189513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bcd3a90c52819a4dbb5fe9678d27a2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _eventStageInfoArray: []
+  _enemyInfoArray:
+  - {fileID: 11400000, guid: 3a04cd543940de141ac3310fa2c53e1a, type: 2}
+  - {fileID: 11400000, guid: f10698d3c1b957a47ae137a176aa418f, type: 2}
+  - {fileID: 11400000, guid: ec7f0455b0b8e3c42bb1e34cec04d690, type: 2}
+  - {fileID: 11400000, guid: 164211e6ee809b5499fea566f4e16dcb, type: 2}
+  - {fileID: 11400000, guid: df09f736754bbe448b52875e01dff53a, type: 2}
+  - {fileID: 11400000, guid: 89850b397919b164eaf4acb4b0429e99, type: 2}
+  - {fileID: 11400000, guid: 24c84fe2fa3da9446be270fd8c546b69, type: 2}
+  - {fileID: 11400000, guid: 7f43c67768194d742a409030e7156f56, type: 2}
+  - {fileID: 11400000, guid: 3392fe713a86b994490ad8d883f70858, type: 2}
+  - {fileID: 11400000, guid: 5e535db168b99a340965f6325d3db9d9, type: 2}
+  - {fileID: 11400000, guid: 7643e362138fd134982c24f86903cdcf, type: 2}
+  - {fileID: 11400000, guid: 006ce4e09a165a2418bf5f127d3d4072, type: 2}
+  - {fileID: 11400000, guid: 7513c60346c08404897bd1ed3554b156, type: 2}
+  - {fileID: 11400000, guid: 45ea7dbf4fe0337408272f49a66137f1, type: 2}
+  _curStage: {fileID: 0}
+  EventStage: {fileID: 0}
+  BattleStage: {fileID: 0}
+  ShopStage: {fileID: 0}
+  VictoryStage: {fileID: 0}
+  GameOverStage: {fileID: 0}
+  EventStagePlayerInfoWindowPos: {fileID: 0}
+  BattleStagePlayerInfoWindowPos: {fileID: 0}
+  ShopStagePlayerInfoWindowPos: {fileID: 0}
+  PlayerInfoWindow: {fileID: 0}
+  _mapManager: {fileID: 0}

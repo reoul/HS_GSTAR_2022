@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: ItemInfo004
   m_EditorClassIdentifier: 
   Name: "\uACFC\uC77C\uB9DB \uD3EC\uC158"
-  Description: "\uCCB4\uB825 15\uD68C\uBCF5"
+  Description: "\uCCB4\uB825 100\uD68C\uBCF5"
   EffectInvokeTimeType: 3
   EffectType: 0
-  Num: 15
+  Num: 100
   Price: 50
   ratingType: 1
+  itemObj: {fileID: 0}

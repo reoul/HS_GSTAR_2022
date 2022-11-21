@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public sealed class Logger
+public static class Logger
 {
 #if USE_DEBUG
     public static void Log(object message)

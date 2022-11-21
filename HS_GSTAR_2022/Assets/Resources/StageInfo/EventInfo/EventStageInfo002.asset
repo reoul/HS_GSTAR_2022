@@ -30,7 +30,7 @@ MonoBehaviour:
     Context3: "\uACF5\uACA9\uB825 3\uC99D\uAC00"
     CardEffectInfos3:
     - EventCardEffectType: 0
-      Num: 2
+      Num: 3
     Context6: 
     EventCardEffectType6: 0
   - Title: "\uC2E0\uCCB4\uC758 \uC99D\uAC00"
